@@ -27,7 +27,6 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
 //        Calender.sharedInstance.selectedDates.removeAll()
 //        Calender.sharedInstance.save()
         
@@ -112,28 +111,21 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     //セルがタップされた時に呼ばれるメソッド
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let tappedDate = date.currentMonthOfDates[indexPath.row]
-        let Dates = Calender.sharedInstance.selectedDates
-//        for selectedDate in Dates {
-//            for dateValue in selectedDate.values {
-//                if dateValue == tappedDate {
-////                    Calender.sharedInstance.deletedate(tappedDate)
-//                } else {
-//                    Calender.sharedInstance.appendSelectedDates(tappedDate)
-//                }
-//            }
-//        }
-        Calender.sharedInstance.appendSelectedDates(tappedDate)
+        let dates = Calender.sharedInstance.selectedDates
+        if (dates[tappedDate] != nil) {
+            Calender.sharedInstance.deletedate(tappedDate)
+        } else {
+            Calender.sharedInstance.appendSelectedDates(tappedDate)
+        }
         self.calenderCollectionView.reloadData()
     }
     
     //背景色の判定
     func changeCellBackgroundColor(indexPath: NSIndexPath) -> Bool {
         let dates = Calender.sharedInstance.selectedDates
-        for dateDic in dates {
-            for dateValue in dateDic.values {
-                if dateValue == date.currentMonthOfDates[indexPath.row] {
-                    return true
-                }
+        for dateDic in dates.keys {
+            if dateDic == date.currentMonthOfDates[indexPath.row] {
+                return true
             }
         }
         return false

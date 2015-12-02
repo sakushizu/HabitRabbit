@@ -12,51 +12,65 @@ class Calender: NSObject {
     
     static let sharedInstance = Calender()
     //選択されたdateの配列
-    var selectedDates:Array<Dictionary<String, NSDate>> = []
+    var selectedDates:Dictionary<NSDate, String> = [:]
     
     
     //選択されたdateの追加
-    func appendSelectedDates(preDate: NSDate) -> NSDate {
-        var dic = [String:NSDate]()
-        //1日後の日付を取得
-//        let date = NSDate(timeInterval: 1 * 24 * 60 * 60, sinceDate: preDate)
-        dic["day"] = preDate
-        selectedDates.append(dic)
+    func appendSelectedDates(preDate: NSDate) {
+        selectedDates[preDate] = "tapped"
         save()
-        return preDate
     }
     
     //NSUserDefaultに保存
     func save() {
-        var dayList: Array<Dictionary<String, AnyObject>> = []
-        for day in selectedDates {
-            dayList.append(day)
+        var dayList: Dictionary<String, String> = [:]
+        for (key,value) in selectedDates {
+            let date = changeNSDateToString(key)
+            dayList[date] = value
         }
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(dayList, forKey: "dayList")
     }
     
+    //NSUserDefaultから削除
+    func deletedate(preDate: NSDate) {
+        selectedDates.removeValueForKey(preDate)
+        save()
+    }
+    
+    //NSUserDefaultに保存されているデータをselectedDatesに入れる
     func fetchDates() {
+        selectedDates = [:]
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let dayList = defaults.objectForKey("dayList") as? Array<Dictionary<String, AnyObject>> {
-            for dayDic in dayList {
-                let day = Calender.convertCalenderModel(dayDic)
-                self.selectedDates.append(day)
+        if let dayList = defaults.objectForKey("dayList")! as? Dictionary<String,String> {
+            for (key,value) in dayList {
+                let date = changeStringToNSDate(key)
+                selectedDates[date] = value
             }
         }
     }
     
-//    func deletedate(preDate: NSDate) {
-//        for date in selectedDates {
-//            date.removeValueForKey("\(preDate)")
-//        }
-//    }
-    
-    class func convertCalenderModel(attiributes: Dictionary<String, AnyObject>) -> Dictionary<String, NSDate> {
-        var dic = Dictionary<String, NSDate>()
-        dic["day"] = attiributes["day"] as? NSDate
-        return dic
+    //日付の型をNSDateに変更
+    func changeStringToNSDate(stringDate: String) -> NSDate {
+        let date_formatter: NSDateFormatter = NSDateFormatter()
+        date_formatter.locale = NSLocale(localeIdentifier: "ja_JP")
+        date_formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        return date_formatter.dateFromString(stringDate)!
     }
+    //日付の型をStringに変更
+    func changeNSDateToString(stringDate: NSDate) -> String {
+        let date_formatter: NSDateFormatter = NSDateFormatter()
+        date_formatter.locale = NSLocale(localeIdentifier: "ja_JP")
+        date_formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        let date = date_formatter.stringFromDate(stringDate)
+        return date
+    }
+    
+//    class func convertCalenderModel(attiributes: Dictionary<String, AnyObject>) -> Dictionary<String, NSDate> {
+//        var dic = Dictionary<String, NSDate>()
+//        dic[\()"] = attiributes["day"] as? NSDate
+//        return dic
+//    }
 
 }
 
