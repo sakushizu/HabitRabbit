@@ -26,10 +26,12 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let createButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "createCalendar:")
+        self.navigationItem.setRightBarButtonItem(createButton, animated: true)
+        self.navigationItem.title = Calender.sharedInstance.title
+       
 //        Calender.sharedInstance.selectedDates.removeAll()
 //        Calender.sharedInstance.save()
-        
         
         Calender.sharedInstance.fetchDates()
         
@@ -39,6 +41,12 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
         calenderCollectionView.dataSource = self
         calenderCollectionView.backgroundColor = UIColor.whiteColor()
     }
+//    
+//    override func viewWillAppear(animated: Bool) {
+//        let createButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "createCalendar:")
+//        self.navigationItem.setRightBarButtonItem(createButton, animated: true)
+//        self.navigationItem.title = Calender.sharedInstance.title
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -71,22 +79,25 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
         } else {
             cell.title.textColor = UIColor.lightGrayColor()
         }
-        //背景色変更
-        if changeCellBackgroundColor(indexPath) {
-            cell.backgroundColor = UIColor.grayColor()
-        } else {
-            cell.backgroundColor = UIColor.whiteColor()
-        }
         //テキスト配置
         switch(indexPath.section){
         case 0:
             let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fry", "Sat"]
             cell.title.text = weekArray[indexPath.row]
             cell.backgroundColor = UIColor.whiteColor()
+            cell.imageView.hidden = true
         case 1:
             cell.title.text = date.conversionDateFormat(indexPath)
+            cell.imageView?.image = UIImage(named: "ハート.jpg")
+            // UIImageViewをViewに追加する.
+            //背景色変更
+            if jadgeIfCellTapped(indexPath) {
+                cell.imageView.hidden = false
+            } else {
+                cell.imageView.hidden = true
+            }
         default:
-            cell.backgroundColor = UIColor.whiteColor()
+            cell.imageView.hidden = true
         }
         return cell
     }
@@ -120,8 +131,8 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
         self.calenderCollectionView.reloadData()
     }
     
-    //背景色の判定
-    func changeCellBackgroundColor(indexPath: NSIndexPath) -> Bool {
+    //タップ済みかの判定
+    func jadgeIfCellTapped(indexPath: NSIndexPath) -> Bool {
         let dates = Calender.sharedInstance.selectedDates
         for dateDic in dates.keys {
             if dateDic == date.currentMonthOfDates[indexPath.row] {
@@ -130,7 +141,7 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         return false
     }
-    
+
     //セルのマージン
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return CellMargin
@@ -149,6 +160,13 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
         return selectMonth
     }
     
+    func createCalendar(sender: UIButton) {
+        Calender.sharedInstance.title = "running"
+        self.navigationItem.title = Calender.sharedInstance.title
+        Calender.sharedInstance.fetchDates()
+        self.calenderCollectionView.reloadData()
+    }
+    
     //次月の表示ボタン
     @IBAction func tappedHeaderRightBtn(sender: UIButton) {
         selectedDate = date.nextMonth(selectedDate)
@@ -162,5 +180,6 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
         calenderCollectionView.reloadData()
         headerTitle.text = changeHeaderTitle(selectedDate)
     }
+    
 
 }

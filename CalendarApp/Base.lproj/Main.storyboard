@@ -95,6 +95,18 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fX5-eE-5wM">
+                                                    <rect key="frame" x="10" y="10" width="30" height="30"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ハート.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="sS8-vr-Q5f">
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="QsA-kd-gfr"/>
+                                                        <constraint firstAttribute="width" constant="30" id="fby-kZ-i2e"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -103,8 +115,11 @@
                                             <constraint firstItem="mRh-Kb-ZBU" firstAttribute="leading" secondItem="VJL-ot-XmD" secondAttribute="leading" constant="4" id="TdW-LV-mhu"/>
                                             <constraint firstAttribute="bottom" secondItem="mRh-Kb-ZBU" secondAttribute="bottom" constant="15" id="Wg9-fY-Xmq"/>
                                             <constraint firstAttribute="trailing" secondItem="mRh-Kb-ZBU" secondAttribute="trailing" constant="4" id="iyZ-fo-Eo4"/>
+                                            <constraint firstItem="fX5-eE-5wM" firstAttribute="centerX" secondItem="VJL-ot-XmD" secondAttribute="centerX" id="lZk-Rq-dID"/>
+                                            <constraint firstItem="fX5-eE-5wM" firstAttribute="centerY" secondItem="VJL-ot-XmD" secondAttribute="centerY" id="mxL-z5-WuM"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="imageView" destination="sS8-vr-Q5f" id="IzM-E4-Ck4"/>
                                             <outlet property="title" destination="mRh-Kb-ZBU" id="WvE-vF-zmn"/>
                                         </connections>
                                     </collectionViewCell>
@@ -165,4 +180,7 @@
             <point key="canvasLocation" x="408" y="-428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ハート.jpg" width="60" height="60"/>
+    </resources>
 </document>
