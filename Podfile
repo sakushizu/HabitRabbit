@@ -5,6 +5,7 @@ use_frameworks!
 
 target 'CalendarApp' do
     pod 'YALSideMenu'
+    pod 'RSKImageCropper'
 end
 
 target 'CalendarAppTests' do

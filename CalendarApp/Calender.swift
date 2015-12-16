@@ -11,9 +11,12 @@ import UIKit
 class Calender: NSObject {
     
     static let sharedInstance = Calender()
-    //選択されたdateの配列
-    var selectedDates:Dictionary<NSDate, String> = [:]
-    var title: String = "cooking"
+    
+    //カレンダーの情報をもつ辞書型
+    var selectedDates: Dictionary<NSDate, String> = [:]
+    var title: String?
+    var color: UIColor!
+    var image: UIImage!
     
     
     //選択されたdateの追加
@@ -29,10 +32,10 @@ class Calender: NSObject {
             let date = changeNSDateToString(key)
             dayList[date] = value
             let defaults = NSUserDefaults.standardUserDefaults()  //定数defaultsの定数名は任意で変更する事ができます
-            defaults.setObject(dayList, forKey: title)
+            defaults.setObject(dayList, forKey: title!)
         }
     }
-    
+
     //NSUserDefaultから削除
     func deletedate(preDate: NSDate) {
         selectedDates.removeValueForKey(preDate)
@@ -43,7 +46,7 @@ class Calender: NSObject {
     func fetchDates() {
         selectedDates = [:]
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let dayList = defaults.objectForKey(title) as? Dictionary<String, String> {
+        if let dayList = defaults.objectForKey(title!) as? Dictionary<String, String> {
             for (key,value) in dayList {
                 let date = changeStringToNSDate(key)
                 selectedDates[date] = value

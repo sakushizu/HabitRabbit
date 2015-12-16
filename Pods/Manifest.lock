@@ -1,10 +1,13 @@
 PODS:
+  - RSKImageCropper (1.4.1)
   - YALSideMenu (1.2.0)
 
 DEPENDENCIES:
+  - RSKImageCropper
   - YALSideMenu
 
 SPEC CHECKSUMS:
+  RSKImageCropper: 98ae426eb4eb11b733ff87f8e2542a480f4fa8e6
   YALSideMenu: da4847fb57b724482040751bf02b9b97f7b89819
 
 COCOAPODS: 0.39.0

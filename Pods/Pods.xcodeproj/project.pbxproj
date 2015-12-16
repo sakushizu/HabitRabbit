@@ -7,73 +7,157 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		016A2DE33A221548CADDAD48BB354070 /* YALSideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A0291F3AC6DD2F2FD067BCC103A4E8 /* YALSideMenu-dummy.m */; };
-		1ED27A5D77628D038FC9846F879425AF /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B05FA8F74248495D5A2E2E465F5158 /* Menu.swift */; };
-		2178FA8EF2700D3C0AEB25DF970983D6 /* MenuItemsAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49455E7E3A34CD61EBA223EB55D94089 /* MenuItemsAnimator.swift */; };
-		2F765B2B7AF9FDFC7044A410C57EF8F8 /* YALSideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6716DB17CB3E3FE2B89A1A3FB81A988B /* YALSideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4A553BB2FD6A592A97605839E0489 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		83C4D5376F441D7F8B80195915C725ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		943CFEFF4F7187DF86EE66BE077806FE /* Pods-CalendarApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA1CC5DEAB029E180B88F0FBD90E6B9 /* Pods-CalendarApp-dummy.m */; };
-		BC79184E26AF75AB88338C721C0B4E6C /* MenuTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36E3C8C7A1C378A295078175CB5982 /* MenuTransitionAnimator.swift */; };
-		CD5C19069B47A1B90720D9580FA39F07 /* Pods-CalendarApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E5AA6B8A675E74E1087CCFBBFA40944C /* Pods-CalendarApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		19223E55F644AA576BF0339F3FEE9F7C /* RSKImageCropViewController+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = E7FA0B623F40401889C90FF5D93DB2F0 /* RSKImageCropViewController+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C02F997DBF4D409F63E8C9F1CDA02AC /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16837C964991DA0E4DF68BF22932A385 /* RSKImageCropViewController.m */; };
+		1F719B965097F0907B2EDF97D8E96E47 /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4130704C169DDD4029ED4275D417EFA /* RSKTouchView.m */; };
+		293A67927C6FA3FEF440341C9F58CE26 /* RSKImageCropper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AA876E990C483FFBF825E75E86DF49 /* RSKImageCropper-dummy.m */; };
+		2E9A04047FC43435F6CCA9464DE8991D /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B40DD1FF3D081881B9FA42633CC2C7 /* CGGeometry+RSKImageCropper.m */; };
+		3064EF63478980446E84B9CF7D3F8506 /* RSKTouchView.h in Headers */ = {isa = PBXBuildFile; fileRef = 50CC1433E7FBF358BFF2E703DA5D53EC /* RSKTouchView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		37010CCB71CAD1D4EFDBE0D3327CE0B3 /* MenuItemsAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C786D3A37853186B4CFC8E9591355DE9 /* MenuItemsAnimator.swift */; };
+		3F641682150FCB626795573C499F2676 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 608474868CE1DA992845F000662F44CF /* RSKImageScrollView.m */; };
+		4101A922C890A4691F8751BEC032FE59 /* Pods-CalendarApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E5AA6B8A675E74E1087CCFBBFA40944C /* Pods-CalendarApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DAF23A2737BC254314E681228CE3B79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91413329813FA6FE5A78842159E69621 /* Foundation.framework */; };
+		5F0ACF560770B4ABB405D68E3A66C6A3 /* RSKImageCropper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E1F999AC68AB07946B0A714BF4FCA75 /* RSKImageCropper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F1880927B9A90F64D539B9DBBFEE10D /* UIImage+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0BD4B4069691A75735D9561DCA62BF /* UIImage+RSKImageCropper.m */; };
+		7AA9B049D5FD7D4B1EF2C9E43E6BEE41 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91413329813FA6FE5A78842159E69621 /* Foundation.framework */; };
+		834D984ED611EB421F80CEB183D52D81 /* RSKImageCropperStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3EEE8040A90419E73FBC80F2698329D0 /* RSKImageCropperStrings.bundle */; };
+		866A7AEC2970997DDA5AECC524EF90FF /* MenuTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D940969EADD6729FBF867879A558BE /* MenuTransitionAnimator.swift */; };
+		9100EAD4B44DB225D5ACE5F98D67805B /* CGGeometry+RSKImageCropper.h in Headers */ = {isa = PBXBuildFile; fileRef = 58A9AE797B895BAEEC9359B41F3A1B9D /* CGGeometry+RSKImageCropper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9651883FE976249284C25AFF274AE6D1 /* Pods-CalendarApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA1CC5DEAB029E180B88F0FBD90E6B9 /* Pods-CalendarApp-dummy.m */; };
+		9891E534FCF704943275D8F0F4DAC170 /* RSKInternalUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E9CD453E977ED4B7EA200756048219 /* RSKInternalUtility.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9ACB5F0FAD87A7F3F8D7625A2ACE93EA /* RSKImageCropViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 554D161C2E8E003EDB67E19B2966707C /* RSKImageCropViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E5BBC9AF4C715311A10306DF45424C4 /* RSKImageCropper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BE91564F75A44429D6E2CA84479BB6E /* RSKImageCropper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC455876859415A07CB015E434CE0A37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91413329813FA6FE5A78842159E69621 /* Foundation.framework */; };
+		B05CE2F2881860F21F4E6F192D5F3E08 /* UIApplication+RSKImageCropper.h in Headers */ = {isa = PBXBuildFile; fileRef = BE1CBDC272DB1A5EE0B2BC09DB06DC9F /* UIApplication+RSKImageCropper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B2161B892DA82EBDE80EEB61ED0C30A6 /* RSKImageScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = E81D672ABE0265410E1B8CDEB02AA4A0 /* RSKImageScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6AAC9C7549140AA7DF93766C76903B7 /* YALSideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EC88851EB92239688D95383A8668D7 /* YALSideMenu-dummy.m */; };
+		D7143AC96004C0F3C77A212D3256A980 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E642B1A057ADA2ABEF90BE2417F349C1 /* QuartzCore.framework */; };
+		DB21647B14802BAF0A0527E0E08C9E07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9DE615671731BF3AEFB3CB1F984FA8F /* UIKit.framework */; };
+		E0AC2CB9EEEC27634E67422E2134B56B /* UIImage+RSKImageCropper.h in Headers */ = {isa = PBXBuildFile; fileRef = 54E8580290ABAAB7354C76930D5A6238 /* UIImage+RSKImageCropper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E3304F09ACC061C0F81986C0A39F9574 /* UIApplication+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AA8B42CB5BE7FD065F179C4FD6E1C0 /* UIApplication+RSKImageCropper.m */; };
+		EBC0C7423DF2F555594119BD139A5513 /* YALSideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF253A6CDC9AA64C61C81630B2CB732 /* YALSideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6029F5468E77A5DB988F758AC670C6A /* RSKInternalUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A5DBE53BB3D32F69E57996DECC96D3 /* RSKInternalUtility.m */; };
+		F627BB875256516F94A078AA0936ED95 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95F673D049CC020626A5AAC3B8DC96A /* Menu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F1CADBF4E8D034157AC0D82A6086EE93 /* PBXContainerItemProxy */ = {
+		9F9FBBB4E0D62775A648E1347655FDB2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 43A4DB795F08401828BB03879BD841F7;
+			remoteGlobalIDString = B30BC93716907310828FF0628753058B;
 			remoteInfo = YALSideMenu;
+		};
+		F4CE5AC9A1AA27C1AF70194F433C5CCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 77A2BB4858E7E3969A711CD147AA656F;
+			remoteInfo = RSKImageCropper;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0AA1CC5DEAB029E180B88F0FBD90E6B9 /* Pods-CalendarApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CalendarApp-dummy.m"; sourceTree = "<group>"; };
+		0BE91564F75A44429D6E2CA84479BB6E /* RSKImageCropper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSKImageCropper-umbrella.h"; sourceTree = "<group>"; };
 		0C96F9828CBFFF1A287B187BC96B3023 /* Pods-CalendarApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CalendarApp.release.xcconfig"; sourceTree = "<group>"; };
 		0F91E1061E36CCB3E974499C333E8105 /* Pods-CalendarApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CalendarApp.debug.xcconfig"; sourceTree = "<group>"; };
-		17728AFB68514DF5D8138FE11B03AC72 /* Pods_CalendarApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FF41F67445390D36C12FA8F420EA125 /* YALSideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YALSideMenu-prefix.pch"; sourceTree = "<group>"; };
+		15D940969EADD6729FBF867879A558BE /* MenuTransitionAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuTransitionAnimator.swift; path = SideMenu/MenuTransitionAnimator.swift; sourceTree = "<group>"; };
+		16837C964991DA0E4DF68BF22932A385 /* RSKImageCropViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSKImageCropViewController.m; path = RSKImageCropper/RSKImageCropViewController.m; sourceTree = "<group>"; };
 		33936568B6CDB8032D39962EE8663E66 /* Pods-CalendarApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CalendarApp-frameworks.sh"; sourceTree = "<group>"; };
-		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		49455E7E3A34CD61EBA223EB55D94089 /* MenuItemsAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuItemsAnimator.swift; path = SideMenu/MenuItemsAnimator.swift; sourceTree = "<group>"; };
+		3A03BF820315BD05931149F0C74F7DE1 /* YALSideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YALSideMenu-prefix.pch"; sourceTree = "<group>"; };
+		3C0BD4B4069691A75735D9561DCA62BF /* UIImage+RSKImageCropper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+RSKImageCropper.m"; path = "RSKImageCropper/UIImage+RSKImageCropper.m"; sourceTree = "<group>"; };
+		3EEE8040A90419E73FBC80F2698329D0 /* RSKImageCropperStrings.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = RSKImageCropperStrings.bundle; path = RSKImageCropper/RSKImageCropperStrings.bundle; sourceTree = "<group>"; };
+		44619AA56210F9BC9364F9631BA55A35 /* RSKImageCropper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RSKImageCropper.modulemap; sourceTree = "<group>"; };
 		4A33D256D4FA0584C1B2EA220BBC147F /* Pods-CalendarApp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CalendarApp-resources.sh"; sourceTree = "<group>"; };
-		51B05FA8F74248495D5A2E2E465F5158 /* Menu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Menu.swift; path = SideMenu/Menu.swift; sourceTree = "<group>"; };
-		5F45F742EA8EDE582072A03BD740DEF0 /* YALSideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YALSideMenu.xcconfig; sourceTree = "<group>"; };
-		6716DB17CB3E3FE2B89A1A3FB81A988B /* YALSideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YALSideMenu-umbrella.h"; sourceTree = "<group>"; };
+		4AB0295195D37CF4FC9AB8537C5FF668 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50CC1433E7FBF358BFF2E703DA5D53EC /* RSKTouchView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSKTouchView.h; path = RSKImageCropper/RSKTouchView.h; sourceTree = "<group>"; };
+		54E8580290ABAAB7354C76930D5A6238 /* UIImage+RSKImageCropper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+RSKImageCropper.h"; path = "RSKImageCropper/UIImage+RSKImageCropper.h"; sourceTree = "<group>"; };
+		554D161C2E8E003EDB67E19B2966707C /* RSKImageCropViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSKImageCropViewController.h; path = RSKImageCropper/RSKImageCropViewController.h; sourceTree = "<group>"; };
+		58A9AE797B895BAEEC9359B41F3A1B9D /* CGGeometry+RSKImageCropper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CGGeometry+RSKImageCropper.h"; path = "RSKImageCropper/CGGeometry+RSKImageCropper.h"; sourceTree = "<group>"; };
+		608474868CE1DA992845F000662F44CF /* RSKImageScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSKImageScrollView.m; path = RSKImageCropper/RSKImageScrollView.m; sourceTree = "<group>"; };
+		710A3F3FF231F9C1E72FD41DAA08D8D2 /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76130085DDE0CAD4A1EEE55C7E8382EF /* Pods-CalendarApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CalendarApp-acknowledgements.markdown"; sourceTree = "<group>"; };
-		899B2E47FF6A14AA7F8F239A73E2BEF9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79A5DBE53BB3D32F69E57996DECC96D3 /* RSKInternalUtility.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSKInternalUtility.m; path = RSKImageCropper/RSKInternalUtility.m; sourceTree = "<group>"; };
+		7CF253A6CDC9AA64C61C81630B2CB732 /* YALSideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YALSideMenu-umbrella.h"; sourceTree = "<group>"; };
+		83AA876E990C483FFBF825E75E86DF49 /* RSKImageCropper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RSKImageCropper-dummy.m"; sourceTree = "<group>"; };
+		84A55600699C2A682BFAAC53835AB03A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91413329813FA6FE5A78842159E69621 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		96B40DD1FF3D081881B9FA42633CC2C7 /* CGGeometry+RSKImageCropper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CGGeometry+RSKImageCropper.m"; path = "RSKImageCropper/CGGeometry+RSKImageCropper.m"; sourceTree = "<group>"; };
+		9BB300BFAF43E0F5A55D862CEC32821A /* YALSideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YALSideMenu.xcconfig; sourceTree = "<group>"; };
+		9E1F999AC68AB07946B0A714BF4FCA75 /* RSKImageCropper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSKImageCropper.h; path = RSKImageCropper/RSKImageCropper.h; sourceTree = "<group>"; };
 		A144EC04348DFEB69C88429E580BF420 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6CDC81550CD77EE6AC5C3D01BC7D743 /* YALSideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = YALSideMenu.modulemap; sourceTree = "<group>"; };
+		A8C236F35980D877DBA89A43179CAE08 /* RSKImageCropper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSKImageCropper-prefix.pch"; sourceTree = "<group>"; };
+		ACED640AAEFE19DCCB3D7A4E76F98B7F /* Pods_CalendarApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BE1CBDC272DB1A5EE0B2BC09DB06DC9F /* UIApplication+RSKImageCropper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication+RSKImageCropper.h"; path = "RSKImageCropper/UIApplication+RSKImageCropper.h"; sourceTree = "<group>"; };
 		C394E20808F1580B30405DD9E1E28C1A /* Pods-CalendarApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CalendarApp-acknowledgements.plist"; sourceTree = "<group>"; };
-		CF07C4643619E9602E0C5A861CA4E19B /* YALSideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = YALSideMenu.modulemap; sourceTree = "<group>"; };
-		E2D1DA8D5AFC1376C7CE2EA720ECAA6F /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3E9CD453E977ED4B7EA200756048219 /* RSKInternalUtility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSKInternalUtility.h; path = RSKImageCropper/RSKInternalUtility.h; sourceTree = "<group>"; };
+		C786D3A37853186B4CFC8E9591355DE9 /* MenuItemsAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuItemsAnimator.swift; path = SideMenu/MenuItemsAnimator.swift; sourceTree = "<group>"; };
+		C95F673D049CC020626A5AAC3B8DC96A /* Menu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Menu.swift; path = SideMenu/Menu.swift; sourceTree = "<group>"; };
+		CF21DBD06EE2886352CD5C42EDE6680D /* RSKImageCropper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RSKImageCropper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0AA8B42CB5BE7FD065F179C4FD6E1C0 /* UIApplication+RSKImageCropper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+RSKImageCropper.m"; path = "RSKImageCropper/UIApplication+RSKImageCropper.m"; sourceTree = "<group>"; };
+		D9DE615671731BF3AEFB3CB1F984FA8F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		E5AA6B8A675E74E1087CCFBBFA40944C /* Pods-CalendarApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CalendarApp-umbrella.h"; sourceTree = "<group>"; };
+		E642B1A057ADA2ABEF90BE2417F349C1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		E7BF2E7375272D0BE6C72001E1172CD9 /* Pods-CalendarApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CalendarApp.modulemap"; sourceTree = "<group>"; };
-		EA36E3C8C7A1C378A295078175CB5982 /* MenuTransitionAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuTransitionAnimator.swift; path = SideMenu/MenuTransitionAnimator.swift; sourceTree = "<group>"; };
-		F8A0291F3AC6DD2F2FD067BCC103A4E8 /* YALSideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YALSideMenu-dummy.m"; sourceTree = "<group>"; };
+		E7FA0B623F40401889C90FF5D93DB2F0 /* RSKImageCropViewController+Protected.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RSKImageCropViewController+Protected.h"; path = "RSKImageCropper/RSKImageCropViewController+Protected.h"; sourceTree = "<group>"; };
+		E81D672ABE0265410E1B8CDEB02AA4A0 /* RSKImageScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSKImageScrollView.h; path = RSKImageCropper/RSKImageScrollView.h; sourceTree = "<group>"; };
+		EB4B422C64F2271FDB0F031C55E739E8 /* RSKImageCropper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RSKImageCropper.xcconfig; sourceTree = "<group>"; };
+		F3EC88851EB92239688D95383A8668D7 /* YALSideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YALSideMenu-dummy.m"; sourceTree = "<group>"; };
+		F4130704C169DDD4029ED4275D417EFA /* RSKTouchView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSKTouchView.m; path = RSKImageCropper/RSKTouchView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0AF024515F36565C64AFA992A89A5703 /* Frameworks */ = {
+		845626F6824A2176FF8B883DE82AA4E0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83C4D5376F441D7F8B80195915C725ED /* Foundation.framework in Frameworks */,
+				AC455876859415A07CB015E434CE0A37 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7A406AE21AE1452A76B15F01212C5285 /* Frameworks */ = {
+		E6A65DAEA247E0C82B4B81FAA61E3548 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45F4A553BB2FD6A592A97605839E0489 /* Foundation.framework in Frameworks */,
+				4DAF23A2737BC254314E681228CE3B79 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF43FE2EC8F5976D8945D138D49675C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AA9B049D5FD7D4B1EF2C9E43E6BEE41 /* Foundation.framework in Frameworks */,
+				D7143AC96004C0F3C77A212D3256A980 /* QuartzCore.framework in Frameworks */,
+				DB21647B14802BAF0A0527E0E08C9E07 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F852441D778CABC65FC5BA1D3049A2A /* YALSideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				C95F673D049CC020626A5AAC3B8DC96A /* Menu.swift */,
+				C786D3A37853186B4CFC8E9591355DE9 /* MenuItemsAnimator.swift */,
+				15D940969EADD6729FBF867879A558BE /* MenuTransitionAnimator.swift */,
+				77DBE37AA357A8401BE17A88485BA718 /* Support Files */,
+			);
+			path = YALSideMenu;
+			sourceTree = "<group>";
+		};
+		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA23025FEDA7F7FE2AACB2532BD80D14 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		37AC0FF955210259D60126D35CC5863E /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,71 +166,103 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		7DB346D0F39D3F0E887471402A8071AB = {
+		4E4F6DE0E4580AF1E2F22791A6BD50AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				E875F7B56328D7111E57FCC1FF2D8056 /* Pods */,
-				BE38A7D8649FCF9951B27B6CEA2E9AC6 /* Products */,
-				37AC0FF955210259D60126D35CC5863E /* Targets Support Files */,
+				ACED640AAEFE19DCCB3D7A4E76F98B7F /* Pods_CalendarApp.framework */,
+				CF21DBD06EE2886352CD5C42EDE6680D /* RSKImageCropper.framework */,
+				710A3F3FF231F9C1E72FD41DAA08D8D2 /* SideMenu.framework */,
 			);
+			name = Products;
 			sourceTree = "<group>";
 		};
-		B28F4A059947CCBF3DCA9FBFC43D3EC2 /* Support Files */ = {
+		55050E4E20B9C4A65E3E51E30AEC46E8 /* RSKImageCropper */ = {
 			isa = PBXGroup;
 			children = (
-				899B2E47FF6A14AA7F8F239A73E2BEF9 /* Info.plist */,
-				CF07C4643619E9602E0C5A861CA4E19B /* YALSideMenu.modulemap */,
-				5F45F742EA8EDE582072A03BD740DEF0 /* YALSideMenu.xcconfig */,
-				F8A0291F3AC6DD2F2FD067BCC103A4E8 /* YALSideMenu-dummy.m */,
-				1FF41F67445390D36C12FA8F420EA125 /* YALSideMenu-prefix.pch */,
-				6716DB17CB3E3FE2B89A1A3FB81A988B /* YALSideMenu-umbrella.h */,
+				58A9AE797B895BAEEC9359B41F3A1B9D /* CGGeometry+RSKImageCropper.h */,
+				96B40DD1FF3D081881B9FA42633CC2C7 /* CGGeometry+RSKImageCropper.m */,
+				9E1F999AC68AB07946B0A714BF4FCA75 /* RSKImageCropper.h */,
+				554D161C2E8E003EDB67E19B2966707C /* RSKImageCropViewController.h */,
+				16837C964991DA0E4DF68BF22932A385 /* RSKImageCropViewController.m */,
+				E7FA0B623F40401889C90FF5D93DB2F0 /* RSKImageCropViewController+Protected.h */,
+				E81D672ABE0265410E1B8CDEB02AA4A0 /* RSKImageScrollView.h */,
+				608474868CE1DA992845F000662F44CF /* RSKImageScrollView.m */,
+				C3E9CD453E977ED4B7EA200756048219 /* RSKInternalUtility.h */,
+				79A5DBE53BB3D32F69E57996DECC96D3 /* RSKInternalUtility.m */,
+				50CC1433E7FBF358BFF2E703DA5D53EC /* RSKTouchView.h */,
+				F4130704C169DDD4029ED4275D417EFA /* RSKTouchView.m */,
+				BE1CBDC272DB1A5EE0B2BC09DB06DC9F /* UIApplication+RSKImageCropper.h */,
+				D0AA8B42CB5BE7FD065F179C4FD6E1C0 /* UIApplication+RSKImageCropper.m */,
+				54E8580290ABAAB7354C76930D5A6238 /* UIImage+RSKImageCropper.h */,
+				3C0BD4B4069691A75735D9561DCA62BF /* UIImage+RSKImageCropper.m */,
+				83CA5E4555A510C4DFF1014DC8FABC0F /* Resources */,
+				CE4F4329B7D2706DAA4253DC9C3114B0 /* Support Files */,
+			);
+			path = RSKImageCropper;
+			sourceTree = "<group>";
+		};
+		77DBE37AA357A8401BE17A88485BA718 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4AB0295195D37CF4FC9AB8537C5FF668 /* Info.plist */,
+				A6CDC81550CD77EE6AC5C3D01BC7D743 /* YALSideMenu.modulemap */,
+				9BB300BFAF43E0F5A55D862CEC32821A /* YALSideMenu.xcconfig */,
+				F3EC88851EB92239688D95383A8668D7 /* YALSideMenu-dummy.m */,
+				3A03BF820315BD05931149F0C74F7DE1 /* YALSideMenu-prefix.pch */,
+				7CF253A6CDC9AA64C61C81630B2CB732 /* YALSideMenu-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/YALSideMenu";
 			sourceTree = "<group>";
 		};
-		B9BC98239FD3548F84E87A370CADFF00 /* YALSideMenu */ = {
+		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
-				51B05FA8F74248495D5A2E2E465F5158 /* Menu.swift */,
-				49455E7E3A34CD61EBA223EB55D94089 /* MenuItemsAnimator.swift */,
-				EA36E3C8C7A1C378A295078175CB5982 /* MenuTransitionAnimator.swift */,
-				B28F4A059947CCBF3DCA9FBFC43D3EC2 /* Support Files */,
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
+				DCBBA9170650464A9DD456F4DEA9399A /* Pods */,
+				4E4F6DE0E4580AF1E2F22791A6BD50AE /* Products */,
+				37AC0FF955210259D60126D35CC5863E /* Targets Support Files */,
 			);
-			path = YALSideMenu;
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+		83CA5E4555A510C4DFF1014DC8FABC0F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
+				3EEE8040A90419E73FBC80F2698329D0 /* RSKImageCropperStrings.bundle */,
 			);
-			name = Frameworks;
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		BE38A7D8649FCF9951B27B6CEA2E9AC6 /* Products */ = {
+		CE4F4329B7D2706DAA4253DC9C3114B0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				17728AFB68514DF5D8138FE11B03AC72 /* Pods_CalendarApp.framework */,
-				E2D1DA8D5AFC1376C7CE2EA720ECAA6F /* SideMenu.framework */,
+				84A55600699C2A682BFAAC53835AB03A /* Info.plist */,
+				44619AA56210F9BC9364F9631BA55A35 /* RSKImageCropper.modulemap */,
+				EB4B422C64F2271FDB0F031C55E739E8 /* RSKImageCropper.xcconfig */,
+				83AA876E990C483FFBF825E75E86DF49 /* RSKImageCropper-dummy.m */,
+				A8C236F35980D877DBA89A43179CAE08 /* RSKImageCropper-prefix.pch */,
+				0BE91564F75A44429D6E2CA84479BB6E /* RSKImageCropper-umbrella.h */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/RSKImageCropper";
 			sourceTree = "<group>";
 		};
-		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
+		DA23025FEDA7F7FE2AACB2532BD80D14 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
+				91413329813FA6FE5A78842159E69621 /* Foundation.framework */,
+				E642B1A057ADA2ABEF90BE2417F349C1 /* QuartzCore.framework */,
+				D9DE615671731BF3AEFB3CB1F984FA8F /* UIKit.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		E875F7B56328D7111E57FCC1FF2D8056 /* Pods */ = {
+		DCBBA9170650464A9DD456F4DEA9399A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B9BC98239FD3548F84E87A370CADFF00 /* YALSideMenu */,
+				55050E4E20B9C4A65E3E51E30AEC46E8 /* RSKImageCropper */,
+				0F852441D778CABC65FC5BA1D3049A2A /* YALSideMenu */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -172,32 +288,67 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		7576B8D6B936908DB282DA54F90B5D43 /* Headers */ = {
+		0CB70BEABDF82F9C832EFE8D95486B70 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD5C19069B47A1B90720D9580FA39F07 /* Pods-CalendarApp-umbrella.h in Headers */,
+				EBC0C7423DF2F555594119BD139A5513 /* YALSideMenu-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C5919740C48E71766A3AB26C8343300E /* Headers */ = {
+		0E29BACC7C17DFD2538C0E0B306FD521 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F765B2B7AF9FDFC7044A410C57EF8F8 /* YALSideMenu-umbrella.h in Headers */,
+				9100EAD4B44DB225D5ACE5F98D67805B /* CGGeometry+RSKImageCropper.h in Headers */,
+				9E5BBC9AF4C715311A10306DF45424C4 /* RSKImageCropper-umbrella.h in Headers */,
+				5F0ACF560770B4ABB405D68E3A66C6A3 /* RSKImageCropper.h in Headers */,
+				19223E55F644AA576BF0339F3FEE9F7C /* RSKImageCropViewController+Protected.h in Headers */,
+				9ACB5F0FAD87A7F3F8D7625A2ACE93EA /* RSKImageCropViewController.h in Headers */,
+				B2161B892DA82EBDE80EEB61ED0C30A6 /* RSKImageScrollView.h in Headers */,
+				9891E534FCF704943275D8F0F4DAC170 /* RSKInternalUtility.h in Headers */,
+				3064EF63478980446E84B9CF7D3F8506 /* RSKTouchView.h in Headers */,
+				B05CE2F2881860F21F4E6F192D5F3E08 /* UIApplication+RSKImageCropper.h in Headers */,
+				E0AC2CB9EEEC27634E67422E2134B56B /* UIImage+RSKImageCropper.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CB35F2FE32D6DFB8D20A6EADCCBB53D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4101A922C890A4691F8751BEC032FE59 /* Pods-CalendarApp-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		43A4DB795F08401828BB03879BD841F7 /* YALSideMenu */ = {
+		77A2BB4858E7E3969A711CD147AA656F /* RSKImageCropper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 62623D529F20FF07774AD8176F92B3BE /* Build configuration list for PBXNativeTarget "YALSideMenu" */;
+			buildConfigurationList = 7D22916A92BD4706120A279DCC390DC1 /* Build configuration list for PBXNativeTarget "RSKImageCropper" */;
 			buildPhases = (
-				D6781B39F7DD5701C10B7C0A05C8B9CA /* Sources */,
-				0AF024515F36565C64AFA992A89A5703 /* Frameworks */,
-				C5919740C48E71766A3AB26C8343300E /* Headers */,
+				2CF539009682D96462D5A69341D86A03 /* Sources */,
+				EF43FE2EC8F5976D8945D138D49675C3 /* Frameworks */,
+				0E29BACC7C17DFD2538C0E0B306FD521 /* Headers */,
+				C55E8E91FD2F004B3DF6B2C10B217FA6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RSKImageCropper;
+			productName = RSKImageCropper;
+			productReference = CF21DBD06EE2886352CD5C42EDE6680D /* RSKImageCropper.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B30BC93716907310828FF0628753058B /* YALSideMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C562FDE1AEA65AD560EE1ECC9BEF9F60 /* Build configuration list for PBXNativeTarget "YALSideMenu" */;
+			buildPhases = (
+				1CFD9637ABBC866E5C508D59E6995B57 /* Sources */,
+				845626F6824A2176FF8B883DE82AA4E0 /* Frameworks */,
+				0CB70BEABDF82F9C832EFE8D95486B70 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -205,25 +356,26 @@
 			);
 			name = YALSideMenu;
 			productName = YALSideMenu;
-			productReference = E2D1DA8D5AFC1376C7CE2EA720ECAA6F /* SideMenu.framework */;
+			productReference = 710A3F3FF231F9C1E72FD41DAA08D8D2 /* SideMenu.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		F41A4DFFB993DE224766A98B7147183A /* Pods-CalendarApp */ = {
+		C973D16DE5975C6B1847790F7D94015A /* Pods-CalendarApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F6DDD0885D1E890B8E1CC280F3D4CAB7 /* Build configuration list for PBXNativeTarget "Pods-CalendarApp" */;
+			buildConfigurationList = 78C7F29E21E9DC5F6A2B88B6A78D1C00 /* Build configuration list for PBXNativeTarget "Pods-CalendarApp" */;
 			buildPhases = (
-				251E7CD80942184FDCDAE6B299A65AEC /* Sources */,
-				7A406AE21AE1452A76B15F01212C5285 /* Frameworks */,
-				7576B8D6B936908DB282DA54F90B5D43 /* Headers */,
+				BD34E1C4AA821FC758BA47463D22A01C /* Sources */,
+				E6A65DAEA247E0C82B4B81FAA61E3548 /* Frameworks */,
+				7CB35F2FE32D6DFB8D20A6EADCCBB53D /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B437FF72376D26A1F71495B03CE7182B /* PBXTargetDependency */,
+				D4B1354E415538A5BF5AEBE8E5B8A18F /* PBXTargetDependency */,
+				E7C2B67EC831A78D1255781A59745DAE /* PBXTargetDependency */,
 			);
 			name = "Pods-CalendarApp";
 			productName = "Pods-CalendarApp";
-			productReference = 17728AFB68514DF5D8138FE11B03AC72 /* Pods_CalendarApp.framework */;
+			productReference = ACED640AAEFE19DCCB3D7A4E76F98B7F /* Pods_CalendarApp.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -243,51 +395,84 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = BE38A7D8649FCF9951B27B6CEA2E9AC6 /* Products */;
+			productRefGroup = 4E4F6DE0E4580AF1E2F22791A6BD50AE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F41A4DFFB993DE224766A98B7147183A /* Pods-CalendarApp */,
-				43A4DB795F08401828BB03879BD841F7 /* YALSideMenu */,
+				C973D16DE5975C6B1847790F7D94015A /* Pods-CalendarApp */,
+				77A2BB4858E7E3969A711CD147AA656F /* RSKImageCropper */,
+				B30BC93716907310828FF0628753058B /* YALSideMenu */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXSourcesBuildPhase section */
-		251E7CD80942184FDCDAE6B299A65AEC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+/* Begin PBXResourcesBuildPhase section */
+		C55E8E91FD2F004B3DF6B2C10B217FA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				943CFEFF4F7187DF86EE66BE077806FE /* Pods-CalendarApp-dummy.m in Sources */,
+				834D984ED611EB421F80CEB183D52D81 /* RSKImageCropperStrings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D6781B39F7DD5701C10B7C0A05C8B9CA /* Sources */ = {
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1CFD9637ABBC866E5C508D59E6995B57 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1ED27A5D77628D038FC9846F879425AF /* Menu.swift in Sources */,
-				2178FA8EF2700D3C0AEB25DF970983D6 /* MenuItemsAnimator.swift in Sources */,
-				BC79184E26AF75AB88338C721C0B4E6C /* MenuTransitionAnimator.swift in Sources */,
-				016A2DE33A221548CADDAD48BB354070 /* YALSideMenu-dummy.m in Sources */,
+				F627BB875256516F94A078AA0936ED95 /* Menu.swift in Sources */,
+				37010CCB71CAD1D4EFDBE0D3327CE0B3 /* MenuItemsAnimator.swift in Sources */,
+				866A7AEC2970997DDA5AECC524EF90FF /* MenuTransitionAnimator.swift in Sources */,
+				D6AAC9C7549140AA7DF93766C76903B7 /* YALSideMenu-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2CF539009682D96462D5A69341D86A03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E9A04047FC43435F6CCA9464DE8991D /* CGGeometry+RSKImageCropper.m in Sources */,
+				293A67927C6FA3FEF440341C9F58CE26 /* RSKImageCropper-dummy.m in Sources */,
+				1C02F997DBF4D409F63E8C9F1CDA02AC /* RSKImageCropViewController.m in Sources */,
+				3F641682150FCB626795573C499F2676 /* RSKImageScrollView.m in Sources */,
+				F6029F5468E77A5DB988F758AC670C6A /* RSKInternalUtility.m in Sources */,
+				1F719B965097F0907B2EDF97D8E96E47 /* RSKTouchView.m in Sources */,
+				E3304F09ACC061C0F81986C0A39F9574 /* UIApplication+RSKImageCropper.m in Sources */,
+				6F1880927B9A90F64D539B9DBBFEE10D /* UIImage+RSKImageCropper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD34E1C4AA821FC758BA47463D22A01C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9651883FE976249284C25AFF274AE6D1 /* Pods-CalendarApp-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B437FF72376D26A1F71495B03CE7182B /* PBXTargetDependency */ = {
+		D4B1354E415538A5BF5AEBE8E5B8A18F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RSKImageCropper;
+			target = 77A2BB4858E7E3969A711CD147AA656F /* RSKImageCropper */;
+			targetProxy = F4CE5AC9A1AA27C1AF70194F433C5CCD /* PBXContainerItemProxy */;
+		};
+		E7C2B67EC831A78D1255781A59745DAE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = YALSideMenu;
-			target = 43A4DB795F08401828BB03879BD841F7 /* YALSideMenu */;
-			targetProxy = F1CADBF4E8D034157AC0D82A6086EE93 /* PBXContainerItemProxy */;
+			target = B30BC93716907310828FF0628753058B /* YALSideMenu */;
+			targetProxy = 9F9FBBB4E0D62775A648E1347655FDB2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		4695E231D16EDC0A75A465DD1A7C4209 /* Release */ = {
+		348AF3B25B0E223EBE71B4DEDA4E8BCA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F45F742EA8EDE582072A03BD740DEF0 /* YALSideMenu.xcconfig */;
+			baseConfigurationReference = EB4B422C64F2271FDB0F031C55E739E8 /* RSKImageCropper.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -296,14 +481,14 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/YALSideMenu/YALSideMenu-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/YALSideMenu/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/RSKImageCropper/RSKImageCropper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RSKImageCropper/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/YALSideMenu/YALSideMenu.modulemap";
+				MODULEMAP_FILE = "Target Support Files/RSKImageCropper/RSKImageCropper.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SideMenu;
+				PRODUCT_NAME = RSKImageCropper;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -312,7 +497,34 @@
 			};
 			name = Release;
 		};
-		64E01186E9EB573175B84C25098101B5 /* Release */ = {
+		4C3734ED9993F93B3359AA7ED2DC2A44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB4B422C64F2271FDB0F031C55E739E8 /* RSKImageCropper.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RSKImageCropper/RSKImageCropper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RSKImageCropper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RSKImageCropper/RSKImageCropper.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = RSKImageCropper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7C79BF251DFF5EBE31EE248CB6253C39 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0C96F9828CBFFF1A287B187BC96B3023 /* Pods-CalendarApp.release.xcconfig */;
 			buildSettings = {
@@ -342,7 +554,34 @@
 			};
 			name = Release;
 		};
-		6BAC125D063FD3D20B2C537344D6862A /* Debug */ = {
+		911A28FD46482D1EC972EF43367123B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BB300BFAF43E0F5A55D862CEC32821A /* YALSideMenu.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/YALSideMenu/YALSideMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/YALSideMenu/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/YALSideMenu/YALSideMenu.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SideMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9C8E7C9795E81AB34C4242A33CB1716B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0F91E1061E36CCB3E974499C333E8105 /* Pods-CalendarApp.debug.xcconfig */;
 			buildSettings = {
@@ -364,34 +603,6 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_NAME = Pods_CalendarApp;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		A0BC941D4C70C2E7222986BEAE39DC6D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F45F742EA8EDE582072A03BD740DEF0 /* YALSideMenu.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/YALSideMenu/YALSideMenu-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/YALSideMenu/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/YALSideMenu/YALSideMenu.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SideMenu;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -437,6 +648,34 @@
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		AC3F372B332B91E7381B5F854BEE4050 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BB300BFAF43E0F5A55D862CEC32821A /* YALSideMenu.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/YALSideMenu/YALSideMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/YALSideMenu/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/YALSideMenu/YALSideMenu.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SideMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
@@ -486,20 +725,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		62623D529F20FF07774AD8176F92B3BE /* Build configuration list for PBXNativeTarget "YALSideMenu" */ = {
+		78C7F29E21E9DC5F6A2B88B6A78D1C00 /* Build configuration list for PBXNativeTarget "Pods-CalendarApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A0BC941D4C70C2E7222986BEAE39DC6D /* Debug */,
-				4695E231D16EDC0A75A465DD1A7C4209 /* Release */,
+				9C8E7C9795E81AB34C4242A33CB1716B /* Debug */,
+				7C79BF251DFF5EBE31EE248CB6253C39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F6DDD0885D1E890B8E1CC280F3D4CAB7 /* Build configuration list for PBXNativeTarget "Pods-CalendarApp" */ = {
+		7D22916A92BD4706120A279DCC390DC1 /* Build configuration list for PBXNativeTarget "RSKImageCropper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6BAC125D063FD3D20B2C537344D6862A /* Debug */,
-				64E01186E9EB573175B84C25098101B5 /* Release */,
+				4C3734ED9993F93B3359AA7ED2DC2A44 /* Debug */,
+				348AF3B25B0E223EBE71B4DEDA4E8BCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C562FDE1AEA65AD560EE1ECC9BEF9F60 /* Build configuration list for PBXNativeTarget "YALSideMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC3F372B332B91E7381B5F854BEE4050 /* Debug */,
+				911A28FD46482D1EC972EF43367123B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

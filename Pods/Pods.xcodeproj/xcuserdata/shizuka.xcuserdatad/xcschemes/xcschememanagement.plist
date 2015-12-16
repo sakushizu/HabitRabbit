@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RSKImageCropper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>YALSideMenu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>43A4DB795F08401828BB03879BD841F7</key>
+		<key>77A2BB4858E7E3969A711CD147AA656F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F41A4DFFB993DE224766A98B7147183A</key>
+		<key>B30BC93716907310828FF0628753058B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C973D16DE5975C6B1847790F7D94015A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
