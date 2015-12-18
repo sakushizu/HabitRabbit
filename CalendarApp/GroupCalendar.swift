@@ -15,15 +15,47 @@ class GroupCalendar: NSObject {
     
     var password: String = ""
     
-    func saveParse(title: String,callback: () -> Void) {
-        let calendarObject = PFObject(className: "Calendar")
-        calendarObject["title"] = title
-        calendarObject["password"] = self.password
-        calendarObject.saveInBackgroundWithBlock { (success, error) in
-            if success {
-                callback()
+    func createParse(title: String,callback: () -> Void) {
+        let calendarQuery = PFQuery(className: "Calendar")
+        calendarQuery.whereKey("title", equalTo: title)
+        calendarQuery.whereKey("password", equalTo: self.password)
+        calendarQuery.getFirstObjectInBackgroundWithBlock { (object, notFind) -> Void in
+            if notFind == nil {
+                print("this calendar already saved.")
+            } else {
+                let calendarObject = PFObject(className: "Calendar")
+                calendarObject["title"] = title
+                calendarObject["password"] = self.password
+                calendarObject["orner"] = PFUser.currentUser()!
+                let relation = calendarObject.relationForKey("users")
+                relation.addObject(PFUser.currentUser()!)
+                calendarObject.saveInBackgroundWithBlock { (success, error) in
+                    if success {
+                        callback()
+                    }
+                }
             }
         }
     }
-
+    
+    func joinParse(title: String,callback: () -> Void) {
+        let calendarQuery = PFQuery(className: "Calendar")
+        calendarQuery.whereKey("title", equalTo: title)
+        calendarQuery.whereKey("password", equalTo: self.password)
+        calendarQuery.getFirstObjectInBackgroundWithBlock { (object, notFind) -> Void in
+            if notFind == nil {
+                let relation = object!.relationForKey("users")
+                relation.addObject(PFUser.currentUser()!)
+                object!.saveInBackgroundWithBlock { (success, error) in
+                    if success {
+                        callback()
+                    }
+                }
+            } else {
+                print("this calnedar not saved yet.")
+            }
+        }
+    }
+    
+    
 }

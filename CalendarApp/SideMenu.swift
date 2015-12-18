@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol SideMenuDelegate {
-    func sideMenuDidSelectItemAtIndex(index:Int)
+    func sideMenuDidSelectItemAtIndex(indexPath: NSIndexPath)
     optional func sideMenuWillOpen()
     optional func sideMenuWillClose()
 }
@@ -118,7 +118,7 @@ class SideMenu : NSObject, MenuTableViewControllerDelegate {
     }
     
     func menuControllerDidSelectRow(indexPath:NSIndexPath) {
-        delegate?.sideMenuDidSelectItemAtIndex(indexPath.row)
+        delegate?.sideMenuDidSelectItemAtIndex(indexPath)
     }
     
     func toggleMenu () {

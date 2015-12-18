@@ -38,7 +38,6 @@ class MenuTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-                print("\(__FUNCTION__) \(__LINE__)")
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
         cell.backgroundColor = UIColor.clearColor()
         cell.textLabel!.textColor = UIColor.darkGrayColor()
@@ -47,6 +46,12 @@ class MenuTableViewController: UITableViewController {
         cell.selectedBackgroundView = selectedBackgroundView
         if indexPath.section == 0 {
             cell.textLabel?.text = "user profile"
+            let settingBtn = UIButton()
+            settingBtn.frame = CGRectMake(0, 0, 25, 25)
+            settingBtn.layer.position = CGPoint(x: cell.frame.width - 5, y: cell.frame.height - 5)
+            settingBtn.imageView?.image = UIImage(named: "Settings")
+            settingBtn.addTarget(self, action: "tappedSettingBtn", forControlEvents: .TouchUpInside)
+            cell.selectedBackgroundView!.addSubview(settingBtn)
             //user button
             return cell
         } else if indexPath.section == 1 {

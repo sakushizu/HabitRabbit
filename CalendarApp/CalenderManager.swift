@@ -16,10 +16,11 @@ class CalenderManager: NSObject {
 
     func addCalendarCollection(calendar: Calender){
         self.calendarCollection.append(calendar)
-        self.save()
+        self.titles.append(calendar.title!)
+        self.saveSelfCalendar()
     }
     
-    func save() {
+    func saveSelfCalendar() {
         var calendarList: Array<Dictionary<String, AnyObject>> = []
         for calendar in calendarCollection {
             let calendarDic = CalenderManager.convertDictionary(calendar)

@@ -32,7 +32,7 @@ class TopViewController: UIViewController {
         performSegueWithIdentifier("login", sender: nil)
     }
     @IBAction func tappedSkipLogInBtn(sender: UIButton) {
-        performSegueWithIdentifier("calendarView", sender: nil)
+        performSegueWithIdentifier("calendar", sender: nil)
         
     }
     /*

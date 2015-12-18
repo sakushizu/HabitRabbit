@@ -34,7 +34,6 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
         CalenderManager.sharedInstance.fetchCalendarCollection()
 //        CalenderManager.sharedInstance.calendarCollection.removeAll()
 //        CalenderManager.sharedInstance.titles.removeAll()
-       print(CalenderManager.sharedInstance.calendarCollection.count)
         
         //tableViewに表示している名前の配列
         sideMenu = SideMenu(sourceView: self.view)
@@ -187,8 +186,13 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     ////サイドバーのセルがタップされた時の処理
-    func sideMenuDidSelectItemAtIndex(index: Int) {
-        selectedCalender = CalenderManager.sharedInstance.calendarCollection[index]
+    func sideMenuDidSelectItemAtIndex(indexPath: NSIndexPath) {
+        if (indexPath.section == 0) && (indexPath.row == 0) {
+            PFUser.logOut()
+            CurrentUser.sharedInstance.user = nil
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        selectedCalender = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
         self.navigationItem.title = selectedCalender.title
         Calender.sharedInstance.title = selectedCalender.title
         calenderHeaderView.backgroundColor = selectedCalender.color

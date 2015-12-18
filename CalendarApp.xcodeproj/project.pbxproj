@@ -36,6 +36,14 @@
 		0B7586991C21EC6100816379 /* FaceBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7586971C21EC6100816379 /* FaceBookTableViewCell.swift */; };
 		0B75869A1C21EC6100816379 /* FaceBookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7586981C21EC6100816379 /* FaceBookTableViewCell.xib */; };
 		0B75869C1C21F07400816379 /* Facebook-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B75869B1C21F07400816379 /* Facebook-32.png */; };
+		0B7586A51C224E8A00816379 /* UserImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7586A31C224E8A00816379 /* UserImageTableViewCell.swift */; };
+		0B7586A61C224E8A00816379 /* UserImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7586A41C224E8A00816379 /* UserImageTableViewCell.xib */; };
+		0B7586A91C22592200816379 /* Return Book Filled-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B7586A71C22592200816379 /* Return Book Filled-25.png */; };
+		0B7586AA1C22592200816379 /* Camera Filled-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B7586A81C22592200816379 /* Camera Filled-25.png */; };
+		0B7586AC1C22659200816379 /* Circled User Male-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B7586AB1C22659200816379 /* Circled User Male-32.png */; };
+		0B7586AF1C22A92F00816379 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7586AE1C22A92F00816379 /* User.swift */; };
+		0B7586B11C22AFF500816379 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7586B01C22AFF500816379 /* UIImage+Extension.swift */; };
+		0B7586B31C22DFF200816379 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7586B21C22DFF200816379 /* CurrentUser.swift */; };
 		0BA523851C1F187C00133342 /* Gift-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA523771C1F187C00133342 /* Gift-32.png */; };
 		0BA523861C1F187C00133342 /* Pushups-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA523781C1F187C00133342 /* Pushups-32.png */; };
 		0BA523871C1F187C00133342 /* Wakeup Hill on Stairs Filled-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA523791C1F187C00133342 /* Wakeup Hill on Stairs Filled-32.png */; };
@@ -54,6 +62,7 @@
 		0BCD96CA1C1E8C0D007E9B92 /* StampCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCD96C81C1E8C0D007E9B92 /* StampCollectionViewCell.swift */; };
 		0BCD96CB1C1E8C0D007E9B92 /* StampCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BCD96C91C1E8C0D007E9B92 /* StampCollectionViewCell.xib */; };
 		0BD173751C09CEEB006873CD /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD173741C09CEEB006873CD /* DateManager.swift */; };
+		0BD3453D1C2312120056C44A /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD3453C1C2312120056C44A /* Settings.png */; };
 		0BE7F6351C1FF4B500DD76B5 /* ColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE7F6331C1FF4B500DD76B5 /* ColorTableViewController.swift */; };
 		0BE7F6391C211D9A00DD76B5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE7F6371C211D9900DD76B5 /* Bolts.framework */; };
 		0BE7F63A1C211D9A00DD76B5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE7F6381C211D9A00DD76B5 /* Parse.framework */; };
@@ -75,9 +84,7 @@
 		0BE80B411C01CB5400655517 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE80B401C01CB5400655517 /* UIColor+Extension.swift */; };
 		0BED601B1C19334300022AA5 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED601A1C19334300022AA5 /* SideMenu.swift */; };
 		0BED601D1C19337300022AA5 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED601C1C19337300022AA5 /* MenuTableViewController.swift */; };
-		0BED601F1C19764600022AA5 /* CreateCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED601E1C19764600022AA5 /* CreateCalendarView.swift */; };
 		0BED60211C19766800022AA5 /* CreateCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED60201C19766800022AA5 /* CreateCalendarViewController.swift */; };
-		0BED60231C197AAF00022AA5 /* CreateCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BED60221C197AAF00022AA5 /* CreateCalendarView.xib */; };
 		0BED60251C1AA02100022AA5 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BED60241C1AA02100022AA5 /* checked.png */; };
 		0BED60271C1C0A7E00022AA5 /* CreateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED60261C1C0A7E00022AA5 /* CreateTableView.swift */; };
 		0BED60291C1C0B4B00022AA5 /* CreateTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BED60281C1C0B4B00022AA5 /* CreateTableView.xib */; };
@@ -89,7 +96,6 @@
 		0BED60351C1C0CCE00022AA5 /* CreateCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BED60331C1C0CCE00022AA5 /* CreateCell3.xib */; };
 		0BED60381C1C0CE000022AA5 /* CreateCell4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED60361C1C0CE000022AA5 /* CreateCell4.swift */; };
 		0BED60391C1C0CE000022AA5 /* CreateCell4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BED60371C1C0CE000022AA5 /* CreateCell4.xib */; };
-		0BED60411C1C498F00022AA5 /* ImageCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED60401C1C498F00022AA5 /* ImageCropViewController.swift */; };
 		0BED60431C1D496300022AA5 /* ギャル.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0BED60421C1D496300022AA5 /* ギャル.jpg */; };
 		64CCFBD6FD8B345AA7ACE6EA /* Pods_CalendarApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBE6F5EB3694679FC22FF82 /* Pods_CalendarApp.framework */; };
 /* End PBXBuildFile section */
@@ -148,6 +154,14 @@
 		0B7586971C21EC6100816379 /* FaceBookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceBookTableViewCell.swift; sourceTree = "<group>"; };
 		0B7586981C21EC6100816379 /* FaceBookTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaceBookTableViewCell.xib; sourceTree = "<group>"; };
 		0B75869B1C21F07400816379 /* Facebook-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Facebook-32.png"; path = "../../../Downloads/Facebook-32.png"; sourceTree = "<group>"; };
+		0B7586A31C224E8A00816379 /* UserImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserImageTableViewCell.swift; sourceTree = "<group>"; };
+		0B7586A41C224E8A00816379 /* UserImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserImageTableViewCell.xib; sourceTree = "<group>"; };
+		0B7586A71C22592200816379 /* Return Book Filled-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Return Book Filled-25.png"; path = "../../../Downloads/Return Book Filled-25.png"; sourceTree = "<group>"; };
+		0B7586A81C22592200816379 /* Camera Filled-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Camera Filled-25.png"; path = "../../../Downloads/Camera Filled-25.png"; sourceTree = "<group>"; };
+		0B7586AB1C22659200816379 /* Circled User Male-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Circled User Male-32.png"; path = "../../../Downloads/Circled User Male-32.png"; sourceTree = "<group>"; };
+		0B7586AE1C22A92F00816379 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0B7586B01C22AFF500816379 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		0B7586B21C22DFF200816379 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		0BA523771C1F187C00133342 /* Gift-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gift-32.png"; sourceTree = "<group>"; };
 		0BA523781C1F187C00133342 /* Pushups-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pushups-32.png"; sourceTree = "<group>"; };
 		0BA523791C1F187C00133342 /* Wakeup Hill on Stairs Filled-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wakeup Hill on Stairs Filled-32.png"; sourceTree = "<group>"; };
@@ -166,6 +180,7 @@
 		0BCD96C81C1E8C0D007E9B92 /* StampCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampCollectionViewCell.swift; sourceTree = "<group>"; };
 		0BCD96C91C1E8C0D007E9B92 /* StampCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StampCollectionViewCell.xib; sourceTree = "<group>"; };
 		0BD173741C09CEEB006873CD /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		0BD3453C1C2312120056C44A /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Settings.png; path = ../../../Downloads/Settings.png; sourceTree = "<group>"; };
 		0BE7F6331C1FF4B500DD76B5 /* ColorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewController.swift; sourceTree = "<group>"; };
 		0BE7F6371C211D9900DD76B5 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		0BE7F6381C211D9A00DD76B5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -187,9 +202,7 @@
 		0BE80B401C01CB5400655517 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		0BED601A1C19334300022AA5 /* SideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		0BED601C1C19337300022AA5 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
-		0BED601E1C19764600022AA5 /* CreateCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCalendarView.swift; sourceTree = "<group>"; };
 		0BED60201C19766800022AA5 /* CreateCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCalendarViewController.swift; sourceTree = "<group>"; };
-		0BED60221C197AAF00022AA5 /* CreateCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCalendarView.xib; sourceTree = "<group>"; };
 		0BED60241C1AA02100022AA5 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		0BED60261C1C0A7E00022AA5 /* CreateTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTableView.swift; sourceTree = "<group>"; };
 		0BED60281C1C0B4B00022AA5 /* CreateTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTableView.xib; sourceTree = "<group>"; };
@@ -202,7 +215,6 @@
 		0BED60361C1C0CE000022AA5 /* CreateCell4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCell4.swift; sourceTree = "<group>"; };
 		0BED60371C1C0CE000022AA5 /* CreateCell4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCell4.xib; sourceTree = "<group>"; };
 		0BED603B1C1C43B400022AA5 /* CalendarApp-Bridging-Header.h.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CalendarApp-Bridging-Header.h.h"; sourceTree = "<group>"; };
-		0BED60401C1C498F00022AA5 /* ImageCropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropViewController.swift; sourceTree = "<group>"; };
 		0BED60421C1D496300022AA5 /* ギャル.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ギャル.jpg"; sourceTree = "<group>"; };
 		745AAD1A15D9637469CA96D9 /* Pods-CalendarApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarApp/Pods-CalendarApp.release.xcconfig"; sourceTree = "<group>"; };
 		9FBE6F5EB3694679FC22FF82 /* Pods_CalendarApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,6 +262,11 @@
 		0B656A411C21C98C0024D6F3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0B656A251C219E210024D6F3 /* TopViewController.swift */,
+				0B7586A21C22488E00816379 /* SideMenu */,
+				0B7586A01C2247FF00816379 /* Create */,
+				0B75869E1C22478600816379 /* Calendar */,
+				0B75869D1C22477000816379 /* Login */,
 				0B656A421C21C9940024D6F3 /* SignUp */,
 			);
 			name = Scenes;
@@ -275,6 +292,8 @@
 				0B656A3E1C21B6410024D6F3 /* OrViewTableViewCell.xib */,
 				0B7586971C21EC6100816379 /* FaceBookTableViewCell.swift */,
 				0B7586981C21EC6100816379 /* FaceBookTableViewCell.xib */,
+				0B7586A31C224E8A00816379 /* UserImageTableViewCell.swift */,
+				0B7586A41C224E8A00816379 /* UserImageTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -307,12 +326,10 @@
 		0B6A927C1BEF3BF2009A7B2E /* CalendarApp */ = {
 			isa = PBXGroup;
 			children = (
-				0B656A411C21C98C0024D6F3 /* Scenes */,
 				0BED60191C1930F200022AA5 /* resources */,
 				0BE80B431C01CB8800655517 /* Application */,
-				0BE80B031C0037DA00655517 /* Model */,
-				0BE80B021C0037D300655517 /* View */,
-				0BE80B011C0037C600655517 /* Controller */,
+				0B656A411C21C98C0024D6F3 /* Scenes */,
+				0B7586AD1C22A91400816379 /* Model */,
 				0BE80B421C01CB6400655517 /* Extension */,
 			);
 			path = CalendarApp;
@@ -336,51 +353,64 @@
 			path = CalendarAppUITests;
 			sourceTree = "<group>";
 		};
-		0BA523761C1EFBA700133342 /* no use */ = {
+		0B75869D1C22477000816379 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				0BED60401C1C498F00022AA5 /* ImageCropViewController.swift */,
-			);
-			name = "no use";
-			sourceTree = "<group>";
-		};
-		0BE80B011C0037C600655517 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				0BA523761C1EFBA700133342 /* no use */,
-				0B6A927F1BEF3BF2009A7B2E /* CalenderViewController.swift */,
-				0BED601C1C19337300022AA5 /* MenuTableViewController.swift */,
-				0BED60201C19766800022AA5 /* CreateCalendarViewController.swift */,
-				0BE7F6331C1FF4B500DD76B5 /* ColorTableViewController.swift */,
-				0B656A251C219E210024D6F3 /* TopViewController.swift */,
 				0B656A291C219E400024D6F3 /* LoginViewController.swift */,
 			);
-			name = Controller;
+			name = Login;
 			sourceTree = "<group>";
 		};
-		0BE80B021C0037D300655517 /* View */ = {
+		0B75869E1C22478600816379 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				0BED60441C1D4B1900022AA5 /* no use */,
-				0BED603A1C1C17FB00022AA5 /* CreateTableViewCell */,
 				0BE80B041C00381400655517 /* CalenderCell.swift */,
+				0B6A927F1BEF3BF2009A7B2E /* CalenderViewController.swift */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
+		0B7586A01C2247FF00816379 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				0BED60201C19766800022AA5 /* CreateCalendarViewController.swift */,
+				0BE7F6331C1FF4B500DD76B5 /* ColorTableViewController.swift */,
+				0B7586A11C22482D00816379 /* Views */,
+			);
+			name = Create;
+			sourceTree = "<group>";
+		};
+		0B7586A11C22482D00816379 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0BED603A1C1C17FB00022AA5 /* CreateTableViewCell */,
 				0BED60261C1C0A7E00022AA5 /* CreateTableView.swift */,
 				0BED60281C1C0B4B00022AA5 /* CreateTableView.xib */,
 				0BCD96C61C1E89BB007E9B92 /* StampCollectionView.swift */,
 				0BCD96C81C1E8C0D007E9B92 /* StampCollectionViewCell.swift */,
 				0BCD96C91C1E8C0D007E9B92 /* StampCollectionViewCell.xib */,
 			);
-			name = View;
+			name = Views;
 			sourceTree = "<group>";
 		};
-		0BE80B031C0037DA00655517 /* Model */ = {
+		0B7586A21C22488E00816379 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				0BED601C1C19337300022AA5 /* MenuTableViewController.swift */,
+				0BED601A1C19334300022AA5 /* SideMenu.swift */,
+			);
+			name = SideMenu;
+			sourceTree = "<group>";
+		};
+		0B7586AD1C22A91400816379 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0B656A231C218DC10024D6F3 /* GroupCalendar.swift */,
+				0BD173741C09CEEB006873CD /* DateManager.swift */,
 				0B0DD70D1C05805800BF9E7F /* Calender.swift */,
 				0B0DD70F1C05807200BF9E7F /* CalenderManager.swift */,
-				0BD173741C09CEEB006873CD /* DateManager.swift */,
-				0BED601A1C19334300022AA5 /* SideMenu.swift */,
-				0B656A231C218DC10024D6F3 /* GroupCalendar.swift */,
+				0B7586AE1C22A92F00816379 /* User.swift */,
+				0B7586B21C22DFF200816379 /* CurrentUser.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -390,6 +420,7 @@
 			children = (
 				0BE80B401C01CB5400655517 /* UIColor+Extension.swift */,
 				0B0DD7111C05823900BF9E7F /* NSDate+Extension.swift */,
+				0B7586B01C22AFF500816379 /* UIImage+Extension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -409,6 +440,10 @@
 		0BED60191C1930F200022AA5 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				0BD3453C1C2312120056C44A /* Settings.png */,
+				0B7586AB1C22659200816379 /* Circled User Male-32.png */,
+				0B7586A71C22592200816379 /* Return Book Filled-25.png */,
+				0B7586A81C22592200816379 /* Camera Filled-25.png */,
 				0B75869B1C21F07400816379 /* Facebook-32.png */,
 				0B656A3B1C21B52C0024D6F3 /* MoreThan.png */,
 				0B656A2F1C21B26B0024D6F3 /* Lock.png */,
@@ -452,15 +487,6 @@
 				0BE7F6521C2128BA00DD76B5 /* GroupBtnCell.xib */,
 			);
 			name = CreateTableViewCell;
-			sourceTree = "<group>";
-		};
-		0BED60441C1D4B1900022AA5 /* no use */ = {
-			isa = PBXGroup;
-			children = (
-				0BED601E1C19764600022AA5 /* CreateCalendarView.swift */,
-				0BED60221C197AAF00022AA5 /* CreateCalendarView.xib */,
-			);
-			name = "no use";
 			sourceTree = "<group>";
 		};
 		11B8CB8AE496F3A20047ACE0 /* Frameworks */ = {
@@ -603,9 +629,9 @@
 				0B656A2E1C21A96A0024D6F3 /* CreateUserTableViewCell.xib in Resources */,
 				0BA523901C1F187C00133342 /* Edit Filled-32.png in Resources */,
 				0BA5238B1C1F187C00133342 /* Panda Filled-32.png in Resources */,
+				0B7586A91C22592200816379 /* Return Book Filled-25.png in Resources */,
 				0B0E59BA1C15569500522111 /* ハート.jpg in Resources */,
 				0BCD96CB1C1E8C0D007E9B92 /* StampCollectionViewCell.xib in Resources */,
-				0BED60231C197AAF00022AA5 /* CreateCalendarView.xib in Resources */,
 				0B6A92881BEF3BF2009A7B2E /* LaunchScreen.storyboard in Resources */,
 				0BA5238F1C1F187C00133342 /* Menu-32.png in Resources */,
 				0BED60351C1C0CCE00022AA5 /* CreateCell3.xib in Resources */,
@@ -613,6 +639,7 @@
 				0BED60391C1C0CE000022AA5 /* CreateCell4.xib in Resources */,
 				0BA5238A1C1F187C00133342 /* Hair Dryer-32.png in Resources */,
 				0BA5238D1C1F187C00133342 /* Document Filled-32.png in Resources */,
+				0B7586A61C224E8A00816379 /* UserImageTableViewCell.xib in Resources */,
 				0BA523881C1F187C00133342 /* Yoga Filled-32.png in Resources */,
 				0BED60251C1AA02100022AA5 /* checked.png in Resources */,
 				0BE7F6561C21625D00DD76B5 /* cancel.png in Resources */,
@@ -620,6 +647,7 @@
 				0B656A3A1C21B3E20024D6F3 /* NextBtnTableViewCell.xib in Resources */,
 				0BA523891C1F187C00133342 /* Santas Hat Filled-32.png in Resources */,
 				0B75869A1C21EC6100816379 /* FaceBookTableViewCell.xib in Resources */,
+				0B7586AA1C22592200816379 /* Camera Filled-25.png in Resources */,
 				0B75869C1C21F07400816379 /* Facebook-32.png in Resources */,
 				0BA5238E1C1F187C00133342 /* Document-32.png in Resources */,
 				0B6A92851BEF3BF2009A7B2E /* Assets.xcassets in Resources */,
@@ -629,10 +657,12 @@
 				0BA523861C1F187C00133342 /* Pushups-32.png in Resources */,
 				0BA523921C1F187C00133342 /* Portrait Mode-32.png in Resources */,
 				0BA523871C1F187C00133342 /* Wakeup Hill on Stairs Filled-32.png in Resources */,
+				0BD3453D1C2312120056C44A /* Settings.png in Resources */,
 				0BED602D1C1C0C9F00022AA5 /* CreateCell1.xib in Resources */,
 				0B656A351C21B26B0024D6F3 /* User.png in Resources */,
 				0B656A401C21B6410024D6F3 /* OrViewTableViewCell.xib in Resources */,
 				0BED60291C1C0B4B00022AA5 /* CreateTableView.xib in Resources */,
+				0B7586AC1C22659200816379 /* Circled User Male-32.png in Resources */,
 				0B656A361C21B26B0024D6F3 /* Facebook.png in Resources */,
 				0BED60311C1C0CB900022AA5 /* CreateCell2.xib in Resources */,
 				0B6A92831BEF3BF2009A7B2E /* Main.storyboard in Resources */,
@@ -714,15 +744,18 @@
 				0BE7F6531C2128BA00DD76B5 /* GroupBtnCell.swift in Sources */,
 				0BCD96C71C1E89BB007E9B92 /* StampCollectionView.swift in Sources */,
 				0BED601B1C19334300022AA5 /* SideMenu.swift in Sources */,
+				0B7586A51C224E8A00816379 /* UserImageTableViewCell.swift in Sources */,
+				0B7586B11C22AFF500816379 /* UIImage+Extension.swift in Sources */,
 				0B656A3F1C21B6410024D6F3 /* OrViewTableViewCell.swift in Sources */,
 				0BCD96CA1C1E8C0D007E9B92 /* StampCollectionViewCell.swift in Sources */,
 				0B7586991C21EC6100816379 /* FaceBookTableViewCell.swift in Sources */,
 				0B656A281C219E330024D6F3 /* SignUpViewController.swift in Sources */,
+				0B7586AF1C22A92F00816379 /* User.swift in Sources */,
 				0BED602C1C1C0C9F00022AA5 /* CreateCell1.swift in Sources */,
 				0BED60271C1C0A7E00022AA5 /* CreateTableView.swift in Sources */,
-				0BED601F1C19764600022AA5 /* CreateCalendarView.swift in Sources */,
 				0BED60211C19766800022AA5 /* CreateCalendarViewController.swift in Sources */,
 				0B6A92801BEF3BF2009A7B2E /* CalenderViewController.swift in Sources */,
+				0B7586B31C22DFF200816379 /* CurrentUser.swift in Sources */,
 				0BE80B051C00381400655517 /* CalenderCell.swift in Sources */,
 				0B656A2D1C21A96A0024D6F3 /* CreateUserTableViewCell.swift in Sources */,
 				0BED60381C1C0CE000022AA5 /* CreateCell4.swift in Sources */,
@@ -734,7 +767,6 @@
 				0B0DD70E1C05805800BF9E7F /* Calender.swift in Sources */,
 				0BE7F6351C1FF4B500DD76B5 /* ColorTableViewController.swift in Sources */,
 				0B0DD7101C05807200BF9E7F /* CalenderManager.swift in Sources */,
-				0BED60411C1C498F00022AA5 /* ImageCropViewController.swift in Sources */,
 				0BED601D1C19337300022AA5 /* MenuTableViewController.swift in Sources */,
 				0BD173751C09CEEB006873CD /* DateManager.swift in Sources */,
 				0B0DD7121C05823900BF9E7F /* NSDate+Extension.swift in Sources */,

@@ -135,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="384.5" y="316.5"/>
+            <point key="canvasLocation" x="849.5" y="333.5"/>
         </scene>
         <!--Create Calendar View Controller-->
         <scene sceneID="duv-lQ-hb9">
@@ -157,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLC-Xj-au1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="817.5" y="316.5"/>
+            <point key="canvasLocation" x="1404.5" y="316.5"/>
         </scene>
         <!--Color Table View Controller-->
         <scene sceneID="jBi-I9-9ub">
@@ -186,7 +186,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNJ-XW-jsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1243.5" y="316.5"/>
+            <point key="canvasLocation" x="1830.5" y="316.5"/>
         </scene>
         <!--Top View Controller-->
         <scene sceneID="A8c-oT-88w">
@@ -272,9 +272,9 @@
                         <outlet property="loginBtn" destination="mPR-BW-1xc" id="12U-wX-mhv"/>
                         <outlet property="signUpBtn" destination="ePG-Wb-bVI" id="uqc-Gr-hdV"/>
                         <outlet property="skipLogInBtn" destination="d6L-90-A9w" id="Tsg-oB-wCA"/>
-                        <segue destination="1Kj-Gt-mz8" kind="presentation" identifier="login" modalTransitionStyle="crossDissolve" id="GUm-UW-Puu"/>
-                        <segue destination="373-pn-mMc" kind="presentation" identifier="calendarView" modalTransitionStyle="crossDissolve" id="DvY-La-FYt"/>
                         <segue destination="k23-YK-urA" kind="show" identifier="signup" id="NfZ-Dd-rzt"/>
+                        <segue destination="rTE-CH-Gac" kind="show" identifier="login" id="lbe-dj-EI8"/>
+                        <segue destination="a5A-Je-dYY" kind="presentation" identifier="calendar" modalTransitionStyle="crossDissolve" id="H8t-bE-U6O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bdE-4U-Fgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -294,7 +294,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eEI-3f-lol">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -303,18 +303,19 @@
                             <constraint firstItem="eEI-3f-lol" firstAttribute="leading" secondItem="glW-h5-4c2" secondAttribute="leading" id="2iF-Ha-RS2"/>
                             <constraint firstItem="4Q4-lN-n4E" firstAttribute="top" secondItem="eEI-3f-lol" secondAttribute="bottom" id="MfQ-p1-ziR"/>
                             <constraint firstAttribute="trailing" secondItem="eEI-3f-lol" secondAttribute="trailing" id="d8t-ng-cLa"/>
-                            <constraint firstItem="eEI-3f-lol" firstAttribute="top" secondItem="y3V-yh-dzz" secondAttribute="bottom" id="sod-cO-ZSr"/>
+                            <constraint firstItem="eEI-3f-lol" firstAttribute="top" secondItem="y3V-yh-dzz" secondAttribute="bottom" constant="-64" id="sod-cO-ZSr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="i9p-HV-BHD"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="eEI-3f-lol" id="jig-mq-40R"/>
+                        <segue destination="a5A-Je-dYY" kind="presentation" identifier="calendar" modalTransitionStyle="crossDissolve" id="noO-D3-hKx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mL8-8Z-xBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1196.5" y="-428.5"/>
+            <point key="canvasLocation" x="402.5" y="-459.5"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="HT6-ZP-nlj">
@@ -345,48 +346,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="qWL-5h-LAL" id="MC2-fb-vhd"/>
+                        <segue destination="rTE-CH-Gac" kind="show" identifier="login" id="UzA-wW-4R1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X6m-Kz-xQu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="307.5" y="-906.5"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="SKw-xB-heH">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="373-pn-mMc" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lCQ-cE-Bmh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="K79-DX-Ywi"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1Y-rY-Rpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-48.5" y="316.5"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="S6n-DB-k1z">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Kj-Gt-mz8" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rv4-HL-1pW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="rTE-CH-Gac" kind="relationship" relationship="rootViewController" id="NWu-9Q-R9L"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hje-Th-0kL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="763.5" y="-428.5"/>
+            <point key="canvasLocation" x="371.5" y="-1243.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="89S-t5-FhU">
@@ -405,7 +370,30 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oLk-V7-as5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-546" y="-429"/>
+            <point key="canvasLocation" x="-581.5" y="-429.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Hzo-Qd-UmS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a5A-Je-dYY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jj9-Sh-9xR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="25A-Sl-svx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xAm-Mw-MkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="402.5" y="333.5"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="H8t-bE-U6O"/>
+        <segue reference="lbe-dj-EI8"/>
+    </inferredMetricsTieBreakers>
 </document>

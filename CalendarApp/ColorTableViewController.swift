@@ -68,7 +68,6 @@ class ColorTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedColor = colors[indexPath.row]
         color = selectedColor
-        print("custom delegate is \(customDelegate)")
         customDelegate?.setSelectedColor(color)
         tableView.reloadData()
     }
