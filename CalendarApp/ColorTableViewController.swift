@@ -17,7 +17,7 @@ class ColorTableViewController: UITableViewController {
     
     weak var customDelegate: ColorTableViewControllerDelegate?
 
-    let colors = [UIColor.lightYellow(), UIColor.lightOrange(), UIColor.lightGreen(), UIColor.lightBlue(), UIColor.lightWhiteBlue(), UIColor.lightPerple(), UIColor.lightPink(), UIColor.lightRed(), UIColor.lightGrayColor()]
+    let colors = [UIColor.lightYellow(), UIColor.lightOrange(), UIColor.lightGreen(), UIColor.lightBlue(), UIColor.lightWhiteBlue(), UIColor.lightPerple(), UIColor.lightPink(), UIColor.lightRed(), UIColor.lightGrayColor(), UIColor.lightLightOrenge()]
     var color = UIColor.whiteColor()
     
     override func viewDidLoad() {

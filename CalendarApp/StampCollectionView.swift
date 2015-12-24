@@ -9,14 +9,14 @@
 import UIKit
 
 @objc protocol StampCollectionViewDelegate {
-    func setStampImage(image: UIImage)
+    func setImage(image: UIImage)
 }
 
 class StampCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     weak var customDelegate: StampCollectionViewDelegate?
     
-    let stampsImages = ["Gift-32.png", "Pushups-32.png", "Wakeup Hill on Stairs Filled-32.png", "Yoga Filled-32.png", "Portrait Mode-32.png","Sports Mode-32.png", "Edit Filled-32.png", "Document-32.png", "Document Filled-32.png", "Panda Filled-32.png", "Hair Dryer-32.png", "Edit Filled-32.png"]
+    let stampsImages = ["Gift-32.png", "Pushups-32.png", "Wakeup Hill on Stairs Filled-32.png", "Yoga Filled-32.png", "Portrait Mode-32.png","Sports Mode-32.png", "Edit Filled-32.png", "Document-32.png", "Document Filled-32.png", "Panda Filled-32.png", "Hair Dryer-32.png", "Edit Filled-32.png", "Gift-32.png", "Pushups-32.png", "Wakeup Hill on Stairs Filled-32.png", "Yoga Filled-32.png", "Portrait Mode-32.png","Sports Mode-32.png", "Edit Filled-32.png", "Document-32.png", "Document Filled-32.png", "Panda Filled-32.png", "Hair Dryer-32.png", "Edit Filled-32.png", "Gift-32.png", "Pushups-32.png", "Wakeup Hill on Stairs Filled-32.png", "Yoga Filled-32.png", "Portrait Mode-32.png","Sports Mode-32.png", "Edit Filled-32.png", "Document-32.png", "Document Filled-32.png", "Panda Filled-32.png", "Hair Dryer-32.png", "Edit Filled-32.png"]
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -46,7 +46,7 @@ class StampCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let stampImage = UIImage(named: stampsImages[indexPath.row])
-        customDelegate?.setStampImage(stampImage!)
+        customDelegate?.setImage(stampImage!)
 
     }
 

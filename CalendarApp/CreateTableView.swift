@@ -9,8 +9,8 @@
 
 import UIKit
 
+
 @objc protocol CreateTableViewDelegate {
-    func stampBtn()
     func libraryBtn()
     func takePhotoBtn()
     func selectColorBtn()
@@ -18,20 +18,24 @@ import UIKit
     func backBtn()
 }
 
-class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource {
+class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, StampCollectionViewDelegate, UITextFieldDelegate {
 
     weak var customDelegate: CreateTableViewDelegate?
 
     @IBOutlet weak var tableView: UITableView!
     
-    var stampImage = UIImage(named: "ハート.jpg")
+    var stampImage = UIImage(named: "Checked-100")
     var selectedColor = UIColor.whiteColor()
     
     let backTweetView = UIView()
     let textField = UITextField()
     
     var groupCellBtnText = "Create or Join to Group Calendar"
-    var groupCellBtnTextColor = UIColor.lightRed()
+//    var groupCellBtnTextColor = UIColor.lightRed()
+    var groupCellBtnFont = UIFont(name: "HelveticaNeue-Light", size: 17)
+    
+    var stampCollectionView: StampCollectionView!
+    var stampViewCount = 0
     
     
     override func layoutSubviews() {
@@ -40,8 +44,9 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         tableView.dataSource = self
         tableView.delegate = self
+        textField.delegate = self
         
-        tableView.registerNib(UINib(nibName: "CreateCell1", bundle: nil), forCellReuseIdentifier: "cell1")
+        tableView.registerClass(CreateCell1.self as AnyClass, forCellReuseIdentifier: "cell")
         tableView.registerNib(UINib(nibName: "CreateCell2", bundle: nil), forCellReuseIdentifier: "cell2")
         tableView.registerNib(UINib(nibName: "CreateCell3", bundle: nil), forCellReuseIdentifier: "cell3")
         tableView.registerNib(UINib(nibName: "CreateCell4", bundle: nil), forCellReuseIdentifier: "cell4")
@@ -62,17 +67,21 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell1", forIndexPath: indexPath) as! CreateCell1
-            actionOfCell1(cell)
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CreateCell1
+            cell.selectionStyle = .None
+            cell.defaultStampBtn.addTarget(self, action: "tappedStampBtn", forControlEvents: .TouchUpInside)
+            cell.libraryBtn.addTarget(self, action: "tappedLibraryBtn:", forControlEvents: .TouchUpInside)
+            cell.takePhotoBtn.addTarget(self, action: "tappedTakePhotoBtn", forControlEvents: .TouchUpInside)
             cell.stampImageView.image = stampImage
             return cell
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier("cell2", forIndexPath: indexPath) as! CreateCell2
+            cell.titleTextField.delegate = self
             return cell
         } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCellWithIdentifier("cell3", forIndexPath: indexPath) as! CreateCell3
@@ -83,16 +92,29 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 3 {
             let groupCell = tableView.dequeueReusableCellWithIdentifier("groupBtnCell", forIndexPath: indexPath) as? GroupBtnCell
             groupCell!.button.addTarget(self, action: "tappedGroupBtn", forControlEvents: .TouchUpInside)
-            groupCell!.button.backgroundColor = changeBtnBackGroundColor()
+            groupCell!.button.backgroundColor = UIColor.verylightRed()
+//            groupCell?.tintColor = UIColor.blackColor()
             groupCell!.button.setTitle(groupCellBtnText, forState: .Normal)
-            groupCell!.button.setTitleColor(groupCellBtnTextColor, forState: UIControlState.Normal)
-            groupCell!.button.titleLabel!.textColor = groupCellBtnTextColor
+            groupCell!.button.setTitleColor(UIColor.lightRed(), forState: UIControlState.Normal)
+            groupCell?.button.titleLabel?.font = groupCellBtnFont
+//            groupCell!.button.titleLabel!.textColor = groupCellBtnTextColor
             return groupCell!
+        } else if indexPath.row == 4 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell4", forIndexPath: indexPath) as? CreateCell4
+            cell?.backgroundColor = UIColor.appPinkColor()
+            cell?.textLabel?.text = "Create Calendar"
+            cell?.textLabel?.textColor = UIColor.whiteColor()
+            cell?.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 19)
+            cell?.textLabel?.textAlignment = .Center
+            return cell!
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell4", forIndexPath: indexPath) as! CreateCell4
-            cell.createBtn.addTarget(self, action: "tappedCreateBtn", forControlEvents: .TouchUpInside)
-            cell.backBtn.addTarget(self, action: "tappedBackBtn", forControlEvents: .TouchUpInside)
-            return cell
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell4", forIndexPath: indexPath) as? CreateCell4
+            cell?.backgroundColor = UIColor.appGrayColor()
+            cell?.textLabel?.text = "Back"
+            cell?.textLabel?.textColor = UIColor.whiteColor()
+            cell?.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 19)
+            cell?.textLabel?.textAlignment = .Center
+            return cell!
         }
     }
     
@@ -104,24 +126,58 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let boundSize: CGSize = UIScreen.mainScreen().bounds.size
         if indexPath.row == 0 {
-            return 245
-        } else if indexPath.row == 4 {
-            return 181
+            return 200
+        } else if (indexPath.row == 4) || (indexPath.row == 5) {
+            return 70
         } else {
-            return 56
+            return (boundSize.height - (140 + 200 + 44 + 20)) / 3
         }
     }
     
-    func actionOfCell1(cell: CreateCell1) {
-        cell.defaultStampBtn.addTarget(self, action: "tappedStampBtn", forControlEvents: .TouchUpInside)
-        cell.libraryBtn.addTarget(self, action: "tappedLibraryBtn:", forControlEvents: .TouchUpInside)
-        cell.takePhotoBtn.addTarget(self, action: "tappedTakePhotoBtn", forControlEvents: .TouchUpInside)
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 4 {
+            customDelegate?.createBtn()
+        } else if indexPath.row == 5 {
+            customDelegate?.backBtn()
+        }
     }
     
     func tappedStampBtn() {
-        customDelegate?.stampBtn()
+        stampBtn()
 
+    }
+    func setStampView() {
+        // レイアウト作成
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .Vertical
+        flowLayout.sectionInset = UIEdgeInsetsMake(15, 15, 15, 15)
+        flowLayout.minimumInteritemSpacing = 5.0
+        flowLayout.minimumLineSpacing = 5.0
+        flowLayout.itemSize = CGSizeMake(self.frame.width/6, self.frame.width/6)
+        
+        let frame = CGRectMake(0, self.frame.height, self.frame.width, 300)
+        stampCollectionView = StampCollectionView(frame: frame, collectionViewLayout: flowLayout)
+        stampCollectionView.backgroundColor = UIColor.whiteColor()
+        self.tableView.addSubview(stampCollectionView)
+        
+        stampCollectionView.customDelegate = self
+    }
+    
+    func stampBtn() {
+        if stampViewCount == 0 {
+            stampViewCount = 1
+            setStampView()
+            UICollectionView.animateWithDuration(0.3, animations: { () -> Void in
+                self.stampCollectionView.frame.origin = CGPointMake(0, self.frame.height - 300)
+            })
+        } else {
+            stampViewCount = 0
+            UICollectionView.animateWithDuration(0.3, animations: { () -> Void in
+                self.stampCollectionView.frame.origin = CGPointMake(0, self.frame.height)
+            })
+        }
     }
     
     func tappedLibraryBtn(sender: UIButton) {
@@ -142,7 +198,7 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource {
         let passwordView = makePasswordView()
         backTweetView.addSubview(passwordView)
         
-        if CurrentUser.sharedInstance.user == nil {
+        if CurrentUser.sharedInstance.user.name == "guestUser" {
             
         } else {
             setGroupCalendarView(passwordView)
@@ -150,7 +206,7 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
 
     func loginAlertView()  {
-        let createLabel = makeLabel("Create or Join", y: 3)
+//        let createLabel = makeLabel("Create or Join", y: 3)
         //        passwordView.addSubview(createLabel)
         
         
@@ -161,11 +217,14 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource {
         let textField = makeTextField()
         passwordView.addSubview(textField)
         
-        let createLabel = makeLabel("Create or Join", y: 3)
+        let createLabel = makeLabel("Create or Join", y: 8, font: UIFont(name: "HelveticaNeue", size: 20)!)
         passwordView.addSubview(createLabel)
         
-        let passwordLabel = makeLabel("Password", y: 20)
+        let passwordLabel = makeLabel("Password", y: 40, font: UIFont(name: "HelveticaNeue-Light", size: 17)!)
         passwordView.addSubview(passwordLabel)
+        
+        let descriptionLabel = makeDescriptionLabel()
+        passwordView.addSubview(descriptionLabel)
         
         let cancelBtn = makeCancelBtn(passwordView)
         passwordView.addSubview(cancelBtn)
@@ -200,17 +259,28 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func makeTextField() -> UITextField {
-        textField.frame = CGRectMake(14, 50, 272, 40)
-        textField.font = UIFont(name: "Helvetica Neue", size: 14)
+        textField.frame = CGRectMake(16, 75, 272, 38)
+        textField.font = UIFont(name: "HelveticaNeue-Light", size: 14)
+        textField.textColor = UIColor.darkGrayColor()
+        textField.tintColor = UIColor.appPinkColor()
         textField.borderStyle = UITextBorderStyle.RoundedRect
         return textField
     }
     
-    func makeLabel(text: String, y: CGFloat) -> UILabel {
+    func makeLabel(text: String, y: CGFloat, font: UIFont) -> UILabel {
         let label = UILabel(frame: CGRectMake(14, y, 280, 40))
         label.text = text
-        label.font = UIFont(name: "Helvetica Neue", size: 14)
-        label.textColor = UIColor.lightPerple()
+        label.font = font
+        label.textColor = UIColor.appPinkColor()
+        return label
+    }
+    
+    func makeDescriptionLabel() -> UILabel {
+        let label = UILabel(frame: CGRectMake(14, 70, 280, 200))
+        label.text = "If you create Group Calendar, please enter new password and tapped Create button.\n\nIf you join Group Calendar, please enter the calendar password and tapped Join button "
+        label.numberOfLines = 5
+        label.font = UIFont(name: "HelveticaNeue-Light", size: 14)
+        label.textColor = UIColor.appPinkColor()
         return label
     }
     
@@ -220,7 +290,7 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource {
         cancelBtn.center.x = tweetView.frame.width-15
         cancelBtn.center.y = 15
         cancelBtn.setBackgroundImage(UIImage(named: "cancel.png"), forState: .Normal)
-        cancelBtn.backgroundColor = UIColor.lightPerple()
+        cancelBtn.backgroundColor = UIColor.appPinkColor()
         cancelBtn.layer.cornerRadius = cancelBtn.frame.width/2
         cancelBtn.addTarget(self, action: "tappedCancelBtn", forControlEvents: .TouchUpInside)
         return cancelBtn
@@ -230,26 +300,30 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource {
         let submitBtn = UIButton()
         submitBtn.frame = CGRectMake(x, 250, width, 40)
         submitBtn.setTitle(title, forState: .Normal)
-        submitBtn.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 16)
-        submitBtn.backgroundColor = UIColor.lightPerple()
+        submitBtn.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 16)
+        submitBtn.backgroundColor = UIColor.appPinkColor()
         submitBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
         submitBtn.layer.cornerRadius = 7
         return submitBtn
     }
     
     func tappedCancelBtn() {
-        GroupCalendar.sharedInstance.password = ""
+        Calender.sharedInstance.password = ""
         groupCellBtnText = "Create or Join to Group Calendar"
-        groupCellBtnTextColor = UIColor.lightRed()
+//        groupCellBtnTextColor = UIColor.lightRed()
+        groupCellBtnFont = UIFont(name: "HelveticaNeue-Light", size: 17)
+        textField.text = ""
         self.tableView.reloadData()
         backTweetView.removeFromSuperview()
     }
     
     func tappedNewBtn() {
         if textField.text != "" {
-            GroupCalendar.sharedInstance.password = textField.text!
+            Calender.sharedInstance.password = textField.text!
             groupCellBtnText = "Create Group Calendar"
-            groupCellBtnTextColor = UIColor.whiteColor()
+            groupCellBtnFont = UIFont(name: "HelveticaNeue", size: 20)
+//            groupCellBtnTextColor = UIColor.whiteColor()
+            textField.text = ""
             self.tableView.reloadData()
             backTweetView.removeFromSuperview()
         }
@@ -257,9 +331,11 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tappedJoinBtn() {
         if textField.text != "" {
-            GroupCalendar.sharedInstance.password = textField.text!
+            Calender.sharedInstance.password = textField.text!
             groupCellBtnText = "Join Calendar"
-            groupCellBtnTextColor = UIColor.whiteColor()
+            groupCellBtnFont = UIFont(name: "HelveticaNeue", size: 20)
+//            groupCellBtnTextColor = UIColor.whiteColor()
+            textField.text = ""
             self.tableView.reloadData()
             backTweetView.removeFromSuperview()
         }
@@ -285,11 +361,17 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func changeBtnBackGroundColor() -> UIColor {
-        if GroupCalendar.sharedInstance.password != "" {
+        if Calender.sharedInstance.password != "" {
             return UIColor.salmonPink()
         } else {
             return UIColor.verylightRed()
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+        
     }
 
 }

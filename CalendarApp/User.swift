@@ -11,6 +11,11 @@ import Parse
 
 class User: NSObject {
     
+//    static let sharedInstance = User(name: "guest", password: "guest")
+    
+    //ログインしていない場合は、guestが入る
+    var type: String!
+    
     var objectId: String!
     
     var name: String!
@@ -50,7 +55,6 @@ class User: NSObject {
         PFUser.logInWithUsernameInBackground(self.name, password: self.password) { (user, error) -> Void in
             if let PFCurrentUser = PFUser.currentUser() {
                 CurrentUser.sharedInstance.user = User(objectId: PFCurrentUser.objectId!, name: PFCurrentUser.username!)
-                print(CurrentUser.sharedInstance.user)
                 let userImageFile = PFCurrentUser["image"] as! PFFile
                 userImageFile.getDataInBackgroundWithBlock({ (imageData, error) -> Void in
                     if error == nil {
@@ -62,5 +66,6 @@ class User: NSObject {
                 callback(message: error?.userInfo["error"] as? String)
             }
         }
+        
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -14,13 +14,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="244"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ハート.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kjh-8U-JPo">
-                        <rect key="frame" x="127" y="37" width="120" height="120"/>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVT-uo-TqJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ハート.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kjh-8U-JPo">
+                                <rect key="frame" x="127" y="40" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="JDz-vU-9Oy"/>
+                                    <constraint firstAttribute="width" constant="120" id="V05-0g-62U"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="120" id="JDz-vU-9Oy"/>
-                            <constraint firstAttribute="width" constant="120" id="V05-0g-62U"/>
+                            <constraint firstItem="kjh-8U-JPo" firstAttribute="centerY" secondItem="DVT-uo-TqJ" secondAttribute="centerY" id="IH6-W7-FGg"/>
+                            <constraint firstItem="kjh-8U-JPo" firstAttribute="centerX" secondItem="DVT-uo-TqJ" secondAttribute="centerX" id="hrx-YS-2s9"/>
                         </constraints>
-                    </imageView>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVx-QO-Ggr" userLabel="horizontalLineView">
                         <rect key="frame" x="0.0" y="199" width="375" height="1"/>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -60,11 +70,12 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="dVx-QO-Ggr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="7QB-LY-cUY"/>
-                    <constraint firstItem="kjh-8U-JPo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="119" id="GId-Lj-wvZ"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="kjh-8U-JPo" secondAttribute="trailing" constant="120" id="Kxq-gC-Nhq"/>
+                    <constraint firstItem="DVT-uo-TqJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Pfj-ZN-hwe"/>
+                    <constraint firstItem="DVT-uo-TqJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="VuQ-b8-Om7"/>
+                    <constraint firstAttribute="trailing" secondItem="DVT-uo-TqJ" secondAttribute="trailing" id="cMe-du-dIW"/>
                     <constraint firstAttribute="trailingMargin" secondItem="dVx-QO-Ggr" secondAttribute="trailing" constant="-8" id="jIK-tf-2o9"/>
-                    <constraint firstItem="dVx-QO-Ggr" firstAttribute="top" secondItem="kjh-8U-JPo" secondAttribute="bottom" constant="42" id="tJN-mj-DOd"/>
-                    <constraint firstItem="kjh-8U-JPo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="29" id="vmv-K5-vOp"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="dVx-QO-Ggr" secondAttribute="bottom" constant="36" id="qM4-NA-4ng"/>
+                    <constraint firstItem="dVx-QO-Ggr" firstAttribute="top" secondItem="DVT-uo-TqJ" secondAttribute="bottom" id="wZV-zo-dEB"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

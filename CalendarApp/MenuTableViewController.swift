@@ -14,6 +14,14 @@ protocol MenuTableViewControllerDelegate {
 
 class MenuTableViewController: UITableViewController {
     
+    let sectionTitles = ["", "Private", "Group"]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tableView.registerNib(UINib(nibName: "sideUserTableViewCell", bundle: nil), forCellReuseIdentifier: "sideUserCell")
+    }
+    
     override func viewWillAppear(animated: Bool) {
         self.tableView.reloadData()
     }
@@ -22,20 +30,27 @@ class MenuTableViewController: UITableViewController {
     var tableData : Array<String> = []
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 4
+        if CalenderManager.sharedInstance.groupCalendarCollection.count > 0 {
+            return 3
+        } else {
+            return 2
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         } else if section == 1 {
-            return 1
-        } else if section == 2 {
-            return 3
+            return CalenderManager.sharedInstance.calendarCollection.count
         } else {
-            return CalenderManager.sharedInstance.titles.count
+            return CalenderManager.sharedInstance.groupCalendarCollection.count
         }
     }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitles[section]
+    }
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
@@ -45,24 +60,25 @@ class MenuTableViewController: UITableViewController {
         selectedBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
         cell.selectedBackgroundView = selectedBackgroundView
         if indexPath.section == 0 {
-            cell.textLabel?.text = "user profile"
-            let settingBtn = UIButton()
-            settingBtn.frame = CGRectMake(0, 0, 25, 25)
-            settingBtn.layer.position = CGPoint(x: cell.frame.width - 5, y: cell.frame.height - 5)
-            settingBtn.imageView?.image = UIImage(named: "Settings")
-            settingBtn.addTarget(self, action: "tappedSettingBtn", forControlEvents: .TouchUpInside)
-            cell.selectedBackgroundView!.addSubview(settingBtn)
-            //user button
-            return cell
+            let userCell = self.tableView.dequeueReusableCellWithIdentifier("sideUserCell", forIndexPath: indexPath) as! sideUserTableViewCell
+            userCell.backgroundColor = UIColor.clearColor()
+            if CurrentUser.sharedInstance.user == nil {
+                userCell.userImageView.image = UIImage(named: "User")
+                userCell.nameLabel.text = "guest"
+            } else {
+                userCell.userImageView.image = CurrentUser.sharedInstance.user.userImage
+                userCell.nameLabel.text = CurrentUser.sharedInstance.user.name
+            }
+            userCell.settingButton.addTarget(self, action: "tappedSettingBtn", forControlEvents: .TouchUpInside)
+            return userCell
         } else if indexPath.section == 1 {
-            //create group Calendar button
-            cell.textLabel?.text = "Group Carendar"
-            return cell
-        } else if indexPath.section == 2 {
             //group calendar cell
+            let calendar = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
+            cell.textLabel?.text = calendar.title
             return cell
         } else {
-            cell.textLabel?.text = CalenderManager.sharedInstance.titles[indexPath.row]
+            let calendar = CalenderManager.sharedInstance.groupCalendarCollection[indexPath.row]
+            cell.textLabel?.text = calendar.title
             return cell
         }
     }
@@ -78,4 +94,9 @@ class MenuTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         delegate?.menuControllerDidSelectRow(indexPath)
     }
+    
+    func tappedSettingBtn() {
+        print("aaaaaaaaa")
+    }
+
 }

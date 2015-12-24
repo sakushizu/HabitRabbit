@@ -1,21 +1,25 @@
 //
-//  CreateCell4.swift
+//  sideUserTableViewCell.swift
 //  CalendarApp
 //
-//  Created by 櫻本静香 on 2015/12/12.
+//  Created by 櫻本静香 on 2015/12/23.
 //  Copyright © 2015年 Sakuramoto Shizuka. All rights reserved.
 //
 
 import UIKit
 
-class CreateCell4: UITableViewCell {
+class sideUserTableViewCell: UITableViewCell {
 
-//    @IBOutlet weak var createBtn: UIButton!
-    
+
+    @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var userImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
+        userImageView.layer.cornerRadius = userImageView.frame.width / 2
+        userImageView.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -23,6 +27,5 @@ class CreateCell4: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
     
 }

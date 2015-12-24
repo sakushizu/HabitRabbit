@@ -11,4 +11,5 @@ import UIKit
 class CurrentUser: NSObject {
     static let sharedInstance = CurrentUser()
     var user: User!
+    var type: String!
 }

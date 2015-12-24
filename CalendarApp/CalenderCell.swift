@@ -20,7 +20,7 @@ class CalenderCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         // UILabelを生成
         textLabel = UILabel(frame: CGRectMake(0, 0, self.frame.width, self.frame.height))
-        textLabel.font = UIFont(name: "HiraKakuProN-W3", size: 12)
+        textLabel.font = UIFont(name: "HiraKakuProN-W6", size: 12)
         textLabel.textAlignment = NSTextAlignment.Center
         // Cellに追加
         self.addSubview(textLabel!)

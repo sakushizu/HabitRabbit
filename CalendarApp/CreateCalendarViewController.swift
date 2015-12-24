@@ -9,7 +9,9 @@
 import UIKit
 import RSKImageCropper
 
-class CreateCalendarViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, RSKImageCropViewControllerDelegate, RSKImageCropViewControllerDataSource, CreateTableViewDelegate, StampCollectionViewDelegate, ColorTableViewControllerDelegate {
+
+
+class CreateCalendarViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, RSKImageCropViewControllerDelegate, RSKImageCropViewControllerDataSource, CreateTableViewDelegate, ColorTableViewControllerDelegate {
     
     var createTableView: CreateTableView!
     var cell1: CreateCell1!
@@ -21,9 +23,6 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
     var selectImage: UIImage!
     var selectColor = UIColor.redColor()
     
-    var stampCollectionView: StampCollectionView!
-    var stampViewCount = 0
-
     var pickerVC: UIImagePickerController!
     
     override func loadView() {
@@ -43,12 +42,10 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
     
     override func viewDidAppear(animated: Bool) {
         cell1 = createTableView.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! CreateCell1
-        cell2 = createTableView.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! CreateCell2
+       cell2 = createTableView.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! CreateCell2
         cell3 = createTableView.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0)) as! CreateCell3
         groupCell = createTableView.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0)) as! GroupBtnCell
         cell4 = createTableView.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 4, inSection: 0)) as! CreateCell4
-        
-//        ColorTableViewController().customDelegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -66,19 +63,24 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
         let navigationVC = self.navigationController!
         navigationVC.popViewControllerAnimated(false)
         let calendarVC = navigationVC.viewControllers.last as! CalenderViewController
-        if GroupCalendar.sharedInstance.password != "" {
+        if Calender.sharedInstance.password != "" {
             let groupCell =  createTableView.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0)) as! GroupBtnCell
             if groupCell.button.titleLabel?.text == "Join Calendar" {
                 GroupCalendar.sharedInstance.joinParse(cell2.titleTextField.text!) { () -> Void in
-                    self.save()
+                    self.save("group")
+                    calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
                 }
             } else {
                 GroupCalendar.sharedInstance.createParse(cell2.titleTextField.text!) { () -> Void in
-                    self.save()
+                    self.save("group")
+                    calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
                 }
             }
+        } else {
+            self.save("private")
+            calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
         }
-        calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+
     }
     
     func backBtn() {
@@ -86,46 +88,15 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
     }
     
     //controllerの処理
-    func save() {
+    func save(calendarType: String) {
         let calendar = Calender()
         calendar.title = cell2.titleTextField.text!
         calendar.image = cell1.stampImageView.image
         calendar.color = cell3.selectedColorView.backgroundColor
-        CalenderManager.sharedInstance.addCalendarCollection(calendar)
-    }
-    
-    func setStampView() {
-        // レイアウト作成
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .Vertical
-        flowLayout.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20)
-        flowLayout.minimumInteritemSpacing = 3.0
-        flowLayout.minimumLineSpacing = 3.0
-        flowLayout.itemSize = CGSizeMake(self.view.frame.width/5, self.view.frame.width/5)
-        
-        let frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, 150)
-        stampCollectionView = StampCollectionView(frame: frame, collectionViewLayout: flowLayout)
-        stampCollectionView.backgroundColor = UIColor.whiteColor()
-        createTableView.addSubview(stampCollectionView)
-        
-        stampCollectionView.customDelegate = self
+        calendar.object_id = Calender.sharedInstance.object_id
+        CalenderManager.sharedInstance.addCalendarCollection(calendar, calendarType: calendarType)
     }
 
-    func stampBtn() {
-        if stampViewCount == 0 {
-            stampViewCount = 1
-            setStampView()
-            UICollectionView.animateWithDuration(0.3, animations: { () -> Void in
-                self.stampCollectionView.frame.origin = CGPointMake(0, self.view.frame.height - 150)
-            })
-        } else {
-            stampViewCount = 0
-            UICollectionView.animateWithDuration(0.3, animations: { () -> Void in
-                self.stampCollectionView.frame.origin = CGPointMake(0, self.view.frame.height)
-            })
-        }
-    }
-    
     func libraryBtn() {
         pickImageFromLibrary()
     }
@@ -240,11 +211,7 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
         pickerVC.dismissViewControllerAnimated(true, completion: nil)
         createTableView.setImage(croppedImage)
     }
-    
-    func setStampImage(image: UIImage){
-        createTableView.setImage(image)
-    }
-    
+
     func setSelectedColor(color: UIColor) {
         createTableView.setColor(color)
     }

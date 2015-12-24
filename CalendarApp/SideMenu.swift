@@ -48,7 +48,7 @@ class SideMenu : NSObject, MenuTableViewControllerDelegate {
     func setupMenuView() {
         
         // Configure side menu container
-        sideMenuContainerView.frame = CGRectMake(-menuWidth-1.0, sourceView.frame.origin.y, menuWidth, sourceView.frame.size.height)
+        sideMenuContainerView.frame = CGRectMake(-menuWidth-2.0, sourceView.frame.origin.y, menuWidth, sourceView.frame.size.height)
         sideMenuContainerView.backgroundColor = UIColor.clearColor()
         sideMenuContainerView.clipsToBounds = false
         sideMenuContainerView.layer.masksToBounds = false;
@@ -96,7 +96,7 @@ class SideMenu : NSObject, MenuTableViewControllerDelegate {
         //加速度
         let gravityDirectionX: CGFloat = (shouldOpen) ? 7.5 : -7.5;
         let pushMagnitude: CGFloat = (shouldOpen) ? 20.0 : -20.0;
-        let boundaryPointX: CGFloat = (shouldOpen) ? menuWidth : -menuWidth-1.0;
+        let boundaryPointX: CGFloat = (shouldOpen) ? menuWidth : -menuWidth-2.0;
         
         let gravityBehavior = UIGravityBehavior(items: [sideMenuContainerView])
         gravityBehavior.gravityDirection = CGVectorMake(gravityDirectionX, 0.0)

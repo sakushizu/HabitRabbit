@@ -18,6 +18,15 @@ class Calender: NSObject {
     var color: UIColor!
     var image: UIImage!
     
+    var memo = ""
+    
+    var object_id: String = ""
+    var password: String = ""
+    
+    var type: String!
+    
+    var defaultsCalendarTitle = ""
+    
     
     //選択されたdateの追加
     func appendSelectedDates(preDate: NSDate) {
@@ -27,12 +36,13 @@ class Calender: NSObject {
     
     //NSUserDefaultに保存
     func save() {
+        defaultsCalendarTitle = "\(CurrentUser.sharedInstance.user.name)_\(type)_\(title!)"
         var dayList: Dictionary<String, String> = [:]
         for (key,value) in selectedDates {
             let date = changeNSDateToString(key)
             dayList[date] = value
             let defaults = NSUserDefaults.standardUserDefaults()  //定数defaultsの定数名は任意で変更する事ができます
-            defaults.setObject(dayList, forKey: title!)
+            defaults.setObject(dayList, forKey: defaultsCalendarTitle)
         }
     }
 
@@ -44,9 +54,14 @@ class Calender: NSObject {
     
     //NSUserDefaultに保存されているデータをselectedDatesに入れる
     func fetchDates() {
+        if CurrentUser.sharedInstance.user.name == "guestUser" {
+            defaultsCalendarTitle = "\(CurrentUser.sharedInstance.user.name)_\(type)_\(title!)"
+        } else {
+            defaultsCalendarTitle = "\(CurrentUser.sharedInstance.user.name)_\(type)_\(title!)"
+        }
         selectedDates = [:]
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let dayList = defaults.objectForKey(title!) as? Dictionary<String, String> {
+        if let dayList = defaults.objectForKey(defaultsCalendarTitle) as? Dictionary<String, String> {
             for (key,value) in dayList {
                 let date = changeStringToNSDate(key)
                 selectedDates[date] = value
@@ -69,6 +84,8 @@ class Calender: NSObject {
         let date = date_formatter.stringFromDate(stringDate)
         return date
     }
+    
+    
 
 }
 

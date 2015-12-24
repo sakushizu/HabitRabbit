@@ -11,6 +11,20 @@
 		0B0DD7101C05807200BF9E7F /* CalenderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0DD70F1C05807200BF9E7F /* CalenderManager.swift */; };
 		0B0DD7121C05823900BF9E7F /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0DD7111C05823900BF9E7F /* NSDate+Extension.swift */; };
 		0B0E59BA1C15569500522111 /* ハート.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B0E59B91C15569500522111 /* ハート.jpg */; };
+		0B141D671C27F6A20029E6EA /* Crown-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D651C27F6A20029E6EA /* Crown-32.png */; };
+		0B141D681C27F6A20029E6EA /* Audio Wave 2-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D661C27F6A20029E6EA /* Audio Wave 2-32.png */; };
+		0B141D6A1C2833440029E6EA /* Calendar-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D691C2833440029E6EA /* Calendar-32.png */; };
+		0B141D6C1C290DBB0029E6EA /* RecordTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B141D6B1C290DBB0029E6EA /* RecordTableView.swift */; };
+		0B141D6F1C2911360029E6EA /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B141D6D1C2911360029E6EA /* RankingTableViewCell.swift */; };
+		0B141D701C2911360029E6EA /* RankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D6E1C2911360029E6EA /* RankingTableViewCell.xib */; };
+		0B141D771C2A40840029E6EA /* sideUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B141D751C2A40840029E6EA /* sideUserTableViewCell.swift */; };
+		0B141D781C2A40840029E6EA /* sideUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D761C2A40840029E6EA /* sideUserTableViewCell.xib */; };
+		0B141D7A1C2A4B6D0029E6EA /* Settings Filled-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D791C2A4B6D0029E6EA /* Settings Filled-25.png */; };
+		0B141D7E1C2A63760029E6EA /* Menu Filled-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D7B1C2A63760029E6EA /* Menu Filled-25.png */; };
+		0B141D7F1C2A63760029E6EA /* Plus Math-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D7C1C2A63760029E6EA /* Plus Math-25.png */; };
+		0B141D801C2A63760029E6EA /* Menu-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D7D1C2A63760029E6EA /* Menu-25.png */; };
+		0B141D841C2B76EF0029E6EA /* Checked-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D831C2B76EF0029E6EA /* Checked-32.png */; };
+		0B141D861C2B773F0029E6EA /* Checked-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D851C2B773F0029E6EA /* Checked-100.png */; };
 		0B656A241C218DC10024D6F3 /* GroupCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A231C218DC10024D6F3 /* GroupCalendar.swift */; };
 		0B656A261C219E210024D6F3 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A251C219E210024D6F3 /* TopViewController.swift */; };
 		0B656A281C219E330024D6F3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A271C219E330024D6F3 /* SignUpViewController.swift */; };
@@ -63,6 +77,7 @@
 		0BCD96CB1C1E8C0D007E9B92 /* StampCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BCD96C91C1E8C0D007E9B92 /* StampCollectionViewCell.xib */; };
 		0BD173751C09CEEB006873CD /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD173741C09CEEB006873CD /* DateManager.swift */; };
 		0BD3453D1C2312120056C44A /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD3453C1C2312120056C44A /* Settings.png */; };
+		0BD3453F1C2651C70056C44A /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD3453E1C2651C60056C44A /* UIButton+Extension.swift */; };
 		0BE7F6351C1FF4B500DD76B5 /* ColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE7F6331C1FF4B500DD76B5 /* ColorTableViewController.swift */; };
 		0BE7F6391C211D9A00DD76B5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE7F6371C211D9900DD76B5 /* Bolts.framework */; };
 		0BE7F63A1C211D9A00DD76B5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE7F6381C211D9A00DD76B5 /* Parse.framework */; };
@@ -123,6 +138,20 @@
 		0B0DD70F1C05807200BF9E7F /* CalenderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderManager.swift; sourceTree = "<group>"; };
 		0B0DD7111C05823900BF9E7F /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
 		0B0E59B91C15569500522111 /* ハート.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ハート.jpg"; sourceTree = "<group>"; };
+		0B141D651C27F6A20029E6EA /* Crown-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Crown-32.png"; path = "../../../Downloads/Crown-32.png"; sourceTree = "<group>"; };
+		0B141D661C27F6A20029E6EA /* Audio Wave 2-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Audio Wave 2-32.png"; path = "../../../Downloads/Audio Wave 2-32.png"; sourceTree = "<group>"; };
+		0B141D691C2833440029E6EA /* Calendar-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Calendar-32.png"; path = "../../../Downloads/Calendar-32.png"; sourceTree = "<group>"; };
+		0B141D6B1C290DBB0029E6EA /* RecordTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableView.swift; sourceTree = "<group>"; };
+		0B141D6D1C2911360029E6EA /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
+		0B141D6E1C2911360029E6EA /* RankingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingTableViewCell.xib; sourceTree = "<group>"; };
+		0B141D751C2A40840029E6EA /* sideUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sideUserTableViewCell.swift; sourceTree = "<group>"; };
+		0B141D761C2A40840029E6EA /* sideUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = sideUserTableViewCell.xib; sourceTree = "<group>"; };
+		0B141D791C2A4B6D0029E6EA /* Settings Filled-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Settings Filled-25.png"; path = "../../../Downloads/Settings Filled-25.png"; sourceTree = "<group>"; };
+		0B141D7B1C2A63760029E6EA /* Menu Filled-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Menu Filled-25.png"; path = "../../../Downloads/Menu Filled-25.png"; sourceTree = "<group>"; };
+		0B141D7C1C2A63760029E6EA /* Plus Math-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Plus Math-25.png"; path = "../../../Downloads/Plus Math-25.png"; sourceTree = "<group>"; };
+		0B141D7D1C2A63760029E6EA /* Menu-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Menu-25.png"; path = "../../../Downloads/Menu-25.png"; sourceTree = "<group>"; };
+		0B141D831C2B76EF0029E6EA /* Checked-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checked-32.png"; path = "../../../Downloads/Checked-32.png"; sourceTree = "<group>"; };
+		0B141D851C2B773F0029E6EA /* Checked-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checked-100.png"; path = "../../../Downloads/Checked-100.png"; sourceTree = "<group>"; };
 		0B656A231C218DC10024D6F3 /* GroupCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalendar.swift; sourceTree = "<group>"; };
 		0B656A251C219E210024D6F3 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		0B656A271C219E330024D6F3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +210,7 @@
 		0BCD96C91C1E8C0D007E9B92 /* StampCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StampCollectionViewCell.xib; sourceTree = "<group>"; };
 		0BD173741C09CEEB006873CD /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		0BD3453C1C2312120056C44A /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Settings.png; path = ../../../Downloads/Settings.png; sourceTree = "<group>"; };
+		0BD3453E1C2651C60056C44A /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		0BE7F6331C1FF4B500DD76B5 /* ColorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewController.swift; sourceTree = "<group>"; };
 		0BE7F6371C211D9900DD76B5 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		0BE7F6381C211D9A00DD76B5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -366,6 +396,9 @@
 			children = (
 				0BE80B041C00381400655517 /* CalenderCell.swift */,
 				0B6A927F1BEF3BF2009A7B2E /* CalenderViewController.swift */,
+				0B141D6B1C290DBB0029E6EA /* RecordTableView.swift */,
+				0B141D6D1C2911360029E6EA /* RankingTableViewCell.swift */,
+				0B141D6E1C2911360029E6EA /* RankingTableViewCell.xib */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -398,6 +431,8 @@
 			children = (
 				0BED601C1C19337300022AA5 /* MenuTableViewController.swift */,
 				0BED601A1C19334300022AA5 /* SideMenu.swift */,
+				0B141D751C2A40840029E6EA /* sideUserTableViewCell.swift */,
+				0B141D761C2A40840029E6EA /* sideUserTableViewCell.xib */,
 			);
 			name = SideMenu;
 			sourceTree = "<group>";
@@ -421,6 +456,7 @@
 				0BE80B401C01CB5400655517 /* UIColor+Extension.swift */,
 				0B0DD7111C05823900BF9E7F /* NSDate+Extension.swift */,
 				0B7586B01C22AFF500816379 /* UIImage+Extension.swift */,
+				0BD3453E1C2651C60056C44A /* UIButton+Extension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -440,6 +476,15 @@
 		0BED60191C1930F200022AA5 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				0B141D851C2B773F0029E6EA /* Checked-100.png */,
+				0B141D831C2B76EF0029E6EA /* Checked-32.png */,
+				0B141D7B1C2A63760029E6EA /* Menu Filled-25.png */,
+				0B141D7C1C2A63760029E6EA /* Plus Math-25.png */,
+				0B141D7D1C2A63760029E6EA /* Menu-25.png */,
+				0B141D791C2A4B6D0029E6EA /* Settings Filled-25.png */,
+				0B141D691C2833440029E6EA /* Calendar-32.png */,
+				0B141D651C27F6A20029E6EA /* Crown-32.png */,
+				0B141D661C27F6A20029E6EA /* Audio Wave 2-32.png */,
 				0BD3453C1C2312120056C44A /* Settings.png */,
 				0B7586AB1C22659200816379 /* Circled User Male-32.png */,
 				0B7586A71C22592200816379 /* Return Book Filled-25.png */,
@@ -628,9 +673,12 @@
 			files = (
 				0B656A2E1C21A96A0024D6F3 /* CreateUserTableViewCell.xib in Resources */,
 				0BA523901C1F187C00133342 /* Edit Filled-32.png in Resources */,
+				0B141D7E1C2A63760029E6EA /* Menu Filled-25.png in Resources */,
+				0B141D671C27F6A20029E6EA /* Crown-32.png in Resources */,
 				0BA5238B1C1F187C00133342 /* Panda Filled-32.png in Resources */,
 				0B7586A91C22592200816379 /* Return Book Filled-25.png in Resources */,
 				0B0E59BA1C15569500522111 /* ハート.jpg in Resources */,
+				0B141D6A1C2833440029E6EA /* Calendar-32.png in Resources */,
 				0BCD96CB1C1E8C0D007E9B92 /* StampCollectionViewCell.xib in Resources */,
 				0B6A92881BEF3BF2009A7B2E /* LaunchScreen.storyboard in Resources */,
 				0BA5238F1C1F187C00133342 /* Menu-32.png in Resources */,
@@ -638,10 +686,14 @@
 				0B656A331C21B26B0024D6F3 /* Lock.png in Resources */,
 				0BED60391C1C0CE000022AA5 /* CreateCell4.xib in Resources */,
 				0BA5238A1C1F187C00133342 /* Hair Dryer-32.png in Resources */,
+				0B141D801C2A63760029E6EA /* Menu-25.png in Resources */,
 				0BA5238D1C1F187C00133342 /* Document Filled-32.png in Resources */,
+				0B141D861C2B773F0029E6EA /* Checked-100.png in Resources */,
 				0B7586A61C224E8A00816379 /* UserImageTableViewCell.xib in Resources */,
 				0BA523881C1F187C00133342 /* Yoga Filled-32.png in Resources */,
+				0B141D701C2911360029E6EA /* RankingTableViewCell.xib in Resources */,
 				0BED60251C1AA02100022AA5 /* checked.png in Resources */,
+				0B141D7F1C2A63760029E6EA /* Plus Math-25.png in Resources */,
 				0BE7F6561C21625D00DD76B5 /* cancel.png in Resources */,
 				0BA5238C1C1F187C00133342 /* Settings-32.png in Resources */,
 				0B656A3A1C21B3E20024D6F3 /* NextBtnTableViewCell.xib in Resources */,
@@ -649,12 +701,16 @@
 				0B75869A1C21EC6100816379 /* FaceBookTableViewCell.xib in Resources */,
 				0B7586AA1C22592200816379 /* Camera Filled-25.png in Resources */,
 				0B75869C1C21F07400816379 /* Facebook-32.png in Resources */,
+				0B141D681C27F6A20029E6EA /* Audio Wave 2-32.png in Resources */,
 				0BA5238E1C1F187C00133342 /* Document-32.png in Resources */,
+				0B141D841C2B76EF0029E6EA /* Checked-32.png in Resources */,
 				0B6A92851BEF3BF2009A7B2E /* Assets.xcassets in Resources */,
 				0BA523911C1F187C00133342 /* Sports Mode-32.png in Resources */,
 				0B656A3C1C21B52C0024D6F3 /* MoreThan.png in Resources */,
 				0BE7F6541C2128BA00DD76B5 /* GroupBtnCell.xib in Resources */,
+				0B141D7A1C2A4B6D0029E6EA /* Settings Filled-25.png in Resources */,
 				0BA523861C1F187C00133342 /* Pushups-32.png in Resources */,
+				0B141D781C2A40840029E6EA /* sideUserTableViewCell.xib in Resources */,
 				0BA523921C1F187C00133342 /* Portrait Mode-32.png in Resources */,
 				0BA523871C1F187C00133342 /* Wakeup Hill on Stairs Filled-32.png in Resources */,
 				0BD3453D1C2312120056C44A /* Settings.png in Resources */,
@@ -745,6 +801,8 @@
 				0BCD96C71C1E89BB007E9B92 /* StampCollectionView.swift in Sources */,
 				0BED601B1C19334300022AA5 /* SideMenu.swift in Sources */,
 				0B7586A51C224E8A00816379 /* UserImageTableViewCell.swift in Sources */,
+				0B141D6F1C2911360029E6EA /* RankingTableViewCell.swift in Sources */,
+				0B141D771C2A40840029E6EA /* sideUserTableViewCell.swift in Sources */,
 				0B7586B11C22AFF500816379 /* UIImage+Extension.swift in Sources */,
 				0B656A3F1C21B6410024D6F3 /* OrViewTableViewCell.swift in Sources */,
 				0BCD96CA1C1E8C0D007E9B92 /* StampCollectionViewCell.swift in Sources */,
@@ -753,8 +811,10 @@
 				0B7586AF1C22A92F00816379 /* User.swift in Sources */,
 				0BED602C1C1C0C9F00022AA5 /* CreateCell1.swift in Sources */,
 				0BED60271C1C0A7E00022AA5 /* CreateTableView.swift in Sources */,
+				0B141D6C1C290DBB0029E6EA /* RecordTableView.swift in Sources */,
 				0BED60211C19766800022AA5 /* CreateCalendarViewController.swift in Sources */,
 				0B6A92801BEF3BF2009A7B2E /* CalenderViewController.swift in Sources */,
+				0BD3453F1C2651C70056C44A /* UIButton+Extension.swift in Sources */,
 				0B7586B31C22DFF200816379 /* CurrentUser.swift in Sources */,
 				0BE80B051C00381400655517 /* CalenderCell.swift in Sources */,
 				0B656A2D1C21A96A0024D6F3 /* CreateUserTableViewCell.swift in Sources */,

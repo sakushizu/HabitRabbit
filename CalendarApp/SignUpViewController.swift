@@ -104,6 +104,7 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let navigationBarHeight = navigationController!.navigationBar.frame.height
         let cellsHeight: CGFloat = 65 * 5
         if indexPath.section == 3 {
+            print(navigationBarHeight)
             return (self.tableView.frame.height + self.tableView.frame.minY) - (20 + navigationBarHeight + cellsHeight + 160)
         } else if indexPath.section == 0 {
             return 160

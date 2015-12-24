@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     class func lightBlue() -> UIColor {
-        return UIColor(red: 92.0 / 255, green: 192.0 / 255, blue: 210.0 / 255, alpha: 1.0)
+        return UIColor(red: 92.0 / 255, green: 192.0 / 255, blue: 210.0 / 255, alpha: 0.8)
     }
     
     class func salmonPink() -> UIColor {
@@ -18,7 +18,7 @@ extension UIColor {
     }
     
     class func lightRed() -> UIColor {
-        return UIColor(red: 195.0 / 255, green: 123.0 / 255, blue: 175.0 / 255, alpha: 1.0)
+        return UIColor(red: 192.0 / 255, green: 57.0 / 255, blue: 43 / 255, alpha: 0.5)
     }
     
     class func verylightRed() -> UIColor {
@@ -50,6 +50,22 @@ extension UIColor {
         return UIColor(red: 92.0 / 255, green: 225.0 / 255, blue: 229.0 / 255, alpha: 1)
     }
     
+    class func lightLightOrenge() -> UIColor {
+        return UIColor(red: 243 / 255, green: 156.0 / 255, blue: 242.0 / 255, alpha: 1)
+    }
+    
+    //tableViewの線
+    class func lightlightGray() -> UIColor {
+        return UIColor(red: 242.0 / 255, green: 242.0 / 255, blue: 242.0 / 255, alpha: 1)
+    }
+    //appのcolor
+    class func appPinkColor() -> UIColor {
+        return UIColor(red: 255.0 / 255, green: 163.0 / 255, blue: 164.0 / 255, alpha: 1)
+    }
+    
+    class func appGrayColor() -> UIColor {
+        return UIColor(red: 189.0 / 255, green: 195.0 / 255, blue: 199.0 / 255, alpha: 1)
+    }
 
     
 }
