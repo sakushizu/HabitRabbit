@@ -42,22 +42,24 @@ class RecordTableView: UITableView, UITableViewDataSource, UITableViewDelegate  
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.dequeueReusableCellWithIdentifier("recordCell", forIndexPath: indexPath) as? RankingTableViewCell
-        if indexPath.section == 0 {
-            cell?.rankingNumLabel.hidden = true
-            cell?.userNameLabel.text = CurrentUser.sharedInstance.user.name
-            cell?.userImageView.image = CurrentUser.sharedInstance.user.userImage
-            cell?.recordLabel.text = "\(Calender.sharedInstance.selectedDates.count)completions"
-            return cell!
-        } else {
-            let userDic = GroupCalendar.sharedInstance.userCountArray[indexPath.row]
-            for (user, count) in userDic {
-                print(user.name)
-                print(count)
-//                cell?.rankingNumLabel.text = "\(indexPath.row + 1)"
-                cell?.userImageView.image = user.userImage
-                cell?.userNameLabel.text = user.name
-                cell?.recordLabel.text = "\(String(count))completions"
+        if CurrentUser.sharedInstance.user != nil {
+            if indexPath.section == 0 {
+                cell?.rankingNumLabel.hidden = true
+                cell?.userNameLabel.text = CurrentUser.sharedInstance.user.name
+                cell?.userImageView.image = CurrentUser.sharedInstance.user.userImage
+                cell?.recordLabel.text = "\(Calender.sharedInstance.selectedDates.count)completions"
+                return cell!
+            } else {
+                let userDic = GroupCalendar.sharedInstance.userCountArray[indexPath.row]
+                for (user, count) in userDic {
+                    cell?.rankingNumLabel.text = "\(indexPath.row + 1)"
+                    cell?.userImageView.image = user.userImage
+                    cell?.userNameLabel.text = user.name
+                    cell?.recordLabel.text = "\(String(count))completions"
+                }
+                return cell!
             }
+        } else {
             return cell!
         }
     }
@@ -65,4 +67,5 @@ class RecordTableView: UITableView, UITableViewDataSource, UITableViewDelegate  
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100
     }
+    
 }

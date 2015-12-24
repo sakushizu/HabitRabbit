@@ -9,7 +9,7 @@
 import UIKit
 
 
-class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
 
     @IBOutlet weak var tableView: UITableView!
@@ -67,14 +67,12 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let cell = tableView.dequeueReusableCellWithIdentifier("createUserCell", forIndexPath: indexPath) as! CreateUserTableViewCell
             cell.icon.image = UIImage(named: images[indexPath.row])
             cell.textField.placeholder = placeholderTexts[indexPath.row]
+            cell.textField.delegate = self
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier("faceBookCell", forIndexPath: indexPath) as! FaceBookTableViewCell
             cell.faceBookLabel.text = "Log In With Facebook"
             return cell
-//        } else if indexPath.section == 2 {
-//            let orCell = tableView.dequeueReusableCellWithIdentifier("orCell", forIndexPath: indexPath) as! OrViewTableViewCell
-//            return orCell
         } else {
             let nextCell = tableView.dequeueReusableCellWithIdentifier("nextCell", forIndexPath: indexPath) as! NextBtnTableViewCell
             nextCell.nextLabel.text = "Done"
@@ -84,7 +82,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 1 {
+        if indexPath.section == 2 {
             let nameCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! CreateUserTableViewCell
             let passwordCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! CreateUserTableViewCell
             if nameCell.textField.text!.isEmpty || passwordCell.textField.text!.isEmpty {
@@ -96,7 +94,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         print("login")
                         self.performSegueWithIdentifier("calendar", sender: nil)
                     } else {
-                        //self.showAlert(message)
                         self.showAlert("password or username is invaild")
                     }
                 }
@@ -107,15 +104,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
-//        let navigationBarHeight = navigationController!.navigationBar.frame.height
-//        let cellsHeight: CGFloat = 65 * 3
-//        let cellsHeaderHeight: CGFloat = 50 * 2
-//        if indexPath.section == 2 {
-//            return self.tableView.frame.height - (statusBarHeight + navigationBarHeight + cellsHeight + cellsHeaderHeight)
-//        } else {
             return 65
-//        }
     }
     
     //アラート表示のメソッド
@@ -124,6 +113,11 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertController.addAction(action)
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
 }

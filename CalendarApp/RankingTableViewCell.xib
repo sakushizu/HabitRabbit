@@ -14,26 +14,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="304" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User.png" translatesAutoresizingMaskIntoConstraints="NO" id="YCk-hV-pzT">
-                        <rect key="frame" x="30" y="10" width="50" height="50"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circled User Male-32.png" translatesAutoresizingMaskIntoConstraints="NO" id="YCk-hV-pzT">
+                        <rect key="frame" x="56" y="10" width="50" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="391-Ny-9eE"/>
-                            <constraint firstAttribute="height" constant="50" id="Z0k-L6-kYP"/>
+                            <constraint firstAttribute="width" constant="50" id="8pb-dU-gqu"/>
+                            <constraint firstAttribute="height" constant="50" id="fJm-Ry-81H"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqz-Oh-pco">
-                        <rect key="frame" x="26" y="10" width="15" height="15"/>
-                        <color key="backgroundColor" red="0.71764705880000002" green="0.66274509800000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="15" id="7G1-5I-uT8"/>
-                            <constraint firstAttribute="height" constant="15" id="bfI-i3-f5s"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Thh-Fs-zbV">
-                        <rect key="frame" x="110" y="15" width="164" height="40"/>
+                        <rect key="frame" x="126" y="15" width="162" height="40"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="shizuka" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gw-O4-MVt">
                                 <rect key="frame" x="0.0" y="0.0" width="55" height="22"/>
@@ -48,23 +37,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="KiE-Mk-cK2"/>
-                        </constraints>
                     </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDU-Zd-tVp">
+                        <rect key="frame" x="8" y="15" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="Myo-Ht-kfo"/>
+                            <constraint firstAttribute="height" constant="40" id="U22-wT-dxu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Thh-Fs-zbV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1Iq-ik-AB5"/>
-                    <constraint firstAttribute="trailing" secondItem="Thh-Fs-zbV" secondAttribute="trailing" constant="30" id="Mep-cy-5rP"/>
-                    <constraint firstItem="Thh-Fs-zbV" firstAttribute="leading" secondItem="YCk-hV-pzT" secondAttribute="trailing" constant="30" id="NOb-Af-8aP"/>
-                    <constraint firstItem="YCk-hV-pzT" firstAttribute="top" secondItem="Jqz-Oh-pco" secondAttribute="top" id="USv-xr-rla"/>
-                    <constraint firstItem="Jqz-Oh-pco" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="18" id="eTt-mN-Y0l"/>
-                    <constraint firstItem="YCk-hV-pzT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="swG-rW-tgT"/>
-                    <constraint firstItem="YCk-hV-pzT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="t2Z-pR-qHa"/>
+                    <constraint firstItem="iDU-Zd-tVp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="C7G-Wb-RNd"/>
+                    <constraint firstItem="YCk-hV-pzT" firstAttribute="leading" secondItem="iDU-Zd-tVp" secondAttribute="trailing" constant="8" id="CUq-ny-OIW"/>
+                    <constraint firstItem="Thh-Fs-zbV" firstAttribute="top" secondItem="iDU-Zd-tVp" secondAttribute="top" id="H05-Gz-z12"/>
+                    <constraint firstItem="YCk-hV-pzT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZnG-hB-OgT"/>
+                    <constraint firstItem="iDU-Zd-tVp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hF1-aC-cgy"/>
+                    <constraint firstItem="Thh-Fs-zbV" firstAttribute="leading" secondItem="YCk-hV-pzT" secondAttribute="trailing" constant="20" id="iGM-ca-YlR"/>
+                    <constraint firstItem="Thh-Fs-zbV" firstAttribute="bottom" secondItem="iDU-Zd-tVp" secondAttribute="bottom" id="vw3-rz-jcL"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Thh-Fs-zbV" secondAttribute="trailing" constant="8" id="ysV-VR-CQw"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="rankingNumLabel" destination="Jqz-Oh-pco" id="nB1-VQ-BNP"/>
+                <outlet property="rankingNumLabel" destination="iDU-Zd-tVp" id="M4U-vf-qmD"/>
                 <outlet property="recordLabel" destination="UqS-su-UIz" id="BL4-fT-ANB"/>
                 <outlet property="userImageView" destination="YCk-hV-pzT" id="Qle-NG-TYa"/>
                 <outlet property="userNameLabel" destination="2Gw-O4-MVt" id="emy-ye-Mip"/>
@@ -73,6 +70,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="User.png" width="25" height="25"/>
+        <image name="Circled User Male-32.png" width="32" height="32"/>
     </resources>
 </document>

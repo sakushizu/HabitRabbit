@@ -23,7 +23,7 @@ class Calender: NSObject {
     var object_id: String = ""
     var password: String = ""
     
-    var type: String!
+    var type: String = ""
     
     var defaultsCalendarTitle = ""
     

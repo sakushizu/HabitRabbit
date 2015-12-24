@@ -102,6 +102,7 @@ class GroupCalendar: NSObject {
     
     //groupに属するuserのタップした日付の数を取得
     func fetchCalendarAttendantUser(calendar: Calender, callback: () -> Void) {
+        userCountDic = [:]
         let attendUserquery = PFQuery(className: "Calendar")
         attendUserquery.whereKey("title", equalTo: calendar.title!)
         attendUserquery.getFirstObjectInBackgroundWithBlock { (object, error) -> Void in

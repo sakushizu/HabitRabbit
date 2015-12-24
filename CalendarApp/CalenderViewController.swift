@@ -10,9 +10,7 @@ import UIKit
 import Foundation
 import Parse
 
-
-
-class CalenderViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, SideMenuDelegate, UIBarPositioningDelegate, UINavigationBarDelegate {
+class CalenderViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, SideMenuDelegate, UIBarPositioningDelegate, UINavigationBarDelegate, UITextViewDelegate {
     
     let dateManager = DateManager()
     let daysPerWeek: Int = 7
@@ -24,10 +22,11 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     var sideMenu: SideMenu?
     var selectedCalender = CalenderManager.sharedInstance.calender
     
+    @IBOutlet weak var baseView: UIView!
     var recordTableView: RecordTableView!
     var memoView: UIView!
-    
-//    @IBOutlet weak var headerTextLabel: UILabel!
+    var memoTextView: UITextView!
+
     @IBOutlet weak var headerRightBtn: UIButton!
     @IBOutlet weak var headerLeftBtn: UIButton!
     @IBOutlet weak var calenderHeaderView: UIView!
@@ -39,9 +38,6 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var calendarMonthLabel: UILabel!
     @IBOutlet weak var calendarYearLabel: UILabel!
 
-    
-    
-    
     @IBOutlet weak var segmentContol: UISegmentedControl!
     @IBOutlet weak var segmentLeftLineView: UIView!
     @IBOutlet weak var segmentRightLineView: UIView!
@@ -49,9 +45,6 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (PFUser.currentUser() == nil) && (CurrentUser.sharedInstance.type != "guest") {
-            performSegueWithIdentifier("topView", sender: nil)
-        }
         
         segmentContol.hidden = true
         segmentRightLineView.hidden = true
@@ -74,11 +67,11 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
         calenderCollectionView.layer.cornerRadius = 2
         calenderCollectionView.clipsToBounds = true
         
-        let frame = CGRectMake(self.calenderCollectionView.frame.origin.x, self.calenderCollectionView.frame.origin.y - 44, self.calenderCollectionView.frame.width, self.calenderCollectionView.frame.height)
-        self.recordTableView = RecordTableView(frame: frame, style: UITableViewStyle.Plain)
+        makeRecordView()
+        makeMamoView()
         
-        let memoViewFrame = CGRectMake(self.calenderCollectionView.frame.origin.x + 13, self.calenderCollectionView.frame.origin.y + 13 - 44, self.calenderCollectionView.frame.width - 26, self.calenderCollectionView.frame.height - 26)
-        memoView = UIView(frame: memoViewFrame)
+        memoView.hidden = true
+        recordTableView.hidden = true
         
     }
     
@@ -177,6 +170,7 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
                 self.calenderCollectionView.reloadData()
             }
         }
+        recordTableView.reloadData()
     }
     
     //タップ済みかの判定
@@ -218,12 +212,6 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
         return selectMonth
     }
     
-    //カレンダー新規作成ボタン
-//    func createCalendar(sender: UIButton) {
-//        performSegueWithIdentifier("CreateCalendarViewController", sender: nil)
-//    }
-    
-    
     //次月の表示ボタン
     @IBAction func tappedHeaderRightBtn(sender: UIButton) {
         selectedDate = dateManager.nextMonth(selectedDate)
@@ -256,6 +244,9 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
             Calender.sharedInstance.type = "group"
             setSelectedCalendarView()
         }
+        setMemoViewLayer()
+        recordTableView.reloadData()
+        
     }
     
     //サイドバーの表示
@@ -269,7 +260,6 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     
     
     func setSelectedCalendarView() {
-//        self.calendarNavBar.backgroundColor = selectedCalender.color
         calendarTitle.text = selectedCalender.title
         Calender.sharedInstance.object_id = selectedCalender.object_id
         Calender.sharedInstance.title = selectedCalender.title
@@ -284,33 +274,23 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
         if Calender.sharedInstance.type == "group" {
             self.setRecordView()
         } else {
-            let frame = CGRectMake(self.calenderCollectionView.frame.origin.x, self.calenderCollectionView.frame.origin.y, self.calenderCollectionView.frame.width, self.calenderCollectionView.frame.height)
-            self.recordTableView = RecordTableView(frame: frame, style: UITableViewStyle.Plain)
         }
         self.calenderCollectionView.reloadData()
         sideMenu?.toggleMenu()
     }
 
-//    
-//    @IBAction func segmentedControllerValueChanged(sender: UISegmentedControl) {
-//        switch sender.selectedSegmentIndex {
-//        case 0:
-//            whiteView.removeFromSuperview()
-//        case 1:
-//            whiteView = recordTableView
-//        case 2:
-//            whiteView.removeFromSuperview()
-//            calenderCollectionView.addSubview(whiteView)
-//            setMamoView()
-//        case 3:
-//            whiteView.removeFromSuperview()
-//            
-//        default:
-//            break
-//        }
-//        
-//        
-//    }
+    
+    @IBAction func segmentedControllerValueChanged(sender: UISegmentedControl) {
+        
+        for subView in baseView.subviews {
+            subView.hidden = true
+        }
+        baseView.subviews[sender.selectedSegmentIndex].hidden = false
+        if segmentContol.selectedSegmentIndex == 1 {
+            self.recordTableView.reloadData()
+            self.setRecordView()
+        }
+    }
     
     func setRecordView() {
         GroupCalendar.sharedInstance.fetchCalendarAttendantUser(selectedCalender) { () -> Void in
@@ -319,21 +299,54 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
-    func setMamoView() {
-//        let frame = CGRectMake(self.calenderCollectionView.frame.origin.x + 13, self.calenderCollectionView.frame.origin.y + 13, self.calenderCollectionView.frame.width - 26, self.calenderCollectionView.frame.height - 26)
-//        memoView = UIView(frame: frame)
+    func makeRecordView() {
+        let frame = CGRectMake(0, calenderCollectionView.frame.origin.y + 44, self.calenderCollectionView.frame.width,calenderCollectionView.frame.height )
+        self.recordTableView = RecordTableView(frame: frame, style: UITableViewStyle.Plain)
+        baseView.addSubview(recordTableView)
+    }
+    
+    func makeMamoView() {
+        let memoViewFrame = CGRectMake(0, calenderCollectionView.frame.origin.y + 44, self.calenderCollectionView.frame.width, self.calenderCollectionView.frame.height)
+        memoView = UIView(frame: memoViewFrame)
         memoView.backgroundColor = UIColor.whiteColor()
         memoView.layer.borderColor = UIColor.lightlightGray().CGColor
         memoView.layer.borderWidth = 1
         memoView.layer.cornerRadius = 3
         memoView.layer.masksToBounds = true
         let textFieldFrame = CGRectMake(15, 15, memoView.frame.width - 30, memoView.frame.height - 30 )
-        let memoTextView = UITextView(frame: textFieldFrame)
+        memoTextView = UITextView(frame: textFieldFrame)
         memoTextView.textColor = UIColor.darkGrayColor()
         memoTextView.font = UIFont(name: "HelveticaNeue-Light", size: 14)
-        memoTextView.tintColor = selectedCalender.color
+        memoTextView.layer.borderWidth = 0.5
+        memoTextView.layer.cornerRadius = 4
+        memoTextView.clipsToBounds = true
+        memoTextView.delegate = self
         memoView.addSubview(memoTextView)
+        baseView.addSubview(memoView)
+        
+//        let tapRecognizer = UITapGestureRecognizer(target: self, action: "tapGesture:")
+//        self.view.addGestureRecognizer(tapRecognizer)
     }
+    
+    func setMemoViewLayer() {
+        if selectedCalender.color != nil {
+            memoTextView.tintColor = selectedCalender.color
+            memoTextView.layer.borderColor = selectedCalender.color.CGColor
+        }
+    }
+    
+//    func tapGesture(sender: UITapGestureRecognizer) {
+//        memoTextView.resignFirstResponder()
+//    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+
     
 
 }

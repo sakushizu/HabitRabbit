@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class TopViewController: UIViewController {
 
@@ -16,7 +17,14 @@ class TopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.barTintColor = UIColor.appPinkColor()
+        if PFUser.currentUser() != nil {
+            performSegueWithIdentifier("calendar", sender: nil)
+        }
+
+        signUpBtn.layer.cornerRadius = 2
+        signUpBtn.clipsToBounds = true
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.appPinkColor()
         // Do any additional setup after loading the view.
     }
 

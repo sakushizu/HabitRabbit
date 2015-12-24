@@ -18,9 +18,9 @@ class NextBtnTableViewCell: UITableViewCell {
         let bgColor = self.contentView.backgroundColor
         self.backgroundColor = bgColor
         
-        let nextIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        nextIcon.image = UIImage(named: "MoreThan")
-        self.accessoryView = nextIcon
+//        let nextIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+//        nextIcon.image = UIImage(named: "MoreThan")
+//        self.accessoryView = nextIcon
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

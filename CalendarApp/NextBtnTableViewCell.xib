@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -19,10 +20,19 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MoreThan.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kx0-ez-bej">
+                        <rect key="frame" x="287" y="9" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="TEN-oI-wt1"/>
+                            <constraint firstAttribute="width" constant="25" id="gq6-SC-WTh"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
-                <color key="backgroundColor" red="0.71764705880000002" green="0.66274509800000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" red="0.90980392160000001" green="0.5568627451" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="qz1-tn-3kH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8ca-pI-PRc"/>
+                    <constraint firstItem="Kx0-ez-bej" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="KAS-2l-uIq"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Kx0-ez-bej" secondAttribute="trailing" id="N5S-Ko-A0W"/>
                     <constraint firstItem="qz1-tn-3kH" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="mOV-2L-Cpa"/>
                 </constraints>
             </tableViewCellContentView>
@@ -31,4 +41,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="MoreThan.png" width="32" height="32"/>
+    </resources>
 </document>
