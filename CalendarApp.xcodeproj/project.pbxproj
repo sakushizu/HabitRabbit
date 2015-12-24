@@ -25,6 +25,7 @@
 		0B141D801C2A63760029E6EA /* Menu-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D7D1C2A63760029E6EA /* Menu-25.png */; };
 		0B141D841C2B76EF0029E6EA /* Checked-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D831C2B76EF0029E6EA /* Checked-32.png */; };
 		0B141D861C2B773F0029E6EA /* Checked-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D851C2B773F0029E6EA /* Checked-100.png */; };
+		0B141D881C2B91170029E6EA /* Exclamation Mark Filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D871C2B91170029E6EA /* Exclamation Mark Filled-100.png */; };
 		0B656A241C218DC10024D6F3 /* GroupCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A231C218DC10024D6F3 /* GroupCalendar.swift */; };
 		0B656A261C219E210024D6F3 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A251C219E210024D6F3 /* TopViewController.swift */; };
 		0B656A281C219E330024D6F3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A271C219E330024D6F3 /* SignUpViewController.swift */; };
@@ -152,6 +153,7 @@
 		0B141D7D1C2A63760029E6EA /* Menu-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Menu-25.png"; path = "../../../Downloads/Menu-25.png"; sourceTree = "<group>"; };
 		0B141D831C2B76EF0029E6EA /* Checked-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checked-32.png"; path = "../../../Downloads/Checked-32.png"; sourceTree = "<group>"; };
 		0B141D851C2B773F0029E6EA /* Checked-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checked-100.png"; path = "../../../Downloads/Checked-100.png"; sourceTree = "<group>"; };
+		0B141D871C2B91170029E6EA /* Exclamation Mark Filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Exclamation Mark Filled-100.png"; path = "../../../Downloads/Exclamation Mark Filled-100.png"; sourceTree = "<group>"; };
 		0B656A231C218DC10024D6F3 /* GroupCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalendar.swift; sourceTree = "<group>"; };
 		0B656A251C219E210024D6F3 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		0B656A271C219E330024D6F3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 		0BED60191C1930F200022AA5 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				0B141D871C2B91170029E6EA /* Exclamation Mark Filled-100.png */,
 				0B141D851C2B773F0029E6EA /* Checked-100.png */,
 				0B141D831C2B76EF0029E6EA /* Checked-32.png */,
 				0B141D7B1C2A63760029E6EA /* Menu Filled-25.png */,
@@ -684,6 +687,7 @@
 				0BA5238F1C1F187C00133342 /* Menu-32.png in Resources */,
 				0BED60351C1C0CCE00022AA5 /* CreateCell3.xib in Resources */,
 				0B656A331C21B26B0024D6F3 /* Lock.png in Resources */,
+				0B141D881C2B91170029E6EA /* Exclamation Mark Filled-100.png in Resources */,
 				0BED60391C1C0CE000022AA5 /* CreateCell4.xib in Resources */,
 				0BA5238A1C1F187C00133342 /* Hair Dryer-32.png in Resources */,
 				0B141D801C2A63760029E6EA /* Menu-25.png in Resources */,

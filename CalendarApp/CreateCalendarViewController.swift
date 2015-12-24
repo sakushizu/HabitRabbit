@@ -60,27 +60,30 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
     
     //controllerの処理
     func createBtn() {
-        let navigationVC = self.navigationController!
-        navigationVC.popViewControllerAnimated(false)
-        let calendarVC = navigationVC.viewControllers.last as! CalenderViewController
-        if Calender.sharedInstance.password != "" {
-            let groupCell =  createTableView.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0)) as! GroupBtnCell
-            if groupCell.button.titleLabel?.text == "Join Calendar" {
-                GroupCalendar.sharedInstance.joinParse(cell2.titleTextField.text!) { () -> Void in
-                    self.save("group")
-                    calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+        if cell2.titleTextField.text == "" {
+            showAlert("Title is empty!")
+        } else {
+            let navigationVC = self.navigationController!
+            navigationVC.popViewControllerAnimated(false)
+            let calendarVC = navigationVC.viewControllers.last as! CalenderViewController
+            if Calender.sharedInstance.password != "" {
+                let groupCell =  createTableView.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0)) as! GroupBtnCell
+                if groupCell.button.titleLabel?.text == "Join Calendar" {
+                    GroupCalendar.sharedInstance.joinParse(cell2.titleTextField.text!) { () -> Void in
+                        self.save("group")
+                        calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+                    }
+                } else {
+                    GroupCalendar.sharedInstance.createParse(cell2.titleTextField.text!) { () -> Void in
+                        self.save("group")
+                        calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+                    }
                 }
             } else {
-                GroupCalendar.sharedInstance.createParse(cell2.titleTextField.text!) { () -> Void in
-                    self.save("group")
-                    calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
-                }
+                self.save("private")
+                calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
             }
-        } else {
-            self.save("private")
-            calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
         }
-
     }
     
     func backBtn() {
@@ -214,6 +217,18 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
 
     func setSelectedColor(color: UIColor) {
         createTableView.setColor(color)
+    }
+    
+    //アラート表示のメソッド
+    func showAlert(message: String?) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
+        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(action)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func moveTopView() {
+        performSegueWithIdentifier("topView", sender: nil)
     }
 
 }

@@ -37,12 +37,18 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if (section == 0) || (section == 1) {
             return 50
+        } else if section == 2 {
+            let boundSize: CGSize = UIScreen.mainScreen().bounds.size
+            let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+            let navigationBarHeight = navigationController!.navigationBar.frame.height
+            let cellsHeight: CGFloat = 65 * 4
+            return boundSize.height - (statusBarHeight + navigationBarHeight + cellsHeight + 100)
         } else {
             return 0
         }
@@ -63,16 +69,17 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.textField.placeholder = placeholderTexts[indexPath.row]
             return cell
         } else if indexPath.section == 1 {
-            let nextCell = tableView.dequeueReusableCellWithIdentifier("nextCell", forIndexPath: indexPath) as! NextBtnTableViewCell
-            nextCell.nextLabel.text = "Done"
-            return nextCell
-        } else if indexPath.section == 2 {
-            let orCell = tableView.dequeueReusableCellWithIdentifier("orCell", forIndexPath: indexPath) as! OrViewTableViewCell
-            return orCell
-        } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("faceBookCell", forIndexPath: indexPath) as! FaceBookTableViewCell
             cell.faceBookLabel.text = "Log In With Facebook"
             return cell
+//        } else if indexPath.section == 2 {
+//            let orCell = tableView.dequeueReusableCellWithIdentifier("orCell", forIndexPath: indexPath) as! OrViewTableViewCell
+//            return orCell
+        } else {
+            let nextCell = tableView.dequeueReusableCellWithIdentifier("nextCell", forIndexPath: indexPath) as! NextBtnTableViewCell
+            nextCell.nextLabel.text = "Done"
+            nextCell.accessoryView?.hidden = true
+            return nextCell
         }
     }
     
@@ -81,7 +88,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let nameCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! CreateUserTableViewCell
             let passwordCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! CreateUserTableViewCell
             if nameCell.textField.text!.isEmpty || passwordCell.textField.text!.isEmpty {
-//                showAlert("User name or password is empty")
+                showAlert("User name or password is empty")
             } else {
                 let user = User(name: nameCell.textField.text!, password: passwordCell.textField.text!)
                 user.login { (message) in
@@ -90,6 +97,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         self.performSegueWithIdentifier("calendar", sender: nil)
                     } else {
                         //self.showAlert(message)
+                        self.showAlert("password or username is invaild")
                     }
                 }
             }
@@ -99,15 +107,15 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
-        let navigationBarHeight = navigationController!.navigationBar.frame.height
-        let cellsHeight: CGFloat = 65 * 4
-        let cellsHeaderHeight: CGFloat = 50 * 2
-        if indexPath.section == 2 {
-            return self.tableView.frame.height - (statusBarHeight + navigationBarHeight + cellsHeight + cellsHeaderHeight)
-        } else {
+//        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+//        let navigationBarHeight = navigationController!.navigationBar.frame.height
+//        let cellsHeight: CGFloat = 65 * 3
+//        let cellsHeaderHeight: CGFloat = 50 * 2
+//        if indexPath.section == 2 {
+//            return self.tableView.frame.height - (statusBarHeight + navigationBarHeight + cellsHeight + cellsHeaderHeight)
+//        } else {
             return 65
-        }
+//        }
     }
     
     //アラート表示のメソッド

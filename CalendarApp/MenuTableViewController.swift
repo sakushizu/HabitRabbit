@@ -96,7 +96,6 @@ class MenuTableViewController: UITableViewController {
     }
     
     func tappedSettingBtn() {
-        print("aaaaaaaaa")
     }
 
 }

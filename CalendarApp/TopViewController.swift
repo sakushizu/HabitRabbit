@@ -15,6 +15,8 @@ class TopViewController: UIViewController {
     @IBOutlet weak var skipLogInBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.appPinkColor()
         // Do any additional setup after loading the view.
     }
 

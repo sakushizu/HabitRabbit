@@ -16,6 +16,7 @@ import UIKit
     func selectColorBtn()
     func createBtn()
     func backBtn()
+    func moveTopView()
 }
 
 class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, StampCollectionViewDelegate, UITextFieldDelegate {
@@ -195,21 +196,43 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
     func tappedGroupBtn() {
         let backTweetView = makeBackTweetView()
         self.addSubview(backTweetView)
-        let passwordView = makePasswordView()
-        backTweetView.addSubview(passwordView)
-        
-        if CurrentUser.sharedInstance.user.name == "guestUser" {
-            
+        if CurrentUser.sharedInstance.user.name == "guest" {
+            let passwordView = makePasswordView(CGSizeMake(300, 170), y: 300)
+            backTweetView.addSubview(passwordView)
+            loginAlertView(passwordView)
         } else {
+            let passwordView = makePasswordView(CGSizeMake(300, 300), y: 250)
+            backTweetView.addSubview(passwordView)
             setGroupCalendarView(passwordView)
         }
     }
 
-    func loginAlertView()  {
-//        let createLabel = makeLabel("Create or Join", y: 3)
-        //        passwordView.addSubview(createLabel)
+    func loginAlertView(passwordView: UIView) {
+        let cautionImageView = UIImageView()
+        cautionImageView.frame.size = CGSizeMake(50, 50)
+        cautionImageView.center.x = passwordView.frame.width / 2
+        cautionImageView.center.y = 45
+//        cautionImageView.layer.borderColor = UIColor.appPinkColor().CGColor
+//        cautionImageView.layer.borderWidth = 1
+//        cautionImageView.layer.cornerRadius = cautionImageView.frame.width / 2
+        cautionImageView.image = UIImage(named: "Exclamation Mark Filled-100")
+        passwordView.addSubview(cautionImageView)
+        let alertLabel = makeLabel("Please Sign up or Login", y: 70, font: UIFont(name: "HelveticaNeue-Light", size: 20)!)
+        alertLabel.textAlignment = .Center
+        passwordView.addSubview(alertLabel)
         
+        let newBtn = makeSubmitBtn("Later", x: 20, y: 120, width: 120 )
+        newBtn.addTarget(self, action: "tappedCancelBtn", forControlEvents: .TouchUpInside)
+        passwordView.addSubview(newBtn)
         
+        let joinBtn = makeSubmitBtn("Sign up / Login", x: 160, y: 120, width: 120 )
+        joinBtn.addTarget(self, action: "tappedLoginBtn", forControlEvents: .TouchUpInside)
+        passwordView.addSubview(joinBtn)
+        
+    }
+    
+    func tappedLoginBtn() {
+        customDelegate?.moveTopView()
     }
     
     
@@ -229,11 +252,11 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
         let cancelBtn = makeCancelBtn(passwordView)
         passwordView.addSubview(cancelBtn)
         
-        let newBtn = makeSubmitBtn("New", x: 20, width: 120 )
+        let newBtn = makeSubmitBtn("New", x: 20, y: 250, width: 120 )
         newBtn.addTarget(self, action: "tappedNewBtn", forControlEvents: .TouchUpInside)
         passwordView.addSubview(newBtn)
         
-        let joinBtn = makeSubmitBtn("Join", x: 160, width: 120 )
+        let joinBtn = makeSubmitBtn("Join", x: 160, y: 250, width: 120 )
         joinBtn.addTarget(self, action: "tappedJoinBtn", forControlEvents: .TouchUpInside)
         passwordView.addSubview(joinBtn)
     }
@@ -247,11 +270,11 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
         return backTweetView
     }
     
-    func makePasswordView() -> UIView {
+    func makePasswordView(size: CGSize, y: CGFloat) -> UIView {
         let passwordView = UIView()
-        passwordView.frame.size = CGSizeMake(300, 300)
+        passwordView.frame.size = size
         passwordView.center.x = self.center.x
-        passwordView.center.y = 250
+        passwordView.center.y = y
         passwordView.backgroundColor = UIColor.whiteColor()
         passwordView.layer.shadowOpacity = 0.3
         passwordView.layer.cornerRadius = 3
@@ -296,9 +319,9 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
         return cancelBtn
     }
     
-    func makeSubmitBtn(title: String, x: CGFloat, width: CGFloat) -> UIButton {
+    func makeSubmitBtn(title: String, x: CGFloat, y: CGFloat, width: CGFloat) -> UIButton {
         let submitBtn = UIButton()
-        submitBtn.frame = CGRectMake(x, 250, width, 40)
+        submitBtn.frame = CGRectMake(x, y, width, 40)
         submitBtn.setTitle(title, forState: .Normal)
         submitBtn.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 16)
         submitBtn.backgroundColor = UIColor.appPinkColor()
@@ -371,7 +394,6 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-        
     }
 
 }

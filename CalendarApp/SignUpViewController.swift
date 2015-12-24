@@ -9,7 +9,7 @@
 import UIKit
 import RSKImageCropper
 
-class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, RSKImageCropViewControllerDelegate, RSKImageCropViewControllerDataSource {
+class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, RSKImageCropViewControllerDelegate, RSKImageCropViewControllerDataSource, UITextFieldDelegate {
     
     let images = ["User", "Mail", "Lock"]
     let placeholderTexts = ["Username", "Mail Address", "Password"]
@@ -23,6 +23,8 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.tintColor = UIColor.appPinkColor()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -40,7 +42,7 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 5
+        return 4
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,6 +51,13 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             return 1
         }
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let boundSize: CGSize = UIScreen.mainScreen().bounds.size
+        let navigationBarHeight = navigationController!.navigationBar.frame.height
+        let cellsHeight: CGFloat = 65 * 5
+        return (boundSize.height - (20 + navigationBarHeight + cellsHeight + 160)) / 4
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -61,19 +70,18 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return userImageCell
         } else if indexPath.section == 1 {
             userInfoCell = tableView.dequeueReusableCellWithIdentifier("createUserCell", forIndexPath: indexPath) as! CreateUserTableViewCell
+            userInfoCell.textField.delegate = self
             userInfoCell.icon.image = UIImage(named: images[indexPath.row])
             userInfoCell.textField.placeholder = placeholderTexts[indexPath.row]
             return userInfoCell
         } else if indexPath.section == 2 {
-            let nextCell = tableView.dequeueReusableCellWithIdentifier("nextCell", forIndexPath: indexPath) as! NextBtnTableViewCell
-            return nextCell
-        } else if indexPath.section == 3 {
-            let orCell = tableView.dequeueReusableCellWithIdentifier("orCell", forIndexPath: indexPath) as! OrViewTableViewCell
-            return orCell
-        } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("faceBookCell", forIndexPath: indexPath) as! FaceBookTableViewCell
             cell.faceBookLabel.text = "Sign Up With Facebook"
             return cell
+        } else {
+            let nextCell = tableView.dequeueReusableCellWithIdentifier("nextCell", forIndexPath: indexPath) as! NextBtnTableViewCell
+            nextCell.accessoryView?.hidden = false
+            return nextCell
         }
     }
     
@@ -82,14 +90,18 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let nameCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as! CreateUserTableViewCell
             let passwordCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 1)) as! CreateUserTableViewCell
             let mailCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 1)) as! CreateUserTableViewCell
-            let user = User(name: nameCell.textField.text!, password: passwordCell.textField.text!, mailAddress: mailCell.textField.text!, userImage: userImageCell.userImageView.image!)
-            user.signUp { (message) in
-                if let unwrappedMessage = message {
-                    self.showAlert(unwrappedMessage)
-                    print("サインアップ失敗")
-                } else {
-                    print("サインアップ成功")
-                    self.performSegueWithIdentifier("login", sender: nil)
+            if nameCell.textField.text == "" || passwordCell.textField.text == "" || mailCell.textField.text == "" {
+                showAlert("exist empty text field")
+            } else {
+                let user = User(name: nameCell.textField.text!, password: passwordCell.textField.text!, mailAddress: mailCell.textField.text!, userImage: userImageCell.userImageView.image!)
+                user.signUp { (message) in
+                    if let unwrappedMessage = message {
+                        self.showAlert(unwrappedMessage)
+                        print("サインアップ失敗")
+                    } else {
+                        print("サインアップ成功")
+                        self.performSegueWithIdentifier("login", sender: nil)
+                    }
                 }
             }
         } else if indexPath.section == 4 {
@@ -100,19 +112,13 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
-        let navigationBarHeight = navigationController!.navigationBar.frame.height
-        let cellsHeight: CGFloat = 65 * 5
-        if indexPath.section == 3 {
-            print(navigationBarHeight)
-            return (self.tableView.frame.height + self.tableView.frame.minY) - (20 + navigationBarHeight + cellsHeight + 160)
-        } else if indexPath.section == 0 {
+        if indexPath.section == 0 {
             return 160
         } else {
             return 65
         }
     }
-    
+
     func tappedLibraryPhotoBtn() {
         pickImageFromLibrary()
     }
@@ -223,6 +229,11 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
         pickerVC.dismissViewControllerAnimated(true, completion: nil)
         userImageCell.userImageView.image = croppedImage
         tableView.reloadData()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 }
