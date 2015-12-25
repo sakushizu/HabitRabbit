@@ -372,6 +372,7 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func saveCaendarMemo() {
+        print("aaaaaaa")
         selectedCalender.memo = memoTextView.text
         CalenderManager.sharedInstance.saveSelfCalendar(selectedCalender.type)
     }

@@ -13,14 +13,43 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright © 2015年 Sakuramoto Shizuka. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="aB1-YB-ZKE">
+                                <rect key="frame" x="20" y="627" width="335" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="CJ6-Tn-rfL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Today-50 (2).png" translatesAutoresizingMaskIntoConstraints="NO" id="Cbv-UC-Kee">
+                                <rect key="frame" x="147" y="294" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="7xT-gu-G9K"/>
+                                    <constraint firstAttribute="height" constant="80" id="i9r-Y4-p7l"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.64106440539999998" blue="0.64397006499999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aB1-YB-ZKE" secondAttribute="trailing" constant="20" id="S4O-0N-TwZ"/>
+                            <constraint firstItem="aB1-YB-ZKE" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" id="TX1-ES-zZr"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="aB1-YB-ZKE" secondAttribute="bottom" constant="20" id="Thu-Vz-YjZ"/>
+                            <constraint firstItem="Cbv-UC-Kee" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dlV-9S-YSC"/>
+                            <constraint firstItem="Cbv-UC-Kee" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="jbr-M8-zfK"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.5" y="374.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Today-50 (2).png" width="50" height="50"/>
+    </resources>
 </document>

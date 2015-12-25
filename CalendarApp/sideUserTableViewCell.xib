@@ -27,12 +27,12 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqa-pM-ajW">
-                        <rect key="frame" x="280" y="15" width="25" height="25"/>
+                        <rect key="frame" x="285" y="15" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="25" id="LKz-mu-C7D"/>
-                            <constraint firstAttribute="height" constant="25" id="LjR-dK-GBy"/>
+                            <constraint firstAttribute="width" constant="20" id="LKz-mu-C7D"/>
+                            <constraint firstAttribute="height" constant="20" id="LjR-dK-GBy"/>
                         </constraints>
-                        <state key="normal" image="Exit.png"/>
+                        <state key="normal" image="Exit-25.png"/>
                     </button>
                 </subviews>
                 <constraints>
@@ -54,6 +54,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Exit.png" width="32" height="32"/>
+        <image name="Exit-25.png" width="25" height="25"/>
     </resources>
 </document>

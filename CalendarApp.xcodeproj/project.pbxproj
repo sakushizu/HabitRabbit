@@ -28,6 +28,10 @@
 		0B141D881C2B91170029E6EA /* Exclamation Mark Filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D871C2B91170029E6EA /* Exclamation Mark Filled-100.png */; };
 		0B37F81A1C2D156E00D6AE82 /* UserEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F8191C2D156E00D6AE82 /* UserEdit.storyboard */; };
 		0B37F81C1C2D2B4800D6AE82 /* Exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F81B1C2D2B4800D6AE82 /* Exit.png */; };
+		0B37F81E1C2DF5D400D6AE82 /* Exit-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F81D1C2DF5D400D6AE82 /* Exit-25.png */; };
+		0B37F8201C2DF6D400D6AE82 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F81F1C2DF6D400D6AE82 /* Launch Screen.storyboard */; };
+		0B37F8221C2DFA5700D6AE82 /* Icon-83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F8211C2DFA5700D6AE82 /* Icon-83.5@2x.png */; };
+		0B37F8241C2DFA6300D6AE82 /* Today-50 (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F8231C2DFA6300D6AE82 /* Today-50 (2).png */; };
 		0B656A241C218DC10024D6F3 /* GroupCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A231C218DC10024D6F3 /* GroupCalendar.swift */; };
 		0B656A261C219E210024D6F3 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A251C219E210024D6F3 /* TopViewController.swift */; };
 		0B656A281C219E330024D6F3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A271C219E330024D6F3 /* SignUpViewController.swift */; };
@@ -159,6 +163,10 @@
 		0B141D871C2B91170029E6EA /* Exclamation Mark Filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Exclamation Mark Filled-100.png"; path = "../../../Downloads/Exclamation Mark Filled-100.png"; sourceTree = "<group>"; };
 		0B37F8191C2D156E00D6AE82 /* UserEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserEdit.storyboard; sourceTree = "<group>"; };
 		0B37F81B1C2D2B4800D6AE82 /* Exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Exit.png; path = ../../../Downloads/Exit.png; sourceTree = "<group>"; };
+		0B37F81D1C2DF5D400D6AE82 /* Exit-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Exit-25.png"; path = "../../../Downloads/Exit-25.png"; sourceTree = "<group>"; };
+		0B37F81F1C2DF6D400D6AE82 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		0B37F8211C2DFA5700D6AE82 /* Icon-83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-83.5@2x.png"; path = "../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/535A33B0-4612-4B90-B463-519EA9A77103/????????? 2015-1 2-26 7.17.02/ios/AppIcon.appiconset/Icon-83.5@2x.png"; sourceTree = "<group>"; };
+		0B37F8231C2DFA6300D6AE82 /* Today-50 (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Today-50 (2).png"; path = "../../../Downloads/Today-50 (2).png"; sourceTree = "<group>"; };
 		0B656A231C218DC10024D6F3 /* GroupCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalendar.swift; sourceTree = "<group>"; };
 		0B656A251C219E210024D6F3 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		0B656A271C219E330024D6F3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +308,7 @@
 		0B656A411C21C98C0024D6F3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0B37F81F1C2DF6D400D6AE82 /* Launch Screen.storyboard */,
 				0B656A251C219E210024D6F3 /* TopViewController.swift */,
 				0B7586A21C22488E00816379 /* SideMenu */,
 				0B7586A01C2247FF00816379 /* Create */,
@@ -486,6 +495,9 @@
 		0BED60191C1930F200022AA5 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				0B37F8231C2DFA6300D6AE82 /* Today-50 (2).png */,
+				0B37F8211C2DFA5700D6AE82 /* Icon-83.5@2x.png */,
+				0B37F81D1C2DF5D400D6AE82 /* Exit-25.png */,
 				0B37F81B1C2D2B4800D6AE82 /* Exit.png */,
 				0B141D871C2B91170029E6EA /* Exclamation Mark Filled-100.png */,
 				0B141D851C2B773F0029E6EA /* Checked-100.png */,
@@ -724,17 +736,21 @@
 				0BE7F6541C2128BA00DD76B5 /* GroupBtnCell.xib in Resources */,
 				0B141D7A1C2A4B6D0029E6EA /* Settings Filled-25.png in Resources */,
 				0BA523861C1F187C00133342 /* Pushups-32.png in Resources */,
+				0B37F8221C2DFA5700D6AE82 /* Icon-83.5@2x.png in Resources */,
 				0B141D781C2A40840029E6EA /* sideUserTableViewCell.xib in Resources */,
+				0B37F8241C2DFA6300D6AE82 /* Today-50 (2).png in Resources */,
 				0BA523921C1F187C00133342 /* Portrait Mode-32.png in Resources */,
 				0BA523871C1F187C00133342 /* Wakeup Hill on Stairs Filled-32.png in Resources */,
 				0BD3453D1C2312120056C44A /* Settings.png in Resources */,
 				0BED602D1C1C0C9F00022AA5 /* CreateCell1.xib in Resources */,
+				0B37F81E1C2DF5D400D6AE82 /* Exit-25.png in Resources */,
 				0B656A351C21B26B0024D6F3 /* User.png in Resources */,
 				0B656A401C21B6410024D6F3 /* OrViewTableViewCell.xib in Resources */,
 				0B37F81C1C2D2B4800D6AE82 /* Exit.png in Resources */,
 				0BED60291C1C0B4B00022AA5 /* CreateTableView.xib in Resources */,
 				0B7586AC1C22659200816379 /* Circled User Male-32.png in Resources */,
 				0B656A361C21B26B0024D6F3 /* Facebook.png in Resources */,
+				0B37F8201C2DF6D400D6AE82 /* Launch Screen.storyboard in Resources */,
 				0BED60311C1C0CB900022AA5 /* CreateCell2.xib in Resources */,
 				0B6A92831BEF3BF2009A7B2E /* Main.storyboard in Resources */,
 				0B656A341C21B26B0024D6F3 /* Mail.png in Resources */,
