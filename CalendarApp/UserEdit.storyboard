@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3wX-Qi-grc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--User Edit View Controller-->
+        <scene sceneID="xC5-7v-xfA">
+            <objects>
+                <viewController id="3wX-Qi-grc" customClass="UserEditViewController" customModule="CalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IeA-Xs-J36"/>
+                        <viewControllerLayoutGuide type="bottom" id="gSq-vj-jZU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7ex-9v-aP0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Th-vu-sSP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4Th-vu-sSP" secondAttribute="trailing" id="0HK-4M-ENZ"/>
+                            <constraint firstItem="gSq-vj-jZU" firstAttribute="top" secondItem="4Th-vu-sSP" secondAttribute="bottom" id="9cW-LZ-kgO"/>
+                            <constraint firstItem="4Th-vu-sSP" firstAttribute="top" secondItem="7ex-9v-aP0" secondAttribute="top" id="A9y-gc-IUN"/>
+                            <constraint firstItem="4Th-vu-sSP" firstAttribute="leading" secondItem="7ex-9v-aP0" secondAttribute="leading" id="cAq-Dr-o5z"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tableView" destination="4Th-vu-sSP" id="4fm-pS-Me1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M1h-yy-c04" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-433.5" y="1340.5"/>
+        </scene>
+    </scenes>
+</document>

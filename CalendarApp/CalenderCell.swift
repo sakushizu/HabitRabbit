@@ -11,6 +11,7 @@ import UIKit
 class CalenderCell: UICollectionViewCell {
     var textLabel: UILabel!
     var imageView: UIImageView!
+    var circleView: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,5 +38,12 @@ class CalenderCell: UICollectionViewCell {
         imageView!.clipsToBounds = true
         imageView.hidden = true
         self.addSubview(imageView!)
+        
+        circleView = UIView(frame: CGRectMake(0, 0, 30, 30))
+        circleView.layer.position = CGPoint(x: 25, y: 25)
+        circleView.backgroundColor = UIColor.clearColor()
+        circleView.layer.cornerRadius = circleView.frame.width / 2
+        circleView.clipsToBounds = true
+        self.addSubview(circleView)
     }
 }

@@ -129,4 +129,5 @@ class SideMenu : NSObject, MenuTableViewControllerDelegate {
             toggleMenu(true)
         }
     }
+
 }

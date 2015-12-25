@@ -32,6 +32,26 @@ class RecordTableView: UITableView, UITableViewDataSource, UITableViewDelegate  
         }
     }
 
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let coverView = UIView()
+        coverView.backgroundColor = UIColor.lightlightGray()
+        let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width, height: 40))
+        label.font = UIFont(name: "HelveticaNeue-Light", size: 15)
+        label.textColor = UIColor.darkGrayColor()
+        coverView.addSubview(label)
+        if section == 0 {
+            label.text = "User record"
+            return coverView
+        } else {
+            label.text = "Ranking"
+            return coverView
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1

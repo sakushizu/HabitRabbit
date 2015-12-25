@@ -40,6 +40,13 @@ class User: NSObject {
         self.password = password
     }
     
+    init(objectId: String, name: String, password: String, mailAddress: String) {
+        self.objectId = objectId
+        self.name = name
+        self.password = password
+        self.mailAddress = mailAddress
+    }
+    
     func signUp(callback: (message: String?) -> Void) {
     let user = PFUser()
         user.username = name
@@ -67,5 +74,23 @@ class User: NSObject {
             }
         }
         
+    }
+    
+    func update(callback: (message: String?) -> Void){
+        print(CurrentUser.sharedInstance.user.name)
+        print(CurrentUser.sharedInstance.user.password)
+        PFUser.logInWithUsernameInBackground(CurrentUser.sharedInstance.user.name, password: CurrentUser.sharedInstance.user.password) { (currentUser, error) -> Void in
+            if error == nil {
+                currentUser?.username = "mochimochi"
+                currentUser?.password = "mochimochi"
+                currentUser?["mailAddress"] = "mochimochi"
+                currentUser?.saveInBackgroundWithBlock({ (success, error) -> Void in
+                    if error == nil {
+                        print("updateに成功しました。")
+                        callback(message: error?.userInfo["error"] as? String)
+                    }
+                })
+             }
+        }
     }
 }

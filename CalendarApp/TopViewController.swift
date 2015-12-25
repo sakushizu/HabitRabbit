@@ -18,6 +18,7 @@ class TopViewController: UIViewController {
         super.viewDidLoad()
         
         if PFUser.currentUser() != nil {
+            print(PFUser.currentUser())
             performSegueWithIdentifier("calendar", sender: nil)
         }
 

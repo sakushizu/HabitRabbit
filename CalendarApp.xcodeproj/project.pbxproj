@@ -26,6 +26,8 @@
 		0B141D841C2B76EF0029E6EA /* Checked-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D831C2B76EF0029E6EA /* Checked-32.png */; };
 		0B141D861C2B773F0029E6EA /* Checked-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D851C2B773F0029E6EA /* Checked-100.png */; };
 		0B141D881C2B91170029E6EA /* Exclamation Mark Filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D871C2B91170029E6EA /* Exclamation Mark Filled-100.png */; };
+		0B37F81A1C2D156E00D6AE82 /* UserEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F8191C2D156E00D6AE82 /* UserEdit.storyboard */; };
+		0B37F81C1C2D2B4800D6AE82 /* Exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F81B1C2D2B4800D6AE82 /* Exit.png */; };
 		0B656A241C218DC10024D6F3 /* GroupCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A231C218DC10024D6F3 /* GroupCalendar.swift */; };
 		0B656A261C219E210024D6F3 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A251C219E210024D6F3 /* TopViewController.swift */; };
 		0B656A281C219E330024D6F3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A271C219E330024D6F3 /* SignUpViewController.swift */; };
@@ -113,6 +115,7 @@
 		0BED60381C1C0CE000022AA5 /* CreateCell4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED60361C1C0CE000022AA5 /* CreateCell4.swift */; };
 		0BED60391C1C0CE000022AA5 /* CreateCell4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BED60371C1C0CE000022AA5 /* CreateCell4.xib */; };
 		0BED60431C1D496300022AA5 /* ギャル.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0BED60421C1D496300022AA5 /* ギャル.jpg */; };
+		0BFCFD831C2D06710052C778 /* UserEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFCFD821C2D06710052C778 /* UserEditViewController.swift */; };
 		64CCFBD6FD8B345AA7ACE6EA /* Pods_CalendarApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBE6F5EB3694679FC22FF82 /* Pods_CalendarApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -154,6 +157,8 @@
 		0B141D831C2B76EF0029E6EA /* Checked-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checked-32.png"; path = "../../../Downloads/Checked-32.png"; sourceTree = "<group>"; };
 		0B141D851C2B773F0029E6EA /* Checked-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checked-100.png"; path = "../../../Downloads/Checked-100.png"; sourceTree = "<group>"; };
 		0B141D871C2B91170029E6EA /* Exclamation Mark Filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Exclamation Mark Filled-100.png"; path = "../../../Downloads/Exclamation Mark Filled-100.png"; sourceTree = "<group>"; };
+		0B37F8191C2D156E00D6AE82 /* UserEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserEdit.storyboard; sourceTree = "<group>"; };
+		0B37F81B1C2D2B4800D6AE82 /* Exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Exit.png; path = ../../../Downloads/Exit.png; sourceTree = "<group>"; };
 		0B656A231C218DC10024D6F3 /* GroupCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalendar.swift; sourceTree = "<group>"; };
 		0B656A251C219E210024D6F3 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		0B656A271C219E330024D6F3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +253,7 @@
 		0BED60371C1C0CE000022AA5 /* CreateCell4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCell4.xib; sourceTree = "<group>"; };
 		0BED603B1C1C43B400022AA5 /* CalendarApp-Bridging-Header.h.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CalendarApp-Bridging-Header.h.h"; sourceTree = "<group>"; };
 		0BED60421C1D496300022AA5 /* ギャル.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ギャル.jpg"; sourceTree = "<group>"; };
+		0BFCFD821C2D06710052C778 /* UserEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEditViewController.swift; sourceTree = "<group>"; };
 		745AAD1A15D9637469CA96D9 /* Pods-CalendarApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarApp/Pods-CalendarApp.release.xcconfig"; sourceTree = "<group>"; };
 		9FBE6F5EB3694679FC22FF82 /* Pods_CalendarApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -435,6 +441,7 @@
 				0BED601A1C19334300022AA5 /* SideMenu.swift */,
 				0B141D751C2A40840029E6EA /* sideUserTableViewCell.swift */,
 				0B141D761C2A40840029E6EA /* sideUserTableViewCell.xib */,
+				0BFCFD821C2D06710052C778 /* UserEditViewController.swift */,
 			);
 			name = SideMenu;
 			sourceTree = "<group>";
@@ -471,6 +478,7 @@
 				0B6A92861BEF3BF2009A7B2E /* LaunchScreen.storyboard */,
 				0B6A92891BEF3BF2009A7B2E /* Info.plist */,
 				0B6A92841BEF3BF2009A7B2E /* Assets.xcassets */,
+				0B37F8191C2D156E00D6AE82 /* UserEdit.storyboard */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -478,6 +486,7 @@
 		0BED60191C1930F200022AA5 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				0B37F81B1C2D2B4800D6AE82 /* Exit.png */,
 				0B141D871C2B91170029E6EA /* Exclamation Mark Filled-100.png */,
 				0B141D851C2B773F0029E6EA /* Checked-100.png */,
 				0B141D831C2B76EF0029E6EA /* Checked-32.png */,
@@ -697,6 +706,7 @@
 				0BA523881C1F187C00133342 /* Yoga Filled-32.png in Resources */,
 				0B141D701C2911360029E6EA /* RankingTableViewCell.xib in Resources */,
 				0BED60251C1AA02100022AA5 /* checked.png in Resources */,
+				0B37F81A1C2D156E00D6AE82 /* UserEdit.storyboard in Resources */,
 				0B141D7F1C2A63760029E6EA /* Plus Math-25.png in Resources */,
 				0BE7F6561C21625D00DD76B5 /* cancel.png in Resources */,
 				0BA5238C1C1F187C00133342 /* Settings-32.png in Resources */,
@@ -721,6 +731,7 @@
 				0BED602D1C1C0C9F00022AA5 /* CreateCell1.xib in Resources */,
 				0B656A351C21B26B0024D6F3 /* User.png in Resources */,
 				0B656A401C21B6410024D6F3 /* OrViewTableViewCell.xib in Resources */,
+				0B37F81C1C2D2B4800D6AE82 /* Exit.png in Resources */,
 				0BED60291C1C0B4B00022AA5 /* CreateTableView.xib in Resources */,
 				0B7586AC1C22659200816379 /* Circled User Male-32.png in Resources */,
 				0B656A361C21B26B0024D6F3 /* Facebook.png in Resources */,
@@ -813,6 +824,7 @@
 				0B7586991C21EC6100816379 /* FaceBookTableViewCell.swift in Sources */,
 				0B656A281C219E330024D6F3 /* SignUpViewController.swift in Sources */,
 				0B7586AF1C22A92F00816379 /* User.swift in Sources */,
+				0BFCFD831C2D06710052C778 /* UserEditViewController.swift in Sources */,
 				0BED602C1C1C0C9F00022AA5 /* CreateCell1.swift in Sources */,
 				0BED60271C1C0A7E00022AA5 /* CreateTableView.swift in Sources */,
 				0B141D6C1C290DBB0029E6EA /* RecordTableView.swift in Sources */,

@@ -34,7 +34,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="VJL-ot-XmD" customClass="CalenderCell" customModule="CalendarApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -131,12 +131,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Loe-Ky-Dnk">
-                                        <rect key="frame" x="41" y="118" width="293" height="38"/>
+                                        <rect key="frame" x="41" y="120" width="293" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="Ta0-QR-ckn"/>
                                             <constraint firstAttribute="width" constant="293" id="mpH-LR-ecF"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -176,7 +176,7 @@
                                     <constraint firstAttribute="trailing" secondItem="H1o-ZS-xWv" secondAttribute="trailing" constant="5" id="dVa-MR-2FF"/>
                                     <constraint firstItem="My0-9o-a7h" firstAttribute="top" secondItem="XVO-7q-Ycm" secondAttribute="top" constant="20" id="g3u-pk-hfb"/>
                                     <constraint firstAttribute="height" constant="190" id="jJg-Cs-nG5"/>
-                                    <constraint firstItem="Loe-Ky-Dnk" firstAttribute="top" secondItem="pyl-LH-E24" secondAttribute="bottom" constant="24" id="qyc-CN-MIG"/>
+                                    <constraint firstItem="Loe-Ky-Dnk" firstAttribute="top" secondItem="pyl-LH-E24" secondAttribute="bottom" constant="26" id="qyc-CN-MIG"/>
                                     <constraint firstItem="D32-Mb-q0X" firstAttribute="top" secondItem="My0-9o-a7h" secondAttribute="bottom" constant="15" id="sER-2d-ix4"/>
                                     <constraint firstItem="My0-9o-a7h" firstAttribute="leading" secondItem="XVO-7q-Ycm" secondAttribute="leading" id="uTs-K6-kuk"/>
                                 </constraints>
@@ -288,7 +288,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="gnY-YA-HJ5">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gnY-YA-HJ5" id="iXw-4J-hct">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -412,7 +412,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eEI-3f-lol">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eEI-3f-lol">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -448,7 +448,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qWL-5h-LAL">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qWL-5h-LAL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -520,8 +520,8 @@
         <image name="Settings.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="H8t-bE-U6O"/>
-        <segue reference="2tu-i9-bbS"/>
         <segue reference="lbe-dj-EI8"/>
+        <segue reference="jVg-AB-bkL"/>
+        <segue reference="H8t-bE-U6O"/>
     </inferredMetricsTieBreakers>
 </document>

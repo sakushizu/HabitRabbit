@@ -10,7 +10,7 @@ import UIKit
 
 class CalenderManager: NSObject {
     static let sharedInstance = CalenderManager()
-    var calender = Calender()
+    var calender: Calender!
     var calendarCollection = [Calender]()
     var groupCalendarCollection = [Calender]()
     

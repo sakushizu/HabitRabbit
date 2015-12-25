@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import Parse
 
 protocol MenuTableViewControllerDelegate {
     func menuControllerDidSelectRow(indexPath:NSIndexPath)
 }
+
+@objc protocol MenuTableViewControllerToCalendarControllerDelegate {
+    func moveUserEditViewController()
+}
+
 
 class MenuTableViewController: UITableViewController {
     
@@ -27,6 +33,7 @@ class MenuTableViewController: UITableViewController {
     }
     
     var delegate : MenuTableViewControllerDelegate?
+    var customeDelegate: MenuTableViewControllerToCalendarControllerDelegate?
     var tableData : Array<String> = []
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -51,6 +58,31 @@ class MenuTableViewController: UITableViewController {
         return sectionTitles[section]
     }
     
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section != 0 {
+            return 40
+        } else {
+            return 0
+        }
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let coverView = UIView()
+        coverView.backgroundColor = UIColor.lightlightGray()
+        let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width, height: 40))
+        label.font = UIFont(name: "HelveticaNeue-Light", size: 15)
+        label.textColor = UIColor.darkGrayColor()
+        coverView.addSubview(label)
+        if section == 1 {
+            label.text = "Private"
+            return coverView
+        } else if section == 2 {
+            label.text = "Group"
+            return coverView
+        } else {
+            return coverView
+        }
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
@@ -96,6 +128,7 @@ class MenuTableViewController: UITableViewController {
     }
     
     func tappedSettingBtn() {
+        self.customeDelegate?.moveUserEditViewController()
     }
 
 }

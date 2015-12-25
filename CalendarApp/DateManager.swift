@@ -50,6 +50,14 @@ class DateManager: UIView {
         formatter.dateFormat = "d"
         return formatter.stringFromDate(currentMonthOfDates[indexPath.row])
     }
+    
+    func conversionDateFormatFromNSDate(date: NSDate) -> String {
+//        dateForCellAtIndexPath(numberOfItems)
+        let formatter: NSDateFormatter = NSDateFormatter()
+        formatter.dateFormat = "d"
+        return formatter.stringFromDate(date)
+    }
+    
     //前月の表示
     func prevMonth(date: NSDate) -> NSDate {
         currentMonthOfDates = []
