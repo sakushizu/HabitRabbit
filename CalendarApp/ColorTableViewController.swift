@@ -34,13 +34,21 @@ class ColorTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let coverView = UIView()
+        coverView.backgroundColor = UIColor.lightlightGray()
+        let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width, height: 40))
+        label.font = UIFont(name: "HelveticaNeue-Light", size: 15)
+        label.textColor = UIColor.darkGrayColor()
+        coverView.addSubview(label)
         if section == 0 {
-            return "Selected Color"
+            label.text = "Selected Color"
+            return coverView
         } else {
-            return " "
+            return coverView
         }
     }
+    
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -72,6 +80,10 @@ class ColorTableViewController: UITableViewController {
         color = selectedColor
         customDelegate?.setSelectedColor(color)
         tableView.reloadData()
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
 
 }
