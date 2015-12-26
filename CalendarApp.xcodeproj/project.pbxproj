@@ -32,6 +32,10 @@
 		0B37F8201C2DF6D400D6AE82 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F81F1C2DF6D400D6AE82 /* Launch Screen.storyboard */; };
 		0B37F8221C2DFA5700D6AE82 /* Icon-83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F8211C2DFA5700D6AE82 /* Icon-83.5@2x.png */; };
 		0B37F8241C2DFA6300D6AE82 /* Today-50 (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F8231C2DFA6300D6AE82 /* Today-50 (2).png */; };
+		0B37F8261C2E1E0000D6AE82 /* Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F8251C2E1E0000D6AE82 /* Image.png */; };
+		0B37F8281C2E212F00D6AE82 /* Image2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F8271C2E212F00D6AE82 /* Image2.png */; };
+		0B37F82A1C2E228600D6AE82 /* Image3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F8291C2E228600D6AE82 /* Image3.png */; };
+		0B37F82C1C2E75AF00D6AE82 /* ちっちさんImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F82B1C2E75AF00D6AE82 /* ちっちさんImage.png */; };
 		0B656A241C218DC10024D6F3 /* GroupCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A231C218DC10024D6F3 /* GroupCalendar.swift */; };
 		0B656A261C219E210024D6F3 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A251C219E210024D6F3 /* TopViewController.swift */; };
 		0B656A281C219E330024D6F3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A271C219E330024D6F3 /* SignUpViewController.swift */; };
@@ -167,6 +171,10 @@
 		0B37F81F1C2DF6D400D6AE82 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0B37F8211C2DFA5700D6AE82 /* Icon-83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-83.5@2x.png"; path = "../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/535A33B0-4612-4B90-B463-519EA9A77103/????????? 2015-1 2-26 7.17.02/ios/AppIcon.appiconset/Icon-83.5@2x.png"; sourceTree = "<group>"; };
 		0B37F8231C2DFA6300D6AE82 /* Today-50 (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Today-50 (2).png"; path = "../../../Downloads/Today-50 (2).png"; sourceTree = "<group>"; };
+		0B37F8251C2E1E0000D6AE82 /* Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Image.png; path = ../../../Desktop/Image.png; sourceTree = "<group>"; };
+		0B37F8271C2E212F00D6AE82 /* Image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Image2.png; path = ../../../Desktop/Image2.png; sourceTree = "<group>"; };
+		0B37F8291C2E228600D6AE82 /* Image3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Image3.png; path = ../../../Desktop/Image3.png; sourceTree = "<group>"; };
+		0B37F82B1C2E75AF00D6AE82 /* ちっちさんImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ちっちさんImage.png"; path = "../../../Desktop/ちっちさんImage.png"; sourceTree = "<group>"; };
 		0B656A231C218DC10024D6F3 /* GroupCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalendar.swift; sourceTree = "<group>"; };
 		0B656A251C219E210024D6F3 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		0B656A271C219E330024D6F3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -495,6 +503,10 @@
 		0BED60191C1930F200022AA5 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				0B37F82B1C2E75AF00D6AE82 /* ちっちさんImage.png */,
+				0B37F8291C2E228600D6AE82 /* Image3.png */,
+				0B37F8271C2E212F00D6AE82 /* Image2.png */,
+				0B37F8251C2E1E0000D6AE82 /* Image.png */,
 				0B37F8231C2DFA6300D6AE82 /* Today-50 (2).png */,
 				0B37F8211C2DFA5700D6AE82 /* Icon-83.5@2x.png */,
 				0B37F81D1C2DF5D400D6AE82 /* Exit-25.png */,
@@ -714,10 +726,13 @@
 				0B141D801C2A63760029E6EA /* Menu-25.png in Resources */,
 				0BA5238D1C1F187C00133342 /* Document Filled-32.png in Resources */,
 				0B141D861C2B773F0029E6EA /* Checked-100.png in Resources */,
+				0B37F82A1C2E228600D6AE82 /* Image3.png in Resources */,
 				0B7586A61C224E8A00816379 /* UserImageTableViewCell.xib in Resources */,
 				0BA523881C1F187C00133342 /* Yoga Filled-32.png in Resources */,
+				0B37F8261C2E1E0000D6AE82 /* Image.png in Resources */,
 				0B141D701C2911360029E6EA /* RankingTableViewCell.xib in Resources */,
 				0BED60251C1AA02100022AA5 /* checked.png in Resources */,
+				0B37F8281C2E212F00D6AE82 /* Image2.png in Resources */,
 				0B37F81A1C2D156E00D6AE82 /* UserEdit.storyboard in Resources */,
 				0B141D7F1C2A63760029E6EA /* Plus Math-25.png in Resources */,
 				0BE7F6561C21625D00DD76B5 /* cancel.png in Resources */,
@@ -748,6 +763,7 @@
 				0B656A401C21B6410024D6F3 /* OrViewTableViewCell.xib in Resources */,
 				0B37F81C1C2D2B4800D6AE82 /* Exit.png in Resources */,
 				0BED60291C1C0B4B00022AA5 /* CreateTableView.xib in Resources */,
+				0B37F82C1C2E75AF00D6AE82 /* ちっちさんImage.png in Resources */,
 				0B7586AC1C22659200816379 /* Circled User Male-32.png in Resources */,
 				0B656A361C21B26B0024D6F3 /* Facebook.png in Resources */,
 				0B37F8201C2DF6D400D6AE82 /* Launch Screen.storyboard in Resources */,
