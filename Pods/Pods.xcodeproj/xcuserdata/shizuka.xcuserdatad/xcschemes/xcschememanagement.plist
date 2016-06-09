@@ -4,12 +4,42 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKCoreKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKLoginKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKShareKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-CalendarApp.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>RSKImageCropper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,17 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>77A2BB4858E7E3969A711CD147AA656F</key>
+		<key>0EB19C1377A747F81110D44E2D5FCF78</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B30BC93716907310828FF0628753058B</key>
+		<key>0F71920C6628E6AA348B6295A08114E2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C973D16DE5975C6B1847790F7D94015A</key>
+		<key>52D82BFDD1E808D9CB257431922C1EE4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5D69761C2CD2A1E5C013537B29CAB4CF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A932845C7A5BE5374224A90EA874591</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>757912C950E5341AB1F25D7CCD52C810</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>87798917E0BBB48F6952078B4ADE340B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E19F83A3D8E3E59760EB990964751D0D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

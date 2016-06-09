@@ -95,16 +95,15 @@ class MenuTableViewController: UITableViewController {
             let userCell = self.tableView.dequeueReusableCellWithIdentifier("sideUserCell", forIndexPath: indexPath) as! sideUserTableViewCell
             userCell.backgroundColor = UIColor.clearColor()
             if CurrentUser.sharedInstance.user == nil {
-                userCell.userImageView.image = UIImage(named: "User")
-                userCell.nameLabel.text = "guest"
+                userCell.userImageView.image = CurrentUser.sharedInstance.user.userImage
+                userCell.nameLabel.text = CurrentUser.sharedInstance.user.name
             } else {
                 userCell.userImageView.image = CurrentUser.sharedInstance.user.userImage
                 userCell.nameLabel.text = CurrentUser.sharedInstance.user.name
             }
-            userCell.settingButton.addTarget(self, action: "tappedSettingBtn", forControlEvents: .TouchUpInside)
+            userCell.settingButton.addTarget(self, action: #selector(MenuTableViewController.tappedSettingBtn), forControlEvents: .TouchUpInside)
             return userCell
         } else if indexPath.section == 1 {
-            //group calendar cell
             let calendar = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
             cell.textLabel?.text = calendar.title
             return cell

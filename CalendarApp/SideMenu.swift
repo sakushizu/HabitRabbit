@@ -16,7 +16,7 @@ import UIKit
 
 class SideMenu : NSObject, MenuTableViewControllerDelegate {
     
-    let menuWidth : CGFloat = 160.0
+    let menuWidth : CGFloat = 300.0
     let menuTableViewTopInset : CGFloat = 64.0 // if you use translusent navigation bar
     let sideMenuContainerView =  UIView()
     let sideMenuTableViewController = MenuTableViewController()
@@ -34,12 +34,12 @@ class SideMenu : NSObject, MenuTableViewControllerDelegate {
         
         animator = UIDynamicAnimator(referenceView:sourceView)
         // Add show gesture recognizer
-        let showGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("handleGesture:"))
+        let showGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(SideMenu.handleGesture(_:)))
         showGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Right
         sourceView.addGestureRecognizer(showGestureRecognizer)
         
         // Add hide gesture recognizer
-        let hideGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("handleGesture:"))
+        let hideGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(SideMenu.handleGesture(_:)))
         hideGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Left
         sideMenuContainerView.addGestureRecognizer(hideGestureRecognizer)
     }

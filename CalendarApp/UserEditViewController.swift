@@ -57,8 +57,8 @@ class UserEditViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             userImageCell = tableView.dequeueReusableCellWithIdentifier("userImageCell", forIndexPath: indexPath) as! UserImageTableViewCell
-            userImageCell.libraryBtn.addTarget(self, action: "tappedLibraryPhotoBtn", forControlEvents: .TouchUpInside)
-            userImageCell.takePhotoBtn.addTarget(self, action: "tappedTakePhotoBtn", forControlEvents: .TouchUpInside)
+            userImageCell.libraryBtn.addTarget(self, action: #selector(UserEditViewController.tappedLibraryPhotoBtn), forControlEvents: .TouchUpInside)
+            userImageCell.takePhotoBtn.addTarget(self, action: #selector(UserEditViewController.tappedTakePhotoBtn), forControlEvents: .TouchUpInside)
             userImageCell.userImageView.layer.cornerRadius = userImageCell.userImageView.frame.width / 2
             userImageCell.clipsToBounds = true
             return userImageCell
@@ -99,7 +99,6 @@ class UserEditViewController: UIViewController, UITableViewDelegate, UITableView
                 } else {
                     let user = User(name: nameCell.textField.text!, password: passwordCell.textField.text!, mailAddress: mailCell.textField.text!, userImage: userImageCell.userImageView.image!)
                     user.update({ (message) -> Void in
-                        print("できたかな？")
                     })
                 }
             } else {
@@ -169,9 +168,9 @@ class UserEditViewController: UIViewController, UITableViewDelegate, UITableView
     func imageCropViewControllerCustomMaskRect(controller: RSKImageCropViewController) -> CGRect {
         
         var maskSize: CGSize
-        var width, height: CGFloat!
+        var height: CGFloat!
         
-        width = self.view.frame.width
+//        width = self.view.frame.width
         
         // 縦横比 = 1 : 2でトリミングしたい場合
         //        height = self.view.frame.width / 2

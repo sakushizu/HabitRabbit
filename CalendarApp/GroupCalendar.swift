@@ -25,7 +25,6 @@ class GroupCalendar: NSObject {
         calendarQuery.whereKey("password", equalTo: Calender.sharedInstance.password)
         calendarQuery.getFirstObjectInBackgroundWithBlock { (object, notFind) -> Void in
             if notFind == nil {
-                print("this calendar already saved.")
             } else {
                 let calendarObject = PFObject(className: "Calendar")
                 calendarObject["title"] = title
@@ -35,13 +34,11 @@ class GroupCalendar: NSObject {
                 relation.addObject(PFUser.currentUser()!)
                 calendarObject.saveInBackgroundWithBlock { (success, error) in
                     if success {
-                        print("success")
                         calendarQuery.getFirstObjectInBackgroundWithBlock { (object, error) -> Void in
                             if error == nil {
                                 Calender.sharedInstance.object_id = (object?.objectId)!
                                 callback()
                             } else {
-                                print("this calnedar not saved yet.")
                             }
                         }
                     }
@@ -65,14 +62,13 @@ class GroupCalendar: NSObject {
                     }
                 }
             } else {
-                print("this calnedar not saved yet.")
             }
         }
     }
     
     //タップされた日付をpraseに保存
     func saveTappedDate(date: NSDate, callback: () -> Void) {
-        print(Calender.sharedInstance.object_id)
+//        print(Calender.sharedInstance.object_id)
         let dateQuery = PFQuery(className: "Date")
         dateQuery.whereKey("user_id", equalTo: (PFUser.currentUser()?.objectId)!)
         dateQuery.whereKey("calendar_id", equalTo: Calender.sharedInstance.object_id)
@@ -81,7 +77,7 @@ class GroupCalendar: NSObject {
             if error == nil {
                 object?.deleteInBackgroundWithBlock({ (success, error) -> Void in
                     if error == nil {
-                        print("タップされたdateの削除完了")
+//                        print("タップされたdateの削除完了")
                         callback()
                     }
                 })
@@ -92,7 +88,7 @@ class GroupCalendar: NSObject {
                 dateObject["user_id"] = PFUser.currentUser()!.objectId
                 dateObject.saveInBackgroundWithBlock({ (success, error) -> Void in
                     if error == nil {
-                        print("タップされたdate保存完了です")
+//                        print("タップされたdate保存完了です")
                         callback()
                     }
                 })

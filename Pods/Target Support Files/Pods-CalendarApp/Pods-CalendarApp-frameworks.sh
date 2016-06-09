@@ -84,10 +84,22 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-CalendarApp/Alamofire.framework"
+  install_framework "Pods-CalendarApp/Bolts.framework"
+  install_framework "Pods-CalendarApp/FBSDKCoreKit.framework"
+  install_framework "Pods-CalendarApp/FBSDKLoginKit.framework"
+  install_framework "Pods-CalendarApp/FBSDKShareKit.framework"
   install_framework "Pods-CalendarApp/RSKImageCropper.framework"
+  install_framework "Pods-CalendarApp/SwiftyJSON.framework"
   install_framework "Pods-CalendarApp/SideMenu.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-CalendarApp/Alamofire.framework"
+  install_framework "Pods-CalendarApp/Bolts.framework"
+  install_framework "Pods-CalendarApp/FBSDKCoreKit.framework"
+  install_framework "Pods-CalendarApp/FBSDKLoginKit.framework"
+  install_framework "Pods-CalendarApp/FBSDKShareKit.framework"
   install_framework "Pods-CalendarApp/RSKImageCropper.framework"
+  install_framework "Pods-CalendarApp/SwiftyJSON.framework"
   install_framework "Pods-CalendarApp/SideMenu.framework"
 fi
