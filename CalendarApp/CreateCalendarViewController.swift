@@ -158,9 +158,9 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
     func imageCropViewControllerCustomMaskRect(controller: RSKImageCropViewController) -> CGRect {
         
         var maskSize: CGSize
-        var width, height: CGFloat!
+        var height: CGFloat!
         
-        width = self.view.frame.width
+//        width = self.view.frame.width
         
         // 縦横比 = 1 : 2でトリミングしたい場合
         //        height = self.view.frame.width / 2

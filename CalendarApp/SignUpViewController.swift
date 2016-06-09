@@ -8,16 +8,22 @@
 
 import UIKit
 import RSKImageCropper
+import FBSDKCoreKit
+import FBSDKLoginKit
+import FBSDKShareKit
 
 class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, RSKImageCropViewControllerDelegate, RSKImageCropViewControllerDataSource, UITextFieldDelegate {
     
-    let images = ["User", "Mail", "Lock"]
+    let images = ["user", "Mail", "Lock"]
     let placeholderTexts = ["Username", "Mail Address", "Password"]
     
     var pickerVC: UIImagePickerController!
     var selectImage: UIImage!
     var userImageCell: UserImageTableViewCell!
     var userInfoCell: CreateUserTableViewCell!
+    
+    var customButton:UIButton!
+    var isLogin = false
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -63,8 +69,8 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             userImageCell = tableView.dequeueReusableCellWithIdentifier("userImageCell", forIndexPath: indexPath) as! UserImageTableViewCell
-            userImageCell.libraryBtn.addTarget(self, action: "tappedLibraryPhotoBtn", forControlEvents: .TouchUpInside)
-            userImageCell.takePhotoBtn.addTarget(self, action: "tappedTakePhotoBtn", forControlEvents: .TouchUpInside)
+            userImageCell.libraryBtn.addTarget(self, action: #selector(SignUpViewController.tappedLibraryPhotoBtn), forControlEvents: .TouchUpInside)
+            userImageCell.takePhotoBtn.addTarget(self, action: #selector(SignUpViewController.tappedTakePhotoBtn), forControlEvents: .TouchUpInside)
             userImageCell.userImageView.layer.cornerRadius = userImageCell.userImageView.frame.width / 2
             userImageCell.clipsToBounds = true
             return userImageCell
@@ -75,8 +81,12 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
             userInfoCell.textField.placeholder = placeholderTexts[indexPath.row]
             return userInfoCell
         } else if indexPath.section == 2 {
+            
             let cell = tableView.dequeueReusableCellWithIdentifier("faceBookCell", forIndexPath: indexPath) as! FaceBookTableViewCell
             cell.faceBookLabel.text = "Sign Up With Facebook"
+            
+//                cell.contentView.addSubview(makeFBRoginBtn())
+            
             return cell
         } else {
             let nextCell = tableView.dequeueReusableCellWithIdentifier("nextCell", forIndexPath: indexPath) as! NextBtnTableViewCell
@@ -85,6 +95,7 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         if indexPath.section == 3 {
             let nameCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as! CreateUserTableViewCell
             let passwordCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 1)) as! CreateUserTableViewCell
@@ -92,19 +103,12 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if nameCell.textField.text == "" || passwordCell.textField.text == "" || mailCell.textField.text == "" {
                 showAlert("exist empty text field")
             } else {
-                let user = User(name: nameCell.textField.text!, password: passwordCell.textField.text!, mailAddress: mailCell.textField.text!, userImage: userImageCell.userImageView.image!)
-                user.signUp { (message) in
-                    if let unwrappedMessage = message {
-                        self.showAlert(unwrappedMessage)
-                        print("サインアップ失敗")
-                    } else {
-                        print("サインアップ成功")
-                        self.performSegueWithIdentifier("login", sender: nil)
-                    }
-                }
+                let user = User(name: nameCell.textField.text!, password: mailCell.textField.text!, mailAddress: passwordCell.textField.text!, userImage: userImageCell.userImageView.image!)
+                User.signUpRails(user)
+                self.performSegueWithIdentifier("login", sender: nil)
             }
-        } else if indexPath.section == 4 {
-
+        } else if indexPath.section == 2 {
+            loginButtonClicked()
         } else if indexPath.section == 0 {
             userImageCell.selected = true
         }
@@ -136,6 +140,50 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
         alertController.addAction(action)
         presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    ///////facebookButton
+    func makeFBRoginBtn() -> UIButton {
+//        let loginButton = FBSDKLoginButton()
+//        loginButton.center = view.center
+//        loginButton.readPermissions = ["public_profile"]
+        
+        customButton = UIButton(type: .System)
+        customButton.setTitle("Sign Up With Facebook", forState: .Normal)
+        customButton.addTarget(self, action: #selector(self.loginButtonClicked), forControlEvents: .TouchUpInside)
+        customButton.frame = CGRectMake(0,0,self.view.frame.width,80)
+//        customButton.center = view.center
+//        customButton.center.y += 40
+        return customButton
+        
+    }
+    
+    //////ログインボタン
+    func loginButtonClicked(){
+        
+        let loginManager = FBSDKLoginManager()
+        if(!isLogin){
+            loginManager.logInWithReadPermissions(["public_profile"], fromViewController: self) { (result, error) in
+                guard error == nil else {
+//                    print("Process error")
+                    return
+                }
+                if result.isCancelled {
+//                    print("Cancelled")
+                } else {
+//                    print("Logged in")
+                    User.getUserData()
+                    self.performSegueWithIdentifier("FBLogin", sender: nil)
+//                    self.customButton.setTitle("Logout", forState: .Normal)
+                }
+            }
+        } else {
+            loginManager.logOut()
+            customButton.setTitle("My Login Button", forState: .Normal)
+        }
+        self.isLogin = !self.isLogin
+    }
+
+    
     
     //////////ここから///////
     
@@ -172,9 +220,9 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func imageCropViewControllerCustomMaskRect(controller: RSKImageCropViewController) -> CGRect {
         
         var maskSize: CGSize
-        var width, height: CGFloat!
+        var height: CGFloat!
         
-        width = self.view.frame.width
+//        width = self.view.frame.width
         
         // 縦横比 = 1 : 2でトリミングしたい場合
         //        height = self.view.frame.width / 2

@@ -49,14 +49,13 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
         
        let menuTableViewController =  MenuTableViewController()
         menuTableViewController.customeDelegate = self
-        print(menuTableViewController.customeDelegate!)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveCaendarMemo", name: UIApplicationWillTerminateNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CalenderViewController.saveCaendarMemo), name: UIApplicationWillTerminateNotification, object: nil)
         
         segmentContol.hidden = true
         segmentRightLineView.hidden = true
         segmentLeftLineView.hidden = true
-//        CalenderManager.sharedInstance.resetDefaults()
+//        CalenderManager.sharedInstance.resetDefaults() //NSUserDefault初期化
         CalenderManager.sharedInstance.fetchCalendarCollection()
         
         //tableViewに表示している名前の配列
@@ -372,19 +371,18 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func saveCaendarMemo() {
-        print("aaaaaaa")
         selectedCalender.memo = memoTextView.text
         CalenderManager.sharedInstance.saveSelfCalendar(selectedCalender.type)
     }
     
     func moveUserEditViewController() {
-        PFUser.logOut()
-        CurrentUser.sharedInstance.user = nil
-        performSegueWithIdentifier("topView", sender: nil)
-//        let storyboard = UIStoryboard(name: "UserEdit", bundle: nil)
-//        let nextVC = storyboard.instantiateInitialViewController()!
-//        nextVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-//        navigationController?.pushViewController(nextVC, animated: true)
+//        PFUser.logOut()
+//        CurrentUser.sharedInstance.user = nil
+//        performSegueWithIdentifier("topView", sender: nil)
+        let storyboard = UIStoryboard(name: "UserEdit", bundle: nil)
+        let nextVC = storyboard.instantiateInitialViewController()!
+        nextVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 
 }

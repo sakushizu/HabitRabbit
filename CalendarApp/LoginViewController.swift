@@ -89,14 +89,16 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 showAlert("User name or password is empty")
             } else {
                 let user = User(name: nameCell.textField.text!, password: passwordCell.textField.text!)
-                user.login { (message) in
-                    if message == nil {
-                        print("login")
-                        self.performSegueWithIdentifier("calendar", sender: nil)
-                    } else {
-                        self.showAlert("password or username is invaild")
-                    }
-                }
+//                user.login { (message) in
+//                    if message == nil {
+//                        print("login")
+//                        self.performSegueWithIdentifier("calendar", sender: nil)
+//                    } else {
+//                        self.showAlert("password or username is invaild")
+//                    }
+//                }
+                User.firstLoginRails(user)
+                self.performSegueWithIdentifier("calendar", sender: nil)
             }
         } else if indexPath.section == 3 {
             //facebookログイン

@@ -75,9 +75,9 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CreateCell1
             cell.selectionStyle = .None
-            cell.defaultStampBtn.addTarget(self, action: "tappedStampBtn", forControlEvents: .TouchUpInside)
-            cell.libraryBtn.addTarget(self, action: "tappedLibraryBtn:", forControlEvents: .TouchUpInside)
-            cell.takePhotoBtn.addTarget(self, action: "tappedTakePhotoBtn", forControlEvents: .TouchUpInside)
+            cell.defaultStampBtn.addTarget(self, action: #selector(CreateTableView.tappedStampBtn), forControlEvents: .TouchUpInside)
+            cell.libraryBtn.addTarget(self, action: #selector(CreateTableView.tappedLibraryBtn(_:)), forControlEvents: .TouchUpInside)
+            cell.takePhotoBtn.addTarget(self, action: #selector(CreateTableView.tappedTakePhotoBtn), forControlEvents: .TouchUpInside)
             cell.stampImageView.image = stampImage
             return cell
         } else if indexPath.row == 1 {
@@ -86,13 +86,13 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
             return cell
         } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCellWithIdentifier("cell3", forIndexPath: indexPath) as! CreateCell3
-            cell.selectColorBtn.addTarget(self, action: "tappedSelectColorBtn", forControlEvents: .TouchUpInside)
+            cell.selectColorBtn.addTarget(self, action: #selector(CreateTableView.tappedSelectColorBtn), forControlEvents: .TouchUpInside)
             cell.selectedColorView.backgroundColor = selectedColor
             return cell
         
         } else if indexPath.row == 3 {
             let groupCell = tableView.dequeueReusableCellWithIdentifier("groupBtnCell", forIndexPath: indexPath) as? GroupBtnCell
-            groupCell!.button.addTarget(self, action: "tappedGroupBtn", forControlEvents: .TouchUpInside)
+            groupCell!.button.addTarget(self, action: #selector(CreateTableView.tappedGroupBtn), forControlEvents: .TouchUpInside)
             groupCell!.button.backgroundColor = UIColor.verylightRed()
 //            groupCell?.tintColor = UIColor.blackColor()
             groupCell!.button.setTitle(groupCellBtnText, forState: .Normal)
@@ -222,11 +222,11 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
         passwordView.addSubview(alertLabel)
         
         let newBtn = makeSubmitBtn("Later", x: 20, y: 120, width: 120 )
-        newBtn.addTarget(self, action: "tappedCancelBtn", forControlEvents: .TouchUpInside)
+        newBtn.addTarget(self, action: #selector(CreateTableView.tappedCancelBtn), forControlEvents: .TouchUpInside)
         passwordView.addSubview(newBtn)
         
         let joinBtn = makeSubmitBtn("Sign up / Login", x: 160, y: 120, width: 120 )
-        joinBtn.addTarget(self, action: "tappedLoginBtn", forControlEvents: .TouchUpInside)
+        joinBtn.addTarget(self, action: #selector(CreateTableView.tappedLoginBtn), forControlEvents: .TouchUpInside)
         passwordView.addSubview(joinBtn)
         
     }
@@ -253,11 +253,11 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
         passwordView.addSubview(cancelBtn)
         
         let newBtn = makeSubmitBtn("New", x: 20, y: 250, width: 120 )
-        newBtn.addTarget(self, action: "tappedNewBtn", forControlEvents: .TouchUpInside)
+        newBtn.addTarget(self, action: #selector(CreateTableView.tappedNewBtn), forControlEvents: .TouchUpInside)
         passwordView.addSubview(newBtn)
         
         let joinBtn = makeSubmitBtn("Join", x: 160, y: 250, width: 120 )
-        joinBtn.addTarget(self, action: "tappedJoinBtn", forControlEvents: .TouchUpInside)
+        joinBtn.addTarget(self, action: #selector(CreateTableView.tappedJoinBtn), forControlEvents: .TouchUpInside)
         passwordView.addSubview(joinBtn)
     }
     
@@ -315,7 +315,7 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
         cancelBtn.setBackgroundImage(UIImage(named: "cancel.png"), forState: .Normal)
         cancelBtn.backgroundColor = UIColor.appPinkColor()
         cancelBtn.layer.cornerRadius = cancelBtn.frame.width/2
-        cancelBtn.addTarget(self, action: "tappedCancelBtn", forControlEvents: .TouchUpInside)
+        cancelBtn.addTarget(self, action: #selector(CreateTableView.tappedCancelBtn), forControlEvents: .TouchUpInside)
         return cancelBtn
     }
     

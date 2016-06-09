@@ -6,6 +6,11 @@ use_frameworks!
 target 'CalendarApp' do
     pod 'YALSideMenu'
     pod 'RSKImageCropper'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
+    pod 'FBSDKShareKit'
+    pod 'Alamofire'
+    pod 'SwiftyJSON'
 end
 
 target 'CalendarAppTests' do

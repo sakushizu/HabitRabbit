@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0CK-Zz-RRA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0CK-Zz-RRA">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -34,7 +34,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="VJL-ot-XmD" customClass="CalenderCell" customModule="CalendarApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -59,24 +59,6 @@
                                     <constraint firstAttribute="height" constant="378" id="dyx-9B-Rza"/>
                                 </constraints>
                             </view>
-                            <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uoJ-vf-bzw">
-                                <rect key="frame" x="-4" y="616" width="383" height="51"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="2Ex-qU-v7T"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="" image="Calendar-32.png">
-                                        <size key="contentOffset" width="1" height="1"/>
-                                    </segment>
-                                    <segment title="" image="Audio Wave 2-32.png"/>
-                                    <segment title="" image="Document-32.png"/>
-                                    <segment title="" image="Settings.png"/>
-                                </segments>
-                                <color key="tintColor" red="1" green="0.39607843139999999" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="segmentedControllerValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Wxg-2x-4Cb"/>
-                                </connections>
-                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN1-qq-tj3">
                                 <rect key="frame" x="0.0" y="617" width="1" height="50"/>
                                 <color key="backgroundColor" red="0.90980392160000001" green="0.5568627451" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -130,16 +112,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Loe-Ky-Dnk">
-                                        <rect key="frame" x="41" y="120" width="293" height="38"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="38" id="Ta0-QR-ckn"/>
-                                            <constraint firstAttribute="width" constant="293" id="mpH-LR-ecF"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EdN-vz-Wqx">
                                         <rect key="frame" x="5" y="89" width="30" height="30"/>
                                         <constraints>
@@ -160,6 +132,16 @@
                                             <constraint firstAttribute="height" constant="44" id="NMp-Tq-k7L"/>
                                         </constraints>
                                     </navigationBar>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Loe-Ky-Dnk">
+                                        <rect key="frame" x="41" y="120" width="293" height="38"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="Ta0-QR-ckn"/>
+                                            <constraint firstAttribute="width" constant="293" id="mpH-LR-ecF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.64106440539999998" blue="0.64397006499999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -187,6 +169,24 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uoJ-vf-bzw">
+                                <rect key="frame" x="-4" y="628" width="383" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2Ex-qU-v7T"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="" image="Calendar-32.png">
+                                        <size key="contentOffset" width="1" height="1"/>
+                                    </segment>
+                                    <segment title="" image="Audio Wave 2-32.png"/>
+                                    <segment title="" image="Document-32.png"/>
+                                    <segment title="" image="Settings-32.png"/>
+                                </segments>
+                                <color key="tintColor" red="0.95294117647058818" green="0.61176470588235299" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="segmentedControllerValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Wxg-2x-4Cb"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -220,13 +220,13 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="V0C-uc-9fh">
-                        <barButtonItem key="leftBarButtonItem" image="Menu-25.png" id="ia0-vi-9rL">
+                        <barButtonItem key="leftBarButtonItem" image="Menu Filled-25.png" id="ia0-vi-9rL">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="toggleSideMenu:" destination="BYZ-38-t0r" id="z3i-nf-oJ2"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Plus Math-25.png" id="Mhe-1Y-Akb">
+                        <barButtonItem key="rightBarButtonItem" image="Plus-25.png" id="Mhe-1Y-Akb">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="tappedCreateCalendarBtn:" destination="BYZ-38-t0r" id="YeS-WR-kfw"/>
@@ -288,7 +288,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="gnY-YA-HJ5">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gnY-YA-HJ5" id="iXw-4J-hct">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -421,7 +421,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eEI-3f-lol">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eEI-3f-lol">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -443,7 +443,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mL8-8Z-xBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="224.5" y="-171.5"/>
+            <point key="canvasLocation" x="273.5" y="-29.5"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="HT6-ZP-nlj">
@@ -457,7 +457,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qWL-5h-LAL">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qWL-5h-LAL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -475,6 +475,7 @@
                     <connections>
                         <outlet property="tableView" destination="qWL-5h-LAL" id="MC2-fb-vhd"/>
                         <segue destination="rTE-CH-Gac" kind="show" identifier="login" id="UzA-wW-4R1"/>
+                        <segue destination="a5A-Je-dYY" kind="presentation" identifier="FBLogin" modalTransitionStyle="crossDissolve" id="qbP-vA-Fbh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X6m-Kz-xQu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -517,21 +518,21 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAm-Mw-MkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-964.5" y="455.5"/>
+            <point key="canvasLocation" x="-927.5" y="477.5"/>
         </scene>
     </scenes>
     <resources>
         <image name="Audio Wave 2-32.png" width="32" height="32"/>
         <image name="Calendar-32.png" width="32" height="32"/>
         <image name="Document-32.png" width="32" height="32"/>
-        <image name="Menu-25.png" width="25" height="25"/>
-        <image name="Plus Math-25.png" width="25" height="25"/>
-        <image name="Settings.png" width="25" height="25"/>
+        <image name="Menu Filled-25.png" width="25" height="25"/>
+        <image name="Plus-25.png" width="25" height="25"/>
+        <image name="Settings-32.png" width="32" height="32"/>
         <image name="ちっちさんImage.png" width="640" height="1832"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lbe-dj-EI8"/>
-        <segue reference="jVg-AB-bkL"/>
-        <segue reference="H8t-bE-U6O"/>
+        <segue reference="qbP-vA-Fbh"/>
+        <segue reference="2tu-i9-bbS"/>
+        <segue reference="UzA-wW-4R1"/>
     </inferredMetricsTieBreakers>
 </document>

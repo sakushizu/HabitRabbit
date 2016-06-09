@@ -17,11 +17,23 @@ class TopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if PFUser.currentUser() != nil {
-            print(PFUser.currentUser())
+        
+//        if PFUser.currentUser() != nil {
+//            print(PFUser.currentUser())
+//            performSegueWithIdentifier("calendar", sender: nil)
+//        }
+        
+//        CalenderManager.sharedInstance.resetDefaults()
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let tokenDic = defaults.objectForKey("tokenDic") as? Dictionary<String, String> {
+            if tokenDic.isEmpty {
+                return
+            }
+            User.loginRails(tokenDic)
             performSegueWithIdentifier("calendar", sender: nil)
         }
-
+        
         signUpBtn.layer.cornerRadius = 2
         signUpBtn.clipsToBounds = true
         
@@ -44,7 +56,7 @@ class TopViewController: UIViewController {
     @IBAction func tappedSkipLogInBtn(sender: UIButton) {
         performSegueWithIdentifier("calendar", sender: nil)
         CurrentUser.sharedInstance.type = "guest"
-        let user = User(name: "guest", password: "00000000", mailAddress: "nil", userImage: UIImage(named: "User")!)
+        let user = User(name: "guest", password: "00000000", mailAddress: "nil", userImage: UIImage(named: "user")!)
         CurrentUser.sharedInstance.user = user
     }
 

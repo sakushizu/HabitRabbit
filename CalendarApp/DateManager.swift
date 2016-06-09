@@ -34,7 +34,7 @@ class DateManager: UIView {
     
     //表記する日にちの取得
     func dateForCellAtIndexPath(numberOfItems: Int) {
-        for var i = 0; i < numberOfItems; i++ {
+        for i in 0 ..< numberOfItems {
             let ordinalityOfFirstDay = NSCalendar.currentCalendar().ordinalityOfUnit(NSCalendarUnit.Day, inUnit: NSCalendarUnit.WeekOfMonth, forDate: firstDateOfMonth())
             let dateComponents = NSDateComponents()
             dateComponents.day = i - (ordinalityOfFirstDay - 1)

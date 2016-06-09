@@ -6,6 +6,9 @@
 //  Copyright © 2015年 Sakuramoto Shizuka. All rights reserved.
 //
 import Parse
+import FBSDKCoreKit
+import FBSDKLoginKit
+import FBSDKShareKit
 import UIKit
 
 @UIApplicationMain
@@ -33,19 +36,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("DQWvgvaLsMqKxsHwaHYfg6zeIiWIiX1BFosaa4uh",
             clientKey: "8d0uBcxTZdM4UxjJEFs1EGXkedj0wJ3ctYMCJTQm")
         
-        if let PFCurrentUser = PFUser.currentUser() {
-            CurrentUser.sharedInstance.user = User(objectId: PFCurrentUser.objectId!, name: PFCurrentUser.username!)
-            let userImageFile = PFCurrentUser["image"] as! PFFile
-            userImageFile.getDataInBackgroundWithBlock({ (imageData, error) -> Void in
-                if error == nil {
-                    CurrentUser.sharedInstance.user.userImage = UIImage(data: imageData!)
-                }
-            })
-        }
+//        if let PFCurrentUser = PFUser.currentUser() {
+//            CurrentUser.sharedInstance.user = User(objectId: PFCurrentUser.objectId!, name: PFCurrentUser.username!)
+//            let userImageFile = PFCurrentUser["image"] as! PFFile
+//            userImageFile.getDataInBackgroundWithBlock({ (imageData, error) -> Void in
+//                if error == nil {
+//                    CurrentUser.sharedInstance.user.userImage = UIImage(data: imageData!)
+//                }
+//            })
+//        }
+        
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
+        
     }
     
     
@@ -65,11 +72,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
+        
+        FBSDKAppEvents.activateApp()
+        
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application,openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
 
