@@ -171,6 +171,15 @@ class User: NSObject {
         defaults.synchronize()
     }
     
+    func logout() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var tokenDic = defaults.objectForKey("tokenDic") as? Dictionary<String, String>
+        tokenDic!["auth"] = ""
+        defaults.setObject(tokenDic, forKey: "tokenDic")
+        defaults.synchronize()
+        CurrentUser.sharedInstance.user = nil
+    }
+    
     
 //    class func getUserData(){
 //        let graphRequest = FBSDKGraphRequest(graphPath: "me",

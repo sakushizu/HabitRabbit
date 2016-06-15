@@ -376,13 +376,11 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func moveUserEditViewController() {
-//        PFUser.logOut()
-//        CurrentUser.sharedInstance.user = nil
-//        performSegueWithIdentifier("topView", sender: nil)
         let storyboard = UIStoryboard(name: "UserEdit", bundle: nil)
         let nextVC = storyboard.instantiateInitialViewController()!
-        nextVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-        navigationController?.pushViewController(nextVC, animated: true)
+        self.presentViewController(nextVC, animated: true, completion: nil)
+//        nextVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+//        navigationController?.pushViewController(nextVC, animated: true)
     }
 
 }
