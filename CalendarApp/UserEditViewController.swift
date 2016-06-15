@@ -102,9 +102,10 @@ class UserEditViewController: UIViewController, UITableViewDelegate, UITableView
                     })
                 }
             } else {
-                PFUser.logOut()
-                CurrentUser.sharedInstance.user = nil
-//                performSegueWithIdentifier("topView", sender: nil)
+                CurrentUser.sharedInstance.user.logout()
+                //top画面に戻りたい
+                self.moveTopVC()
+                
             }
             
         } else if indexPath.section == 1 {
@@ -124,6 +125,14 @@ class UserEditViewController: UIViewController, UITableViewDelegate, UITableView
         if userImageCell.selected {
             
         }
+    }
+    
+    //logout後の画面遷移
+    func moveTopVC () {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextView = storyboard.instantiateViewControllerWithIdentifier("topView")
+        let nc = UINavigationController(rootViewController: nextView)
+        self.presentViewController(nc, animated: true, completion: nil)
     }
     
     //アラートを表示させるメソッドを定義
