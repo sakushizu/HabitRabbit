@@ -164,14 +164,11 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if(!isLogin){
             loginManager.logInWithReadPermissions(["public_profile"], fromViewController: self) { (result, error) in
                 guard error == nil else {
-//                    print("Process error")
                     return
                 }
                 if result.isCancelled {
-//                    print("Cancelled")
                 } else {
-//                    print("Logged in")
-                    User.getUserData()
+//                    User.getUserData()
                     self.performSegueWithIdentifier("FBLogin", sender: nil)
 //                    self.customButton.setTitle("Logout", forState: .Normal)
                 }

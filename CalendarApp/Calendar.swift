@@ -8,13 +8,16 @@
 
 import UIKit
 
-class Calender: NSObject {
+class Calendar: NSObject {
     
-    static let sharedInstance = Calender()
+    static let sharedInstance = Calendar()
     
     //カレンダーの情報をもつ辞書型
     var selectedDates: Dictionary<NSDate, String> = [:]
     var title: String?
+    var color_r: Int!
+    var color_g: Int!
+    var color_b: Int!
     var color: UIColor!
     var image: UIImage!
     

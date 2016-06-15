@@ -10,14 +10,14 @@ import UIKit
 
 class CalenderManager: NSObject {
     static let sharedInstance = CalenderManager()
-    var calender: Calender!
-    var calendarCollection = [Calender]()
-    var groupCalendarCollection = [Calender]()
+    var calender: Calendar!
+    var calendarCollection = [Calendar]()
+    var groupCalendarCollection = [Calendar]()
     
     
     var key: String!
 
-    func addCalendarCollection(calendar: Calender, calendarType: String){
+    func addCalendarCollection(calendar: Calendar, calendarType: String){
         if calendarType == "private" {
             self.calendarCollection.append(calendar)
         } else {
@@ -79,7 +79,7 @@ class CalenderManager: NSObject {
         }
     }
     
-    class func convertDictionary(calendar: Calender, calendarType: String) -> Dictionary<String, AnyObject> {
+    class func convertDictionary(calendar: Calendar, calendarType: String) -> Dictionary<String, AnyObject> {
         var dic = Dictionary<String, AnyObject>()
         dic["title"] = calendar.title
         dic["memo"] = calendar.memo
@@ -93,8 +93,8 @@ class CalenderManager: NSObject {
         return dic
     }
     
-    class func convertCalendarModel(attiributes: Dictionary<String, AnyObject>) -> Calender {
-        let calendar = Calender()
+    class func convertCalendarModel(attiributes: Dictionary<String, AnyObject>) -> Calendar {
+        let calendar = Calendar()
         calendar.title = attiributes["title"] as? String
         calendar.memo = attiributes["memo"] as! String
         if let object_id = attiributes["object_id"] as? String {

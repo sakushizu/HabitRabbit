@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import Parse
 
-class CalenderViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, SideMenuDelegate, UIBarPositioningDelegate, UINavigationBarDelegate, UITextViewDelegate, MenuTableViewControllerToCalendarControllerDelegate {
+class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, SideMenuDelegate, UIBarPositioningDelegate, UINavigationBarDelegate, UITextViewDelegate, MenuTableViewControllerToCalendarControllerDelegate {
     
     let dateManager = DateManager()
     let daysPerWeek: Int = 7
@@ -50,7 +50,7 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
        let menuTableViewController =  MenuTableViewController()
         menuTableViewController.customeDelegate = self
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CalenderViewController.saveCaendarMemo), name: UIApplicationWillTerminateNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CalendarViewController.saveCaendarMemo), name: UIApplicationWillTerminateNotification, object: nil)
         
         segmentContol.hidden = true
         segmentRightLineView.hidden = true
@@ -112,7 +112,7 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CalenderCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CalendarCell
         //テキストカラー
         if (indexPath.row % 7 == 0) {
             cell.textLabel.textColor = UIColor.lightRed()
@@ -174,21 +174,21 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if selectedCalender != nil {
             let tappedDate = dateManager.currentMonthOfDates[indexPath.row]
-            let dates = Calender.sharedInstance.selectedDates
-            if Calender.sharedInstance.type == "private" {
+            let dates = Calendar.sharedInstance.selectedDates
+            if Calendar.sharedInstance.type == "private" {
                 if (dates[tappedDate] != nil) {
-                    Calender.sharedInstance.deletedate(tappedDate)
+                    Calendar.sharedInstance.deletedate(tappedDate)
                 } else {
-                    Calender.sharedInstance.appendSelectedDates(tappedDate)
+                    Calendar.sharedInstance.appendSelectedDates(tappedDate)
                 }
                 self.calenderCollectionView.reloadData()
             } else {
                 //parseに保存
                 GroupCalendar.sharedInstance.saveTappedDate(tappedDate){ () -> Void in
                     if (dates[tappedDate] != nil) {
-                        Calender.sharedInstance.deletedate(tappedDate)
+                        Calendar.sharedInstance.deletedate(tappedDate)
                     } else {
-                        Calender.sharedInstance.appendSelectedDates(tappedDate)
+                        Calendar.sharedInstance.appendSelectedDates(tappedDate)
                     }
                     self.calenderCollectionView.reloadData()
                 }
@@ -199,7 +199,7 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     
     //タップ済みかの判定
     func jadgeIfCellTapped(indexPath: NSIndexPath) -> Bool {
-        let dates = Calender.sharedInstance.selectedDates
+        let dates = Calendar.sharedInstance.selectedDates
         for dateDic in dates.keys {
             if dateDic == dateManager.currentMonthOfDates[indexPath.row] {
                 return true
@@ -259,11 +259,11 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
             
         } else if indexPath.section == 1 {
             selectedCalender = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
-            Calender.sharedInstance.type = "private"
+            Calendar.sharedInstance.type = "private"
             setSelectedCalendarView()
         } else {
             selectedCalender = CalenderManager.sharedInstance.groupCalendarCollection[indexPath.row]
-            Calender.sharedInstance.type = "group"
+            Calendar.sharedInstance.type = "group"
             setSelectedCalendarView()
         }
         setMemoViewLayer()
@@ -283,8 +283,8 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func setSelectedCalendarView() {
         calendarTitle.text = selectedCalender.title
-        Calender.sharedInstance.object_id = selectedCalender.object_id
-        Calender.sharedInstance.title = selectedCalender.title
+        Calendar.sharedInstance.object_id = selectedCalender.object_id
+        Calendar.sharedInstance.title = selectedCalender.title
         calenderHeaderView.backgroundColor = selectedCalender.color
         segmentContol.hidden = false
         segmentContol.tintColor = selectedCalender.color
@@ -292,8 +292,8 @@ class CalenderViewController: UIViewController, UICollectionViewDataSource, UICo
         segmentLeftLineView.backgroundColor = selectedCalender.color
         segmentRightLineView.hidden = false
         segmentRightLineView.backgroundColor = selectedCalender.color
-        Calender.sharedInstance.fetchDates()
-        if Calender.sharedInstance.type == "group" {
+        Calendar.sharedInstance.fetchDates()
+        if Calendar.sharedInstance.type == "group" {
             self.setRecordView()
         } else {
         }

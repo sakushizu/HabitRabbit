@@ -25,27 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // https://parse.com/docs/ios/guide#local-datastore
         Parse.enableLocalDatastore()
         
-        // ナビゲーションバーの影を消す
-//        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarPosition: .Any, barMetrics: .Default)
-        
         UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarPosition: .TopAttached, barMetrics: .Default)
         UINavigationBar.appearance().shadowImage = UIImage()
         
         
-        // Initialize Parse.
-        Parse.setApplicationId("DQWvgvaLsMqKxsHwaHYfg6zeIiWIiX1BFosaa4uh",
-            clientKey: "8d0uBcxTZdM4UxjJEFs1EGXkedj0wJ3ctYMCJTQm")
-        
-//        if let PFCurrentUser = PFUser.currentUser() {
-//            CurrentUser.sharedInstance.user = User(objectId: PFCurrentUser.objectId!, name: PFCurrentUser.username!)
-//            let userImageFile = PFCurrentUser["image"] as! PFFile
-//            userImageFile.getDataInBackgroundWithBlock({ (imageData, error) -> Void in
-//                if error == nil {
-//                    CurrentUser.sharedInstance.user.userImage = UIImage(data: imageData!)
-//                }
-//            })
-//        }
-        
+//        // Initialize Parse.
+//        Parse.setApplicationId("DQWvgvaLsMqKxsHwaHYfg6zeIiWIiX1BFosaa4uh",
+//            clientKey: "8d0uBcxTZdM4UxjJEFs1EGXkedj0wJ3ctYMCJTQm")
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)

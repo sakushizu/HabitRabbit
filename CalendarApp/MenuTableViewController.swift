@@ -95,8 +95,8 @@ class MenuTableViewController: UITableViewController {
             let userCell = self.tableView.dequeueReusableCellWithIdentifier("sideUserCell", forIndexPath: indexPath) as! sideUserTableViewCell
             userCell.backgroundColor = UIColor.clearColor()
             if CurrentUser.sharedInstance.user == nil {
-                userCell.userImageView.image = CurrentUser.sharedInstance.user.userImage
-                userCell.nameLabel.text = CurrentUser.sharedInstance.user.name
+                userCell.userImageView.image = UIImage(named: "user")
+                userCell.nameLabel.text = "Guest"
             } else {
                 userCell.userImageView.image = CurrentUser.sharedInstance.user.userImage
                 userCell.nameLabel.text = CurrentUser.sharedInstance.user.name

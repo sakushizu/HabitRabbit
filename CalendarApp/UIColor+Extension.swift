@@ -67,9 +67,9 @@ extension UIColor {
         return UIColor(red: 189.0 / 255, green: 195.0 / 255, blue: 199.0 / 255, alpha: 1)
     }
     
-    class func hexStr (var hexStr : NSString, let alpha : CGFloat) -> UIColor {
-        hexStr = hexStr.stringByReplacingOccurrencesOfString("#", withString: "")
-        let scanner = NSScanner(string: hexStr as String)
+    class func hexStr (hexStr : NSString, let alpha : CGFloat) -> UIColor {
+        let hexColor = hexStr.stringByReplacingOccurrencesOfString("#", withString: "")
+        let scanner = NSScanner(string: hexColor as String)
         var color: UInt32 = 0
         if scanner.scanHexInt(&color) {
             let r = CGFloat((color & 0xFF0000) >> 16) / 255.0
@@ -80,6 +80,27 @@ extension UIColor {
         } else {
 //            print("invalid hex string")
             return UIColor.whiteColor()
+        }
+    }
+    
+    //UIColorからRGBの取得
+    func rgb() -> Int? {
+        var fRed : CGFloat = 0
+        var fGreen : CGFloat = 0
+        var fBlue : CGFloat = 0
+        var fAlpha: CGFloat = 0
+        if self.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha) {
+            let iRed = Int(fRed * 255.0)
+            let iGreen = Int(fGreen * 255.0)
+            let iBlue = Int(fBlue * 255.0)
+            let iAlpha = Int(fAlpha * 255.0)
+            
+            //  (Bits 24-31 are alpha, 16-23 are red, 8-15 are green, 0-7 are blue).
+            let rgb = (iAlpha << 24) + (iRed << 16) + (iGreen << 8) + iBlue
+            return rgb
+        } else {
+            // Could not extract RGBA components:
+            return nil
         }
     }
 

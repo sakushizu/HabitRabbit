@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalenderCell: UICollectionViewCell {
+class CalendarCell: UICollectionViewCell {
     var textLabel: UILabel!
     var imageView: UIImageView!
     var circleView: UIView!

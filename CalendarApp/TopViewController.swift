@@ -17,21 +17,16 @@ class TopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-//        if PFUser.currentUser() != nil {
-//            print(PFUser.currentUser())
-//            performSegueWithIdentifier("calendar", sender: nil)
-//        }
-        
 //        CalenderManager.sharedInstance.resetDefaults()
         
         let defaults = NSUserDefaults.standardUserDefaults()
         if let tokenDic = defaults.objectForKey("tokenDic") as? Dictionary<String, String> {
-            if tokenDic.isEmpty {
+            if tokenDic["auth"] == "" {
                 return
             }
-            User.loginRails(tokenDic)
-            performSegueWithIdentifier("calendar", sender: nil)
+            User.loginRails(tokenDic, callback: {
+               self.performSegueWithIdentifier("calendar", sender: nil)
+            })
         }
         
         signUpBtn.layer.cornerRadius = 2

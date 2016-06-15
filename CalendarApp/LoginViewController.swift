@@ -15,7 +15,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tableView: UITableView!
     
     let images = ["User", "Lock"]
-    let placeholderTexts = ["Username", "Password"]
+    let placeholderTexts = ["Email", "Password"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,22 +83,15 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 2 {
-            let nameCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! CreateUserTableViewCell
+            let emailCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! CreateUserTableViewCell
             let passwordCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! CreateUserTableViewCell
-            if nameCell.textField.text!.isEmpty || passwordCell.textField.text!.isEmpty {
+            if emailCell.textField.text!.isEmpty || passwordCell.textField.text!.isEmpty {
                 showAlert("User name or password is empty")
             } else {
-                let user = User(name: nameCell.textField.text!, password: passwordCell.textField.text!)
-//                user.login { (message) in
-//                    if message == nil {
-//                        print("login")
-//                        self.performSegueWithIdentifier("calendar", sender: nil)
-//                    } else {
-//                        self.showAlert("password or username is invaild")
-//                    }
-//                }
-                User.firstLoginRails(user)
-                self.performSegueWithIdentifier("calendar", sender: nil)
+                let user = User(email: emailCell.textField.text!, password: passwordCell.textField.text!)
+                User.firstLoginRails(user){ () -> Void in
+                    self.performSegueWithIdentifier("calendar", sender: nil)
+                }
             }
         } else if indexPath.section == 3 {
             //facebookログイン

@@ -14,6 +14,7 @@ import RSKImageCropper
 class CreateCalendarViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, RSKImageCropViewControllerDelegate, RSKImageCropViewControllerDataSource, CreateTableViewDelegate, ColorTableViewControllerDelegate {
     
     var createTableView: CreateTableView!
+    var colorTableViewController = ColorTableViewController()
     var cell1: CreateCell1!
     var cell2: CreateCell2!
     var cell3: CreateCell3!
@@ -22,6 +23,7 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
     
     var selectImage: UIImage!
     var selectColor = UIColor.redColor()
+    var selectedThemeColor: CalendarThemeColor?
     
     var pickerVC: UIImagePickerController!
     
@@ -36,6 +38,8 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
         
         createTableView = view as! CreateTableView
         createTableView.customDelegate = self
+        ColorTableViewController().customDelegate = self
+        
         
         // Do any additional setup after loading the view.
     }
@@ -65,8 +69,8 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
         } else {
             let navigationVC = self.navigationController!
             navigationVC.popViewControllerAnimated(false)
-            let calendarVC = navigationVC.viewControllers.last as! CalenderViewController
-            if Calender.sharedInstance.password != "" {
+            let calendarVC = navigationVC.viewControllers.last as! CalendarViewController
+            if Calendar.sharedInstance.password != "" {
                 let groupCell =  createTableView.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0)) as! GroupBtnCell
                 if groupCell.button.titleLabel?.text == "Join Calendar" {
                     GroupCalendar.sharedInstance.joinParse(cell2.titleTextField.text!) { () -> Void in
@@ -74,13 +78,18 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
                         calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
                     }
                 } else {
-                    GroupCalendar.sharedInstance.createParse(cell2.titleTextField.text!) { () -> Void in
-                        self.save("group")
-                        calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
-                    }
+                    let calendar = self.save("group")
+                    StockCalendars.saveCalendarRails(calendar)
+                    calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+                    
+//                    GroupCalendar.sharedInstance.createParse(cell2.titleTextField.text!) { () -> Void in
+//                        self.save("group")
+//                        calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+//                    }
                 }
             } else {
-                self.save("private")
+                let calendar = self.save("group")
+                StockCalendars.saveCalendarRails(calendar)
                 calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
             }
         }
@@ -91,13 +100,17 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
     }
     
     //controllerの処理
-    func save(calendarType: String) {
-        let calendar = Calender()
+    func save(calendarType: String) -> Calendar {
+        let calendar = Calendar()
         calendar.title = cell2.titleTextField.text!
         calendar.image = cell1.stampImageView.image
-        calendar.color = cell3.selectedColorView.backgroundColor
-        calendar.object_id = Calender.sharedInstance.object_id
+        calendar.color = selectedThemeColor?.color
+        calendar.color_r = selectedThemeColor?.r
+        calendar.color_g = selectedThemeColor?.g
+        calendar.color_b = selectedThemeColor?.b
+        calendar.object_id = Calendar.sharedInstance.object_id
         CalenderManager.sharedInstance.addCalendarCollection(calendar, calendarType: calendarType)
+        return calendar
     }
 
     func libraryBtn() {
@@ -215,8 +228,9 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
         createTableView.setImage(croppedImage)
     }
 
-    func setSelectedColor(color: UIColor) {
-        createTableView.setColor(color)
+    func setSelectedColor(selectedColor: CalendarThemeColor) {
+        selectedThemeColor = selectedColor
+        createTableView.setColor(selectedColor.color)
     }
     
     //アラート表示のメソッド

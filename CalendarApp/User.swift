@@ -1,4 +1,5 @@
-    //
+
+//
 //  User.swift
 //  CalendarApp
 //
@@ -40,8 +41,8 @@ class User: NSObject {
         self.name = name
     }
     
-    init(name: String, password: String) {
-        self.name = name
+    init(email: String, password: String) {
+        self.mailAddress = email
         self.password = password
     }
     
@@ -56,36 +57,7 @@ class User: NSObject {
         self.password = password
         self.mailAddress = mailAddress
     }
-    
-    func signUp(callback: (message: String?) -> Void) {
-    let user = PFUser()
-        user.username = name
-        user.password = password
-        user["mailAddress"] = mailAddress
-        user["image"] = userImage!.createFileForm()
-        user.signUpInBackgroundWithBlock { (success, error) in
-            callback(message: error?.userInfo["error"] as? String)
-        }
-    }
-    
-    func login(callback: (message: String?) -> Void) {
-        PFUser.logInWithUsernameInBackground(self.name, password: self.password) { (user, error) -> Void in
-            if let PFCurrentUser = PFUser.currentUser() {
-                CurrentUser.sharedInstance.user = User(objectId: PFCurrentUser.objectId!, name: PFCurrentUser.username!)
-                let userImageFile = PFCurrentUser["image"] as! PFFile
-                userImageFile.getDataInBackgroundWithBlock({ (imageData, error) -> Void in
-                    if error == nil {
-                        CurrentUser.sharedInstance.user.userImage = UIImage(data: imageData!)
-                    }
-                })
-                callback(message: nil)
-            } else {
-                callback(message: error?.userInfo["error"] as? String)
-            }
-        }
         
-    }
-    
     // RailsSignUp
     class func signUpRails(user: User) {
         
@@ -94,70 +66,80 @@ class User: NSObject {
                 "name": user.name,
                 "email": user.mailAddress,
                 "password": user.password,
-                "password_confirmation": user.password
+                "password_confirmation": user.password,
             ]
         ]
         
         // HTTP通信
-        Alamofire.request(.POST, "http://localhost:3000/users.json", parameters: params, encoding: .URL)
-            .responseJSON { response in
+        Alamofire.request(
+            .POST,
+            "http://localhost:3000/users.json",
+            parameters: params,
+            encoding: .URL
+            ).responseJSON { response in
                 
                 guard response.result.error == nil else {
                     // Alert
                     return
                 }
                 
-                guard let responseValue = response.result.value else {
+                guard (response.result.value != nil) else {
                     return
                 }
-                
-                _ = JSON(responseValue)
             }
         
     }
     
-    //RailsLogin
-    class func loginRails(tokenDic: Dictionary<String, String>) {
+    //RailsLogin(outh取得済み)
+    class func loginRails(tokenDic: Dictionary<String, String>, callback: () -> Void) {
         
-        let params: [String: AnyObject] = [
-            "token": tokenDic["auth"]!,
-            "email": tokenDic["email"]!
-        ]
-        
+        let token = tokenDic["auth"]! as String
         // HTTP通信
-        Alamofire.request(.POST, "http://localhost:3000/users/sign_in.json", parameters: params, encoding: .URL)
-            .responseJSON { response in
+        Alamofire.request(
+            .POST,
+            "http://localhost:3000/user_sessions/create_with_token.json",
+            parameters: nil,
+            headers: ["access_token": token],
+            encoding: .URL
+            ).responseJSON { response in
                 guard response.result.error == nil else {
+                    print("result.error")
                     // Alert
                     return
                 }
-                
                 guard let responseValue = response.result.value else {
+                    print("responseValue")
                     return
                 }
-                
+
                 let responseJSON = JSON(responseValue)
-                let name = responseJSON["name"].stringValue
-                let email = responseJSON["email"].stringValue
-                let user = User.init(name: name, mail: email)
+                let name = responseJSON["user"]["name"].stringValue
+                let email = responseJSON["user"]["email"].stringValue
+                let user = User(name: name, mail: email)
                 CurrentUser.sharedInstance.user = user
-                CurrentUser.sharedInstance.authentication_token = responseJSON["authentication_token"].stringValue
+                
+                CurrentUser.sharedInstance.authentication_token = responseJSON["access_token"].stringValue
+                callback()
         }
-        
     }
     
-    class func firstLoginRails(user: User) {
+    class func firstLoginRails(user: User, callback: () -> Void) {
         
         let params: [String: AnyObject] = [
             "user": [
-                "name": user.name,
+                "email": user.mailAddress,
                 "password": user.password
             ]
         ]
         
         // HTTP通信
-        Alamofire.request(.POST, "http://localhost:3000/users/sign_in.json", parameters: params, encoding: .URL)
-            .responseJSON { response in
+        
+        Alamofire.request(
+            .POST,
+            "http://localhost:3000/user_sessions.json",
+            parameters: params,
+            encoding: .JSON
+            ).responseJSON { response in
                 guard response.result.error == nil else {
                     // Alert
                     return
@@ -168,16 +150,15 @@ class User: NSObject {
                 }
                 
                 let responseJSON = JSON(responseValue)
-                let name = responseJSON["name"].stringValue
-                let email = responseJSON["email"].stringValue
-                let user = User.init(name: name, mail: email)
+                let name = responseJSON["user"]["name"].stringValue
+                let email = responseJSON["user"]["email"].stringValue
+                let user = User(name: name, mail: email)
                 CurrentUser.sharedInstance.user = user
                 
-                CurrentUser.sharedInstance.authentication_token = responseJSON["authentication_token"].stringValue
+                CurrentUser.sharedInstance.authentication_token = responseJSON["access_token"].stringValue
                 self.saveAuthenticationToken()
-
+                callback()
         }
-        
     }
     
     class func saveAuthenticationToken() {
@@ -191,22 +172,20 @@ class User: NSObject {
     }
     
     
-    class func getUserData(){
-        let graphRequest = FBSDKGraphRequest(graphPath: "me",
-                                             parameters: ["fields": "id,name"])
-        
-        graphRequest.startWithCompletionHandler({ (connection, result, error) in
-            guard error == nil && result != nil else{
-                print("Error: \(error)")
-                return
-            }
-            
-            print("User: \(result)")
-        })
-    }
-    
+//    class func getUserData(){
+//        let graphRequest = FBSDKGraphRequest(graphPath: "me",
+//                                             parameters: ["fields": "id,name"])
+//        
+//        graphRequest.startWithCompletionHandler({ (connection, result, error) in
+//            guard error == nil && result != nil else{
+//                print("Error: \(error)")
+//                return
+//            }
+//            
+//            print("User: \(result)")
+//        })
+//    }
     
     func update(callback: (message: String?) -> Void){
-        _ = PFUser.currentUser()
     }
 }
