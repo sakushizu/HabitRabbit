@@ -331,7 +331,7 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
     }
     
     func tappedCancelBtn() {
-        Calender.sharedInstance.password = ""
+        Calendar.sharedInstance.password = ""
         groupCellBtnText = "Create or Join to Group Calendar"
 //        groupCellBtnTextColor = UIColor.lightRed()
         groupCellBtnFont = UIFont(name: "HelveticaNeue-Light", size: 17)
@@ -342,7 +342,7 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
     
     func tappedNewBtn() {
         if textField.text != "" {
-            Calender.sharedInstance.password = textField.text!
+            Calendar.sharedInstance.password = textField.text!
             groupCellBtnText = "Create Group Calendar"
             groupCellBtnFont = UIFont(name: "HelveticaNeue", size: 20)
 //            groupCellBtnTextColor = UIColor.whiteColor()
@@ -354,7 +354,7 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
     
     func tappedJoinBtn() {
         if textField.text != "" {
-            Calender.sharedInstance.password = textField.text!
+            Calendar.sharedInstance.password = textField.text!
             groupCellBtnText = "Join Calendar"
             groupCellBtnFont = UIFont(name: "HelveticaNeue", size: 20)
 //            groupCellBtnTextColor = UIColor.whiteColor()
@@ -384,7 +384,7 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
     }
     
     func changeBtnBackGroundColor() -> UIColor {
-        if Calender.sharedInstance.password != "" {
+        if Calendar.sharedInstance.password != "" {
             return UIColor.salmonPink()
         } else {
             return UIColor.verylightRed()

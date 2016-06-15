@@ -25,7 +25,7 @@ class RecordTableView: UITableView, UITableViewDataSource, UITableViewDelegate  
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if Calender.sharedInstance.type == "private" {
+        if Calendar.sharedInstance.type == "private" {
             return 1
         } else {
             return 2
@@ -67,7 +67,7 @@ class RecordTableView: UITableView, UITableViewDataSource, UITableViewDelegate  
                 cell?.rankingNumLabel.hidden = true
                 cell?.userNameLabel.text = CurrentUser.sharedInstance.user.name
                 cell?.userImageView.image = CurrentUser.sharedInstance.user.userImage
-                cell?.recordLabel.text = "\(Calender.sharedInstance.selectedDates.count)completions"
+                cell?.recordLabel.text = "\(Calendar.sharedInstance.selectedDates.count)completions"
                 return cell!
             } else {
                 let userDic = GroupCalendar.sharedInstance.userCountArray[indexPath.row]
