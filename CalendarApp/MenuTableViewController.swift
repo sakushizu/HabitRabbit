@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import SDWebImage
 
 protocol MenuTableViewControllerDelegate {
     func menuControllerDidSelectRow(indexPath:NSIndexPath)
@@ -21,6 +22,7 @@ protocol MenuTableViewControllerDelegate {
 class MenuTableViewController: UITableViewController {
     
     let sectionTitles = ["", "Private", "Group"]
+    let user = CurrentUser.sharedInstance.user
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +100,7 @@ class MenuTableViewController: UITableViewController {
                 userCell.userImageView.image = UIImage(named: "user")
                 userCell.nameLabel.text = "Guest"
             } else {
-                userCell.userImageView.image = CurrentUser.sharedInstance.user.userImage
+                userCell.userImageView.sd_setImageWithURL(NSURL(string: user.avatarUrl))
                 userCell.nameLabel.text = CurrentUser.sharedInstance.user.name
             }
             userCell.settingButton.addTarget(self, action: #selector(MenuTableViewController.tappedSettingBtn), forControlEvents: .TouchUpInside)

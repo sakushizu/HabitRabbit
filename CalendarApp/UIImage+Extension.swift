@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import SDWebImage
 
 extension UIImage {
     
@@ -35,4 +36,5 @@ extension UIImage {
         
         return resizedImage
     }
+    
 }
