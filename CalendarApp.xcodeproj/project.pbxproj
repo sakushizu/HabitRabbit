@@ -49,6 +49,7 @@
 		0B7586AF1C22A92F00816379 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7586AE1C22A92F00816379 /* User.swift */; };
 		0B7586B11C22AFF500816379 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7586B01C22AFF500816379 /* UIImage+Extension.swift */; };
 		0B7586B31C22DFF200816379 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7586B21C22DFF200816379 /* CurrentUser.swift */; };
+		0B76FFD51D19399B00171A3A /* NSURL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B76FFD41D19399B00171A3A /* NSURL+Extension.swift */; };
 		0B825A401D0969B3008AB971 /* StockCalendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B825A3F1D0969B3008AB971 /* StockCalendars.swift */; };
 		0B8307381CFECA1400C1C47C /* shizuka.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B8307371CFECA1400C1C47C /* shizuka.jpg */; };
 		0B8441261CDCB2E100A9071C /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B8441251CDCB2E100A9071C /* setting.png */; };
@@ -182,6 +183,7 @@
 		0B7586AE1C22A92F00816379 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0B7586B01C22AFF500816379 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		0B7586B21C22DFF200816379 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		0B76FFD41D19399B00171A3A /* NSURL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Extension.swift"; sourceTree = "<group>"; };
 		0B825A3F1D0969B3008AB971 /* StockCalendars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockCalendars.swift; sourceTree = "<group>"; };
 		0B8307371CFECA1400C1C47C /* shizuka.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shizuka.jpg; sourceTree = "<group>"; };
 		0B8441251CDCB2E100A9071C /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 				0B0DD7111C05823900BF9E7F /* NSDate+Extension.swift */,
 				0B7586B01C22AFF500816379 /* UIImage+Extension.swift */,
 				0BD3453E1C2651C60056C44A /* UIButton+Extension.swift */,
+				0B76FFD41D19399B00171A3A /* NSURL+Extension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B76FFD51D19399B00171A3A /* NSURL+Extension.swift in Sources */,
 				0BE7F6531C2128BA00DD76B5 /* GroupBtnCell.swift in Sources */,
 				0BCD96C71C1E89BB007E9B92 /* StampCollectionView.swift in Sources */,
 				0BED601B1C19334300022AA5 /* SideMenu.swift in Sources */,

@@ -11,6 +11,7 @@ target 'CalendarApp' do
     pod 'FBSDKShareKit'
     pod 'Alamofire'
     pod 'SwiftyJSON'
+    pod 'SDWebImage'
 end
 
 target 'CalendarAppTests' do

@@ -28,6 +28,7 @@ class User: NSObject {
     var password: String!
     var mailAddress: String!
     var userImage: UIImage!
+    var avatarUrl :String!
     
     init(name: String, password: String, mailAddress: String, userImage: UIImage) {
         self.name = name
@@ -51,44 +52,66 @@ class User: NSObject {
         self.mailAddress = mail
     }
     
+    init(name: String, mail: String, avatar_url: String) {
+        self.name = name
+        self.mailAddress = mail
+        self.avatarUrl = avatar_url
+    }
+    
     init(objectId: String, name: String, password: String, mailAddress: String) {
         self.objectId = objectId
         self.name = name
         self.password = password
         self.mailAddress = mailAddress
     }
-        
+    
+    init(jsonWithUser json: JSON) {
+        self.name = json["user"]["name"].string
+        self.mailAddress = json["user"]["email"].string
+        self.avatarUrl = json["user"]["avatar"].string
+    }
+    
     // RailsSignUp
     class func signUpRails(user: User) {
         
-        let params: [String: AnyObject] = [
-            "user": [
-                "name": user.name,
-                "email": user.mailAddress,
-                "password": user.password,
-                "password_confirmation": user.password,
-            ]
-        ]
-        
+        let name = (user.name as String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let email = (user.mailAddress as String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let password = (user.password as String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let password_confirmation = (user.password as String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let avatar = UIImagePNGRepresentation(user.userImage as UIImage)
         // HTTP通信
-        Alamofire.request(
+        Alamofire.upload(
             .POST,
             "http://localhost:3000/users.json",
-            parameters: params,
-            encoding: .URL
-            ).responseJSON { response in
-                
-                guard response.result.error == nil else {
-                    // Alert
-                    return
+            headers: nil,
+            multipartFormData: { multipartFormData in
+                multipartFormData.appendBodyPart(data: name, name: "user[name]")
+                multipartFormData.appendBodyPart(data: email, name: "user[email]")
+                multipartFormData.appendBodyPart(data: password, name: "user[password]")
+                multipartFormData.appendBodyPart(data: password_confirmation, name: "user[password_confirmation]")
+                if let unwrappedAvatar = avatar {
+                    multipartFormData.appendBodyPart(data: unwrappedAvatar, name: "user[avatar]", fileName: "avatar.png", mimeType: "image/png")
                 }
-                
-                guard (response.result.value != nil) else {
-                    return
+            }, encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON { response in
+                        guard response.result.error == nil else {
+                            // Add error handling in the future
+                            print(response.result.error)
+                            return
+                        }
+
+                    }
+                case .Failure(let encodingError):
+                    // Add error handling in the future
+                    print(encodingError)
                 }
             }
-        
+        )
     }
+    
+
     
     //RailsLogin(outh取得済み)
     class func loginRails(tokenDic: Dictionary<String, String>, callback: () -> Void) {
@@ -107,18 +130,14 @@ class User: NSObject {
                     // Alert
                     return
                 }
-                guard let responseValue = response.result.value else {
+                guard let _ = response.result.value else {
                     print("responseValue")
                     return
                 }
 
-                let responseJSON = JSON(responseValue)
-                let name = responseJSON["user"]["name"].stringValue
-                let email = responseJSON["user"]["email"].stringValue
-                let user = User(name: name, mail: email)
+                let json = JSON(response.result.value!)
+                let user = User(jsonWithUser: json)
                 CurrentUser.sharedInstance.user = user
-                
-                CurrentUser.sharedInstance.authentication_token = responseJSON["access_token"].stringValue
                 callback()
         }
     }
@@ -145,17 +164,14 @@ class User: NSObject {
                     return
                 }
                 
-                guard let responseValue = response.result.value else {
+                guard let _ = response.result.value else {
                     return
                 }
                 
-                let responseJSON = JSON(responseValue)
-                let name = responseJSON["user"]["name"].stringValue
-                let email = responseJSON["user"]["email"].stringValue
-                let user = User(name: name, mail: email)
+                let json = JSON(response.result.value!)
+                let user = User(jsonWithUser: json)
                 CurrentUser.sharedInstance.user = user
-                
-                CurrentUser.sharedInstance.authentication_token = responseJSON["access_token"].stringValue
+                CurrentUser.sharedInstance.authentication_token = json["access_token"].stringValue
                 self.saveAuthenticationToken()
                 callback()
         }

@@ -13,6 +13,9 @@ PODS:
   - FBSDKShareKit (4.11.0):
     - FBSDKCoreKit
   - RSKImageCropper (1.4.1)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
   - SwiftyJSON (2.3.2)
   - YALSideMenu (1.2.0)
 
@@ -22,6 +25,7 @@ DEPENDENCIES:
   - FBSDKLoginKit
   - FBSDKShareKit
   - RSKImageCropper
+  - SDWebImage
   - SwiftyJSON
   - YALSideMenu
 
@@ -32,6 +36,7 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
   FBSDKShareKit: 2d1746144cfc8a9dbbd24997c34ee0471be51b6a
   RSKImageCropper: 98ae426eb4eb11b733ff87f8e2542a480f4fa8e6
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   YALSideMenu: da4847fb57b724482040751bf02b9b97f7b89819
 

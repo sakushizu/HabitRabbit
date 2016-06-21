@@ -12,3 +12,10 @@
 
 
 #endif /* CalendarApp_Bridging_Header_h_h */
+
+#ifndef SDWebImageTest_Bridging_Header_h
+#define SDWebImageTest_Bridging_Header_h
+
+#import <SDWebImage/UIImageView+WebCache.h>
+
+#endif /* SDWebImageTest_Bridging_Header_h */
