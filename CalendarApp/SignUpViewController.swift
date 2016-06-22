@@ -25,6 +25,8 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var customButton:UIButton!
     var isLogin = false
     
+    var overMinPasswordTextCount = false
+    
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -79,6 +81,9 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
             userInfoCell.textField.delegate = self
             userInfoCell.icon.image = UIImage(named: images[indexPath.row])
             userInfoCell.textField.placeholder = placeholderTexts[indexPath.row]
+            if indexPath.row == 2 {
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UITextInputDelegate.textDidChange(_:)), name: UITextFieldTextDidChangeNotification, object: userInfoCell.textField)
+            }
             return userInfoCell
         } else if indexPath.section == 2 {
             
@@ -95,12 +100,15 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if indexPath.section == 3 {
             let nameCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as! CreateUserTableViewCell
-            let passwordCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 1)) as! CreateUserTableViewCell
-            let mailCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 1)) as! CreateUserTableViewCell
+            let mailCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 1)) as! CreateUserTableViewCell
+            let passwordCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 1)) as! CreateUserTableViewCell
             if nameCell.textField.text == "" || passwordCell.textField.text == "" || mailCell.textField.text == "" {
                 showAlert("exist empty text field")
+                
+            } else if overMinPasswordTextCount == false {
+                showAlert("password is min 6 count")
             } else {
-                let user = User(name: nameCell.textField.text!, password: mailCell.textField.text!, mailAddress: passwordCell.textField.text!, userImage: userImageCell.userImageView.image!)
+                let user = User(name: nameCell.textField.text!, password: passwordCell.textField.text!, mailAddress: mailCell.textField.text!, userImage: userImageCell.userImageView.image!)
                 User.signUpRails(user)
                 self.performSegueWithIdentifier("login", sender: nil)
             }
@@ -153,7 +161,7 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let loginManager = FBSDKLoginManager()
         if(!isLogin){
-            loginManager.logInWithReadPermissions(["public_profile", "email "], fromViewController: self) { (result, error) in
+            loginManager.logInWithReadPermissions(["public_profile", "email"], fromViewController: self) { (result, error) in
                 guard error == nil else {
                     return
                 }
@@ -171,8 +179,13 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         self.isLogin = !self.isLogin
     }
-
     
+    func textDidChange(notification: NSNotification) {
+        if notification.object?.text.characters.count > 6 {
+            overMinPasswordTextCount = true
+        }
+    
+    }
     
     //////////ここから///////
     
