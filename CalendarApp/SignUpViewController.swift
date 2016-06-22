@@ -84,9 +84,6 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             let cell = tableView.dequeueReusableCellWithIdentifier("faceBookCell", forIndexPath: indexPath) as! FaceBookTableViewCell
             cell.faceBookLabel.text = "Sign Up With Facebook"
-            
-//                cell.contentView.addSubview(makeFBRoginBtn())
-            
             return cell
         } else {
             let nextCell = tableView.dequeueReusableCellWithIdentifier("nextCell", forIndexPath: indexPath) as! NextBtnTableViewCell
@@ -143,16 +140,10 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     ///////facebookButton
     func makeFBRoginBtn() -> UIButton {
-//        let loginButton = FBSDKLoginButton()
-//        loginButton.center = view.center
-//        loginButton.readPermissions = ["public_profile"]
-        
         customButton = UIButton(type: .System)
         customButton.setTitle("Sign Up With Facebook", forState: .Normal)
         customButton.addTarget(self, action: #selector(self.loginButtonClicked), forControlEvents: .TouchUpInside)
         customButton.frame = CGRectMake(0,0,self.view.frame.width,80)
-//        customButton.center = view.center
-//        customButton.center.y += 40
         return customButton
         
     }
@@ -162,14 +153,15 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let loginManager = FBSDKLoginManager()
         if(!isLogin){
-            loginManager.logInWithReadPermissions(["public_profile"], fromViewController: self) { (result, error) in
+            loginManager.logInWithReadPermissions(["public_profile", "email "], fromViewController: self) { (result, error) in
                 guard error == nil else {
                     return
                 }
                 if result.isCancelled {
                 } else {
-//                    User.getUserData()
-                    self.performSegueWithIdentifier("FBLogin", sender: nil)
+                    User.getUserData({
+                        self.performSegueWithIdentifier("FBLogin", sender: nil)
+                    })
 //                    self.customButton.setTitle("Logout", forState: .Normal)
                 }
             }

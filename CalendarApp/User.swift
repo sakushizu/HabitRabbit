@@ -197,19 +197,65 @@ class User: NSObject {
     }
     
     
-//    class func getUserData(){
-//        let graphRequest = FBSDKGraphRequest(graphPath: "me",
-//                                             parameters: ["fields": "id,name"])
-//        
-//        graphRequest.startWithCompletionHandler({ (connection, result, error) in
-//            guard error == nil && result != nil else{
-//                print("Error: \(error)")
-//                return
-//            }
-//            
-//            print("User: \(result)")
-//        })
-//    }
+    class func getUserData(callback: () -> Void){
+        let graphRequest = FBSDKGraphRequest(graphPath: "me",
+                                             parameters: ["fields": "name, email, picture.type(large)"])
+        var userInfo: NSDictionary!
+        
+        graphRequest.startWithCompletionHandler({ (connection, result, error) in
+            guard error == nil && result != nil else{
+                print("Error: \(error)")
+                return
+            }
+            
+            print("User: \(result)")
+            userInfo = result as! NSDictionary
+            
+            FBLogin(userInfo, callback: {
+                callback()//TopViewに画面遷移
+            })
+        })
+    }
+    
+    
+    class func FBLogin(userInfo: NSDictionary, callback: () -> Void) {
+        let name = userInfo.objectForKey("name") as! String
+        let email = userInfo.objectForKey("email") as! String
+        let avatar = userInfo.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as! String
+        
+        let params: [String: AnyObject] = [
+            "user": [
+                "email": email,
+                "name": name,
+                "avatar": avatar
+            ]
+        ]
+        
+        // HTTP通信
+        
+        Alamofire.request(
+            .POST,
+            "http://localhost:3000/users/create_with_FB.json",
+            parameters: params,
+            encoding: .JSON
+            ).responseJSON { response in
+                guard response.result.error == nil else {
+                    // Alert
+                    return
+                }
+                
+                guard let _ = response.result.value else {
+                    return
+                }
+                
+                let json = JSON(response.result.value!)
+                let user = User(jsonWithUser: json)
+                CurrentUser.sharedInstance.user = user
+                CurrentUser.sharedInstance.authentication_token = json["access_token"].stringValue
+                self.saveAuthenticationToken()
+                callback()
+        }
+    }
     
     func update(callback: (message: String?) -> Void){
     }
