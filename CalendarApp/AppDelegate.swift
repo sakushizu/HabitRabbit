@@ -5,7 +5,6 @@
 //  Created by 櫻本静香 on 2015/11/08.
 //  Copyright © 2015年 Sakuramoto Shizuka. All rights reserved.
 //
-import Parse
 import FBSDKCoreKit
 import FBSDKLoginKit
 import FBSDKShareKit
@@ -15,26 +14,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    
-
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         // [Optional] Power your app with Local Datastore. For more info, go to
         // https://parse.com/docs/ios/guide#local-datastore
-        Parse.enableLocalDatastore()
         
         UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarPosition: .TopAttached, barMetrics: .Default)
         UINavigationBar.appearance().shadowImage = UIImage()
-        
-        
-//        // Initialize Parse.
-//        Parse.setApplicationId("DQWvgvaLsMqKxsHwaHYfg6zeIiWIiX1BFosaa4uh",
-//            clientKey: "8d0uBcxTZdM4UxjJEFs1EGXkedj0wJ3ctYMCJTQm")
-        
-        // [Optional] Track statistics around application opens.
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true

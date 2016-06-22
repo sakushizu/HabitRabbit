@@ -407,7 +407,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bdE-4U-Fgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-376.5" y="-454.5"/>
+            <point key="canvasLocation" x="-396.5" y="-806.5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="HKW-dw-tai">
@@ -531,8 +531,8 @@
         <image name="ちっちさんImage.png" width="640" height="1832"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="H8t-bE-U6O"/>
+        <segue reference="qbP-vA-Fbh"/>
         <segue reference="2tu-i9-bbS"/>
-        <segue reference="lbe-dj-EI8"/>
+        <segue reference="UzA-wW-4R1"/>
     </inferredMetricsTieBreakers>
 </document>
