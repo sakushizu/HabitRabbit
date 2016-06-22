@@ -17,7 +17,7 @@ class TopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        CalenderManager.sharedInstance.resetDefaults()
+        CalenderManager.sharedInstance.resetDefaults()
         
         let defaults = NSUserDefaults.standardUserDefaults()
         if let tokenDic = defaults.objectForKey("tokenDic") as? Dictionary<String, String> {
@@ -31,6 +31,8 @@ class TopViewController: UIViewController {
         
         signUpBtn.layer.cornerRadius = 2
         signUpBtn.clipsToBounds = true
+        
+        
         
         self.navigationController?.navigationBar.tintColor = UIColor.appPinkColor()
         // Do any additional setup after loading the view.
