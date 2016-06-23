@@ -26,14 +26,19 @@ class StockCalendars: NSObject {
         ]
         
         // HTTP通信
-        Alamofire.request(.POST, "http://localhost:3000/api/calendars.json?email=\(currentUser.user.mailAddress)&token=\(currentUser.authentication_token)", parameters: params, encoding: .URL).responseJSON { response in
+        Alamofire.request(
+            .POST,
+            "http://localhost:3000/api/calendars.json?email=\(currentUser.user.mailAddress)&token=\(currentUser.authentication_token)",
+            parameters: params,
+            encoding: .URL)
+            .responseJSON { response in
             
             print("=============request=============")
             print(response.request)
             print("=============response============")
             print(response.response)
             print("=============JSON================")
-            print(JSON(response.result.value!))
+//            print(JSON(response.result.value!))
             print("=============error===============")
             print(response.result.error)
             print("=================================")

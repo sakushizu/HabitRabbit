@@ -17,7 +17,7 @@ class TopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        CalenderManager.sharedInstance.resetDefaults()
+//        CalenderManager.sharedInstance.resetDefaults()
         
         let defaults = NSUserDefaults.standardUserDefaults()
         if let tokenDic = defaults.objectForKey("tokenDic") as? Dictionary<String, String> {
