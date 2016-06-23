@@ -86,7 +86,6 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             return userInfoCell
         } else if indexPath.section == 2 {
-            
             let cell = tableView.dequeueReusableCellWithIdentifier("faceBookCell", forIndexPath: indexPath) as! FaceBookTableViewCell
             cell.faceBookLabel.text = "Sign Up With Facebook"
             return cell
@@ -104,13 +103,13 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let passwordCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 1)) as! CreateUserTableViewCell
             if nameCell.textField.text == "" || passwordCell.textField.text == "" || mailCell.textField.text == "" {
                 showAlert("exist empty text field")
-                
             } else if overMinPasswordTextCount == false {
                 showAlert("password is min 6 count")
             } else {
                 let user = User(name: nameCell.textField.text!, password: passwordCell.textField.text!, mailAddress: mailCell.textField.text!, userImage: userImageCell.userImageView.image!)
-                User.signUpRails(user)
-                self.performSegueWithIdentifier("login", sender: nil)
+                User.signUpRails(user, callback: {
+                  self.performSegueWithIdentifier("login", sender: nil)
+                })
             }
         } else if indexPath.section == 2 {
             loginButtonClicked()
@@ -146,6 +145,12 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
         presentViewController(alertController, animated: true, completion: nil)
     }
     
+    func textDidChange(notification: NSNotification) {
+        if notification.object?.text.characters.count > 6 {
+            overMinPasswordTextCount = true
+        }
+    }
+    
     ///////facebookButton
     func makeFBRoginBtn() -> UIButton {
         customButton = UIButton(type: .System)
@@ -178,13 +183,6 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
             customButton.setTitle("My Login Button", forState: .Normal)
         }
         self.isLogin = !self.isLogin
-    }
-    
-    func textDidChange(notification: NSNotification) {
-        if notification.object?.text.characters.count > 6 {
-            overMinPasswordTextCount = true
-        }
-    
     }
     
     //////////ここから///////

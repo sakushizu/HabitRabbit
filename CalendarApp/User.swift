@@ -72,7 +72,7 @@ class User: NSObject {
     }
     
     // RailsSignUp
-    class func signUpRails(user: User) {
+    class func signUpRails(user: User, callback: () -> Void) {
         
         let name = (user.name as String).dataUsingEncoding(NSUTF8StringEncoding)!
         let email = (user.mailAddress as String).dataUsingEncoding(NSUTF8StringEncoding)!
@@ -97,7 +97,6 @@ class User: NSObject {
                 case .Success(let upload, _, _):
                     upload.responseJSON { response in
                         guard response.result.error == nil else {
-                            // Add error handling in the future
                             print(response.result.error)
                             return
                         }
@@ -107,6 +106,7 @@ class User: NSObject {
                     // Add error handling in the future
                     print(encodingError)
                 }
+                callback()
             }
         )
     }
