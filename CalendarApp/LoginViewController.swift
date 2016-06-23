@@ -17,6 +17,8 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let images = ["User", "Lock"]
     let placeholderTexts = ["Email", "Password"]
     
+    var overMinPasswordTextCount = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,6 +70,9 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.icon.image = UIImage(named: images[indexPath.row])
             cell.textField.placeholder = placeholderTexts[indexPath.row]
             cell.textField.delegate = self
+            if indexPath.row == 1 {
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UITextInputDelegate.textDidChange(_:)), name: UITextFieldTextDidChangeNotification, object: cell.textField)
+            }
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier("faceBookCell", forIndexPath: indexPath) as! FaceBookTableViewCell
@@ -86,7 +91,9 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let emailCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! CreateUserTableViewCell
             let passwordCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! CreateUserTableViewCell
             if emailCell.textField.text!.isEmpty || passwordCell.textField.text!.isEmpty {
-                showAlert("User name or password is empty")
+                showAlert("email or password is empty")
+            } else if overMinPasswordTextCount == false {
+                showAlert("password is min 6 count")
             } else {
                 let user = User(email: emailCell.textField.text!, password: passwordCell.textField.text!)
                 User.firstLoginRails(user){ () -> Void in
@@ -108,6 +115,12 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertController.addAction(action)
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func textDidChange(notification: NSNotification) {
+        if notification.object?.text.characters.count > 6 {
+            overMinPasswordTextCount = true
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
