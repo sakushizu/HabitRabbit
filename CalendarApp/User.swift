@@ -138,6 +138,7 @@ class User: NSObject {
                 let json = JSON(response.result.value!)
                 let user = User(jsonWithUser: json)
                 CurrentUser.sharedInstance.user = user
+                CurrentUser.sharedInstance.authentication_token = token
                 callback()
         }
     }
