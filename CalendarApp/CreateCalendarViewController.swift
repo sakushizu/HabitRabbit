@@ -79,8 +79,9 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
                     }
                 } else {
                     let calendar = self.save("group")
-                    StockCalendars.saveCalendarRails(calendar)
-                    calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+                    StockCalendars.saveCalendarRails(calendar, callback: {
+                        calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+                    })
                     
 //                    GroupCalendar.sharedInstance.createParse(cell2.titleTextField.text!) { () -> Void in
 //                        self.save("group")
@@ -89,8 +90,10 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
                 }
             } else {
                 let calendar = self.save("group")
-                StockCalendars.saveCalendarRails(calendar)
-                calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+                StockCalendars.saveCalendarRails(calendar, callback: {
+                    calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+                })
+
             }
         }
     }
