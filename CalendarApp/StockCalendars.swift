@@ -14,15 +14,15 @@ class StockCalendars: NSObject {
     static let sharedInstance = StockCalendars()
     
     //新規カレンダー保存
-    class func saveCalendarRails(calendar: Calendar, callback: () -> Void) {
+    class func saveCalendarRails(params: Dictionary<String, AnyObject>, callback: () -> Void) {
         
         let currentUser = CurrentUser.sharedInstance
         
-        let title = (calendar.title! as String).dataUsingEncoding(NSUTF8StringEncoding)!
-        let color_r = (String(calendar.color_r)).dataUsingEncoding(NSUTF8StringEncoding)!
-        let color_g = (String(calendar.color_g)).dataUsingEncoding(NSUTF8StringEncoding)!
-        let color_b = (String(calendar.color_b)).dataUsingEncoding(NSUTF8StringEncoding)!
-        let stampImage = UIImagePNGRepresentation(calendar.image as UIImage)
+        let title = (params["title"]! as! String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let color_r = (String(params["color_r"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
+        let color_g = (String(params["color_g"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
+        let color_b = (String(params["color_b"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
+        let stampImage = UIImagePNGRepresentation(params["stamp"] as! UIImage)
         // HTTP通信
         Alamofire.upload(
             .POST,
@@ -44,6 +44,11 @@ class StockCalendars: NSObject {
                             print(response.result.error)
                             return
                         }
+                        let json = JSON(response.result.value!)
+                        let calendar = Calendar(json: json)
+                        let calendarManager = CalenderManager.sharedInstance
+                        calendarManager.calendarCollection.append(calendar)
+                        print(calendarManager.calendarCollection.append(calendar))
                         
                     }
                 case .Failure(let encodingError):
@@ -54,34 +59,5 @@ class StockCalendars: NSObject {
             }
         )
     }
-        
-//        let params: [String: AnyObject] = [
-//            "title": calendar.title!,
-//            "color_R": calendar.color_r,
-//            "color_G": calendar.color_g,
-//            "color_B": calendar.color_b,
-//            "stampImage": UIImagePNGRepresentation(calendar.image as UIImage)!
-//        ]
-//        
-//        // HTTP通信
-//        Alamofire.request(
-//            .POST,
-//            "http://localhost:3000/api/calendars.json?email=\(currentUser.user.mailAddress)&token=\(currentUser.authentication_token)",
-//            parameters: params,
-//            encoding: .URL)
-//            .responseJSON { response in
-//            
-//            print("=============request=============")
-//            print(response.request)
-//            print("=============response============")
-//            print(response.response)
-//            print("=============JSON================")
-//            print(JSON(response.result.value!))
-//            print("=============error===============")
-//            print(response.result.error)
-//            print("=================================")
-//        }
-//        
-//    }
-
+    
 }

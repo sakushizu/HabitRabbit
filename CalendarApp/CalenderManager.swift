@@ -32,12 +32,12 @@ class CalenderManager: NSObject {
         var groupArray = [Dictionary<String, AnyObject>]()
         
         for calendar in calendarCollection {
-            let calendarDic = CalenderManager.convertDictionary(calendar, calendarType: calendarType)
-            privateArray.append(calendarDic)
+//            let calendarDic = CalenderManager.convertDictionary(calendar, calendarType: calendarType)
+//            privateArray.append(calendarDic)
         }
         for calendar in groupCalendarCollection {
-            let calendarDic = CalenderManager.convertDictionary(calendar, calendarType: calendarType)
-            groupArray.append(calendarDic)
+//            let calendarDic = CalenderManager.convertDictionary(calendar, calendarType: calendarType)
+//            groupArray.append(calendarDic)
         }
         calendarList["private"] = privateArray
         calendarList["group"] = groupArray
@@ -66,49 +66,50 @@ class CalenderManager: NSObject {
             for (calendarType, calendarArray) in calendarList {
                 if calendarType == "private" {
                     for calendarDic in calendarArray {
-                        let calendar = CalenderManager.convertCalendarModel(calendarDic)
-                        self.calendarCollection.append(calendar)
+//                        let calendar = CalenderManager.convertCalendarModel(calendarDic)
+//                        self.calendarCollection.append(calendar)
                     }
                 } else if calendarType == "group" {
                     for calendarDic in calendarArray {
-                        let calendar = CalenderManager.convertCalendarModel(calendarDic)
-                        self.groupCalendarCollection.append(calendar)
+//                        let calendar = CalenderManager.convertCalendarModel(calendarDic)
+//                        self.groupCalendarCollection.append(calendar)
                     }
                 }
             }
         }
     }
-    
-    class func convertDictionary(calendar: Calendar, calendarType: String) -> Dictionary<String, AnyObject> {
-        var dic = Dictionary<String, AnyObject>()
-        dic["title"] = calendar.title
-        dic["memo"] = calendar.memo
-        let colorData = NSKeyedArchiver.archivedDataWithRootObject(calendar.color)
-        dic["color"] = colorData
-        let imageData = UIImagePNGRepresentation(calendar.image)
-        dic["image"] = imageData
-        if calendarType == "group" {
-            dic["object_id"] = calendar.object_id
-        }
-        return dic
-    }
-    
-    class func convertCalendarModel(attiributes: Dictionary<String, AnyObject>) -> Calendar {
-        let calendar = Calendar()
-        calendar.title = attiributes["title"] as? String
-        calendar.memo = attiributes["memo"] as! String
-        if let object_id = attiributes["object_id"] as? String {
-            calendar.object_id = object_id
-        }
-        let color = attiributes["color"] as! NSData
-        if let savedColor  = NSKeyedUnarchiver.unarchiveObjectWithData(color) as? UIColor {
-            calendar.color = savedColor
-        }
-        let imageData = attiributes["image"] as! NSData
-        let image = UIImage(data: imageData)
-        calendar.image = image
-        return calendar
-    }
+//    
+//    class func convertDictionary(calendar: Calendar, calendarType: String) -> Dictionary<String, AnyObject> {
+//        var dic = Dictionary<String, AnyObject>()
+//        dic["title"] = calendar.title
+//        dic["memo"] = calendar.memo
+//        let colorData = NSKeyedArchiver.archivedDataWithRootObject(calendar.color)
+//        dic["color"] = colorData
+//        let imageURL = calendar.stampImageURL
+//        dic["image"] = imageURL
+//        if calendarType == "group" {
+//            dic["object_id"] = calendar.object_id
+//        }
+//        return dic
+//    }
+//    
+//    class func convertCalendarModel(attiributes: Dictionary<String, AnyObject>) -> Calendar {
+//        let calendar = Calendar(
+//            title: attiributes["title"] as? String,
+//            color_r: , color_g: <#T##Int#>, color_b: <#T##Int#>, stampImageURL: <#T##String#>)
+//        calendar.memo = attiributes["memo"] as! String
+//        if let object_id = attiributes["object_id"] as? String {
+//            calendar.object_id = object_id
+//        }
+//        let color = attiributes["color"] as! NSData
+//        if let savedColor  = NSKeyedUnarchiver.unarchiveObjectWithData(color) as? UIColor {
+//            calendar.color = savedColor
+//        }
+//        let imageData = attiributes["image"] as! NSData
+//        let image = UIImage(data: imageData)
+//        calendar.image = image
+//        return calendar
+//    }
     
     //NSUserDefaultsの全てのobjectのリセット
     func resetDefaults() {

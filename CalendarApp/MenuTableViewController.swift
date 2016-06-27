@@ -23,15 +23,15 @@ class MenuTableViewController: UITableViewController {
     
     let sectionTitles = ["", "Private", "Group"]
     let user = CurrentUser.sharedInstance.user
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tableView.registerNib(UINib(nibName: "sideUserTableViewCell", bundle: nil), forCellReuseIdentifier: "sideUserCell")
     }
     
     override func viewWillAppear(animated: Bool) {
         self.tableView.reloadData()
+        super.viewWillAppear(true)
     }
     
     var delegate : MenuTableViewControllerDelegate?
@@ -107,7 +107,7 @@ class MenuTableViewController: UITableViewController {
             return userCell
         } else if indexPath.section == 1 {
             let calendar = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
-            cell.textLabel?.text = calendar.title
+            cell.textLabel?.text = calendar.title!
             return cell
         } else {
             let calendar = CalenderManager.sharedInstance.groupCalendarCollection[indexPath.row]

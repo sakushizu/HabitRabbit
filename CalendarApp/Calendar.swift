@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class Calendar: NSObject {
     
-    static let sharedInstance = Calendar()
+    static let sharedInstance = Calendar(json: "json")
     
     //カレンダーの情報をもつ辞書型
     var selectedDates: Dictionary<NSDate, String> = [:]
@@ -19,7 +20,8 @@ class Calendar: NSObject {
     var color_g: Int!
     var color_b: Int!
     var color: UIColor!
-    var image: UIImage!
+    var stampImageURL: String!
+    var orner: User!
     
     var memo = ""
     
@@ -29,6 +31,24 @@ class Calendar: NSObject {
     var type: String = ""
     
     var defaultsCalendarTitle = ""
+    
+    
+    init(json: JSON) {
+        self.title = json["calendar"]["title"].string
+        self.color_r = json["calendar"]["color_R"].int
+        self.color_g = json["calendar"]["color_G"].int
+        self.color_b = json["calendar"]["color_B"].int
+        self.stampImageURL = json["cakendar"]["stamp_image"].string
+        self.orner = User(jsonWithUser: json["user"])
+    }
+    
+    init(title: String, color_r: Int, color_g: Int, color_b: Int, stampImageURL: String) {
+        self.title = title
+        self.color_r = color_r
+        self.color_g = color_g
+        self.color_b = color_b
+        self.stampImageURL = stampImageURL
+    }
     
     
     //選択されたdateの追加

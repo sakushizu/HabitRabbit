@@ -134,7 +134,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             // UIImageViewをViewに追加する.
             if self.selectedCalender != nil {
                 if jadgeIfCellTapped(indexPath) {
-                    cell.imageView.image = selectedCalender.image
+                    cell.imageView.sd_setImageWithURL(NSURL(string: selectedCalender.stampImageURL))
                     cell.imageView.hidden = false
                     cell.circleView.hidden = true
                 } else {

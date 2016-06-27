@@ -19,6 +19,14 @@ import UIKit
     func moveTopView()
 }
 
+enum CellContent: Int {
+    case Stamp = 0
+    case Title = 1
+    case Color = 2
+    case Create = 3
+    case Grpup = 4
+}
+
 class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, StampCollectionViewDelegate, UITextFieldDelegate {
 
     weak var customDelegate: CreateTableViewDelegate?
