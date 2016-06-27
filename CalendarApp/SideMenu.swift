@@ -127,6 +127,7 @@ class SideMenu : NSObject, MenuTableViewControllerDelegate {
         }
         else {
             toggleMenu(true)
+            sideMenuTableViewController.tableView.reloadData()
         }
     }
 

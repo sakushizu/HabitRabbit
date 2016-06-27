@@ -9,8 +9,6 @@
 import UIKit
 import RSKImageCropper
 
-
-
 class CreateCalendarViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, RSKImageCropViewControllerDelegate, RSKImageCropViewControllerDataSource, CreateTableViewDelegate, ColorTableViewControllerDelegate {
     
     var createTableView: CreateTableView!
@@ -74,26 +72,14 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
                 let groupCell =  createTableView.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0)) as! GroupBtnCell
                 if groupCell.button.titleLabel?.text == "Join Calendar" {
                     GroupCalendar.sharedInstance.joinParse(cell2.titleTextField.text!) { () -> Void in
-                        self.save("group")
+                        self.save(calendarVC)
                         calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
                     }
                 } else {
-                    let calendar = self.save("group")
-                    StockCalendars.saveCalendarRails(calendar, callback: {
-                        calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
-                    })
-                    
-//                    GroupCalendar.sharedInstance.createParse(cell2.titleTextField.text!) { () -> Void in
-//                        self.save("group")
-//                        calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
-//                    }
+                    self.save(calendarVC)
                 }
             } else {
-                let calendar = self.save("group")
-                StockCalendars.saveCalendarRails(calendar, callback: {
-                    calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
-                })
-
+                self.save(calendarVC)
             }
         }
     }
@@ -103,17 +89,20 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
     }
     
     //controllerの処理
-    func save(calendarType: String) -> Calendar {
-        let calendar = Calendar()
-        calendar.title = cell2.titleTextField.text!
-        calendar.image = cell1.stampImageView.image
-        calendar.color = selectedThemeColor?.color
-        calendar.color_r = selectedThemeColor?.r
-        calendar.color_g = selectedThemeColor?.g
-        calendar.color_b = selectedThemeColor?.b
-        calendar.object_id = Calendar.sharedInstance.object_id
-        CalenderManager.sharedInstance.addCalendarCollection(calendar, calendarType: calendarType)
-        return calendar
+    func save(calendarVC: CalendarViewController) {
+        
+        let params: Dictionary<String, AnyObject> = [
+            "title": cell2.titleTextField.text!,
+            "stamp": cell1.stampImageView.image!,
+            "color_r": (selectedThemeColor?.r)!,
+            "color_g": (selectedThemeColor?.g)!,
+            "color_b": (selectedThemeColor?.b)!
+        ]
+        
+        StockCalendars.saveCalendarRails(params, callback: {
+            calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+        })
+        
     }
 
     func libraryBtn() {

@@ -95,7 +95,7 @@ class User: NSObject {
                 }
             }, encodingCompletion: { encodingResult in
                 switch encodingResult {
-                case .Success(let upload, _, _):
+            case .Success(let upload, _, _):
                     upload.responseJSON { response in
                         guard response.result.error == nil else {
                             print(response.result.error)
@@ -103,11 +103,11 @@ class User: NSObject {
                         }
 
                     }
-                case .Failure(let encodingError):
+            case .Failure(let encodingError):
                     // Add error handling in the future
                     print(encodingError)
-                }
-                callback()
+                    }
+                    callback()
             }
         )
     }
