@@ -9,7 +9,6 @@
 //
 
 import UIKit
-import Parse
 import Alamofire
 import SwiftyJSON
 import FBSDKCoreKit
@@ -124,7 +123,7 @@ class User: NSObject {
             "http://localhost:3000/user_sessions/create_with_token.json",
             parameters: nil,
             headers: ["access_token": token],
-            encoding: .URL
+            encoding: .URL 
             ).responseJSON { response in
                 guard response.result.error == nil else {
                     print("result.error")

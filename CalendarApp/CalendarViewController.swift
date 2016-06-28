@@ -56,7 +56,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         segmentRightLineView.hidden = true
         segmentLeftLineView.hidden = true
 //        CalenderManager.sharedInstance.resetDefaults() //NSUserDefault初期化
-        CalenderManager.sharedInstance.fetchCalendarCollection()
         
         //tableViewに表示している名前の配列
         sideMenu = SideMenu(sourceView: self.view)
@@ -262,7 +261,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             Calendar.sharedInstance.type = "private"
             setSelectedCalendarView()
         } else {
-            selectedCalender = CalenderManager.sharedInstance.groupCalendarCollection[indexPath.row]
             Calendar.sharedInstance.type = "group"
             setSelectedCalendarView()
         }
@@ -282,16 +280,24 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     
     func setSelectedCalendarView() {
+        
+        let color = UIColor(
+            red:  (CGFloat(selectedCalender.color_r))/255,
+            green: (CGFloat(selectedCalender.color_g))/255,
+            blue: (CGFloat(selectedCalender.color_b))/255,
+            alpha: 1
+        )
+
         calendarTitle.text = selectedCalender.title
-        Calendar.sharedInstance.object_id = selectedCalender.object_id
+//        Calendar.sharedInstance.object_id = selectedCalender.object_id
         Calendar.sharedInstance.title = selectedCalender.title
-        calenderHeaderView.backgroundColor = selectedCalender.color
+        calenderHeaderView.backgroundColor = color
         segmentContol.hidden = false
-        segmentContol.tintColor = selectedCalender.color
+        segmentContol.tintColor = color
         segmentLeftLineView.hidden = false
-        segmentLeftLineView.backgroundColor = selectedCalender.color
+        segmentLeftLineView.backgroundColor = color
         segmentRightLineView.hidden = false
-        segmentRightLineView.backgroundColor = selectedCalender.color
+        segmentRightLineView.backgroundColor = color
         Calendar.sharedInstance.fetchDates()
         if Calendar.sharedInstance.type == "group" {
             self.setRecordView()
@@ -372,7 +378,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func saveCaendarMemo() {
         selectedCalender.memo = memoTextView.text
-        CalenderManager.sharedInstance.saveSelfCalendar(selectedCalender.type)
     }
     
     func moveUserEditViewController() {

@@ -34,11 +34,11 @@ class Calendar: NSObject {
     
     
     init(json: JSON) {
-        self.title = json["calendar"]["title"].string
-        self.color_r = json["calendar"]["color_R"].int
-        self.color_g = json["calendar"]["color_G"].int
-        self.color_b = json["calendar"]["color_B"].int
-        self.stampImageURL = json["cakendar"]["stamp_image"].string
+        self.title = json["title"].string
+        self.color_r = json["color_R"].int
+        self.color_g = json["color_G"].int
+        self.color_b = json["color_B"].int
+        self.stampImageURL = json["stamp_image"].string
         self.orner = User(jsonWithUser: json["user"])
     }
     
