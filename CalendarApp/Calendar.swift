@@ -15,6 +15,7 @@ class Calendar: NSObject {
     
     //カレンダーの情報をもつ辞書型
     var selectedDates: Dictionary<NSDate, String> = [:]
+    var id: Int!
     var title: String?
     var color_r: Int!
     var color_g: Int!
@@ -34,6 +35,7 @@ class Calendar: NSObject {
     
     
     init(json: JSON) {
+        self.id = json["id"].int
         self.title = json["title"].string
         self.color_r = json["color_R"].int
         self.color_g = json["color_G"].int
