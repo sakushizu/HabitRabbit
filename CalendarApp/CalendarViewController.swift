@@ -264,7 +264,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             Calendar.sharedInstance.type = "group"
             setSelectedCalendarView()
         }
-        setMemoViewLayer()
+//        setMemoViewLayer()
         recordTableView.reloadData()
         
     }
@@ -279,6 +279,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     
+    // MARK: - ビューの装飾
     func setSelectedCalendarView() {
         
         let color = UIColor(
@@ -354,13 +355,14 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         baseView.addSubview(memoView)
     }
     
-    func setMemoViewLayer() {
-        if selectedCalender?.color != nil {
-            memoTextView.text = selectedCalender.memo
-            memoTextView.tintColor = selectedCalender.color
-            memoTextView.layer.borderColor = selectedCalender.color.CGColor
-        }
-    }
+    // MARK: - 後で行う「メモの処理」
+//    func setMemoViewLayer() {
+//        if selectedCalender?.color != nil {
+//            memoTextView.text = selectedCalender.memo
+//            memoTextView.tintColor = selectedCalender.color
+//            memoTextView.layer.borderColor = selectedCalender.color.CGColor
+//        }
+//    }
     
     func makeSettingView() {
         let frame = CGRectMake(0, calenderCollectionView.frame.origin.y + 44, self.calenderCollectionView.frame.width,calenderCollectionView.frame.height )
