@@ -15,9 +15,7 @@ class StockCalendars: NSObject {
     
     //新規カレンダー保存
     class func saveCalendarRails(params: Dictionary<String, AnyObject>, callback: () -> Void) {
-        
-        let currentUser = CurrentUser.sharedInstance
-        
+
         let title = (params["title"]! as! String).dataUsingEncoding(NSUTF8StringEncoding)!
         let color_r = (String(params["color_r"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
         let color_g = (String(params["color_g"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
