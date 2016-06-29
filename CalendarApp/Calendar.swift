@@ -15,14 +15,13 @@ class Calendar: NSObject {
     
     //カレンダーの情報をもつ辞書型
     var selectedDates: Dictionary<NSDate, String> = [:]
-    var id: Int!
-    var title: String?
-    var color_r: Int!
-    var color_g: Int!
-    var color_b: Int!
-    var color: UIColor!
-    var stampImageURL: String!
-    var orner: User!
+    var id: Int
+    var title: String
+    var color_r: Int
+    var color_g: Int
+    var color_b: Int
+    var stampImageURL: String
+    var orner: User
     
     var memo = ""
     
@@ -35,23 +34,15 @@ class Calendar: NSObject {
     
     
     init(json: JSON) {
-        self.id = json["id"].int
-        self.title = json["title"].string
-        self.color_r = json["color_R"].int
-        self.color_g = json["color_G"].int
-        self.color_b = json["color_B"].int
-        self.stampImageURL = json["stamp_image"].string
+        self.id = json["id"].int!
+        self.title = json["title"].string!
+        self.color_r = json["color_R"].int!
+        self.color_g = json["color_G"].int!
+        self.color_b = json["color_B"].int!
+        self.stampImageURL = json["stamp_image"].string!
         self.orner = User(jsonWithUser: json["user"])
     }
-    
-    init(title: String, color_r: Int, color_g: Int, color_b: Int, stampImageURL: String) {
-        self.title = title
-        self.color_r = color_r
-        self.color_g = color_g
-        self.color_b = color_b
-        self.stampImageURL = stampImageURL
-    }
-    
+
     
     //選択されたdateの追加
     func appendSelectedDates(preDate: NSDate) {
@@ -61,7 +52,7 @@ class Calendar: NSObject {
     
     //NSUserDefaultに保存
     func save() {
-        defaultsCalendarTitle = "\(CurrentUser.sharedInstance.user.name)_\(type)_\(title!)"
+        defaultsCalendarTitle = "\(CurrentUser.sharedInstance.user.name)_\(type)_\(title)"
         var dayList: Dictionary<String, String> = [:]
         for (key,value) in selectedDates {
             let date = changeNSDateToString(key)
@@ -80,9 +71,9 @@ class Calendar: NSObject {
     //NSUserDefaultに保存されているデータをselectedDatesに入れる
     func fetchDates() {
         if CurrentUser.sharedInstance.user.name == "guestUser" {
-            defaultsCalendarTitle = "\(CurrentUser.sharedInstance.user.name)_\(type)_\(title!)"
+            defaultsCalendarTitle = "\(CurrentUser.sharedInstance.user.name)_\(type)_\(title)"
         } else {
-            defaultsCalendarTitle = "\(CurrentUser.sharedInstance.user.name)_\(type)_\(title!)"
+            defaultsCalendarTitle = "\(CurrentUser.sharedInstance.user.name)_\(type)_\(title)"
         }
         selectedDates = [:]
         let defaults = NSUserDefaults.standardUserDefaults()

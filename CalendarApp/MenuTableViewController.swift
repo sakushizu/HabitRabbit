@@ -101,7 +101,7 @@ class MenuTableViewController: UITableViewController {
             return userCell
         } else {
             let calendar = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
-            cell.textLabel?.text = calendar.title!
+            cell.textLabel?.text = calendar.title
             return cell
         }
     }
