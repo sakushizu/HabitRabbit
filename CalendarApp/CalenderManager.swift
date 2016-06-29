@@ -38,7 +38,7 @@ class CalenderManager: NSObject {
     }
     
     
-    func createCalendarsFromJson(json: JSON) -> [Calendar] {
+    private func createCalendarsFromJson(json: JSON) -> [Calendar] {
         var calendars = [Calendar]()
         
         for (_, calendarJson) in json {
@@ -50,7 +50,7 @@ class CalenderManager: NSObject {
         return calendars
     }
     
-    func updateCalendarsFromJson(calendarsJson: JSON) {
+    private func updateCalendarsFromJson(calendarsJson: JSON) {
         calendarCollection = createCalendarsFromJson(calendarsJson)
     }
 
