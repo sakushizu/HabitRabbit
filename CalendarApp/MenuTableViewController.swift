@@ -21,7 +21,7 @@ protocol MenuTableViewControllerDelegate {
 
 class MenuTableViewController: UITableViewController {
     
-    let sectionTitles = ["", "Private", "Group"]
+    let sectionTitles = ["", "Calendar"]
     let user = CurrentUser.sharedInstance.user
 
     override func viewDidLoad() {
@@ -39,20 +39,14 @@ class MenuTableViewController: UITableViewController {
     var tableData : Array<String> = []
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if CalenderManager.sharedInstance.groupCalendarCollection.count > 0 {
-            return 3
-        } else {
-            return 2
-        }
+        return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
-        } else if section == 1 {
-            return CalenderManager.sharedInstance.calendarCollection.count
         } else {
-            return CalenderManager.sharedInstance.groupCalendarCollection.count
+            return CalenderManager.sharedInstance.calendarCollection.count
         }
     }
     
@@ -105,12 +99,8 @@ class MenuTableViewController: UITableViewController {
             }
             userCell.settingButton.addTarget(self, action: #selector(MenuTableViewController.tappedSettingBtn), forControlEvents: .TouchUpInside)
             return userCell
-        } else if indexPath.section == 1 {
-            let calendar = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
-            cell.textLabel?.text = calendar.title!
-            return cell
         } else {
-            let calendar = CalenderManager.sharedInstance.groupCalendarCollection[indexPath.row]
+            let calendar = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
             cell.textLabel?.text = calendar.title
             return cell
         }

@@ -7,109 +7,53 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class CalenderManager: NSObject {
+    
     static let sharedInstance = CalenderManager()
+    
     var calender: Calendar!
     var calendarCollection = [Calendar]()
-    var groupCalendarCollection = [Calendar]()
     
     
-    var key: String!
-
-    func addCalendarCollection(calendar: Calendar, calendarType: String){
-        if calendarType == "private" {
-            self.calendarCollection.append(calendar)
-        } else {
-            self.groupCalendarCollection.append(calendar)
-        }
-        self.saveSelfCalendar(calendarType)
-    }
     
-    func saveSelfCalendar(calendarType: String) {
-        var calendarList: Dictionary<String,  Array<Dictionary<String, AnyObject>>> = [:]
-        var privateArray = [Dictionary<String, AnyObject>]()
-        var groupArray = [Dictionary<String, AnyObject>]()
-        
-        for calendar in calendarCollection {
-//            let calendarDic = CalenderManager.convertDictionary(calendar, calendarType: calendarType)
-//            privateArray.append(calendarDic)
-        }
-        for calendar in groupCalendarCollection {
-//            let calendarDic = CalenderManager.convertDictionary(calendar, calendarType: calendarType)
-//            groupArray.append(calendarDic)
-        }
-        calendarList["private"] = privateArray
-        calendarList["group"] = groupArray
-        
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if CurrentUser.sharedInstance.user == nil {
-            defaults.setObject(calendarList, forKey: "calendarList")
-            defaults.synchronize()
-        } else {
-            defaults.setObject(calendarList, forKey: CurrentUser.sharedInstance.user.name)
-            defaults.synchronize()
-        }
-    }
-    
-    func fetchCalendarCollection() {
-        self.calendarCollection = []
-        self.groupCalendarCollection = []
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if CurrentUser.sharedInstance.user == nil {
-            key = "calendarList"
-        } else {
-            key = CurrentUser.sharedInstance.user.name
-        }
-        if let calendarList = defaults.objectForKey(key) as? Dictionary<String,  Array<Dictionary<String, AnyObject>>> {
-            for (calendarType, calendarArray) in calendarList {
-                if calendarType == "private" {
-                    for calendarDic in calendarArray {
-//                        let calendar = CalenderManager.convertCalendarModel(calendarDic)
-//                        self.calendarCollection.append(calendar)
-                    }
-                } else if calendarType == "group" {
-                    for calendarDic in calendarArray {
-//                        let calendar = CalenderManager.convertCalendarModel(calendarDic)
-//                        self.groupCalendarCollection.append(calendar)
-                    }
+    func fetchCalendars(completion completion: () -> Void) {
+        Alamofire.request(
+            .GET,
+            "\(Settings.ApiRootPath)/api/calendars/",
+            headers: ["access_token": CurrentUser.sharedInstance.authentication_token!]
+            ).responseJSON { response in
+                guard response.result.error == nil else {
+                    // Add error handling in the future
+                    print("Can't connect to the server: \(response.result.error!)")
+                    return
                 }
-            }
+                
+                let json = JSON(response.result.value!)
+                self.updateCalendarsFromJson(json["calendars"])
+                completion()
         }
     }
-//    
-//    class func convertDictionary(calendar: Calendar, calendarType: String) -> Dictionary<String, AnyObject> {
-//        var dic = Dictionary<String, AnyObject>()
-//        dic["title"] = calendar.title
-//        dic["memo"] = calendar.memo
-//        let colorData = NSKeyedArchiver.archivedDataWithRootObject(calendar.color)
-//        dic["color"] = colorData
-//        let imageURL = calendar.stampImageURL
-//        dic["image"] = imageURL
-//        if calendarType == "group" {
-//            dic["object_id"] = calendar.object_id
-//        }
-//        return dic
-//    }
-//    
-//    class func convertCalendarModel(attiributes: Dictionary<String, AnyObject>) -> Calendar {
-//        let calendar = Calendar(
-//            title: attiributes["title"] as? String,
-//            color_r: , color_g: <#T##Int#>, color_b: <#T##Int#>, stampImageURL: <#T##String#>)
-//        calendar.memo = attiributes["memo"] as! String
-//        if let object_id = attiributes["object_id"] as? String {
-//            calendar.object_id = object_id
-//        }
-//        let color = attiributes["color"] as! NSData
-//        if let savedColor  = NSKeyedUnarchiver.unarchiveObjectWithData(color) as? UIColor {
-//            calendar.color = savedColor
-//        }
-//        let imageData = attiributes["image"] as! NSData
-//        let image = UIImage(data: imageData)
-//        calendar.image = image
-//        return calendar
-//    }
+    
+    
+    private func createCalendarsFromJson(json: JSON) -> [Calendar] {
+        var calendars = [Calendar]()
+        
+        for (_, calendarJson) in json {
+            let calendar = Calendar(json: calendarJson)
+            print(calendar)
+            calendars.append(calendar)
+        }
+        
+        return calendars
+    }
+    
+    private func updateCalendarsFromJson(calendarsJson: JSON) {
+        calendarCollection = createCalendarsFromJson(calendarsJson)
+    }
+
     
     //NSUserDefaultsの全てのobjectのリセット
     func resetDefaults() {

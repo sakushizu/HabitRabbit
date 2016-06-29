@@ -1,3 +1,4 @@
+
 //
 //  GroupCalendar.swift
 //  CalendarApp
@@ -102,7 +103,7 @@ class GroupCalendar: NSObject {
     func fetchCalendarAttendantUser(calendar: Calendar, callback: () -> Void) {
         userCountDic = [:]
         let attendUserquery = PFQuery(className: "Calendar")
-        attendUserquery.whereKey("title", equalTo: calendar.title!)
+        attendUserquery.whereKey("title", equalTo: calendar.title)
         attendUserquery.getFirstObjectInBackgroundWithBlock { (object, error) -> Void in
             if error == nil {
                 let users = object!.relationForKey("users")

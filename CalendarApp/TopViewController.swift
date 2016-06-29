@@ -17,6 +17,7 @@ class TopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let calendarManager = CalenderManager.sharedInstance
 //        CalenderManager.sharedInstance.resetDefaults()
         
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -25,7 +26,11 @@ class TopViewController: UIViewController {
                 return
             }
             User.loginRails(tokenDic, callback: {
-               self.performSegueWithIdentifier("calendar", sender: nil)
+                
+                calendarManager.fetchCalendars(completion: {
+                    
+                  self.performSegueWithIdentifier("calendar", sender: nil)
+                })
             })
         }
         

@@ -15,9 +15,7 @@ class StockCalendars: NSObject {
     
     //新規カレンダー保存
     class func saveCalendarRails(params: Dictionary<String, AnyObject>, callback: () -> Void) {
-        
-        let currentUser = CurrentUser.sharedInstance
-        
+
         let title = (params["title"]! as! String).dataUsingEncoding(NSUTF8StringEncoding)!
         let color_r = (String(params["color_r"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
         let color_g = (String(params["color_g"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
@@ -26,8 +24,8 @@ class StockCalendars: NSObject {
         // HTTP通信
         Alamofire.upload(
             .POST,
-            "http://localhost:3000/api/calendars.json?email=\(currentUser.user.mailAddress)&token=\(currentUser.authentication_token)",
-            headers: nil,
+            "http://localhost:3000/api/calendars.json?",
+            headers: ["access_token": CurrentUser.sharedInstance.authentication_token!],
             multipartFormData: { multipartFormData in
                 multipartFormData.appendBodyPart(data: title, name: "title")
                 multipartFormData.appendBodyPart(data: color_r, name: "color_R")
@@ -45,10 +43,9 @@ class StockCalendars: NSObject {
                             return
                         }
                         let json = JSON(response.result.value!)
-                        let calendar = Calendar(json: json)
+                        let calendar = Calendar(json: json["calendar"])
                         let calendarManager = CalenderManager.sharedInstance
                         calendarManager.calendarCollection.append(calendar)
-                        print(calendarManager.calendarCollection.append(calendar))
                         
                     }
                 case .Failure(let encodingError):

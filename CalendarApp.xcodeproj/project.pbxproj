@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0057311D221AB3000A8472 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0057301D221AB3000A8472 /* Settings.swift */; };
 		0B0DD70E1C05805800BF9E7F /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0DD70D1C05805800BF9E7F /* Calendar.swift */; };
 		0B0DD7101C05807200BF9E7F /* CalenderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0DD70F1C05807200BF9E7F /* CalenderManager.swift */; };
 		0B0DD7121C05823900BF9E7F /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0DD7111C05823900BF9E7F /* NSDate+Extension.swift */; };
@@ -134,6 +135,7 @@
 
 /* Begin PBXFileReference section */
 		09B9917A2680051F6E589D3D /* Pods-CalendarApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarApp/Pods-CalendarApp.debug.xcconfig"; sourceTree = "<group>"; };
+		0B0057301D221AB3000A8472 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0B0DD70D1C05805800BF9E7F /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		0B0DD70F1C05807200BF9E7F /* CalenderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderManager.swift; sourceTree = "<group>"; };
 		0B0DD7111C05823900BF9E7F /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 				0B825A3F1D0969B3008AB971 /* StockCalendars.swift */,
 				0B2199051D099ACF008FD0D4 /* CalendarThemeColor.swift */,
 				0B2199071D099B1F008FD0D4 /* CalendarThemeColors.swift */,
+				0B0057301D221AB3000A8472 /* Settings.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -812,6 +815,7 @@
 				0BED60211C19766800022AA5 /* CreateCalendarViewController.swift in Sources */,
 				0B6A92801BEF3BF2009A7B2E /* CalendarViewController.swift in Sources */,
 				0BD3453F1C2651C70056C44A /* UIButton+Extension.swift in Sources */,
+				0B0057311D221AB3000A8472 /* Settings.swift in Sources */,
 				0B7586B31C22DFF200816379 /* CurrentUser.swift in Sources */,
 				0BE80B051C00381400655517 /* CalendarCell.swift in Sources */,
 				0B656A2D1C21A96A0024D6F3 /* CreateUserTableViewCell.swift in Sources */,
