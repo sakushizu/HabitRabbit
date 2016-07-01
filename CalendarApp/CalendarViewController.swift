@@ -245,8 +245,10 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     ////サイドバーのセルがタップされた時の処理
     func sideMenuDidSelectItemAtIndex(indexPath: NSIndexPath) {
         selectedCalender = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
-        setSelectedCalendarView()
-        recordTableView.reloadData()
+        stampedManager.fetchStampedDates(selectedCalender.id) { 
+            self.setSelectedCalendarView()
+            self.recordTableView.reloadData()
+        }
     }
     
     //サイドバーの表示
