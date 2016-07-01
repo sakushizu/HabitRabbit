@@ -14,7 +14,7 @@ import SwiftyJSON
 class StampedDateManager: NSObject {
     
    static let sharedInstance = StampedDateManager()
-    let dateCollection = [StampedDate]()
+    var dateCollection = [StampedDate]()
     
     class func saveStampedDate(params: Dictionary<String, AnyObject>, callback: () -> Void) {
         
@@ -38,6 +38,9 @@ class StampedDateManager: NSObject {
                 }
                 
                 let json = JSON(response.result.value!)
+                let convertDate = NSDate.dateFromISOString(json["date"].string!)
+                let date = StampedDate(date: convertDate)
+                StampedDateManager.sharedInstance.dateCollection.append(date)
                 callback()
         }
     }

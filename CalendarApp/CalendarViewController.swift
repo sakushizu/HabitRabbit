@@ -86,7 +86,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     override func viewWillAppear(animated: Bool) {
-    
     }
 
     override func didReceiveMemoryWarning() {
@@ -182,7 +181,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
                 "calendar_id": selectedCalender.id
             ]
             StampedDateManager.saveStampedDate(params, callback: {
-                self.calenderCollectionView.reloadData()
+                self.calenderCollectionView.reloadItemsAtIndexPaths([indexPath])
                 self.recordTableView.reloadData()
             })
         }
@@ -192,7 +191,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     private func jadgeIfCellTapped(indexPath: NSIndexPath) -> Bool {
         let dates = stampedManager.dateCollection
         for date in dates {
-            if date == dateManager.currentMonthOfDates[indexPath.row] {
+            if date.date == dateManager.currentMonthOfDates[indexPath.row] {
                 return true
             }
         }
