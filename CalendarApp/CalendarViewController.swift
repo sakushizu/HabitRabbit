@@ -180,7 +180,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
                 "date": tappedDate,
                 "calendar_id": selectedCalender.id
             ]
-            StampedDateManager.saveStampedDate(params, callback: {
+            stampedManager.saveStampedDate(params, callback: {
                 self.calenderCollectionView.reloadItemsAtIndexPaths([indexPath])
                 self.recordTableView.reloadData()
             })

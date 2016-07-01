@@ -19,7 +19,7 @@ class StampedDateManager: NSObject {
     func fetchStampedDates(calendarId: AnyObject, completion: () -> Void) {
         
         let params: [String: AnyObject] = [
-            "calendar_id": calendarId,
+            "calendar_id": calendarId
         ]
         
         Alamofire.request(
@@ -58,7 +58,7 @@ class StampedDateManager: NSObject {
     }
     
     
-    class func saveStampedDate(params: Dictionary<String, AnyObject>, callback: () -> Void) {
+    func saveStampedDate(params: Dictionary<String, AnyObject>, callback: () -> Void) {
         
         let token = CurrentUser.sharedInstance.authentication_token
         // HTTP通信
