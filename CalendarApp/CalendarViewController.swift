@@ -16,11 +16,12 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     let daysPerWeek: Int = 7
     let cellMargin: CGFloat = 2.0
     var selectedDate = NSDate()
+    var selectedCalender: Calendar!
+    let stampedManager = StampedDateManager.sharedInstance
     var today = NSDate()
     let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     let monthArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     var sideMenu: SideMenu?
-    var selectedCalender = CalenderManager.sharedInstance.calender
     
     @IBOutlet weak var baseView: UIView!
     var recordTableView: RecordTableView!
@@ -171,36 +172,27 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     //セルがタップされた時に呼ばれるメソッド
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if selectedCalender != nil {
-            let tappedDate = dateManager.currentMonthOfDates[indexPath.row]
-            let dates = Calendar.sharedInstance.selectedDates
-            if Calendar.sharedInstance.type == "private" {
-                if (dates[tappedDate] != nil) {
-                    Calendar.sharedInstance.deletedate(tappedDate)
-                } else {
-                    Calendar.sharedInstance.appendSelectedDates(tappedDate)
-                }
+        let tappedDate = dateManager.currentMonthOfDates[indexPath.row]
+        //api保存
+        if jadgeIfCellTapped(indexPath) {
+            //削除
+        } else {
+            let params: Dictionary<String, AnyObject> = [
+                "date": tappedDate,
+                "calendar_id": selectedCalender.id
+            ]
+            StampedDateManager.saveStampedDate(params, callback: {
                 self.calenderCollectionView.reloadData()
-            } else {
-                //parseに保存
-                GroupCalendar.sharedInstance.saveTappedDate(tappedDate){ () -> Void in
-                    if (dates[tappedDate] != nil) {
-                        Calendar.sharedInstance.deletedate(tappedDate)
-                    } else {
-                        Calendar.sharedInstance.appendSelectedDates(tappedDate)
-                    }
-                    self.calenderCollectionView.reloadData()
-                }
-            }
-            recordTableView.reloadData()
+                self.recordTableView.reloadData()
+            })
         }
     }
     
     //タップ済みかの判定
-    func jadgeIfCellTapped(indexPath: NSIndexPath) -> Bool {
-        let dates = Calendar.sharedInstance.selectedDates
-        for dateDic in dates.keys {
-            if dateDic == dateManager.currentMonthOfDates[indexPath.row] {
+    private func jadgeIfCellTapped(indexPath: NSIndexPath) -> Bool {
+        let dates = stampedManager.dateCollection
+        for date in dates {
+            if date == dateManager.currentMonthOfDates[indexPath.row] {
                 return true
             }
         }
@@ -253,20 +245,9 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     ////サイドバーのセルがタップされた時の処理
     func sideMenuDidSelectItemAtIndex(indexPath: NSIndexPath) {
-        if indexPath.section == 0 {
-            
-            
-        } else if indexPath.section == 1 {
-            selectedCalender = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
-            Calendar.sharedInstance.type = "private"
-            setSelectedCalendarView()
-        } else {
-            Calendar.sharedInstance.type = "group"
-            setSelectedCalendarView()
-        }
-//        setMemoViewLayer()
+        selectedCalender = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
+        setSelectedCalendarView()
         recordTableView.reloadData()
-        
     }
     
     //サイドバーの表示
@@ -291,7 +272,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
 
         calendarTitle.text = selectedCalender.title
 //        Calendar.sharedInstance.object_id = selectedCalender.object_id
-        Calendar.sharedInstance.title = selectedCalender.title
+//        Calendar.sharedInstance.title = selectedCalender.title
         calenderHeaderView.backgroundColor = color
         segmentContol.hidden = false
         segmentContol.tintColor = color
@@ -299,11 +280,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         segmentLeftLineView.backgroundColor = color
         segmentRightLineView.hidden = false
         segmentRightLineView.backgroundColor = color
-        Calendar.sharedInstance.fetchDates()
-        if Calendar.sharedInstance.type == "group" {
-            self.setRecordView()
-        } else {
-        }
+        self.setRecordView()
         self.calenderCollectionView.reloadData()
         sideMenu?.toggleMenu()
     }
@@ -322,11 +299,9 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
-    func setRecordView() {
-        GroupCalendar.sharedInstance.fetchCalendarAttendantUser(selectedCalender) { () -> Void in
-            GroupCalendar.sharedInstance.sortUserStampedCount()
-            self.recordTableView.reloadData()
-        }
+    //MERK: -カレンダーに参加しているUserの取得
+    private func setRecordView() {
+        
     }
     
     func makeRecordView() {
@@ -378,8 +353,9 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         return true
     }
     
+    
     func saveCaendarMemo() {
-        selectedCalender.memo = memoTextView.text
+
     }
     
     func moveUserEditViewController() {

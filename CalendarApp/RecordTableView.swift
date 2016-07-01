@@ -25,11 +25,7 @@ class RecordTableView: UITableView, UITableViewDataSource, UITableViewDelegate  
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if Calendar.sharedInstance.type == "private" {
-            return 1
-        } else {
-            return 2
-        }
+        return 2
     }
 
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -51,13 +47,10 @@ class RecordTableView: UITableView, UITableViewDataSource, UITableViewDelegate  
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
-
+    
+    //MARK カレンダ―に参加しているUserのCount
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return GroupCalendar.sharedInstance.userCountArray.count
-        }
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -67,16 +60,18 @@ class RecordTableView: UITableView, UITableViewDataSource, UITableViewDelegate  
                 cell?.rankingNumLabel.hidden = true
                 cell?.userNameLabel.text = CurrentUser.sharedInstance.user.name
                 cell?.userImageView.image = CurrentUser.sharedInstance.user.userImage
-                cell?.recordLabel.text = "\(Calendar.sharedInstance.selectedDates.count)completions"
+                //MARK Userが達成した日数
+                cell?.recordLabel.text = "3complation"
                 return cell!
             } else {
-                let userDic = GroupCalendar.sharedInstance.userCountArray[indexPath.row]
-                for (user, count) in userDic {
-                    cell?.rankingNumLabel.text = "\(indexPath.row + 1)"
-                    cell?.userImageView.image = user.userImage
-                    cell?.userNameLabel.text = user.name
-                    cell?.recordLabel.text = "\(String(count))completions"
-                }
+                //MARK 参加しているUserのランキング表示
+//                let userDic = GroupCalendar.sharedInstance.userCountArray[indexPath.row]
+//                for (user, count) in userDic {
+//                    cell?.rankingNumLabel.text = "\(indexPath.row + 1)"
+//                    cell?.userImageView.image = user.userImage
+//                    cell?.userNameLabel.text = user.name
+//                    cell?.recordLabel.text = "\(String(count))completions"
+//                }
                 return cell!
             }
         } else {
