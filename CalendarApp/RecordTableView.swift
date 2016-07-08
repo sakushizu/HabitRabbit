@@ -58,19 +58,13 @@ class RecordTableView: UITableView, UITableViewDataSource, UITableViewDelegate  
         if CurrentUser.sharedInstance.user != nil {
             if indexPath.section == 0 {
                 cell?.rankingNumLabel.hidden = true
-                cell?.userNameLabel.text = CurrentUser.sharedInstance.user.name
-                cell?.userImageView.image = CurrentUser.sharedInstance.user.userImage
-                //MARK Userが達成した日数
-                cell?.recordLabel.text = "3complation"
+                cell?.fillWith(CurrentUser.sharedInstance.user)
                 return cell!
             } else {
-                //MARK 参加しているUserのランキング表示
+                //MARK: -参加しているUserのランキング表示
 //                let userDic = GroupCalendar.sharedInstance.userCountArray[indexPath.row]
 //                for (user, count) in userDic {
-//                    cell?.rankingNumLabel.text = "\(indexPath.row + 1)"
-//                    cell?.userImageView.image = user.userImage
-//                    cell?.userNameLabel.text = user.name
-//                    cell?.recordLabel.text = "\(String(count))completions"
+//                cell?.fillWith(参加しているuser)
 //                }
                 return cell!
             }
