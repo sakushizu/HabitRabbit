@@ -190,7 +190,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
-    func createCalendarParams(indexPath: NSIndexPath) -> [String: AnyObject] {
+    private func createCalendarParams(indexPath: NSIndexPath) -> [String: AnyObject] {
         var index: Int
         let tappedDate = dateManager.currentMonthOfDates[indexPath.row]
         var params: [String: AnyObject] = [
