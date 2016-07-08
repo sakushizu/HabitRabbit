@@ -171,9 +171,29 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     //セルがタップされた時に呼ばれるメソッド
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let params = createCalendarParams(indexPath)
+
+        if jadgeIfCellTapped(indexPath) {
+            //削除
+            stampedManager.deleteStampedDate(params, callback: {
+                self.stampedManager.dateCollection.removeAtIndex(params["index"] as! Int)
+                self.calenderCollectionView.reloadItemsAtIndexPaths([indexPath])
+                self.recordTableView.reloadData()
+            })
+        } else {
+            //追加
+            stampedManager.saveStampedDate(params, completion: {
+                self.calenderCollectionView.reloadItemsAtIndexPaths([indexPath])
+                self.recordTableView.reloadData()
+            })
+        }
+    }
+    
+    func createCalendarParams(indexPath: NSIndexPath) -> [String: AnyObject] {
         var index: Int
         let tappedDate = dateManager.currentMonthOfDates[indexPath.row]
-        var params: Dictionary<String, AnyObject> = [
+        var params: [String: AnyObject] = [
             "date": tappedDate,
             "calendar_id": selectedCalender.id
         ]
@@ -184,20 +204,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
                 params["index"] = index
             }
         }
-        if jadgeIfCellTapped(indexPath) {
-            //削除
-            stampedManager.deleteStampedDate(params, callback: {
-                self.stampedManager.dateCollection.removeAtIndex(params["index"] as! Int)
-                self.calenderCollectionView.reloadItemsAtIndexPaths([indexPath])
-                self.recordTableView.reloadData()
-            })
-        } else {
-            //追加
-            stampedManager.saveStampedDate(params, callback: {
-                self.calenderCollectionView.reloadItemsAtIndexPaths([indexPath])
-                self.recordTableView.reloadData()
-            })
-        }
+        return params
     }
     
     //タップ済みかの判定

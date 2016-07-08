@@ -46,7 +46,7 @@ class StampedDateManager: NSObject {
         
         for (_, stampedDateJson) in json {
             let convertDate = NSDate.dateFromISOString(stampedDateJson["date"].string!)
-            let date = StampedDate(id: stampedDateJson["id"].int! ,date: convertDate)
+            let date = StampedDate(id: stampedDateJson["id"].int!, date: convertDate)
             dates.append(date)
         }
         
@@ -58,7 +58,7 @@ class StampedDateManager: NSObject {
     }
     
     
-    func saveStampedDate(params: Dictionary<String, AnyObject>, callback: () -> Void) {
+    func saveStampedDate(params: [String: AnyObject], completion: () -> Void) {
         
         let token = CurrentUser.sharedInstance.authentication_token
         // HTTP通信
@@ -83,11 +83,11 @@ class StampedDateManager: NSObject {
                 let convertDate = NSDate.dateFromISOString(json["date"].string!)
                 let date = StampedDate(id: json["id"].int!, date: convertDate)
                 StampedDateManager.sharedInstance.dateCollection.append(date)
-                callback()
+                completion()
         }
     }
     
-    func deleteStampedDate(params: Dictionary<String, AnyObject>, callback: () -> Void) {
+    func deleteStampedDate(params: [String: AnyObject], callback: () -> Void) {
         let token = CurrentUser.sharedInstance.authentication_token
         
         // HTTP通信
