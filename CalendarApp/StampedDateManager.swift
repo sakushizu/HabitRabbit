@@ -16,7 +16,7 @@ class StampedDateManager: NSObject {
    static let sharedInstance = StampedDateManager()
     var dateCollection = [StampedDate]()
     
-    func fetchStampedDates(calendarId: AnyObject, completion: () -> Void) {
+    func fetchStampedDates(calendarId: Int, completion: () -> Void) {
         
         let params: [String: AnyObject] = [
             "calendar_id": calendarId
