@@ -24,5 +24,15 @@ extension NSDate {
         dateComponents.month = addValue
         return calendar.dateByAddingComponents(dateComponents, toDate: self, options: NSCalendarOptions(rawValue: 0))!
     }
+    
+    //String -> NSdate
+    class func dateFromISOString(string: String) -> NSDate {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
+        return dateFormatter.dateFromString(string)!
+    }
 
 }

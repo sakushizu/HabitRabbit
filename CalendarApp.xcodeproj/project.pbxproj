@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0B0057311D221AB3000A8472 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0057301D221AB3000A8472 /* Settings.swift */; };
+		0B0057351D24E4E1000A8472 /* StampedDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0057341D24E4E1000A8472 /* StampedDateManager.swift */; };
+		0B0057381D256390000A8472 /* StampedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0057371D256390000A8472 /* StampedDate.swift */; };
 		0B0DD70E1C05805800BF9E7F /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0DD70D1C05805800BF9E7F /* Calendar.swift */; };
 		0B0DD7101C05807200BF9E7F /* CalenderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0DD70F1C05807200BF9E7F /* CalenderManager.swift */; };
 		0B0DD7121C05823900BF9E7F /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0DD7111C05823900BF9E7F /* NSDate+Extension.swift */; };
@@ -26,7 +28,6 @@
 		0B37F8221C2DFA5700D6AE82 /* Icon-83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F8211C2DFA5700D6AE82 /* Icon-83.5@2x.png */; };
 		0B5C80AE1CBD439700459B8D /* Audio Wave 2-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B5C80AC1CBD439600459B8D /* Audio Wave 2-32.png */; };
 		0B5C80AF1CBD439700459B8D /* Calendar-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B5C80AD1CBD439600459B8D /* Calendar-32.png */; };
-		0B656A241C218DC10024D6F3 /* GroupCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A231C218DC10024D6F3 /* GroupCalendar.swift */; };
 		0B656A261C219E210024D6F3 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A251C219E210024D6F3 /* TopViewController.swift */; };
 		0B656A281C219E330024D6F3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A271C219E330024D6F3 /* SignUpViewController.swift */; };
 		0B656A2A1C219E400024D6F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A291C219E400024D6F3 /* LoginViewController.swift */; };
@@ -136,6 +137,8 @@
 /* Begin PBXFileReference section */
 		09B9917A2680051F6E589D3D /* Pods-CalendarApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarApp/Pods-CalendarApp.debug.xcconfig"; sourceTree = "<group>"; };
 		0B0057301D221AB3000A8472 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		0B0057341D24E4E1000A8472 /* StampedDateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedDateManager.swift; sourceTree = "<group>"; };
+		0B0057371D256390000A8472 /* StampedDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedDate.swift; sourceTree = "<group>"; };
 		0B0DD70D1C05805800BF9E7F /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		0B0DD70F1C05807200BF9E7F /* CalenderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderManager.swift; sourceTree = "<group>"; };
 		0B0DD7111C05823900BF9E7F /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
@@ -154,7 +157,6 @@
 		0B37F8211C2DFA5700D6AE82 /* Icon-83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-83.5@2x.png"; path = "../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/535A33B0-4612-4B90-B463-519EA9A77103/????????? 2015-1 2-26 7.17.02/ios/AppIcon.appiconset/Icon-83.5@2x.png"; sourceTree = "<group>"; };
 		0B5C80AC1CBD439600459B8D /* Audio Wave 2-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Audio Wave 2-32.png"; sourceTree = "<group>"; };
 		0B5C80AD1CBD439600459B8D /* Calendar-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-32.png"; sourceTree = "<group>"; };
-		0B656A231C218DC10024D6F3 /* GroupCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalendar.swift; sourceTree = "<group>"; };
 		0B656A251C219E210024D6F3 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		0B656A271C219E330024D6F3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0B656A291C219E400024D6F3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -444,7 +446,6 @@
 		0B7586AD1C22A91400816379 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0B656A231C218DC10024D6F3 /* GroupCalendar.swift */,
 				0BD173741C09CEEB006873CD /* DateManager.swift */,
 				0B0DD70D1C05805800BF9E7F /* Calendar.swift */,
 				0B0DD70F1C05807200BF9E7F /* CalenderManager.swift */,
@@ -454,6 +455,8 @@
 				0B2199051D099ACF008FD0D4 /* CalendarThemeColor.swift */,
 				0B2199071D099B1F008FD0D4 /* CalendarThemeColors.swift */,
 				0B0057301D221AB3000A8472 /* Settings.swift */,
+				0B0057341D24E4E1000A8472 /* StampedDateManager.swift */,
+				0B0057371D256390000A8472 /* StampedDate.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -802,6 +805,7 @@
 				0B7586A51C224E8A00816379 /* UserImageTableViewCell.swift in Sources */,
 				0B141D6F1C2911360029E6EA /* RankingTableViewCell.swift in Sources */,
 				0B141D771C2A40840029E6EA /* sideUserTableViewCell.swift in Sources */,
+				0B0057381D256390000A8472 /* StampedDate.swift in Sources */,
 				0B7586B11C22AFF500816379 /* UIImage+Extension.swift in Sources */,
 				0B656A3F1C21B6410024D6F3 /* OrViewTableViewCell.swift in Sources */,
 				0BCD96CA1C1E8C0D007E9B92 /* StampCollectionViewCell.swift in Sources */,
@@ -836,7 +840,7 @@
 				0B0DD7121C05823900BF9E7F /* NSDate+Extension.swift in Sources */,
 				0BED60341C1C0CCE00022AA5 /* CreateCell3.swift in Sources */,
 				0B656A2A1C219E400024D6F3 /* LoginViewController.swift in Sources */,
-				0B656A241C218DC10024D6F3 /* GroupCalendar.swift in Sources */,
+				0B0057351D24E4E1000A8472 /* StampedDateManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,6 @@ class CalenderManager: NSObject {
     
     static let sharedInstance = CalenderManager()
     
-    var calender: Calendar!
     var calendarCollection = [Calendar]()
     
     

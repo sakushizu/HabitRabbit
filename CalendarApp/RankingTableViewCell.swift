@@ -20,12 +20,21 @@ class RankingTableViewCell: UITableViewCell {
         
         userImageView.layer.cornerRadius = userImageView.frame.width / 2
         userImageView.clipsToBounds = true
+    
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func fillWith(user: User) {
+        self.userNameLabel.text = user.name
+        self.userImageView.image = user.userImage
+        //MARK Userが達成した日数
+        self.recordLabel.text = "3complation"
+        
     }
     
 }

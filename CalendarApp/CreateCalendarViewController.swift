@@ -68,19 +68,8 @@ class CreateCalendarViewController: UIViewController, UIImagePickerControllerDel
             let navigationVC = self.navigationController!
             navigationVC.popViewControllerAnimated(false)
             let calendarVC = navigationVC.viewControllers.last as! CalendarViewController
-            if Calendar.sharedInstance.password != "" {
-                let groupCell =  createTableView.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0)) as! GroupBtnCell
-                if groupCell.button.titleLabel?.text == "Join Calendar" {
-                    GroupCalendar.sharedInstance.joinParse(cell2.titleTextField.text!) { () -> Void in
-                        self.save(calendarVC)
-                        calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
-                    }
-                } else {
-                    self.save(calendarVC)
-                }
-            } else {
-                self.save(calendarVC)
-            }
+            self.save(calendarVC)
+            calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
         }
     }
     
