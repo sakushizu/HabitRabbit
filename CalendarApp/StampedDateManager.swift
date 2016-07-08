@@ -46,7 +46,7 @@ class StampedDateManager: NSObject {
         
         for (_, stampedDateJson) in json {
             let convertDate = NSDate.dateFromISOString(stampedDateJson["date"].string!)
-            let date = StampedDate(date: convertDate)
+            let date = StampedDate(id: stampedDateJson["id"].int!, date: convertDate)
             dates.append(date)
         }
         
@@ -58,7 +58,7 @@ class StampedDateManager: NSObject {
     }
     
     
-    func saveStampedDate(params: Dictionary<String, AnyObject>, callback: () -> Void) {
+    func saveStampedDate(params: [String: AnyObject], completion: () -> Void) {
         
         let token = CurrentUser.sharedInstance.authentication_token
         // HTTP通信
@@ -81,9 +81,29 @@ class StampedDateManager: NSObject {
                 
                 let json = JSON(response.result.value!)
                 let convertDate = NSDate.dateFromISOString(json["date"].string!)
-                let date = StampedDate(date: convertDate)
+                let date = StampedDate(id: json["id"].int!, date: convertDate)
                 StampedDateManager.sharedInstance.dateCollection.append(date)
-                callback()
+                completion()
         }
+    }
+    
+    func deleteStampedDate(params: [String: AnyObject], callback: () -> Void) {
+        let token = CurrentUser.sharedInstance.authentication_token
+        
+        // HTTP通信
+        Alamofire.request(
+            .DELETE,
+            "\(Settings.ApiRootPath)/api/stamped_dates/\(params["id"]!)",
+            parameters: params,
+            headers: ["access_token": token],
+            encoding: .URL
+            ).response { request, response, data, error in
+                guard error == nil else {
+                    print("result.error")
+                    // Alert
+                    return
+                }
+                callback()
+            }
     }
 }

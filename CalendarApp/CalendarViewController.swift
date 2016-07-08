@@ -171,20 +171,40 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     //セルがタップされた時に呼ばれるメソッド
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let tappedDate = dateManager.currentMonthOfDates[indexPath.row]
-        //api保存
+        
+        let params = createCalendarParams(indexPath)
+
         if jadgeIfCellTapped(indexPath) {
             //削除
+            stampedManager.deleteStampedDate(params, callback: {
+                self.stampedManager.dateCollection.removeAtIndex(params["index"] as! Int)
+                self.calenderCollectionView.reloadItemsAtIndexPaths([indexPath])
+                self.recordTableView.reloadData()
+            })
         } else {
-            let params: Dictionary<String, AnyObject> = [
-                "date": tappedDate,
-                "calendar_id": selectedCalender.id
-            ]
-            stampedManager.saveStampedDate(params, callback: {
+            //追加
+            stampedManager.saveStampedDate(params, completion: {
                 self.calenderCollectionView.reloadItemsAtIndexPaths([indexPath])
                 self.recordTableView.reloadData()
             })
         }
+    }
+    
+    private func createCalendarParams(indexPath: NSIndexPath) -> [String: AnyObject] {
+        var index: Int
+        let tappedDate = dateManager.currentMonthOfDates[indexPath.row]
+        var params: [String: AnyObject] = [
+            "date": tappedDate,
+            "calendar_id": selectedCalender.id
+        ]
+        for tmpDate in stampedManager.dateCollection {
+            if tmpDate.date == tappedDate {
+                index = stampedManager.dateCollection.indexOf({$0 === tmpDate})!
+                params["id"] = tmpDate.id
+                params["index"] = index
+            }
+        }
+        return params
     }
     
     //タップ済みかの判定
