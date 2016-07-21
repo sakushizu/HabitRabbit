@@ -74,7 +74,8 @@ class ColorTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedColor = CalendarThemeColors.list[indexPath.row]
-        customDelegate?.setSelectedColor(selectedColor)
+        let notification : NSNotification = NSNotification(name: "selectColorNotification", object: self, userInfo: ["color": selectedColor])
+        NSNotificationCenter.defaultCenter().postNotification(notification)
         tableView.reloadData()
     }
     

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jRu-8r-fru">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Create Calendar View Controller-->
+        <scene sceneID="ten-hM-aPt">
+            <objects>
+                <viewController storyboardIdentifier="createCalendarView" automaticallyAdjustsScrollViewInsets="NO" id="jRu-8r-fru" customClass="CreateCalendarViewController" customModule="CalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zQM-5t-soB"/>
+                        <viewControllerLayoutGuide type="bottom" id="hAw-K1-2wh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zfQ-cy-H3k" customClass="CreateCalendarView" customModule="CalendarApp" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4x1-RQ-cpK">
+                                <rect key="frame" x="17" y="432" width="341" height="50"/>
+                                <color key="backgroundColor" red="0.97254901960784312" green="0.59215686274509804" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ofd-jG-D3x"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                                <state key="normal" title="Create"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8gp-sz-JeD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="349"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="Heb-Ah-qNq"/>
+                                    <constraint firstAttribute="height" constant="349" id="Je7-vj-vjA"/>
+                                </constraints>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4x1-RQ-cpK" secondAttribute="trailing" constant="17" id="2xH-LN-J5s"/>
+                            <constraint firstItem="hAw-K1-2wh" firstAttribute="top" secondItem="4x1-RQ-cpK" secondAttribute="bottom" constant="185" id="6zj-EX-kvy"/>
+                            <constraint firstItem="4x1-RQ-cpK" firstAttribute="top" secondItem="8gp-sz-JeD" secondAttribute="bottom" constant="77" id="Hew-N3-vGH"/>
+                            <constraint firstItem="hAw-K1-2wh" firstAttribute="top" secondItem="8gp-sz-JeD" secondAttribute="bottom" constant="312" id="MkG-N6-ZJA"/>
+                            <constraint firstItem="4x1-RQ-cpK" firstAttribute="leading" secondItem="zfQ-cy-H3k" secondAttribute="leading" constant="17" id="ana-MV-VBB"/>
+                            <constraint firstAttribute="trailing" secondItem="8gp-sz-JeD" secondAttribute="trailing" id="flC-5h-ujZ"/>
+                            <constraint firstItem="8gp-sz-JeD" firstAttribute="top" secondItem="zfQ-cy-H3k" secondAttribute="top" id="oUS-fl-uZa"/>
+                            <constraint firstItem="8gp-sz-JeD" firstAttribute="leading" secondItem="zfQ-cy-H3k" secondAttribute="leading" id="rFC-3D-RLs"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Hew-N3-vGH"/>
+                                <exclude reference="MkG-N6-ZJA"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outlet property="createButton" destination="4x1-RQ-cpK" id="Q3X-m3-u2S"/>
+                            <outlet property="tableView" destination="8gp-sz-JeD" id="rTF-IL-Dvn"/>
+                        </connections>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4o7-Qg-w3t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="556.5" y="301.5"/>
+        </scene>
+    </scenes>
+</document>

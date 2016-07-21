@@ -277,7 +277,9 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     @IBAction func tappedCreateCalendarBtn(sender: UIBarButtonItem) {
-        performSegueWithIdentifier("CreateCalendarViewController", sender: nil)
+        let storyboard: UIStoryboard = UIStoryboard(name: "CreateCalendar", bundle: nil)
+        let nextView = storyboard.instantiateViewControllerWithIdentifier("createCalendarView")
+        self.navigationController?.pushViewController(nextView, animated: true)
     }
     
     

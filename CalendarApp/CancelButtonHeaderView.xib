@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CancelButtonHeaderView" id="U6b-Vx-4bR" customClass="CancelButtonHeaderView" customModule="CalendarApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="329" height="90"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uf5-fC-6Fq">
+                    <rect key="frame" x="137" y="36" width="55" height="17"/>
+                    <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                    <color key="textColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bH7-N1-VbM">
+                    <rect key="frame" x="296" y="38" width="15" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="H8f-q5-k9o"/>
+                        <constraint firstAttribute="width" constant="15" id="xBz-yq-9nQ"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="Cancel.png"/>
+                    <connections>
+                        <action selector="tappedCancelButton:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="uhi-14-Ylj"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Uf5-fC-6Fq" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="3O9-LM-BVc"/>
+                <constraint firstItem="bH7-N1-VbM" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="4dy-dq-C0E"/>
+                <constraint firstAttribute="trailing" secondItem="bH7-N1-VbM" secondAttribute="trailing" constant="18" id="9i0-B9-J1v"/>
+                <constraint firstItem="Uf5-fC-6Fq" firstAttribute="centerX" secondItem="U6b-Vx-4bR" secondAttribute="centerX" id="Nmu-Vw-Y7a"/>
+            </constraints>
+            <point key="canvasLocation" x="342.5" y="262"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="Cancel.png" width="28" height="28"/>
+    </resources>
+</document>

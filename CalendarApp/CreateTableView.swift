@@ -27,7 +27,7 @@ enum CellContent: Int {
     case Grpup = 4
 }
 
-class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, StampCollectionViewDelegate, UITextFieldDelegate {
+class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     weak var customDelegate: CreateTableViewDelegate?
 
@@ -157,6 +157,8 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
         stampBtn()
 
     }
+    
+    //MARK: -> StampCollectionView
     func setStampView() {
         // レイアウト作成
         let flowLayout = UICollectionViewFlowLayout()
@@ -171,9 +173,9 @@ class CreateTableView: UIView, UITableViewDelegate, UITableViewDataSource, Stamp
         stampCollectionView.backgroundColor = UIColor.whiteColor()
         self.tableView.addSubview(stampCollectionView)
         
-        stampCollectionView.customDelegate = self
     }
     
+    //MARK: -> StampCollectionView表示
     func stampBtn() {
         if stampViewCount == 0 {
             stampViewCount = 1
