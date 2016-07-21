@@ -36,6 +36,7 @@ class CreateCalendar: NSObject, UITableViewDataSource, UITextFieldDelegate {
             cell.iconImageView.image = UIImage(named: icons[indexPath.row])
             cell.cellTextLabel?.hidden = true
             cell.titleTextField.hidden = false
+            cell.titleTextField.text = self.titleText.value
             cell.titleTextField.bnd_text.bindTo(self.titleText)
             cell.colorView.hidden = true
             return cell
