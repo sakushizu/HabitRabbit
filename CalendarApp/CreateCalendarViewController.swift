@@ -126,7 +126,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         NSNotificationCenter.defaultCenter().addObserver(
             self,
             selector: #selector(CreateCalendarViewController.stampImageNotification(_:)),
-            name: "stampImageNotification",
+            name: "tappedStampImageNotification",
             object: nil
         )
         NSNotificationCenter.defaultCenter().addObserver(
@@ -153,13 +153,13 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
     
     private func showImagePickActionSheet() {
         
-        let actionSheet:UIAlertController = UIAlertController(
+        let actionSheet = UIAlertController(
             title:"Select Stamp Icon",
             message: nil,
             preferredStyle: UIAlertControllerStyle.ActionSheet
         )
         
-        let cancelAction:UIAlertAction = UIAlertAction(
+        let cancelAction = UIAlertAction(
             title: "Cancel",
             style: UIAlertActionStyle.Cancel,
             handler: nil
@@ -232,20 +232,20 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
     private func stampBtn() {
         if stampViewCount == .Down {
             stampViewCount = .Up
-            UICollectionView.animateWithDuration(0.3, animations: { () -> Void in
+            UICollectionView.animateWithDuration(0.3) {
                 self.stampCollectionView.frame.origin = CGPointMake(0, self.view.frame.height - 300)
-            })
+            }
         } else {
             stampViewCount = .Down
-            UICollectionView.animateWithDuration(0.3, animations: { () -> Void in
+            UICollectionView.animateWithDuration(0.3) {
                 self.stampCollectionView.frame.origin = CGPointMake(0, self.view.frame.height)
-            })
+            }
         }
     }
     
     private func save(calendarVC: CalendarViewController) {
         
-        let params: Dictionary<String, AnyObject> = [
+        let params: [String: AnyObject] = [
             "title": mModel.titleText.value!,
             "stamp": mModel.selectStampImage!,
             "color_r": mModel.selectColor.r,

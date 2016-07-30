@@ -9,7 +9,7 @@
 import UIKit
 import Bond
 
-class CreateCalendar: NSObject, UITableViewDataSource, UITextFieldDelegate {
+class CreateCalendarVM: NSObject, UITableViewDataSource, UITextFieldDelegate {
     
     var selectStampImage = UIImage(named: "approval")
     var selectColor = CalendarThemeColor(r: 248, g: 151, b: 190)

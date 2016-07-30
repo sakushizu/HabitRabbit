@@ -63,10 +63,10 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="cellTextLabel" destination="TkG-SX-mcG" id="9cT-br-1NN"/>
                 <outlet property="colorView" destination="Qu5-sf-Dc5" id="Df1-9w-PCX"/>
                 <outlet property="iconImageView" destination="FSO-sh-JpH" id="ihI-fE-VfB"/>
                 <outlet property="indecatorImageView" destination="iKj-zh-utP" id="bzW-FD-hdo"/>
+                <outlet property="titleTextLabel" destination="TkG-SX-mcG" id="OfA-YD-WnY"/>
             </connections>
             <point key="canvasLocation" x="382.5" y="315"/>
         </tableViewCell>
