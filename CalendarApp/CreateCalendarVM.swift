@@ -27,8 +27,8 @@ class CreateCalendarVM: NSObject, UITableViewDataSource, UITextFieldDelegate {
         switch rowType {
             
         case .TitleCell:
-            let cell = tableView.dequeueReusableCellWithIdentifier("CreateTableViewCell", forIndexPath: indexPath) as! CreateTableViewCell
-            cell.fillFithTitleCell(indexPath.row, titleText: self.titleText.value!)
+            let cell = tableView.dequeueReusableCellWithIdentifier("TitleTableViewCell", forIndexPath: indexPath) as! TitleTableViewCell
+            cell.fillFith(indexPath.row, titleText: self.titleText.value!)
             cell.titleTextField.bnd_text.bindTo(titleText)
             return cell
             

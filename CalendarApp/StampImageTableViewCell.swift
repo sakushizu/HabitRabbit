@@ -15,13 +15,9 @@ class StampImageTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
-        backGroundView.layer.cornerRadius = 10
-        
-        stampImageView.userInteractionEnabled = true
-        let tappedStampImageGesture = UITapGestureRecognizer(target: self, action: #selector(StampImageTableViewCell.tappedStampImage))
-        stampImageView.addGestureRecognizer(tappedStampImageGesture)
+        setUpBackGroundView()
+        setUpStampImageView()
 
     }
 
@@ -32,8 +28,22 @@ class StampImageTableViewCell: UITableViewCell {
     }
     
     func tappedStampImage() {
-        let ns = NSNotificationCenter.defaultCenter()
-        ns.postNotificationName("stampImageNotification", object: nil)
+        let notification = NSNotificationCenter.defaultCenter()
+        notification.postNotificationName("tappedStampImageNotification", object: nil)
+    }
+    
+    func fillWith(selectStampImage: UIImage) {
+        self.stampImageView.image = selectStampImage
+    }
+    
+    private func setUpBackGroundView() {
+        backGroundView.layer.cornerRadius = 10
+    }
+    
+    private func setUpStampImageView() {
+        stampImageView.userInteractionEnabled = true
+        let tappedStampImageGesture = UITapGestureRecognizer(target: self, action: #selector(StampImageTableViewCell.tappedStampImage))
+        stampImageView.addGestureRecognizer(tappedStampImageGesture)
     }
     
 }

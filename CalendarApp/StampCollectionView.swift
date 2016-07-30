@@ -14,17 +14,54 @@ import UIKit
 
 class StampCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    let collectionViewHeight: CGFloat = 300
+    
     let stampsImages = ["Gift-32.png", "Pushups-32.png", "Wakeup Hill on Stairs Filled-32.png", "Yoga Filled-32.png", "Portrait Mode-32.png","Sports Mode-32.png", "Edit Filled-32.png", "Document-32.png", "Document Filled-32.png", "Panda Filled-32.png", "Hair Dryer-32.png", "Edit Filled-32.png", "Gift-32.png", "Pushups-32.png", "Wakeup Hill on Stairs Filled-32.png", "Yoga Filled-32.png", "Portrait Mode-32.png","Sports Mode-32.png", "Edit Filled-32.png", "Document-32.png", "Document Filled-32.png", "Panda Filled-32.png", "Hair Dryer-32.png", "Edit Filled-32.png", "Gift-32.png", "Pushups-32.png", "Wakeup Hill on Stairs Filled-32.png", "Yoga Filled-32.png", "Portrait Mode-32.png","Sports Mode-32.png", "Edit Filled-32.png", "Document-32.png", "Document Filled-32.png", "Panda Filled-32.png", "Hair Dryer-32.png", "Edit Filled-32.png"]
 
-    override init(frame: CGRect, collectionViewLayout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: collectionViewLayout)
-
+    init() {
+        let screenSize = UIScreen.mainScreen().bounds
+        let itemWidth = screenSize.width / 6
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .Vertical
+        flowLayout.sectionInset = UIEdgeInsetsMake(15, 15, 15, 15)
+        flowLayout.minimumInteritemSpacing = 5.0
+        flowLayout.minimumLineSpacing = 5.0
+        flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
+        
+        let frame = CGRectMake(0, screenSize.height, screenSize.width, self.collectionViewHeight)
+        
+        super.init(frame: frame, collectionViewLayout: flowLayout)
+        
+        self.backgroundColor = UIColor.whiteColor()
+        
         registerNib(UINib(nibName: "StampCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "stampCell")
         registerNib(UINib(nibName: CancelButtonHeaderView.nibName, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CancelButtonHeaderView.nibName)
         
         self.delegate = self
         self.dataSource = self
     }
+    
+//    override init(frame: CGRect, collectionViewLayout: UICollectionViewLayout) {
+//        
+//        let flowLayout = UICollectionViewFlowLayout()
+//        flowLayout.scrollDirection = .Vertical
+//        flowLayout.sectionInset = UIEdgeInsetsMake(15, 15, 15, 15)
+//        flowLayout.minimumInteritemSpacing = 5.0
+//        flowLayout.minimumLineSpacing = 5.0
+//        flowLayout.itemSize = CGSizeMake(createCalendarViewController.view.frame.width/6, createCalendarViewController.view.frame.width/6)
+//        
+//        let frame = CGRectMake(0, createCalendarViewController.view.frame.height, createCalendarViewController.view.frame.width, 300)
+//        
+//        super.init(frame: frame, collectionViewLayout: flowLayout)
+//        
+//        self.backgroundColor = UIColor.whiteColor()
+//
+//        registerNib(UINib(nibName: "StampCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "stampCell")
+//        registerNib(UINib(nibName: CancelButtonHeaderView.nibName, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CancelButtonHeaderView.nibName)
+//        
+//        self.delegate = self
+//        self.dataSource = self
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -64,11 +101,10 @@ class StampCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let stampImage = UIImage(named: stampsImages[indexPath.row])
-        let notification : NSNotification = NSNotification(name: "selectStampNotification", object: self, userInfo: ["stampImage": stampImage!])
+        let notification = NSNotification(name: "selectStampNotification", object: self, userInfo: ["stampImage": stampImage!])
         NSNotificationCenter.defaultCenter().postNotification(notification)
         
     }
-
-
+    
 
 }
