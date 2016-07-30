@@ -13,6 +13,7 @@ class CancelButtonHeaderView: UICollectionReusableView {
     static let nibName = "CancelButtonHeaderView"
     
     override func awakeFromNib() {
+        
         super.awakeFromNib()
         // Initialization code
         
@@ -21,8 +22,8 @@ class CancelButtonHeaderView: UICollectionReusableView {
     
     @IBAction func tappedCancelButton(sender: UIButton) {
         //scrollを下げるメソッドを呼びたい
-        let ns = NSNotificationCenter.defaultCenter()
-        ns.postNotificationName("closeStampImageNotification", object: nil)
+        let notification = NSNotificationCenter.defaultCenter()
+        notification.postNotificationName("closeStampImageNotification", object: nil)
     }
 
 }

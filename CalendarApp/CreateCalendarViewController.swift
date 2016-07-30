@@ -8,24 +8,24 @@
 
 import UIKit
 
-enum RowType:Int {
+enum RowType: Int {
     case TitleCell = 0
     case StampCell = 1
     case ColorCell = 2
     case UserCell = 3
 }
 
-enum StampViewType:Int {
+enum StampViewType: Int {
     case Down = 0
     case Up = 1
 }
 
-class CreateCalendarViewController: UIViewController, UITableViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    private let mModel = CreateCalendar()
+    private let mModel = CreateCalendarVM()
     private var mView: CreateCalendarView!
     private var imagePickerVC: UIImagePickerController!
-    private var stampCollectionView: StampCollectionView!
+    private var stampCollectionView = StampCollectionView()
     private var stampViewCount = StampViewType.Down
 
     override func viewDidLoad() {
@@ -83,8 +83,6 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate,UINavi
     }
     
     func clickCreateButton(sender: UIButton) {
-        //textFieldの値を取得したい
-        print(mModel.titleText.value!)
         
         if mModel.titleText.value! == "" {
             showAlert("Title is empty!")

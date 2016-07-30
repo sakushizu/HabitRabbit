@@ -48,12 +48,12 @@ class ColorTableViewController: UITableViewController {
     
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         if section == 0 {
             return 1
         } else {
@@ -74,7 +74,7 @@ class ColorTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedColor = CalendarThemeColors.list[indexPath.row]
-        let notification : NSNotification = NSNotification(name: "selectColorNotification", object: self, userInfo: ["color": selectedColor])
+        let notification = NSNotification(name: "selectColorNotification", object: self, userInfo: ["color": selectedColor])
         NSNotificationCenter.defaultCenter().postNotification(notification)
         tableView.reloadData()
     }
