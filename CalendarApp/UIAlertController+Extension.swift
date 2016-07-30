@@ -8,6 +8,12 @@
 
 import UIKit
 
-class UIAlertController_Extension: NSObject {
-
+extension UIAlertController {
+    
+    class func alertWith(message message: String?) -> UIAlertController {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
+        let OKAction = UIAlertAction(title: "ok", style: .Default, handler: nil)
+        alert.addAction(OKAction)
+        return alert
+    }
 }
