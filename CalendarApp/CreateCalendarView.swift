@@ -17,16 +17,19 @@ class CreateCalendarView: UIView {
         tableView.registerNib(UINib(nibName: "StampImageTableViewCell", bundle: nil), forCellReuseIdentifier: "StampImageTableViewCell")
         
         layoutTableView()
-        
-        createButton.layer.cornerRadius = 5
+        layoutCreateButton()
         
 
     }
     
-    func layoutTableView() {
+    private func layoutTableView() {
         tableView.contentInset = UIEdgeInsets(top: 89, left: 0, bottom: 0, right: 0)
         tableView.backgroundColor = UIColor.hexStr("F6F6F6", alpha: 1)
         tableView.scrollEnabled = false
+    }
+    
+    private func layoutCreateButton() {
+        createButton.layer.cornerRadius = 5
     }
 
 }

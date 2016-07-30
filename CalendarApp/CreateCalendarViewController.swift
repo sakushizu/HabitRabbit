@@ -38,7 +38,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         
         setImagePicker()
         setStampNotification()
-        setStampView()
+        mView.addSubview(stampCollectionView)
         
     }
 
@@ -211,22 +211,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         stampBtn()
     }
     
-    //MARK: -> StampCollectionView
-    private func setStampView() {
-        // レイアウト作成
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .Vertical
-        flowLayout.sectionInset = UIEdgeInsetsMake(15, 15, 15, 15)
-        flowLayout.minimumInteritemSpacing = 5.0
-        flowLayout.minimumLineSpacing = 5.0
-        flowLayout.itemSize = CGSizeMake(self.view.frame.width/6, self.view.frame.width/6)
-        
-        let frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, 300)
-        stampCollectionView = StampCollectionView(frame: frame, collectionViewLayout: flowLayout)
-        stampCollectionView.backgroundColor = UIColor.whiteColor()
-        mView.addSubview(stampCollectionView)
 
-    }
     
     //MARK: -> StampCollectionView表示切り替え
     private func stampBtn() {
@@ -258,14 +243,5 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         })
         
     }
-    
-    //MARK: -> アラート表示
-    private func showAlert(message: String?) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
-        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertController.addAction(action)
-        presentViewController(alertController, animated: true, completion: nil)
-    }
-    
     
 }
