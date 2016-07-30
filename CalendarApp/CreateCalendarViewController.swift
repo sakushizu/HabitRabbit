@@ -64,9 +64,8 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         
         if rowType == .ColorCell {
             
-            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let nextVC = storyboard.instantiateViewControllerWithIdentifier("colorTableViewController")
-            self.navigationController?.pushViewController(nextVC, animated: true)
+            let colorTableVC = UIStoryboard.viewControllerWith("CreateCalendar", identifier: "colorTableViewController") as! ColorTableViewController
+            self.navigationController?.pushViewController(colorTableVC, animated: true)
             
         } else if rowType == .UserCell {
             
@@ -85,7 +84,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
     func clickCreateButton(sender: UIButton) {
         
         if mModel.titleText.value! == "" {
-            showAlert("Title is empty!")
+            UIAlertController.alertWith(message: "Title is empty!")
         } else {
             let navigationVC = self.navigationController!
             navigationVC.popViewControllerAnimated(false)
