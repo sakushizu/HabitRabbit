@@ -10,15 +10,28 @@ import UIKit
 
 class TitleTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleTextField: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        setUpTitleTextField()
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+    
+    func fillFith(row: Int, titleText: String){
+        self.titleTextField.text = titleText
+    }
+    
+    private func setUpTitleTextField() {
+        titleTextField.placeholder = "Write a title"
+            titleTextField.font = UIFont(name: "Hiragino Kaku Gothic Pro", size: 15)
+        titleTextField.textColor = UIColor.hexStr("555555", alpha: 1)
     }
     
 }
