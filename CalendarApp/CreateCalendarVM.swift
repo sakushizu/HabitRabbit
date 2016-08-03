@@ -37,14 +37,13 @@ class CreateCalendarVM: NSObject, UITableViewDataSource, UITextFieldDelegate {
             stampCell.fillWith(selectStampImage!)
             return stampCell
 
-        case .ColorCell, .UserCell:
-            let cell = tableView.dequeueReusableCellWithIdentifier("CreateTableViewCell", forIndexPath: indexPath) as! CreateTableViewCell
-            cell.fillWith(indexPath.row)
-            if rowType == .ColorCell {
-                cell.colorView.hidden = false
-                cell.colorView.backgroundColor = selectColor.color
-            }
+        case .ColorCell:
+            let cell = tableView.dequeueReusableCellWithIdentifier("ColorTableViewCell", forIndexPath: indexPath) as! ColorTableViewCell
+            cell.fillWith(selectColor.color)            
+            return cell
             
+        case.UserCell:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SelectUserTableViewCell", forIndexPath: indexPath) as! SelectUserTableViewCell
             return cell
         }
     }

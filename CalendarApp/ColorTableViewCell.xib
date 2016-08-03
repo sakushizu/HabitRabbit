@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ColorTableViewCell" focusStyle="custom" rowHeight="52" id="KGk-i7-Jjw" customClass="ColorTableViewCell" customModule="CalendarApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="color.png" translatesAutoresizingMaskIntoConstraints="NO" id="FSO-sh-JpH">
+                        <rect key="frame" x="25" y="12" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="AcI-F5-Gwn"/>
+                            <constraint firstAttribute="width" constant="25" id="ygR-kW-9K0"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TkG-SX-mcG">
+                        <rect key="frame" x="75" y="14" width="79" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                        <color key="textColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Disclosure Indicator.png" translatesAutoresizingMaskIntoConstraints="NO" id="iKj-zh-utP">
+                        <rect key="frame" x="350" y="17" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="Qsi-2o-Rgp"/>
+                            <constraint firstAttribute="width" constant="15" id="dT1-xg-6re"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qu5-sf-Dc5">
+                        <rect key="frame" x="325" y="17" width="15" height="15"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.59215686270000001" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="6Rk-5O-tYO"/>
+                            <constraint firstAttribute="height" constant="15" id="d89-Lo-b1G"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="iKj-zh-utP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="1Ft-eq-DtP"/>
+                    <constraint firstItem="FSO-sh-JpH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="5M3-tq-fxU"/>
+                    <constraint firstItem="Qu5-sf-Dc5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6ey-re-Z3b"/>
+                    <constraint firstAttribute="bottom" secondItem="TkG-SX-mcG" secondAttribute="bottom" constant="14" id="9Ya-c1-SyK"/>
+                    <constraint firstItem="iKj-zh-utP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="V2X-uk-yUE"/>
+                    <constraint firstItem="iKj-zh-utP" firstAttribute="leading" secondItem="Qu5-sf-Dc5" secondAttribute="trailing" constant="10" id="jt6-wH-xng"/>
+                    <constraint firstItem="iKj-zh-utP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="oDM-Bc-G0J"/>
+                    <constraint firstItem="TkG-SX-mcG" firstAttribute="leading" secondItem="FSO-sh-JpH" secondAttribute="trailing" constant="25" id="r5J-tl-buX"/>
+                    <constraint firstItem="FSO-sh-JpH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="sxd-BO-rkx"/>
+                    <constraint firstAttribute="trailing" secondItem="iKj-zh-utP" secondAttribute="trailing" constant="10" id="tbX-0p-6Ap"/>
+                    <constraint firstItem="TkG-SX-mcG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="vAl-4A-jOT"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="V2X-uk-yUE"/>
+                        <exclude reference="oDM-Bc-G0J"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="colorView" destination="Qu5-sf-Dc5" id="Df1-9w-PCX"/>
+                <outlet property="iconImageView" destination="FSO-sh-JpH" id="ihI-fE-VfB"/>
+                <outlet property="indecatorImageView" destination="iKj-zh-utP" id="bzW-FD-hdo"/>
+                <outlet property="titleTextLabel" destination="TkG-SX-mcG" id="OfA-YD-WnY"/>
+            </connections>
+            <point key="canvasLocation" x="115.5" y="234"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Disclosure Indicator.png" width="16" height="32"/>
+        <image name="color.png" width="19" height="24"/>
+    </resources>
+</document>
