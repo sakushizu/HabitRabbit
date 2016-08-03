@@ -24,7 +24,7 @@ class TitleTableViewCell: UITableViewCell {
 
     }
     
-    func fillFith(row: Int, titleText: String){
+    func fillWith(row: Int, titleText: String){
         self.titleTextField.text = titleText
     }
     
