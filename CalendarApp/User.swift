@@ -24,6 +24,7 @@ class User: NSObject {
     
     var objectId: String!
     
+    var id: Int!
     var name: String!
     var password: String!
     var mailAddress: String!
@@ -66,9 +67,10 @@ class User: NSObject {
     }
     
     init(jsonWithUser json: JSON) {
-        self.name = json["user"]["name"].string
-        self.mailAddress = json["user"]["email"].string
-        self.avatarUrl = json["user"]["avatar"].string
+        self.id = json["id"].int
+        self.name = json["name"].string
+        self.mailAddress = json["email"].string
+        self.avatarUrl = json["avatar"].string
     }
     
     // RailsSignUp
@@ -82,7 +84,7 @@ class User: NSObject {
         // HTTP通信
         Alamofire.upload(
             .POST,
-            "http://localhost:3000/users.json",
+            "\(Settings.ApiRootPath)/api/users.json",
             headers: nil,
             multipartFormData: { multipartFormData in
                 multipartFormData.appendBodyPart(data: name, name: "user[name]")
@@ -120,7 +122,7 @@ class User: NSObject {
         // HTTP通信
         Alamofire.request(
             .POST,
-            "http://localhost:3000/user_sessions/create_with_token.json",
+            "\(Settings.ApiRootPath)/api/user_sessions/create_with_token.json",
             parameters: nil,
             headers: ["access_token": token],
             encoding: .URL 
@@ -156,7 +158,7 @@ class User: NSObject {
         
         Alamofire.request(
             .POST,
-            "http://localhost:3000/user_sessions.json",
+            "\(Settings.ApiRootPath)/api/user_sessions.json",
             parameters: params,
             encoding: .JSON
             ).responseJSON { response in
@@ -236,7 +238,7 @@ class User: NSObject {
         
         Alamofire.request(
             .POST,
-            "http://localhost:3000/users/create_with_FB.json",
+            "\(Settings.ApiRootPath)/api/users/create_with_FB.json",
             parameters: params,
             encoding: .JSON
             ).responseJSON { response in
