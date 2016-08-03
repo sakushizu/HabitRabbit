@@ -13,6 +13,7 @@ target 'CalendarApp' do
     pod 'SwiftyJSON'
     pod 'SDWebImage'
     pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
+    pod 'Bond'
 end
 
 target 'CalendarAppTests' do

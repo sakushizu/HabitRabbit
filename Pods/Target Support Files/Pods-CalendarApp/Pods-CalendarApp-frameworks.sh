@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-CalendarApp/Alamofire.framework"
   install_framework "Pods-CalendarApp/Bolts.framework"
+  install_framework "Pods-CalendarApp/Bond.framework"
   install_framework "Pods-CalendarApp/FBSDKCoreKit.framework"
   install_framework "Pods-CalendarApp/FBSDKLoginKit.framework"
   install_framework "Pods-CalendarApp/FBSDKShareKit.framework"
@@ -98,6 +99,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-CalendarApp/Alamofire.framework"
   install_framework "Pods-CalendarApp/Bolts.framework"
+  install_framework "Pods-CalendarApp/Bond.framework"
   install_framework "Pods-CalendarApp/FBSDKCoreKit.framework"
   install_framework "Pods-CalendarApp/FBSDKLoginKit.framework"
   install_framework "Pods-CalendarApp/FBSDKShareKit.framework"

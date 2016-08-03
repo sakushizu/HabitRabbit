@@ -129,9 +129,8 @@ class UserEditViewController: UIViewController, UITableViewDelegate, UITableView
     
     //logout後の画面遷移
     func moveTopVC () {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextView = storyboard.instantiateViewControllerWithIdentifier("topView")
-        let nc = UINavigationController(rootViewController: nextView)
+        let topVC = UIStoryboard.viewControllerWith("Main", identifier: "topView") as! CalendarViewController
+        let nc = UINavigationController(rootViewController: topVC)
         self.presentViewController(nc, animated: true, completion: nil)
     }
     

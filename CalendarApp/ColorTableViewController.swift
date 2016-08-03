@@ -35,7 +35,7 @@ class ColorTableViewController: UITableViewController {
         let coverView = UIView()
         coverView.backgroundColor = UIColor.lightlightGray()
         let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width, height: 40))
-        label.font = UIFont(name: "HelveticaNeue-Light", size: 15)
+        label.font = UIFont.mainFontJa(15)
         label.textColor = UIColor.darkGrayColor()
         coverView.addSubview(label)
         if section == 0 {
@@ -48,12 +48,12 @@ class ColorTableViewController: UITableViewController {
     
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         if section == 0 {
             return 1
         } else {
@@ -74,7 +74,8 @@ class ColorTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedColor = CalendarThemeColors.list[indexPath.row]
-        customDelegate?.setSelectedColor(selectedColor)
+        let notification = NSNotification(name: "selectColorNotification", object: self, userInfo: ["color": selectedColor])
+        NSNotificationCenter.defaultCenter().postNotification(notification)
         tableView.reloadData()
     }
     

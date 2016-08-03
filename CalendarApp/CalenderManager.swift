@@ -42,7 +42,6 @@ class CalenderManager: NSObject {
         
         for (_, calendarJson) in json {
             let calendar = Calendar(json: calendarJson)
-            print(calendar)
             calendars.append(calendar)
         }
         
