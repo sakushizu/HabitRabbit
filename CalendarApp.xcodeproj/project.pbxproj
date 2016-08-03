@@ -37,6 +37,7 @@
 		0B23F0691D31F59A00BAA63E /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B23F0681D31F59A00BAA63E /* camera.png */; };
 		0B23F06B1D324FD300BAA63E /* Disclosure Indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B23F06A1D324FD300BAA63E /* Disclosure Indicator.png */; };
 		0B23F06F1D361ADE00BAA63E /* Cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B23F06E1D361ADD00BAA63E /* Cancel.png */; };
+		0B27EE831D51F95900F0F67C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27EE821D51F95900F0F67C /* UIFont+Extension.swift */; };
 		0B2B412D1C4A7C2C0031F9C2 /* ちっちさんImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2B412C1C4A7C2C0031F9C2 /* ちっちさんImage.png */; };
 		0B37F81A1C2D156E00D6AE82 /* UserEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F8191C2D156E00D6AE82 /* UserEdit.storyboard */; };
 		0B37F8201C2DF6D400D6AE82 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F81F1C2DF6D400D6AE82 /* Launch Screen.storyboard */; };
@@ -173,6 +174,7 @@
 		0B23F0681D31F59A00BAA63E /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		0B23F06A1D324FD300BAA63E /* Disclosure Indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Disclosure Indicator.png"; sourceTree = "<group>"; };
 		0B23F06E1D361ADD00BAA63E /* Cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cancel.png; sourceTree = "<group>"; };
+		0B27EE821D51F95900F0F67C /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		0B2B412C1C4A7C2C0031F9C2 /* ちっちさんImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ちっちさんImage.png"; sourceTree = "<group>"; };
 		0B37F8191C2D156E00D6AE82 /* UserEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserEdit.storyboard; sourceTree = "<group>"; };
 		0B37F81F1C2DF6D400D6AE82 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 				0BD3453E1C2651C60056C44A /* UIButton+Extension.swift */,
 				0B2338421D41DCA00021A184 /* UIStroryBoard+Extension.swift */,
 				0BCFBF251D4C997E0041FB4A /* UIAlertController+Extension.swift */,
+				0B27EE821D51F95900F0F67C /* UIFont+Extension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 				0B23F04E1D2FE81000BAA63E /* CreateCalendarVM.swift in Sources */,
 				0BE7F6351C1FF4B500DD76B5 /* ColorTableViewController.swift in Sources */,
 				0B2199081D099B1F008FD0D4 /* CalendarThemeColors.swift in Sources */,
+				0B27EE831D51F95900F0F67C /* UIFont+Extension.swift in Sources */,
 				0B0DD7101C05807200BF9E7F /* CalenderManager.swift in Sources */,
 				0B23F04C1D2FE50300BAA63E /* CreateCalendarViewController.swift in Sources */,
 				0B23F05A1D31F1BD00BAA63E /* StampImageTableViewCell.swift in Sources */,

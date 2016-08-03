@@ -343,7 +343,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         let textFieldFrame = CGRectMake(15, 15, memoView.frame.width - 30, memoView.frame.height - 30 )
         memoTextView = UITextView(frame: textFieldFrame)
         memoTextView.textColor = UIColor.darkGrayColor()
-        memoTextView.font = UIFont(name: "HelveticaNeue-Light", size: 14)
+        memoTextView.font = UIFont.mainFontJa(14)
         memoTextView.layer.borderWidth = 0.5
         memoTextView.layer.cornerRadius = 4
         memoTextView.clipsToBounds = true

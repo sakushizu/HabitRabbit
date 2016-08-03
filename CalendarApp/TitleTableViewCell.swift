@@ -30,7 +30,7 @@ class TitleTableViewCell: UITableViewCell {
     
     private func setUpTitleTextField() {
         titleTextField.placeholder = "Write a title"
-            titleTextField.font = UIFont(name: "Hiragino Kaku Gothic Pro", size: 15)
+            titleTextField.font = UIFont.mainFontJa(15)
         titleTextField.textColor = UIColor.hexStr("555555", alpha: 1)
     }
     
