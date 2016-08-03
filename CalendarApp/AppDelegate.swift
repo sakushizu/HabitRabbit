@@ -23,6 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarPosition: .TopAttached, barMetrics: .Default)
         UINavigationBar.appearance().shadowImage = UIImage()
         
+        UINavigationBar.appearance().tintColor = UIColor.mainColor()
+        UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.mainColor()]
+        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
         

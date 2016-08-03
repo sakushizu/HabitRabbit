@@ -16,8 +16,6 @@ class CalenderManager: NSObject {
     
     var calendarCollection = [Calendar]()
     
-    
-    
     func fetchCalendars(completion completion: () -> Void) {
         Alamofire.request(
             .GET,

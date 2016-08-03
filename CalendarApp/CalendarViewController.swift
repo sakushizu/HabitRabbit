@@ -8,7 +8,6 @@
 
 import UIKit
 import Foundation
-import Parse
 
 class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, SideMenuDelegate, UIBarPositioningDelegate, UINavigationBarDelegate, UITextViewDelegate, MenuTableViewControllerToCalendarControllerDelegate {
     
@@ -82,6 +81,9 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         memoView.hidden = true
         recordTableView.hidden = true
         settingView.hidden = true
+        
+        // MARK - ここから編集
+        setNavigationBar()
         
     }
     
@@ -272,14 +274,11 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     //サイドバーの表示
-    @IBAction func toggleSideMenu(sender: AnyObject) {
+    func toggleSideMenu(sender: AnyObject) {
         sideMenu?.toggleMenu()
     }
     
-    @IBAction func tappedCreateCalendarBtn(sender: UIBarButtonItem) {
-        let createCalenderVC = UIStoryboard.viewControllerWith("CreateCalendar", identifier: "createCalendarView") as! CreateCalendarViewController
-        self.navigationController?.pushViewController(createCalenderVC, animated: true)
-    }
+
     
     
     // MARK: - ビューの装飾
@@ -387,5 +386,31 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
 //        nextVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
 //        navigationController?.pushViewController(nextVC, animated: true)
     }
+    
+    func tappedAppointmentButton() {
+        
+    }
+    
+    func tappedPlusButton() {
+        let createCalenderVC = UIStoryboard.viewControllerWith("CreateCalendar", identifier: "createCalendarView") as! CreateCalendarViewController
+        self.navigationController?.pushViewController(createCalenderVC, animated: true)
+    }
+    
+    private func setNavigationBar() {
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+
+        
+        let createCalendarItem = UIBarButtonItem(image: UIImage(named: "plus"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.tappedPlusButton))
+        let appointItem = UIBarButtonItem(image: UIImage(named: "appointmentReminder"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.tappedAppointmentButton))
+        
+        let rightItem = [createCalendarItem, appointItem]
+        
+        self.navigationItem.setRightBarButtonItems(rightItem, animated: true)
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.toggleSideMenu(_:)))
+    }
+    
+
 
 }
