@@ -14,6 +14,10 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
     private let mModel = UserInvitaionVM()
     private var mView: UserInvitationView!
     private let userInvitationManager = UserInvitationManager.sharedInstance
+    private let header = UIView()
+    private let label = UILabel()
+
+
 
     // MARK - View LifeCycle
     
@@ -56,9 +60,7 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = UIView()
         header.backgroundColor = UIColor.hexStr("F7F7F7", alpha: 1)
-        let label = UILabel()
         label.text = "User"
         label.font = UIFont(name: "HelveticaNeue-Light", size: 16)
         label.sizeToFit()

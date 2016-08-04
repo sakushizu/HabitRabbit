@@ -71,11 +71,10 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             
         } else if rowType == .UserCell {
             
-            userInvitationManager.fetchUsers(completion: { 
+            userInvitationManager.fetchUsers(completion: {
                 
-                let storyboard: UIStoryboard = self.storyboard!
-                let nextVC = storyboard.instantiateViewControllerWithIdentifier("UserInvitationViewController") as! UINavigationController
-                self.presentViewController(nextVC, animated: true, completion: nil)
+                let UserInvitationVC = UIStoryboard.viewControllerWith("CreateCalendar", identifier: "UserInvitationViewController") as! UserInvitationViewController
+                self.navigationController?.pushViewController(UserInvitationVC, animated: true)
 
                 
             })
@@ -96,7 +95,9 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         
         if mModel.titleText.value! == "" {
             //alert出てこない
-            UIAlertController.alertWith(message: "Title is empty!")
+            let alert = UIAlertController.alertWith(message: "Title is empty!")
+            self.presentViewController(alert, animated: true, completion: nil)
+
         } else {
             let navigationVC = self.navigationController!
             navigationVC.popViewControllerAnimated(false)
