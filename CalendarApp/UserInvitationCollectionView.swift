@@ -24,7 +24,7 @@ class UserInvitationCollectionView: UICollectionView {
         
         super.init(frame: frame, collectionViewLayout: flowLayout)
         
-        self.backgroundColor = UIColor.whiteColor()
+        setUpLayout()
 
     }
     
@@ -34,6 +34,10 @@ class UserInvitationCollectionView: UICollectionView {
     
     func tappedCollectionViewCell() {
         
+    }
+    
+    private func setUpLayout() {
+        self.backgroundColor = UIColor.whiteColor()
     }
 
     

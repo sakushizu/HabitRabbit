@@ -91,13 +91,8 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
         return 1
     }
     
-    // MARK - NavigationController
-    
-    func setUpNabigationController() {
-        let leftBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: #selector(UserInvitationViewController.onClickCancelButton))
-        self.navigationItem.setLeftBarButtonItem(leftBarButton, animated: true)
-        self.setRightBarButton()
-    }
+    // MARK - NavigationBarButtonItem
+
     
     func onClickCancelButton() {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -113,11 +108,20 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
         NSNotificationCenter.defaultCenter().postNotification(selectUserNotification)
         
         self.dismissViewControllerAnimated(true, completion: nil)
-
+        
         
     }
     
-    func setRightBarButton() {
+    // MARK - NavigationController
+    
+    private func setUpNabigationController() {
+        let leftBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: #selector(UserInvitationViewController.onClickCancelButton))
+        self.navigationItem.setLeftBarButtonItem(leftBarButton, animated: true)
+        self.setRightBarButton()
+    }
+    
+    
+    private func setRightBarButton() {
         let button: UIButton = UIButton(type: .System)
         button.frame = CGRectMake(0, 0, 80, 40)
         button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right

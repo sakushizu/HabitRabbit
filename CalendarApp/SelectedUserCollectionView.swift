@@ -23,18 +23,13 @@ class SelectedUserCollectionView: UICollectionView, UICollectionViewDelegate {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .Horizontal
         flowLayout.itemSize = CGSize(width: 40, height: 40)
-        
         let frame = CGRectMake(marginLeft, 0, screenSize.width - (marginLeft + marginRight), collectionViewHeight)
         
         super.init(frame: frame, collectionViewLayout: flowLayout)
         
-        self.backgroundColor = UIColor.whiteColor()
-        
+        setUpLayout()
         registerClass(SelectedUserCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        
         self.delegate = self
-        self.userInteractionEnabled = false
-
         
         setNotification()
         
@@ -64,6 +59,12 @@ class SelectedUserCollectionView: UICollectionView, UICollectionViewDelegate {
             name: "reloadDataNotification",
             object: nil
         )
+    }
+    
+    private func setUpLayout() {
+        self.backgroundColor = UIColor.whiteColor()
+        self.userInteractionEnabled = false
+
     }
 
 }
