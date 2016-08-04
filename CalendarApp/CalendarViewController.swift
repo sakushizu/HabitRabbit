@@ -43,6 +43,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var segmentLeftLineView: UIView!
     @IBOutlet weak var segmentRightLineView: UIView!
     
+    let alertViewController = AlertViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,15 +86,24 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         // MARK - ここから編集
         setNavigationBar()
         
+
+        
+        
     }
     
-    override func viewWillAppear(animated: Bool) {
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //container
+    func displayContentController(content:UIViewController){
+        addChildViewController(content)
+        content.view.frame = content.view.bounds
+        self.view.addSubview(content.view)
+        content.didMoveToParentViewController(self)
+    }
+    
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 2
@@ -292,8 +302,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         )
 
         calendarTitle.text = selectedCalender.title
-//        Calendar.sharedInstance.object_id = selectedCalender.object_id
-//        Calendar.sharedInstance.title = selectedCalender.title
+
         calenderHeaderView.backgroundColor = color
         segmentContol.hidden = false
         segmentContol.tintColor = color
@@ -339,7 +348,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         memoView.layer.borderWidth = 1
         memoView.layer.cornerRadius = 3
         memoView.layer.masksToBounds = true
-        let textFieldFrame = CGRectMake(15, 15, memoView.frame.width - 30, memoView.frame.height - 30 )
+        let screenSize = UIScreen.mainScreen().bounds
+        let textFieldFrame = CGRectMake(15, 15, screenSize.width - 30, screenSize.height - 30 )
         memoTextView = UITextView(frame: textFieldFrame)
         memoTextView.textColor = UIColor.darkGrayColor()
         memoTextView.font = UIFont.mainFontJa(14)
@@ -383,11 +393,12 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         let storyboard = UIStoryboard(name: "UserEdit", bundle: nil)
         let nextVC = storyboard.instantiateInitialViewController()!
         self.presentViewController(nextVC, animated: true, completion: nil)
-//        nextVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-//        navigationController?.pushViewController(nextVC, animated: true)
+
     }
     
-    func tappedAppointmentButton() {
+    func tappedAlertButton() {
+        //container
+        displayContentController(alertViewController)
         
     }
     
@@ -402,13 +413,14 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
 
         
         let createCalendarItem = UIBarButtonItem(image: UIImage(named: "plus"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.tappedPlusButton))
-        let appointItem = UIBarButtonItem(image: UIImage(named: "appointmentReminder"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.tappedAppointmentButton))
+        let appointItem = UIBarButtonItem(image: UIImage(named: "appointmentReminder"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.tappedAlertButton))
         
         let rightItem = [createCalendarItem, appointItem]
         
         self.navigationItem.setRightBarButtonItems(rightItem, animated: true)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.toggleSideMenu(_:)))
+        
     }
     
 
