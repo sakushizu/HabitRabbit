@@ -92,6 +92,12 @@
 		0B8441261CDCB2E100A9071C /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B8441251CDCB2E100A9071C /* setting.png */; };
 		0B8441281CDCB3D100A9071C /* Settings-50 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 0B8441271CDCB3D100A9071C /* Settings-50 (1).png */; };
 		0B87419C1D4B6C9000DB76F0 /* approval.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B87419B1D4B6C9000DB76F0 /* approval.png */; };
+		0B89B2E11D52FBDB00864961 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89B2E01D52FBDB00864961 /* AlertViewController.swift */; };
+		0B89B2E31D52FBF900864961 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89B2E21D52FBF900864961 /* AlertView.swift */; };
+		0B89B2EB1D52FDFD00864961 /* rectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B89B2EA1D52FDFD00864961 /* rectangle.png */; };
+		0B89B2ED1D53097C00864961 /* AlertVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89B2EC1D53097C00864961 /* AlertVM.swift */; };
+		0B89B2F01D5309DB00864961 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89B2EE1D5309DB00864961 /* AlertTableViewCell.swift */; };
+		0B89B2F11D5309DB00864961 /* AlertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B89B2EF1D5309DB00864961 /* AlertTableViewCell.xib */; };
 		0BA523851C1F187C00133342 /* Gift-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA523771C1F187C00133342 /* Gift-32.png */; };
 		0BA523861C1F187C00133342 /* Pushups-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA523781C1F187C00133342 /* Pushups-32.png */; };
 		0BA523871C1F187C00133342 /* Wakeup Hill on Stairs Filled-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA523791C1F187C00133342 /* Wakeup Hill on Stairs Filled-32.png */; };
@@ -254,6 +260,12 @@
 		0B8441251CDCB2E100A9071C /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 		0B8441271CDCB3D100A9071C /* Settings-50 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings-50 (1).png"; sourceTree = "<group>"; };
 		0B87419B1D4B6C9000DB76F0 /* approval.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = approval.png; sourceTree = "<group>"; };
+		0B89B2E01D52FBDB00864961 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		0B89B2E21D52FBF900864961 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		0B89B2EA1D52FDFD00864961 /* rectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rectangle.png; sourceTree = "<group>"; };
+		0B89B2EC1D53097C00864961 /* AlertVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertVM.swift; sourceTree = "<group>"; };
+		0B89B2EE1D5309DB00864961 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
+		0B89B2EF1D5309DB00864961 /* AlertTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertTableViewCell.xib; sourceTree = "<group>"; };
 		0BA523771C1F187C00133342 /* Gift-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gift-32.png"; sourceTree = "<group>"; };
 		0BA523781C1F187C00133342 /* Pushups-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pushups-32.png"; sourceTree = "<group>"; };
 		0BA523791C1F187C00133342 /* Wakeup Hill on Stairs Filled-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wakeup Hill on Stairs Filled-32.png"; sourceTree = "<group>"; };
@@ -390,6 +402,7 @@
 		0B23F05C1D31F32100BAA63E /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				0B89B2EA1D52FDFD00864961 /* rectangle.png */,
 				0B27EEB21D521AC500F0F67C /* NaviBar */,
 				0B23F05F1D31F48C00BAA63E /* CreateCalendar */,
 			);
@@ -468,6 +481,7 @@
 				0B656A421C21C9940024D6F3 /* SignUp */,
 				0B75869E1C22478600816379 /* Calendar */,
 				0B7586A21C22488E00816379 /* SideMenu */,
+				0B89B2DE1D52FBA200864961 /* Alert */,
 				0B23F0481D2FB47B00BAA63E /* Create Calendar */,
 			);
 			name = Scenes;
@@ -604,6 +618,18 @@
 				0B0057371D256390000A8472 /* StampedDate.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		0B89B2DE1D52FBA200864961 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				0B89B2EC1D53097C00864961 /* AlertVM.swift */,
+				0B89B2E21D52FBF900864961 /* AlertView.swift */,
+				0B89B2E01D52FBDB00864961 /* AlertViewController.swift */,
+				0B89B2EE1D5309DB00864961 /* AlertTableViewCell.swift */,
+				0B89B2EF1D5309DB00864961 /* AlertTableViewCell.xib */,
+			);
+			name = Alert;
 			sourceTree = "<group>";
 		};
 		0BE80B421C01CB6400655517 /* Extension */ = {
@@ -839,6 +865,7 @@
 				0BA523891C1F187C00133342 /* Santas Hat Filled-32.png in Resources */,
 				0B75869A1C21EC6100816379 /* FaceBookTableViewCell.xib in Resources */,
 				0B5C80AF1CBD439700459B8D /* Calendar-32.png in Resources */,
+				0B89B2F11D5309DB00864961 /* AlertTableViewCell.xib in Resources */,
 				0BA5238E1C1F187C00133342 /* Document-32.png in Resources */,
 				0B6A92851BEF3BF2009A7B2E /* Assets.xcassets in Resources */,
 				0BA523911C1F187C00133342 /* Sports Mode-32.png in Resources */,
@@ -858,6 +885,7 @@
 				0BC16F701CAA5060005A25F4 /* user.png in Resources */,
 				0BC16F721CAA51B7005A25F4 /* plus.png in Resources */,
 				0B8441261CDCB2E100A9071C /* setting.png in Resources */,
+				0B89B2EB1D52FDFD00864961 /* rectangle.png in Resources */,
 				0B8307381CFECA1400C1C47C /* shizuka.jpg in Resources */,
 				0B23F0661D31F4A800BAA63E /* pen.png in Resources */,
 				0B27EE9D1D52153A00F0F67C /* unSelctCircle.png in Resources */,
@@ -943,11 +971,13 @@
 				0BCD96C71C1E89BB007E9B92 /* StampCollectionView.swift in Sources */,
 				0BED601B1C19334300022AA5 /* SideMenu.swift in Sources */,
 				0B7586A51C224E8A00816379 /* UserImageTableViewCell.swift in Sources */,
+				0B89B2ED1D53097C00864961 /* AlertVM.swift in Sources */,
 				0B141D6F1C2911360029E6EA /* RankingTableViewCell.swift in Sources */,
 				0B141D771C2A40840029E6EA /* sideUserTableViewCell.swift in Sources */,
 				0B27EE8C1D5214F700F0F67C /* ColorTableViewCell.swift in Sources */,
 				0B0057381D256390000A8472 /* StampedDate.swift in Sources */,
 				0B7586B11C22AFF500816379 /* UIImage+Extension.swift in Sources */,
+				0B89B2E31D52FBF900864961 /* AlertView.swift in Sources */,
 				0B27EEA91D52157600F0F67C /* UserInvitationCollectionViewCell.swift in Sources */,
 				0B656A3F1C21B6410024D6F3 /* OrViewTableViewCell.swift in Sources */,
 				0BCD96CA1C1E8C0D007E9B92 /* StampCollectionViewCell.swift in Sources */,
@@ -966,6 +996,7 @@
 				0BD3453F1C2651C70056C44A /* UIButton+Extension.swift in Sources */,
 				0B0057311D221AB3000A8472 /* Settings.swift in Sources */,
 				0B7586B31C22DFF200816379 /* CurrentUser.swift in Sources */,
+				0B89B2F01D5309DB00864961 /* AlertTableViewCell.swift in Sources */,
 				0BE80B051C00381400655517 /* CalendarCell.swift in Sources */,
 				0B656A2D1C21A96A0024D6F3 /* CreateUserTableViewCell.swift in Sources */,
 				0B23F0501D2FED8000BAA63E /* CreateCalendarView.swift in Sources */,
@@ -985,6 +1016,7 @@
 				0B27EEA81D52157600F0F67C /* UserInvitationCollectionView.swift in Sources */,
 				0B2199081D099B1F008FD0D4 /* CalendarThemeColors.swift in Sources */,
 				0B27EE831D51F95900F0F67C /* UIFont+Extension.swift in Sources */,
+				0B89B2E11D52FBDB00864961 /* AlertViewController.swift in Sources */,
 				0B0DD7101C05807200BF9E7F /* CalenderManager.swift in Sources */,
 				0B27EEAB1D52157600F0F67C /* UserInvitationManager.swift in Sources */,
 				0B23F04C1D2FE50300BAA63E /* CreateCalendarViewController.swift in Sources */,
