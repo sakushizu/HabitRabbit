@@ -9,7 +9,7 @@
 import UIKit
 import Bond
 
-class CreateTableViewCell: UITableViewCell {
+class ColorTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var iconImageView: UIImageView!
@@ -17,9 +17,6 @@ class CreateTableViewCell: UITableViewCell {
     @IBOutlet weak var indecatorImageView: UIImageView!
     @IBOutlet weak var colorView: UIView!
     
-    let icons = ["", "", "color", "users"]
-    let textLabels = ["", "", "Select Color", "Select User"]
-        
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -27,10 +24,11 @@ class CreateTableViewCell: UITableViewCell {
         setUpColorView()
     }
     
-    func fillWith(row: Int) {
-        self.iconImageView.image = UIImage(named: icons[row])
-        self.titleTextLabel?.text = textLabels[row]
-        self.colorView.hidden = true
+    func fillWith(selectColor: UIColor) {
+        self.colorView.hidden = false
+        self.colorView.backgroundColor = selectColor
+
+        
     }
     
     private func setUpTitleTextLabel() {
@@ -41,12 +39,6 @@ class CreateTableViewCell: UITableViewCell {
     private func setUpColorView() {
         colorView.layer.cornerRadius = colorView.frame.width / 2
     }
-    
 
-    
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     
 }

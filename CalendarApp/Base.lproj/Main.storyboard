@@ -226,12 +226,6 @@
                                 <action selector="toggleSideMenu:" destination="BYZ-38-t0r" id="z3i-nf-oJ2"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Plus-25.png" id="Mhe-1Y-Akb">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="tappedCreateCalendarBtn:" destination="BYZ-38-t0r" id="YeS-WR-kfw"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -252,7 +246,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-417.5" y="583.5"/>
+            <point key="canvasLocation" x="-304.5" y="941.5"/>
         </scene>
         <!--Top View Controller-->
         <scene sceneID="A8c-oT-88w">
@@ -368,8 +362,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eEI-3f-lol">
-                                <rect key="frame" x="0.0" y="-44" width="375" height="711"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eEI-3f-lol">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -404,8 +398,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qWL-5h-LAL">
-                                <rect key="frame" x="0.0" y="-44" width="375" height="711"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qWL-5h-LAL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -465,7 +459,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAm-Mw-MkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-927.5" y="477.5"/>
+            <point key="canvasLocation" x="-872.5" y="889.5"/>
         </scene>
     </scenes>
     <resources>
@@ -473,12 +467,11 @@
         <image name="Calendar-32.png" width="32" height="32"/>
         <image name="Document-32.png" width="32" height="32"/>
         <image name="Menu Filled-25.png" width="25" height="25"/>
-        <image name="Plus-25.png" width="25" height="25"/>
         <image name="Settings-32.png" width="32" height="32"/>
         <image name="ちっちさんImage.png" width="640" height="1832"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lbe-dj-EI8"/>
         <segue reference="H8t-bE-U6O"/>
+        <segue reference="lbe-dj-EI8"/>
     </inferredMetricsTieBreakers>
 </document>

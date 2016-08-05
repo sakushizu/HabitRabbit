@@ -26,7 +26,9 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
     private var mView: CreateCalendarView!
     private var imagePickerVC: UIImagePickerController!
     private var stampCollectionView = StampCollectionView()
+    private var selectedUserCollectionVM = SelectedUserCollectionVM()
     private var stampViewCount = StampViewType.Down
+    private let userInvitationManager = UserInvitationManager.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +71,14 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             
         } else if rowType == .UserCell {
             
+            userInvitationManager.fetchUsers(completion: {
+                
+                let UserInvitationVC = UIStoryboard.viewControllerWith("CreateCalendar", identifier: "UserInvitationViewController") as! UserInvitationViewController
+                self.navigationController?.pushViewController(UserInvitationVC, animated: true)
+
+                
+            })
+            
         }
     }
     
@@ -84,7 +94,10 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
     func clickCreateButton(sender: UIButton) {
         
         if mModel.titleText.value! == "" {
-            UIAlertController.alertWith(message: "Title is empty!")
+            //alert出てこない
+            let alert = UIAlertController.alertWith(message: "Title is empty!")
+            self.presentViewController(alert, animated: true, completion: nil)
+
         } else {
             let navigationVC = self.navigationController!
             navigationVC.popViewControllerAnimated(false)
@@ -229,18 +242,29 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
     
     private func save(calendarVC: CalendarViewController) {
         
+        
         let params: [String: AnyObject] = [
             "title": mModel.titleText.value!,
             "stamp": mModel.selectStampImage!,
             "color_r": mModel.selectColor.r,
             "color_g": mModel.selectColor.g,
-            "color_b": mModel.selectColor.b
+            "color_b": mModel.selectColor.b,
+            "user_ids": setUserIdArray()
         ]
         
         StockCalendars.saveCalendarRails(params, callback: {
             calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
         })
         
+    }
+    
+    private func setUserIdArray() -> String {
+        var userIdArray = [String]()
+        for user in selectedUserCollectionVM.invitationUsers {
+            userIdArray.append(user.id.description)
+        }
+        let userIds = userIdArray.joinWithSeparator(",")
+        return userIds
     }
     
 }

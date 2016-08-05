@@ -11,6 +11,7 @@ import UIKit
 class StampCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var stampImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

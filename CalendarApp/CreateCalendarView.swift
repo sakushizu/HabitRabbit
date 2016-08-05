@@ -12,13 +12,18 @@ class CreateCalendarView: UIView {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var createButton: UIButton!
+    
+    
     override func awakeFromNib() {
         tableView.registerNib(UINib(nibName: "TitleTableViewCell", bundle: nil), forCellReuseIdentifier: "TitleTableViewCell")
-        tableView.registerNib(UINib(nibName: "CreateTableViewCell", bundle: nil), forCellReuseIdentifier: "CreateTableViewCell")
+        tableView.registerNib(UINib(nibName: "ColorTableViewCell", bundle: nil), forCellReuseIdentifier: "ColorTableViewCell")
         tableView.registerNib(UINib(nibName: "StampImageTableViewCell", bundle: nil), forCellReuseIdentifier: "StampImageTableViewCell")
+        tableView.registerNib(UINib(nibName: "SelectUserTableViewCell", bundle: nil), forCellReuseIdentifier: "SelectUserTableViewCell")
+
         
         layoutTableView()
         layoutCreateButton()
+        
         
 
     }

@@ -20,17 +20,20 @@ class StockCalendars: NSObject {
         let color_r = (String(params["color_r"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
         let color_g = (String(params["color_g"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
         let color_b = (String(params["color_b"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
+        let user_ids = (params["user_ids"] as! String).dataUsingEncoding(NSUTF8StringEncoding)!
         let stampImage = UIImagePNGRepresentation(params["stamp"] as! UIImage)
         // HTTP通信
         Alamofire.upload(
             .POST,
-            "http://localhost:3000/api/calendars.json?",
+            "\(Settings.ApiRootPath)/api/calendars.json?",
             headers: ["access_token": CurrentUser.sharedInstance.authentication_token!],
             multipartFormData: { multipartFormData in
                 multipartFormData.appendBodyPart(data: title, name: "title")
                 multipartFormData.appendBodyPart(data: color_r, name: "color_R")
                 multipartFormData.appendBodyPart(data: color_g, name: "color_G")
                 multipartFormData.appendBodyPart(data: color_b, name: "color_B")
+                multipartFormData.appendBodyPart(data: user_ids, name: "user_ids")
+
                 if let unwrappedStampImage = stampImage {
                     multipartFormData.appendBodyPart(data: unwrappedStampImage, name: "stamp_image", fileName: "image.png", mimeType: "image/png")
                 }
