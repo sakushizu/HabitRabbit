@@ -10,10 +10,18 @@ import UIKit
 
 extension UIColor {
     
+    // MARK - theme color
     class func mainColor() -> UIColor {
         return UIColor(red: 248.0 / 255, green: 151.0 / 255, blue: 190.0 / 255, alpha: 1)
     }
     
+    class func subColor() -> UIColor {
+        return UIColor(red: 255.0 / 255, green: 240.0 / 255, blue: 245.0 / 255, alpha: 0.9)
+
+    }
+    
+    
+    // MARK - background color
     class func lightBlue() -> UIColor {
         return UIColor(red: 92.0 / 255, green: 192.0 / 255, blue: 210.0 / 255, alpha: 0.8)
     }
