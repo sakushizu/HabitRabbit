@@ -47,7 +47,7 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
         }
     }
     
-    // MARK - TableViewDataSource
+    // MARK - TableViewDelegate
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60

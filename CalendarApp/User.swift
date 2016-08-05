@@ -22,8 +22,6 @@ class User: NSObject {
     //ログインしていない場合は、guestが入る
     var type: String!
     
-    var objectId: String!
-    
     var id: Int!
     var name: String!
     var password: String!
@@ -38,10 +36,7 @@ class User: NSObject {
         self.userImage = userImage
     }
     
-    init(objectId: String, name: String) {
-        self.objectId = objectId
-        self.name = name
-    }
+
     
     init(email: String, password: String) {
         self.mailAddress = email
@@ -59,13 +54,7 @@ class User: NSObject {
         self.avatarUrl = avatar_url
     }
     
-    init(objectId: String, name: String, password: String, mailAddress: String) {
-        self.objectId = objectId
-        self.name = name
-        self.password = password
-        self.mailAddress = mailAddress
-    }
-    
+
     init(jsonWithUser json: JSON) {
         self.id = json["id"].int
         self.name = json["name"].string
