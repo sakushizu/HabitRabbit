@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import Bond
 
 class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, SideMenuDelegate, UIBarPositioningDelegate, UINavigationBarDelegate, UITextViewDelegate, MenuTableViewControllerToCalendarControllerDelegate {
     
@@ -44,6 +45,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var segmentRightLineView: UIView!
     
     let alertViewController = AlertViewController()
+    private var showing: Bool = false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +105,12 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         content.view.frame = content.view.bounds
         self.view.addSubview(content.view)
         content.didMoveToParentViewController(self)
+    }
+    
+    func hideContentController(content:UIViewController){
+        content.willMoveToParentViewController(self)
+        content.view.removeFromSuperview()
+        content.removeFromParentViewController()
     }
     
     
@@ -398,8 +407,16 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func tappedAlertButton() {
         //container
-        displayContentController(alertViewController)
         
+        if showing {
+            self.hideContentController(self.alertViewController)
+            showing = false
+        } else {
+            self.displayContentController(self.alertViewController)
+            showing = true
+            
+        }
+
     }
     
     func tappedPlusButton() {
@@ -418,6 +435,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         let rightItem = [createCalendarItem, appointItem]
         
         self.navigationItem.setRightBarButtonItems(rightItem, animated: true)
+        print(appointItem.valueForKey("view")?.center)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.toggleSideMenu(_:)))
         
