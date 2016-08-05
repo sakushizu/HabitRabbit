@@ -14,8 +14,9 @@ class AlertView: UIView {
     private let statusBarHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.height
     private let navBarHeight: CGFloat = UINavigationController().navigationBar.frame.size.height
     
-    let triangleImageView = UIImageView()
+    private let triangleImageView = UIImageView()
     let tableView = UITableView()
+    private let tableViewMargin: CGFloat = 18
     
 
     
@@ -54,7 +55,9 @@ class AlertView: UIView {
         let height = screenSize.height - (statusBarHeight + navBarHeight + triangleHeight)
 
 
-        tableView.frame = CGRect(x: 0, y: y, width: screenSize.width, height: height)
+        tableView.frame = CGRect(x: tableViewMargin, y: y, width: screenSize.width - (tableViewMargin * 2), height: height - tableViewMargin)
+        tableView.layer.cornerRadius = 8
+        tableView.layer.masksToBounds = true
     }
 
 }

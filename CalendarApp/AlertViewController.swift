@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlertViewController: UIViewController {
+class AlertViewController: UIViewController, UITableViewDelegate {
     
     private let mModel = AlertVM()
     private var mView: AlertView!
@@ -23,8 +23,34 @@ class AlertViewController: UIViewController {
         mView = view as! AlertView
 
         mView.tableView.dataSource = mModel
-        
+        mView.tableView.delegate = self
+    
+    }
+    
+    // MARK - TableViewDelegate
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return createHeaderView()
+    }
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
+        
+    }
+    
+    private func createHeaderView() -> UIView {
+        let header = UIView()
+        header.backgroundColor = UIColor.subColor()
+        return header
     }
 
 }
