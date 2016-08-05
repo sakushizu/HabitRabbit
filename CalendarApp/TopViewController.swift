@@ -40,7 +40,14 @@ class TopViewController: UIViewController {
         
         
         self.navigationController?.navigationBar.tintColor = UIColor.appPinkColor()
-        // Do any additional setup after loading the view.
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        //アプリがアクティブになったとき
+//        notificationCenter.addObserver(
+//            self,
+//            selector: #selector(UserInvitationManager.fetchInvitationCalendars()),
+//            name:UIApplicationDidBecomeActiveNotification,
+//            object: nil)
     }
 
     override func didReceiveMemoryWarning() {
