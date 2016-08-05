@@ -580,8 +580,8 @@
 		0B75869E1C22478600816379 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				0BE80B041C00381400655517 /* CalendarCell.swift */,
 				0B6A927F1BEF3BF2009A7B2E /* CalendarViewController.swift */,
+				0BE80B041C00381400655517 /* CalendarCell.swift */,
 				0B141D6B1C290DBB0029E6EA /* RecordTableView.swift */,
 				0B141D6D1C2911360029E6EA /* RankingTableViewCell.swift */,
 				0B141D6E1C2911360029E6EA /* RankingTableViewCell.xib */,
