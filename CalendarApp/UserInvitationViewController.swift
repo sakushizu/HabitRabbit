@@ -14,8 +14,6 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
     private let mModel = UserInvitaionVM()
     private var mView: UserInvitationView!
     private let userInvitationManager = UserInvitationManager.sharedInstance
-    private let header = UIView()
-    private let label = UILabel()
 
 
 
@@ -60,14 +58,8 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        header.backgroundColor = UIColor.hexStr("F7F7F7", alpha: 1)
-        label.text = "User"
-        label.font = UIFont(name: "HelveticaNeue-Light", size: 16)
-        label.sizeToFit()
-        label.center.y = 20
-        label.frame.origin.x = 20
-        label.textColor = UIColor.hexStr("4A4A4A", alpha: 1)
-        
+        let header = createHeaderView()
+        let label = createHeaderLabel()
         header.addSubview(label)
         
         return header
@@ -151,5 +143,25 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
         button.titleLabel?.font = UIFont(name:"HelveticaNeue-Regular",size: 14)
         button.titleEdgeInsets = UIEdgeInsetsMake(0, 7, 0, 0)
     }
+    
+    private func createHeaderView() -> UIView {
+        let header = UIView()
+        header.backgroundColor = UIColor.hexStr("F7F7F7", alpha: 1)
+        return header
+
+    }
+    
+    private func createHeaderLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "User"
+        label.font = UIFont(name: "HelveticaNeue-Light", size: 16)
+        label.sizeToFit()
+        label.center.y = 20
+        label.frame.origin.x = 20
+        label.textColor = UIColor.hexStr("4A4A4A", alpha: 1)
+        return label
+    }
+
+
 
 }
