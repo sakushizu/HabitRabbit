@@ -28,6 +28,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.mainColor()]
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        
+//        CalenderManager.sharedInstance.resetDefaults() //NSUserDefault初期化
+
+        let calendarManager = CalenderManager.sharedInstance
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let tokenDic = defaults.objectForKey("tokenDic") as? [String:String] where tokenDic["auth"] != "" {
+            let token = tokenDic["auth"]
+            User.loginRails(token! , callback: {
+                UserInvitationManager.sharedInstance.fetchInvitationCalendars(completion: { 
+                    
+                })
+                calendarManager.fetchCalendars(completion: {
+                    
+                })
+            })
+            let controller = UIStoryboard.viewControllerWith("Main", identifier: "CalendarViewController")
+            let navigationController = UINavigationController(rootViewController: controller)
+            self.window?.rootViewController = navigationController
+
+        } else {
+            let controller = UIStoryboard.viewControllerWith("Main", identifier: "TopViewController")
+            let navigationController = UINavigationController(rootViewController: controller)
+            self.window?.rootViewController = navigationController
+        }
+        
+        window?.makeKeyAndVisible()
         return true
         
     }
