@@ -20,6 +20,9 @@ extension UIColor {
 
     }
     
+    class func textColor() -> UIColor {
+        return UIColor(red: 85.0 / 255, green: 85.0 / 255, blue: 85.0 / 255, alpha: 1)
+    }
     
     // MARK - background color
     class func lightBlue() -> UIColor {
