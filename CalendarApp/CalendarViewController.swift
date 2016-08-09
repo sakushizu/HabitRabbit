@@ -89,9 +89,11 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         // MARK - ここから編集
         setNavigationBar()
         
-
-        
-        
+        UserInvitationManager.sharedInstance.calendars.observe { calendars in
+            if calendars.count >= 0 {
+                self.setNavigationBar()
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -427,18 +429,28 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     private func setNavigationBar() {
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-
-        
-        let createCalendarItem = UIBarButtonItem(image: UIImage(named: "plus"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.tappedPlusButton))
-        let appointItem = UIBarButtonItem(image: UIImage(named: "appointmentReminder"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.tappedAlertButton))
-        
-        let rightItem = [createCalendarItem, appointItem]
-        
-        self.navigationItem.setRightBarButtonItems(rightItem, animated: true)
-        print(appointItem.valueForKey("view")?.center)
-        
+        let plusBarButton = UIBarButtonItem(image: UIImage(named: "plus"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.tappedPlusButton))
+        let alertBarButton = createAlertBarButton()
+        let rightItems = [plusBarButton, alertBarButton]
+        self.navigationItem.setRightBarButtonItems(rightItems, animated: true)
+        self.alertViewController.AlertIconCentorX = alertBarButton.valueForKey("view")?.center.x
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.toggleSideMenu(_:)))
         
+    }
+    
+    private func createAlertBarButton() -> UIBarButtonItem {
+        let alertButton = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        alertButton.setImage(UIImage(named: "alert"), forState: .Normal)
+        alertButton.addTarget(self, action: #selector(CalendarViewController.tappedAlertButton), forControlEvents: .TouchUpInside)
+        alertButton.adjustsImageWhenHighlighted = false
+        let alertBarButton = BBBadgeBarButtonItem(customUIButton: alertButton)
+        alertBarButton.badgeValue = String(UserInvitationManager.sharedInstance.calendars.value.count)
+        alertBarButton.badgeBGColor = UIColor.mainColor()
+        alertBarButton.badgeTextColor = UIColor.whiteColor()
+        alertBarButton.badgeOriginX = 12
+        alertBarButton.badgePadding = 4
+        alertBarButton.shouldAnimateBadge = true
+        return alertBarButton
     }
     
 

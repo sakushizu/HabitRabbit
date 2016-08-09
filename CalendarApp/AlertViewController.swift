@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Bond
 
 class AlertViewController: UIViewController, UITableViewDelegate {
     
+    var mView: AlertView!
+    var AlertIconCentorX: CGFloat!
     private let mModel = AlertVM()
-    private var mView: AlertView!
 
     override func loadView() {
         self.view = AlertView()
@@ -25,6 +27,8 @@ class AlertViewController: UIViewController, UITableViewDelegate {
         mView.tableView.dataSource = mModel
         mView.tableView.delegate = self
     
+    override func viewDidLayoutSubviews() {
+        mView.triangleImageView.center.x = AlertIconCentorX
     }
     
     // MARK - TableViewDelegate
