@@ -14,10 +14,9 @@ class AlertView: UIView {
     private let statusBarHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.height
     private let navBarHeight: CGFloat = UINavigationController().navigationBar.frame.size.height
     
-    private let triangleImageView = UIImageView()
+    let triangleImageView = UIImageView()
     let tableView = UITableView()
     private let tableViewMargin: CGFloat = 18
-    
 
     
     override init(frame: CGRect) {
@@ -28,6 +27,9 @@ class AlertView: UIView {
         
         tableView.registerNib(UINib(nibName: "AlertTableViewCell", bundle: nil), forCellReuseIdentifier: "AlertTableViewCell")
         
+        self.addSubview(tableView)
+        self.addSubview(triangleImageView)
+        
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -37,20 +39,21 @@ class AlertView: UIView {
         setUpTriangleImageView()
         setUpTableView()
         
-        self.addSubview(tableView)
-        
-//        self.addSubview(triangleImageView)
-        
     }
     
     private func setUpTriangleImageView() {
-        triangleImageView.image = UIImage(named: "rectangle")
-        let frame = CGRectMake(screenSize.width - 80, 0, 33, 30)
-        triangleImageView.frame = frame
+        triangleImageView.image = UIImage(named: "triangle")
+        let size = CGSize(width: 30, height: 23)
+        let marginTop: CGFloat = 12
+        let y = statusBarHeight + navBarHeight + marginTop
+
+        triangleImageView.frame.size = size
+        triangleImageView.center.y = y
+        
     }
     
     private func setUpTableView() {
-        let triangleHeight: CGFloat = 15
+        let triangleHeight: CGFloat = 20
         let y = statusBarHeight + navBarHeight + triangleHeight
         let height = screenSize.height - (statusBarHeight + navBarHeight + triangleHeight)
 

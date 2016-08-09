@@ -20,9 +20,15 @@ class AlertTableViewCell: UITableViewCell {
         setUpAvatarImageView()
     }
     
+    func fillWith(calendar: Calendar) {
+        avatarImageView.sd_setImageWithURL(NSURL(string: calendar.orner.avatarUrl))
+        alertTextLabel.text = "\(calendar.orner.name)さんより\(calendar.title)への招待が届いています。"
+    }
+    
     private func setUpAvatarImageView() {
         avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
         avatarImageView.layer.masksToBounds = true
+        self.selectionStyle = .None
     }
 
 

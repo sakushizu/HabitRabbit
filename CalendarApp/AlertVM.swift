@@ -10,12 +10,14 @@ import UIKit
 
 class AlertVM: NSObject, UITableViewDataSource {
     
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return UserInvitationManager.sharedInstance.calendars.value.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AlertTableViewCell") as! AlertTableViewCell
+        cell.fillWith(UserInvitationManager.sharedInstance.calendars.value[indexPath.row])
         return cell
     }
 
