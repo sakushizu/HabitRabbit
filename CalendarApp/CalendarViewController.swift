@@ -287,7 +287,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     ////サイドバーのセルがタップされた時の処理
     func sideMenuDidSelectItemAtIndex(indexPath: NSIndexPath) {
-        selectedCalender = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
+        selectedCalender = CalenderManager.sharedInstance.calendarCollection.value[indexPath.row]
         stampedManager.fetchStampedDates(selectedCalender.id) { 
             self.setSelectedCalendarView()
             self.recordTableView.reloadData()
@@ -360,7 +360,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         memoView.layer.cornerRadius = 3
         memoView.layer.masksToBounds = true
         let screenSize = UIScreen.mainScreen().bounds
-        let textFieldFrame = CGRectMake(15, 15, screenSize.width - 30, screenSize.height - 30 )
+        let textFieldFrame = CGRectMake(0, 0, screenSize.width, screenSize.height )
         memoTextView = UITextView(frame: textFieldFrame)
         memoTextView.textColor = UIColor.darkGrayColor()
         memoTextView.font = UIFont.mainFontJa(14)

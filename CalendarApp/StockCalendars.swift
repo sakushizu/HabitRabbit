@@ -26,7 +26,7 @@ class StockCalendars: NSObject {
         Alamofire.upload(
             .POST,
             "\(Settings.ApiRootPath)/api/calendars.json?",
-            headers: ["access_token": CurrentUser.sharedInstance.authentication_token!],
+            headers: ["access_token": CurrentUser.sharedInstance.authentication_token.value],
             multipartFormData: { multipartFormData in
                 multipartFormData.appendBodyPart(data: title, name: "title")
                 multipartFormData.appendBodyPart(data: color_r, name: "color_R")
@@ -55,7 +55,7 @@ class StockCalendars: NSObject {
                     // Add error handling in the future
                     print(encodingError)
                 }
-                callback()
+                completion()
             }
         )
     }

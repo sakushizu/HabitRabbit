@@ -14,16 +14,16 @@ import SwiftyJSON
 class UserInvitationManager: NSObject {
     
     static let sharedInstance = UserInvitationManager()
-    let currentUser = CurrentUser.sharedInstance.user
     
     let users = Observable<[User]>([])
-    var calendars = [Calendar]()
+    var calendars = Observable<[Calendar]>([])
+
     
     func fetchUsers(completion completion: () -> Void) {
         Alamofire.request(
             .GET,
             "\(Settings.ApiRootPath)/api/users/",
-            headers: ["access_token": CurrentUser.sharedInstance.authentication_token!]
+            headers: ["access_token": CurrentUser.sharedInstance.authentication_token.value]
             ).responseJSON { response in
                 guard response.result.error == nil else {
                     // Add error handling in the future
@@ -42,8 +42,9 @@ class UserInvitationManager: NSObject {
 
         Alamofire.request(
             .GET,
-            "\(Settings.ApiRootPath)/api/users/\(id)/invitation_users",
-            headers: ["access_token": CurrentUser.sharedInstance.authentication_token!]
+            "\(Settings.ApiRootPath)/api/users/\(CurrentUser.sharedInstance.user.value!.id)/invitation_users",
+//            parameters: params,
+            headers: nil
             ).responseJSON { response in
                 guard response.result.error == nil else {
                     // Add error handling in the future
@@ -70,7 +71,7 @@ class UserInvitationManager: NSObject {
     }
     
     private func updateCalendarsFromJson(calendarsJson: JSON) {
-        self.calendars = createCalendarsFromJson(calendarsJson)
+        self.calendars.value = createCalendarsFromJson(calendarsJson)
     }
     
 

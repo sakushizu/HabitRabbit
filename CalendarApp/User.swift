@@ -128,20 +128,15 @@ class User: NSObject {
 
                 let json = JSON(response.result.value!)
                 let user = User(jsonWithUser: json)
-                CurrentUser.sharedInstance.user = user
-                CurrentUser.sharedInstance.authentication_token = token
+                CurrentUser.sharedInstance.user.value = user
+                CurrentUser.sharedInstance.authentication_token.value = token
                 callback()
         }
     }
     
-    class func firstLoginRails(user: User, callback: () -> Void) {
+    class func firstLoginRails(params: [String:AnyObject], callback: () -> Void) {
         
-        let params: [String: AnyObject] = [
-            "user": [
-                "email": user.mailAddress,
-                "password": user.password
-            ]
-        ]
+
         
         // HTTP通信
         
@@ -162,18 +157,17 @@ class User: NSObject {
                 
                 let json = JSON(response.result.value!)
                 let user = User(jsonWithUser: json)
-                CurrentUser.sharedInstance.user = user
-                CurrentUser.sharedInstance.authentication_token = json["access_token"].stringValue
+                CurrentUser.sharedInstance.user.value = user
+                CurrentUser.sharedInstance.authentication_token.value = json["access_token"].stringValue
                 self.saveAuthenticationToken()
                 callback()
         }
     }
     
     class func saveAuthenticationToken() {
-        //tokenArray["auth": "sfdegdgfgfs", "email": "aaa@gmail.com"]
         var tokenDic = Dictionary<String, String>()
-        tokenDic["auth"] = CurrentUser.sharedInstance.authentication_token
-        tokenDic["email"] = CurrentUser.sharedInstance.user.mailAddress
+        tokenDic["auth"] = CurrentUser.sharedInstance.authentication_token.value
+        tokenDic["email"] = CurrentUser.sharedInstance.user.value!.mailAddress
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(tokenDic, forKey: "tokenDic")
         defaults.synchronize()
@@ -185,7 +179,7 @@ class User: NSObject {
         tokenDic!["auth"] = ""
         defaults.setObject(tokenDic, forKey: "tokenDic")
         defaults.synchronize()
-        CurrentUser.sharedInstance.user = nil
+        CurrentUser.sharedInstance.user.value = nil
     }
     
     
@@ -242,8 +236,8 @@ class User: NSObject {
                 
                 let json = JSON(response.result.value!)
                 let user = User(jsonWithUser: json)
-                CurrentUser.sharedInstance.user = user
-                CurrentUser.sharedInstance.authentication_token = json["access_token"].stringValue
+                CurrentUser.sharedInstance.user.value = user
+                CurrentUser.sharedInstance.authentication_token.value = json["access_token"].stringValue
                 self.saveAuthenticationToken()
                 callback()
         }

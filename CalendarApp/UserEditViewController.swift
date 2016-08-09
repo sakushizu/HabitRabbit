@@ -102,7 +102,7 @@ class UserEditViewController: UIViewController, UITableViewDelegate, UITableView
                     })
                 }
             } else {
-                CurrentUser.sharedInstance.user.logout()
+                CurrentUser.sharedInstance.user.value!.logout()
                 //top画面に戻りたい
                 self.moveTopVC()
                 

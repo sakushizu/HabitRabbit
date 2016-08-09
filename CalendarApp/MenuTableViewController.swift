@@ -44,9 +44,9 @@ class MenuTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 1
+            return currentUser.user.value == nil ? 0 : 1
         } else {
-            return CalenderManager.sharedInstance.calendarCollection.count
+            return CalenderManager.sharedInstance.calendarCollection.value.count
         }
     }
     
@@ -100,7 +100,7 @@ class MenuTableViewController: UITableViewController {
             userCell.settingButton.addTarget(self, action: #selector(MenuTableViewController.tappedSettingBtn), forControlEvents: .TouchUpInside)
             return userCell
         } else {
-            let calendar = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
+            let calendar = CalenderManager.sharedInstance.calendarCollection.value[indexPath.row]
             cell.textLabel?.text = calendar.title
             return cell
         }

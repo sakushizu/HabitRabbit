@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import Bond
 
 class CurrentUser: NSObject {
     static let sharedInstance = CurrentUser()
-    var user: User!
-    var type: String!
-    var authentication_token: String!
+    var user = Observable<User?>(nil)
+    var authentication_token = Observable<String>("")
 }

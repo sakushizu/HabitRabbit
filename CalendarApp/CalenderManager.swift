@@ -9,18 +9,19 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Bond
 
 class CalenderManager: NSObject {
     
     static let sharedInstance = CalenderManager()
     
-    var calendarCollection = [Calendar]()
+    var calendarCollection = Observable<[Calendar]>([])
     
     func fetchCalendars(completion completion: () -> Void) {
         Alamofire.request(
             .GET,
             "\(Settings.ApiRootPath)/api/calendars/",
-            headers: ["access_token": CurrentUser.sharedInstance.authentication_token!]
+            headers: ["access_token": CurrentUser.sharedInstance.authentication_token.value]
             ).responseJSON { response in
                 guard response.result.error == nil else {
                     // Add error handling in the future
