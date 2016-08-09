@@ -32,14 +32,12 @@ class UserInvitationManager: NSObject {
                 }
                 
                 let json = JSON(response.result.value!)
-                self.updateUsersFromJson(json["users"])
+                self.updateUsersFromJson(json)
                 completion()
         }
     }
     
-    func fetchInvitationCalendars() {
-        let id = 32
-
+    func fetchInvitationCalendars(completion completion: () -> Void) {
         Alamofire.request(
             .GET,
             "\(Settings.ApiRootPath)/api/users/\(CurrentUser.sharedInstance.user.value!.id)/invitation_users",
@@ -54,8 +52,8 @@ class UserInvitationManager: NSObject {
                 
                 let json = JSON(response.result.value!)
                 self.updateCalendarsFromJson(json["calendars"])
+                completion()
 
-//                completion()
         }
     }
     
@@ -64,6 +62,12 @@ class UserInvitationManager: NSObject {
         
         for (_, calendarJson) in json {
             let calendar = Calendar(json: calendarJson)
+            let user = User(jsonWithUser: calendarJson["user"])
+            calendar.orner = user
+            for (_, userJson) in calendarJson["users"]  {
+                let user = User(jsonWithUser: userJson)
+                calendar.joinedUsers.append(user)
+            }
             calendars.append(calendar)
         }
         

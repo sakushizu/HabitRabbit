@@ -14,7 +14,7 @@ class StockCalendars: NSObject {
     static let sharedInstance = StockCalendars()
     
     //新規カレンダー保存
-    class func saveCalendarRails(params: Dictionary<String, AnyObject>, callback: () -> Void) {
+    class func saveCalendarRails(params: [String:AnyObject], completion: () -> Void) {
 
         let title = (params["title"]! as! String).dataUsingEncoding(NSUTF8StringEncoding)!
         let color_r = (String(params["color_r"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
@@ -48,7 +48,7 @@ class StockCalendars: NSObject {
                         let json = JSON(response.result.value!)
                         let calendar = Calendar(json: json["calendar"])
                         let calendarManager = CalenderManager.sharedInstance
-                        calendarManager.calendarCollection.append(calendar)
+                        calendarManager.calendarCollection.value.append(calendar)
                         
                     }
                 case .Failure(let encodingError):
