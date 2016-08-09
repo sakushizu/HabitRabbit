@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import Bond
+import BBBadgeBarButtonItem
 
 class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, SideMenuDelegate, UIBarPositioningDelegate, UINavigationBarDelegate, UITextViewDelegate, MenuTableViewControllerToCalendarControllerDelegate {
     
@@ -47,6 +48,16 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     let alertViewController = AlertViewController()
     private var showing: Bool = false
 
+    private let calendarManager = CalenderManager.sharedInstance
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        if CurrentUser.sharedInstance.user.value != nil {
+            UserInvitationManager.sharedInstance.fetchInvitationCalendars(completion: { 
+                
+            })
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -26,6 +26,14 @@ class AlertViewController: UIViewController, UITableViewDelegate {
 
         mView.tableView.dataSource = mModel
         mView.tableView.delegate = self
+        
+        UserInvitationManager.sharedInstance.calendars.observe { calendars in
+            if calendars.count >= 0 {
+                self.mView.tableView.reloadData()
+            }
+        }
+    
+    }
     
     override func viewDidLayoutSubviews() {
         mView.triangleImageView.center.x = AlertIconCentorX

@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Parse
 import SDWebImage
+import Bond
 
 protocol MenuTableViewControllerDelegate {
     func menuControllerDidSelectRow(indexPath:NSIndexPath)
@@ -22,11 +22,21 @@ protocol MenuTableViewControllerDelegate {
 class MenuTableViewController: UITableViewController {
     
     let sectionTitles = ["", "Calendar"]
-    let user = CurrentUser.sharedInstance.user
+    private let currentUser = CurrentUser.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.registerNib(UINib(nibName: "sideUserTableViewCell", bundle: nil), forCellReuseIdentifier: "sideUserCell")
+        
+        currentUser.user.observe { user in
+            self.tableView.reloadData()
+        }
+        
+        CalenderManager.sharedInstance.calendarCollection.observe { calendar in
+            self.tableView.reloadData()
+        }
+
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -90,13 +100,10 @@ class MenuTableViewController: UITableViewController {
         if indexPath.section == 0 {
             let userCell = self.tableView.dequeueReusableCellWithIdentifier("sideUserCell", forIndexPath: indexPath) as! sideUserTableViewCell
             userCell.backgroundColor = UIColor.clearColor()
-            if CurrentUser.sharedInstance.user == nil {
-                userCell.userImageView.image = UIImage(named: "user")
-                userCell.nameLabel.text = "Guest"
-            } else {
-                userCell.userImageView.sd_setImageWithURL(NSURL(string: user.avatarUrl))
-                userCell.nameLabel.text = CurrentUser.sharedInstance.user.name
-            }
+        
+            userCell.userImageView.sd_setImageWithURL(NSURL(string: currentUser.user.value!.avatarUrl))
+            userCell.nameLabel.text = currentUser.user.value!.name
+            
             userCell.settingButton.addTarget(self, action: #selector(MenuTableViewController.tappedSettingBtn), forControlEvents: .TouchUpInside)
             return userCell
         } else {
