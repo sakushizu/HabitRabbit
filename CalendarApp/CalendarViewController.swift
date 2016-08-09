@@ -59,7 +59,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         segmentContol.hidden = true
         segmentRightLineView.hidden = true
         segmentLeftLineView.hidden = true
-//        CalenderManager.sharedInstance.resetDefaults() //NSUserDefault初期化
         
         //tableViewに表示している名前の配列
         sideMenu = SideMenu(sourceView: self.view)
@@ -101,7 +100,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         // Dispose of any resources that can be recreated.
     }
     
-    //container
+    // MARK - Container
+    
     func displayContentController(content:UIViewController){
         addChildViewController(content)
         content.view.frame = content.view.bounds

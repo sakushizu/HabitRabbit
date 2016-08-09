@@ -8,15 +8,9 @@
 
 import UIKit
 
-//@objc protocol SelectedUserCollectionVMDelegate {
-//    func reloadData()
-//}
-
 class SelectedUserCollectionVM: NSObject, UICollectionViewDataSource {
     
     var invitationUsers = [User]()
-    
-//    weak var customDelegate: SelectedUserCollectionVMDelegate?
     
     override init() {
         super.init()

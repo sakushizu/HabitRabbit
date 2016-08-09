@@ -17,42 +17,11 @@ import FBSDKShareKit
 
 class User: NSObject {
     
-//    static let sharedInstance = User(name: "guest", password: "guest")
-    
-    //ログインしていない場合は、guestが入る
-    var type: String!
-    
     var id: Int!
     var name: String!
     var password: String!
     var mailAddress: String!
-    var userImage: UIImage!
     var avatarUrl :String!
-    
-    init(name: String, password: String, mailAddress: String, userImage: UIImage) {
-        self.name = name
-        self.password = password
-        self.mailAddress = mailAddress
-        self.userImage = userImage
-    }
-    
-
-    
-    init(email: String, password: String) {
-        self.mailAddress = email
-        self.password = password
-    }
-    
-    init(name: String, mail: String) {
-        self.name = name
-        self.mailAddress = mail
-    }
-    
-    init(name: String, mail: String, avatar_url: String) {
-        self.name = name
-        self.mailAddress = mail
-        self.avatarUrl = avatar_url
-    }
     
 
     init(jsonWithUser json: JSON) {
