@@ -14,6 +14,7 @@ target 'CalendarApp' do
     pod 'SDWebImage'
     pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
     pod 'Bond'
+    pod 'BBBadgeBarButtonItem'
 end
 
 target 'CalendarAppTests' do
