@@ -32,13 +32,13 @@ class User: NSObject {
     }
     
     // RailsSignUp
-    class func signUpRails(user: User, callback: () -> Void) {
+    class func signUpRails(params: [String:AnyObject], callback: () -> Void) {
         
-        let name = (user.name as String).dataUsingEncoding(NSUTF8StringEncoding)!
-        let email = (user.mailAddress as String).dataUsingEncoding(NSUTF8StringEncoding)!
-        let password = (user.password as String).dataUsingEncoding(NSUTF8StringEncoding)!
-        let password_confirmation = (user.password as String).dataUsingEncoding(NSUTF8StringEncoding)!
-        let avatar = UIImagePNGRepresentation(user.userImage as UIImage)
+        let name = (params["name"] as! String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let email = (params["mail"] as! String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let password = (params["password"] as! String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let password_confirmation = (params["password"] as! String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let avatar = UIImagePNGRepresentation(params["avatar"] as! UIImage)
         // HTTP通信
         Alamofire.upload(
             .POST,
@@ -74,9 +74,8 @@ class User: NSObject {
 
     
     //RailsLogin(outh取得済み)
-    class func loginRails(tokenDic: Dictionary<String, String>, callback: () -> Void) {
+    class func loginRails(token: String, callback: () -> Void) {
         
-        let token = tokenDic["auth"]! as String
         // HTTP通信
         Alamofire.request(
             .POST,

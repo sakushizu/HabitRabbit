@@ -97,9 +97,13 @@ class UserEditViewController: UIViewController, UITableViewDelegate, UITableView
                 if nameCell.textField.text == "" || passwordCell.textField.text == "" || mailCell.textField.text == "" {
                     showAlert("exist empty text field")
                 } else {
-                    let user = User(name: nameCell.textField.text!, password: passwordCell.textField.text!, mailAddress: mailCell.textField.text!, userImage: userImageCell.userImageView.image!)
-                    user.update({ (message) -> Void in
-                    })
+                    //後程修正
+//                    let params: [String:AnyObject] = [
+//                        "name": nameCell.textField.text!,
+//                        "password": passwordCell.textField.text!,
+//                        "mail": mailCell.textField.text!,
+//                        "avatar": userImageCell.userImageView.image!
+//                    ]
                 }
             } else {
                 CurrentUser.sharedInstance.user.value!.logout()
