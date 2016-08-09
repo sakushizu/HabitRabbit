@@ -47,8 +47,11 @@ class AlertViewController: UIViewController, UITableViewDelegate {
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
         
+        let joinVC = JoinViewController()
+        let navigationController = UINavigationController(rootViewController: joinVC)
+        joinVC.calendar = UserInvitationManager.sharedInstance.calendars.value[indexPath.row]
+        self.presentViewController(navigationController, animated: true, completion: nil)
     }
     
     private func createHeaderView() -> UIView {
