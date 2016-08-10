@@ -20,8 +20,7 @@ class JoinVM: NSObject, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! SelectedUserCollectionViewCell
-        let user = users[indexPath.row]
-        cell.fillWith(user)
+        cell.fillWith(users[indexPath.row])
         return cell
     }
     
