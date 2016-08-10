@@ -27,7 +27,6 @@ class MenuTableViewController: UITableViewController {
     
     var delegate : MenuTableViewControllerDelegate?
     var customeDelegate: MenuTableViewControllerToCalendarControllerDelegate?
-    private var tableData : Array<String> = []
     private let currentUser = CurrentUser.sharedInstance
 
     override func viewDidLoad() {
