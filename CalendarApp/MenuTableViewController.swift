@@ -27,6 +27,7 @@ class MenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.registerNib(UINib(nibName: "SideUserTableViewCell", bundle: nil), forCellReuseIdentifier: "SideUserTableViewCell")
+        self.tableView.registerClass(SideCalendarTableViewCell.self, forCellReuseIdentifier: "SideCalendarTableViewCell")
         
         currentUser.user.observe { user in
             self.tableView.reloadData()
