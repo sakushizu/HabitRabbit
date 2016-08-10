@@ -113,6 +113,8 @@
 		0BA75E261D56153C0073F1AB /* UITextView+Extenson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA75E251D56153C0073F1AB /* UITextView+Extenson.swift */; };
 		0BA75E281D5619470073F1AB /* alert.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA75E271D5619470073F1AB /* alert.png */; };
 		0BBD07591D5B33ED00EE4645 /* SideCalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD07581D5B33ED00EE4645 /* SideCalendarTableViewCell.swift */; };
+		0BBD075B1D5B5D7400EE4645 /* UserSession.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BBD075A1D5B5D7400EE4645 /* UserSession.storyboard */; };
+		0BBD075D1D5B61C500EE4645 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BBD075C1D5B61C400EE4645 /* Calendar.storyboard */; };
 		0BC16F701CAA5060005A25F4 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC16F6F1CAA5060005A25F4 /* user.png */; };
 		0BC16F721CAA51B7005A25F4 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC16F711CAA51B7005A25F4 /* plus.png */; };
 		0BC16F761CAA53B9005A25F4 /* Photos.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC16F741CAA53B9005A25F4 /* Photos.png */; };
@@ -289,6 +291,8 @@
 		0BA75E251D56153C0073F1AB /* UITextView+Extenson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Extenson.swift"; sourceTree = "<group>"; };
 		0BA75E271D5619470073F1AB /* alert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert.png; sourceTree = "<group>"; };
 		0BBD07581D5B33ED00EE4645 /* SideCalendarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideCalendarTableViewCell.swift; sourceTree = "<group>"; };
+		0BBD075A1D5B5D7400EE4645 /* UserSession.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserSession.storyboard; sourceTree = "<group>"; };
+		0BBD075C1D5B61C400EE4645 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		0BC16F6F1CAA5060005A25F4 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		0BC16F711CAA51B7005A25F4 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		0BC16F741CAA53B9005A25F4 /* Photos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Photos.png; sourceTree = "<group>"; };
@@ -493,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				0B656A251C219E210024D6F3 /* TopViewController.swift */,
+				0BBD075A1D5B5D7400EE4645 /* UserSession.storyboard */,
 				0B75869D1C22477000816379 /* Login */,
 				0B656A421C21C9940024D6F3 /* SignUp */,
 				0B75869E1C22478600816379 /* Calendar */,
@@ -596,6 +601,7 @@
 		0B75869E1C22478600816379 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				0BBD075C1D5B61C400EE4645 /* Calendar.storyboard */,
 				0B6A927F1BEF3BF2009A7B2E /* CalendarViewController.swift */,
 				0BE80B041C00381400655517 /* CalendarCell.swift */,
 				0B141D6B1C290DBB0029E6EA /* RecordTableView.swift */,
@@ -904,11 +910,13 @@
 				0B23F04A1D2FBC5400BAA63E /* CreateCalendar.storyboard in Resources */,
 				0BA5238C1C1F187C00133342 /* Settings-32.png in Resources */,
 				0BC16F761CAA53B9005A25F4 /* Photos.png in Resources */,
+				0BBD075B1D5B5D7400EE4645 /* UserSession.storyboard in Resources */,
 				0B656A3A1C21B3E20024D6F3 /* NextBtnTableViewCell.xib in Resources */,
 				0BA523891C1F187C00133342 /* Santas Hat Filled-32.png in Resources */,
 				0B75869A1C21EC6100816379 /* FaceBookTableViewCell.xib in Resources */,
 				0B5C80AF1CBD439700459B8D /* Calendar-32.png in Resources */,
 				0B89B2F11D5309DB00864961 /* AlertTableViewCell.xib in Resources */,
+				0BBD075D1D5B61C500EE4645 /* Calendar.storyboard in Resources */,
 				0BA5238E1C1F187C00133342 /* Document-32.png in Resources */,
 				0B6A92851BEF3BF2009A7B2E /* Assets.xcassets in Resources */,
 				0BA523911C1F187C00133342 /* Sports Mode-32.png in Resources */,

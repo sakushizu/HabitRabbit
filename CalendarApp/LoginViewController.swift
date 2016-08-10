@@ -102,7 +102,9 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     ]
                 ]
                 User.firstLoginRails(params){ () -> Void in
-                    self.performSegueWithIdentifier("calendar", sender: nil)
+                    let controller = UIStoryboard.viewControllerWith("Calendar", identifier: "CalendarViewController")
+                    let navigationController = UINavigationController(rootViewController: controller)
+                    self.presentViewController(navigationController, animated: true, completion: nil)
                 }
             }
         } else if indexPath.section == 3 {

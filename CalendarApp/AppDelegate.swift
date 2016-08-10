@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         
-//        CalenderManager.sharedInstance.resetDefaults() //NSUserDefault初期化
+        CalenderManager.sharedInstance.resetDefaults() //NSUserDefault初期化
 
         let calendarManager = CalenderManager.sharedInstance
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                 })
             })
-            let controller = UIStoryboard.viewControllerWith("Main", identifier: "CalendarViewController")
+            let controller = UIStoryboard.viewControllerWith("Calendar", identifier: "CalendarViewController")
             let navigationController = UINavigationController(rootViewController: controller)
             self.window?.rootViewController = navigationController
 

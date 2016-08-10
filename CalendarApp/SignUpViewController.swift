@@ -106,7 +106,6 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
             } else if overMinPasswordTextCount == false {
                 showAlert("password is min 6 count")
             } else {
-                //ここでuserを生成する必要はなくてhashで送れば良い。
                 let params: [String:AnyObject] = [
                     "name": nameCell.textField.text!,
                     "password": passwordCell.textField.text!,
@@ -114,7 +113,9 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     "avatar": userImageCell.userImageView.image!
                 ]
                 User.signUpRails(params, callback: {
-                  self.performSegueWithIdentifier("login", sender: nil)
+                    let controller = UIStoryboard.viewControllerWith("Calendar", identifier: "CalendarViewController")
+                    let navigationController = UINavigationController(rootViewController: controller)
+                    self.presentViewController(navigationController, animated: true, completion: nil)
                 })
             }
         } else if indexPath.section == 2 {

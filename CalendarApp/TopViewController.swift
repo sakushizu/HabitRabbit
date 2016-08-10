@@ -13,7 +13,6 @@ class TopViewController: UIViewController {
 
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
-    @IBOutlet weak var skipLogInBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +26,13 @@ class TopViewController: UIViewController {
 
     
     @IBAction func tappedSignUpBtn(sender: UIButton) {
-        performSegueWithIdentifier("signup", sender: nil)
+        let createCalenderVC = UIStoryboard.viewControllerWith("UserSession", identifier: "SignUpViewController") as! SignUpViewController
+        self.navigationController?.pushViewController(createCalenderVC, animated: true)
     }
 
     @IBAction func tappedLogInBtn(sender: UIButton) {
-        performSegueWithIdentifier("login", sender: nil)
-    }
-    @IBAction func tappedSkipLogInBtn(sender: UIButton) {
-
+        let createCalenderVC = UIStoryboard.viewControllerWith("UserSession", identifier: "LoginViewController") as! LoginViewController
+        self.navigationController?.pushViewController(createCalenderVC, animated: true)
     }
 
 }
