@@ -113,7 +113,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     // MARK - Container
     
-    func displayContentController(content:UIViewController){
+    func displayContentController(content: UIViewController){
         addChildViewController(content)
         content.view.frame = content.view.bounds
         self.view.addSubview(content.view)
