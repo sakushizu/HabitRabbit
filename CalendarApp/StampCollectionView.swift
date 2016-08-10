@@ -46,7 +46,8 @@ class StampCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: -> headerの記述
+    // MARK -> Collectionview header
+    
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
             let headerReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: CancelButtonHeaderView.nibName, forIndexPath: indexPath) as UICollectionReusableView
@@ -57,14 +58,16 @@ class StampCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
         }
     }
     
-    //delegateFrowLayout
+    // MARK -> Collectionview header size
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionReusableView, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let size = CGSize(width: self.frame.width, height: 40)
         return size
     }
     
     
-    //datesource
+    // MARK - CollectionViewDataSource
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return stampsImages.count
     }
@@ -75,7 +78,8 @@ class StampCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
         return cell
     }
     
-    //delegate
+    // MARK - CollectionViewDelegate
+    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let stampImage = UIImage(named: stampsImages[indexPath.row])
         let notification = NSNotification(name: "selectStampNotification", object: self, userInfo: ["stampImage": stampImage!])

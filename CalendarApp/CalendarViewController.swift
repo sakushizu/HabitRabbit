@@ -8,6 +8,8 @@
 
 import UIKit
 import Foundation
+import Bond
+import BBBadgeBarButtonItem
 
 class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, SideMenuDelegate, UIBarPositioningDelegate, UINavigationBarDelegate, UITextViewDelegate, MenuTableViewControllerToCalendarControllerDelegate {
     
@@ -43,6 +45,19 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var segmentLeftLineView: UIView!
     @IBOutlet weak var segmentRightLineView: UIView!
     
+    let alertViewController = AlertViewController()
+    private var showing: Bool = false
+
+    private let calendarManager = CalenderManager.sharedInstance
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        if CurrentUser.sharedInstance.user.value != nil {
+            UserInvitationManager.sharedInstance.fetchInvitationCalendars(completion: { 
+                
+            })
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +70,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         segmentContol.hidden = true
         segmentRightLineView.hidden = true
         segmentLeftLineView.hidden = true
-//        CalenderManager.sharedInstance.resetDefaults() //NSUserDefault初期化
         
         //tableViewに表示している名前の配列
         sideMenu = SideMenu(sourceView: self.view)
@@ -85,15 +99,33 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         // MARK - ここから編集
         setNavigationBar()
         
+        UserInvitationManager.sharedInstance.calendars.observe { calendars in
+            if calendars.count >= 0 {
+                self.setNavigationBar()
+            }
+        }
     }
     
-    override func viewWillAppear(animated: Bool) {
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK - Container
+    
+    func displayContentController(content: UIViewController){
+        addChildViewController(content)
+        content.view.frame = content.view.bounds
+        self.view.addSubview(content.view)
+        content.didMoveToParentViewController(self)
+    }
+    
+    func hideContentController(content:UIViewController){
+        content.willMoveToParentViewController(self)
+        content.view.removeFromSuperview()
+        content.removeFromParentViewController()
+    }
+    
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 2
@@ -266,7 +298,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     ////サイドバーのセルがタップされた時の処理
     func sideMenuDidSelectItemAtIndex(indexPath: NSIndexPath) {
-        selectedCalender = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
+        selectedCalender = CalenderManager.sharedInstance.calendarCollection.value[indexPath.row]
         stampedManager.fetchStampedDates(selectedCalender.id) { 
             self.setSelectedCalendarView()
             self.recordTableView.reloadData()
@@ -292,8 +324,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         )
 
         calendarTitle.text = selectedCalender.title
-//        Calendar.sharedInstance.object_id = selectedCalender.object_id
-//        Calendar.sharedInstance.title = selectedCalender.title
+
         calenderHeaderView.backgroundColor = color
         segmentContol.hidden = false
         segmentContol.tintColor = color
@@ -339,7 +370,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         memoView.layer.borderWidth = 1
         memoView.layer.cornerRadius = 3
         memoView.layer.masksToBounds = true
-        let textFieldFrame = CGRectMake(15, 15, memoView.frame.width - 30, memoView.frame.height - 30 )
+        let screenSize = UIScreen.mainScreen().bounds
+        let textFieldFrame = CGRectMake(0, 0, screenSize.width, screenSize.height )
         memoTextView = UITextView(frame: textFieldFrame)
         memoTextView.textColor = UIColor.darkGrayColor()
         memoTextView.font = UIFont.mainFontJa(14)
@@ -383,12 +415,21 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         let storyboard = UIStoryboard(name: "UserEdit", bundle: nil)
         let nextVC = storyboard.instantiateInitialViewController()!
         self.presentViewController(nextVC, animated: true, completion: nil)
-//        nextVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-//        navigationController?.pushViewController(nextVC, animated: true)
+
     }
     
-    func tappedAppointmentButton() {
+    func tappedAlertButton() {
+        //container
         
+        if showing {
+            self.hideContentController(self.alertViewController)
+            showing = false
+        } else {
+            self.displayContentController(self.alertViewController)
+            showing = true
+            
+        }
+
     }
     
     func tappedPlusButton() {
@@ -399,16 +440,28 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     private func setNavigationBar() {
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-
-        
-        let createCalendarItem = UIBarButtonItem(image: UIImage(named: "plus"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.tappedPlusButton))
-        let appointItem = UIBarButtonItem(image: UIImage(named: "appointmentReminder"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.tappedAppointmentButton))
-        
-        let rightItem = [createCalendarItem, appointItem]
-        
-        self.navigationItem.setRightBarButtonItems(rightItem, animated: true)
-        
+        let plusBarButton = UIBarButtonItem(image: UIImage(named: "plus"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.tappedPlusButton))
+        let alertBarButton = createAlertBarButton()
+        let rightItems = [plusBarButton, alertBarButton]
+        self.navigationItem.setRightBarButtonItems(rightItems, animated: true)
+        self.alertViewController.AlertIconCentorX = alertBarButton.valueForKey("view")?.center.x
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.toggleSideMenu(_:)))
+        
+    }
+    
+    private func createAlertBarButton() -> UIBarButtonItem {
+        let alertButton = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        alertButton.setImage(UIImage(named: "alert"), forState: .Normal)
+        alertButton.addTarget(self, action: #selector(CalendarViewController.tappedAlertButton), forControlEvents: .TouchUpInside)
+        alertButton.adjustsImageWhenHighlighted = false
+        let alertBarButton = BBBadgeBarButtonItem(customUIButton: alertButton)
+        alertBarButton.badgeValue = String(UserInvitationManager.sharedInstance.calendars.value.count)
+        alertBarButton.badgeBGColor = UIColor.mainColor()
+        alertBarButton.badgeTextColor = UIColor.whiteColor()
+        alertBarButton.badgeOriginX = 12
+        alertBarButton.badgePadding = 4
+        alertBarButton.shouldAnimateBadge = true
+        return alertBarButton
     }
     
 

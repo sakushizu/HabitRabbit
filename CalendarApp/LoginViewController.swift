@@ -95,8 +95,13 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             } else if overMinPasswordTextCount == false {
                 showAlert("password is min 6 count")
             } else {
-                let user = User(email: emailCell.textField.text!, password: passwordCell.textField.text!)
-                User.firstLoginRails(user){ () -> Void in
+                let params: [String: AnyObject] = [
+                    "user": [
+                        "email": emailCell.textField.text!,
+                        "password": passwordCell.textField.text!
+                    ]
+                ]
+                User.firstLoginRails(params){ () -> Void in
                     self.performSegueWithIdentifier("calendar", sender: nil)
                 }
             }

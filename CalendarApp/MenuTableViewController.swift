@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Parse
 import SDWebImage
+import Bond
 
 protocol MenuTableViewControllerDelegate {
     func menuControllerDidSelectRow(indexPath:NSIndexPath)
@@ -18,15 +18,30 @@ protocol MenuTableViewControllerDelegate {
     func moveUserEditViewController()
 }
 
+enum SectionType: Int {
+    case UserCell = 0
+    case CalendarCell = 1
+}
 
 class MenuTableViewController: UITableViewController {
     
-    let sectionTitles = ["", "Calendar"]
-    let user = CurrentUser.sharedInstance.user
+    var delegate : MenuTableViewControllerDelegate?
+    var customeDelegate: MenuTableViewControllerToCalendarControllerDelegate?
+    private let currentUser = CurrentUser.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerNib(UINib(nibName: "sideUserTableViewCell", bundle: nil), forCellReuseIdentifier: "sideUserCell")
+        self.tableView.registerNib(UINib(nibName: "SideUserTableViewCell", bundle: nil), forCellReuseIdentifier: "SideUserTableViewCell")
+        self.tableView.registerClass(SideCalendarTableViewCell.self, forCellReuseIdentifier: "SideCalendarTableViewCell")
+        
+        currentUser.user.observe { user in
+            self.tableView.reloadData()
+        }
+        
+        CalenderManager.sharedInstance.calendarCollection.observe { calendar in
+            self.tableView.reloadData()
+        }
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -34,84 +49,74 @@ class MenuTableViewController: UITableViewController {
         super.viewWillAppear(true)
     }
     
-    var delegate : MenuTableViewControllerDelegate?
-    var customeDelegate: MenuTableViewControllerToCalendarControllerDelegate?
-    var tableData : Array<String> = []
+    
+    // MARK - TableViewDataSource
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let sectionType = SectionType(rawValue: indexPath.section)!
+        switch sectionType {
+            
+        case .UserCell:
+            let userCell = self.tableView.dequeueReusableCellWithIdentifier("SideUserTableViewCell", forIndexPath: indexPath) as! SideUserTableViewCell
+            userCell.settingButton.addTarget(self, action: #selector(MenuTableViewController.tappedSettingBtn), forControlEvents: .TouchUpInside)
+            return userCell
+            
+        case .CalendarCell:
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("SideCalendarTableViewCell", forIndexPath: indexPath) as!  SideCalendarTableViewCell
+            let calendar = CalenderManager.sharedInstance.calendarCollection.value[indexPath.row]
+            cell.fillWith(calendar)
+            return cell
+        }
+    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return CalenderManager.sharedInstance.calendarCollection.count
+        
+        let sectionType = SectionType(rawValue: section)!
+        
+        switch sectionType {
+            
+        case .UserCell:
+            return currentUser.user.value == nil ? 0 : 1
+            
+        case .CalendarCell:
+            return CalenderManager.sharedInstance.calendarCollection.value.count
         }
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionTitles[section]
+    // MARK - TableViewDelegate
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let sectionType = SectionType(rawValue: indexPath.section)!
+        
+        switch sectionType {
+            
+        case .UserCell:
+            return 80
+        case .CalendarCell:
+            return 40
+        }
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section != 0 {
-            return 40
-        } else {
+        
+        let sectionType = SectionType(rawValue: section)!
+        
+        switch sectionType {
+            
+        case .UserCell:
             return 0
+        case .CalendarCell:
+            return 40
         }
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let coverView = UIView()
-        coverView.backgroundColor = UIColor.lightlightGray()
-        let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width, height: 40))
-        label.font = UIFont.mainFontJa(15)
-        label.textColor = UIColor.darkGrayColor()
-        coverView.addSubview(label)
-        if section == 1 {
-            label.text = "Private"
-            return coverView
-        } else if section == 2 {
-            label.text = "Group"
-            return coverView
-        } else {
-            return coverView
-        }
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
-        cell.backgroundColor = UIColor.clearColor()
-        cell.textLabel!.textColor = UIColor.darkGrayColor()
-        let selectedBackgroundView = UIView(frame: CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height))
-        selectedBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
-        cell.selectedBackgroundView = selectedBackgroundView
-        if indexPath.section == 0 {
-            let userCell = self.tableView.dequeueReusableCellWithIdentifier("sideUserCell", forIndexPath: indexPath) as! sideUserTableViewCell
-            userCell.backgroundColor = UIColor.clearColor()
-            if CurrentUser.sharedInstance.user == nil {
-                userCell.userImageView.image = UIImage(named: "user")
-                userCell.nameLabel.text = "Guest"
-            } else {
-                userCell.userImageView.sd_setImageWithURL(NSURL(string: user.avatarUrl))
-                userCell.nameLabel.text = CurrentUser.sharedInstance.user.name
-            }
-            userCell.settingButton.addTarget(self, action: #selector(MenuTableViewController.tappedSettingBtn), forControlEvents: .TouchUpInside)
-            return userCell
-        } else {
-            let calendar = CalenderManager.sharedInstance.calendarCollection[indexPath.row]
-            cell.textLabel?.text = calendar.title
-            return cell
-        }
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 100.0
-        } else {
-            return 50.0
-        }
+        return createCoverView()
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -120,6 +125,17 @@ class MenuTableViewController: UITableViewController {
     
     func tappedSettingBtn() {
         self.customeDelegate?.moveUserEditViewController()
+    }
+    
+    private func createCoverView() -> UIView {
+        let coverView = UIView()
+        coverView.backgroundColor = UIColor.lightlightGray()
+        let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width, height: 40))
+        label.font = UIFont.mainFontJa(15)
+        label.textColor = UIColor.textColor()
+        label.text = "Calendar"
+        coverView.addSubview(label)
+        return coverView
     }
 
 }

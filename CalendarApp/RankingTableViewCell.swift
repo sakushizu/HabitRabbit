@@ -31,7 +31,7 @@ class RankingTableViewCell: UITableViewCell {
     
     func fillWith(user: User) {
         self.userNameLabel.text = user.name
-        self.userImageView.image = user.userImage
+        self.userImageView.sd_setImageWithURL(NSURL(string: user.avatarUrl))
         //MARK Userが達成した日数
         self.recordLabel.text = "3complation"
         

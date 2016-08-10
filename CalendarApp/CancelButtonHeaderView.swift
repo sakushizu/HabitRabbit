@@ -21,7 +21,6 @@ class CancelButtonHeaderView: UICollectionReusableView {
     
     
     @IBAction func tappedCancelButton(sender: UIButton) {
-        //scrollを下げるメソッドを呼びたい
         let notification = NSNotificationCenter.defaultCenter()
         notification.postNotificationName("closeStampImageNotification", object: nil)
     }

@@ -55,10 +55,10 @@ class RecordTableView: UITableView, UITableViewDataSource, UITableViewDelegate  
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.dequeueReusableCellWithIdentifier("recordCell", forIndexPath: indexPath) as? RankingTableViewCell
-        if CurrentUser.sharedInstance.user != nil {
+        if CurrentUser.sharedInstance.user.value != nil {
             if indexPath.section == 0 {
                 cell?.rankingNumLabel.hidden = true
-                cell?.fillWith(CurrentUser.sharedInstance.user)
+                cell?.fillWith(CurrentUser.sharedInstance.user.value!)
                 return cell!
             } else {
                 //MARK: -参加しているUserのランキング表示

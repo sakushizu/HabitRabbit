@@ -47,7 +47,7 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
         }
     }
     
-    // MARK - TableViewDataSource
+    // MARK - TableViewDelegate
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60
@@ -123,12 +123,6 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         mModel.selectedUsers.observe { users in
-//            if users.count > 0 {
-//                let usersCountString = users.count
-//            } else {
-//                let usersCountString = ""
-//            }
-//          
             button.enabled = users.count > 0
             
             UIView.performWithoutAnimation {

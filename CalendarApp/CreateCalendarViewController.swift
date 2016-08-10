@@ -72,11 +72,8 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         } else if rowType == .UserCell {
             
             userInvitationManager.fetchUsers(completion: {
-                
                 let UserInvitationVC = UIStoryboard.viewControllerWith("CreateCalendar", identifier: "UserInvitationViewController") as! UserInvitationViewController
                 self.navigationController?.pushViewController(UserInvitationVC, animated: true)
-
-                
             })
             
         }
@@ -94,10 +91,8 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
     func clickCreateButton(sender: UIButton) {
         
         if mModel.titleText.value! == "" {
-            //alert出てこない
             let alert = UIAlertController.alertWith(message: "Title is empty!")
             self.presentViewController(alert, animated: true, completion: nil)
-
         } else {
             let navigationVC = self.navigationController!
             navigationVC.popViewControllerAnimated(false)
@@ -252,7 +247,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             "user_ids": setUserIdArray()
         ]
         
-        StockCalendars.saveCalendarRails(params, callback: {
+        StockCalendars.saveCalendarRails(params, completion: {
             calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
         })
         

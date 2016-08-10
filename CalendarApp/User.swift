@@ -17,55 +17,13 @@ import FBSDKShareKit
 
 class User: NSObject {
     
-//    static let sharedInstance = User(name: "guest", password: "guest")
-    
-    //ログインしていない場合は、guestが入る
-    var type: String!
-    
-    var objectId: String!
-    
     var id: Int!
     var name: String!
     var password: String!
     var mailAddress: String!
-    var userImage: UIImage!
     var avatarUrl :String!
     
-    init(name: String, password: String, mailAddress: String, userImage: UIImage) {
-        self.name = name
-        self.password = password
-        self.mailAddress = mailAddress
-        self.userImage = userImage
-    }
-    
-    init(objectId: String, name: String) {
-        self.objectId = objectId
-        self.name = name
-    }
-    
-    init(email: String, password: String) {
-        self.mailAddress = email
-        self.password = password
-    }
-    
-    init(name: String, mail: String) {
-        self.name = name
-        self.mailAddress = mail
-    }
-    
-    init(name: String, mail: String, avatar_url: String) {
-        self.name = name
-        self.mailAddress = mail
-        self.avatarUrl = avatar_url
-    }
-    
-    init(objectId: String, name: String, password: String, mailAddress: String) {
-        self.objectId = objectId
-        self.name = name
-        self.password = password
-        self.mailAddress = mailAddress
-    }
-    
+
     init(jsonWithUser json: JSON) {
         self.id = json["id"].int
         self.name = json["name"].string
@@ -74,13 +32,13 @@ class User: NSObject {
     }
     
     // RailsSignUp
-    class func signUpRails(user: User, callback: () -> Void) {
+    class func signUpRails(params: [String:AnyObject], callback: () -> Void) {
         
-        let name = (user.name as String).dataUsingEncoding(NSUTF8StringEncoding)!
-        let email = (user.mailAddress as String).dataUsingEncoding(NSUTF8StringEncoding)!
-        let password = (user.password as String).dataUsingEncoding(NSUTF8StringEncoding)!
-        let password_confirmation = (user.password as String).dataUsingEncoding(NSUTF8StringEncoding)!
-        let avatar = UIImagePNGRepresentation(user.userImage as UIImage)
+        let name = (params["name"] as! String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let email = (params["mail"] as! String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let password = (params["password"] as! String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let password_confirmation = (params["password"] as! String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let avatar = UIImagePNGRepresentation(params["avatar"] as! UIImage)
         // HTTP通信
         Alamofire.upload(
             .POST,
@@ -116,9 +74,8 @@ class User: NSObject {
 
     
     //RailsLogin(outh取得済み)
-    class func loginRails(tokenDic: Dictionary<String, String>, callback: () -> Void) {
+    class func loginRails(token: String, callback: () -> Void) {
         
-        let token = tokenDic["auth"]! as String
         // HTTP通信
         Alamofire.request(
             .POST,
@@ -139,20 +96,15 @@ class User: NSObject {
 
                 let json = JSON(response.result.value!)
                 let user = User(jsonWithUser: json)
-                CurrentUser.sharedInstance.user = user
-                CurrentUser.sharedInstance.authentication_token = token
+                CurrentUser.sharedInstance.user.value = user
+                CurrentUser.sharedInstance.authentication_token.value = token
                 callback()
         }
     }
     
-    class func firstLoginRails(user: User, callback: () -> Void) {
+    class func firstLoginRails(params: [String:AnyObject], callback: () -> Void) {
         
-        let params: [String: AnyObject] = [
-            "user": [
-                "email": user.mailAddress,
-                "password": user.password
-            ]
-        ]
+
         
         // HTTP通信
         
@@ -173,18 +125,17 @@ class User: NSObject {
                 
                 let json = JSON(response.result.value!)
                 let user = User(jsonWithUser: json)
-                CurrentUser.sharedInstance.user = user
-                CurrentUser.sharedInstance.authentication_token = json["access_token"].stringValue
+                CurrentUser.sharedInstance.user.value = user
+                CurrentUser.sharedInstance.authentication_token.value = json["access_token"].stringValue
                 self.saveAuthenticationToken()
                 callback()
         }
     }
     
     class func saveAuthenticationToken() {
-        //tokenArray["auth": "sfdegdgfgfs", "email": "aaa@gmail.com"]
         var tokenDic = Dictionary<String, String>()
-        tokenDic["auth"] = CurrentUser.sharedInstance.authentication_token
-        tokenDic["email"] = CurrentUser.sharedInstance.user.mailAddress
+        tokenDic["auth"] = CurrentUser.sharedInstance.authentication_token.value
+        tokenDic["email"] = CurrentUser.sharedInstance.user.value!.mailAddress
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(tokenDic, forKey: "tokenDic")
         defaults.synchronize()
@@ -196,7 +147,7 @@ class User: NSObject {
         tokenDic!["auth"] = ""
         defaults.setObject(tokenDic, forKey: "tokenDic")
         defaults.synchronize()
-        CurrentUser.sharedInstance.user = nil
+        CurrentUser.sharedInstance.user.value = nil
     }
     
     
@@ -253,8 +204,8 @@ class User: NSObject {
                 
                 let json = JSON(response.result.value!)
                 let user = User(jsonWithUser: json)
-                CurrentUser.sharedInstance.user = user
-                CurrentUser.sharedInstance.authentication_token = json["access_token"].stringValue
+                CurrentUser.sharedInstance.user.value = user
+                CurrentUser.sharedInstance.authentication_token.value = json["access_token"].stringValue
                 self.saveAuthenticationToken()
                 callback()
         }

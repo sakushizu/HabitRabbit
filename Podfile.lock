@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (3.3.1)
+  - BBBadgeBarButtonItem (1.2)
   - Bolts (1.7.0):
     - Bolts/AppLinks (= 1.7.0)
     - Bolts/Tasks (= 1.7.0)
@@ -23,6 +24,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - BBBadgeBarButtonItem
   - Bond
   - FBSDKCoreKit
   - FBSDKLoginKit
@@ -45,6 +47,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  BBBadgeBarButtonItem: c2fbca0bff18e21b70defc9438a8a5048008e7ca
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   Bond: 55903fc67f09e8e49791a657163cabba1d6fb29d
   FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b

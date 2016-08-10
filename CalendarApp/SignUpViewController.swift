@@ -107,8 +107,13 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 showAlert("password is min 6 count")
             } else {
                 //ここでuserを生成する必要はなくてhashで送れば良い。
-                let user = User(name: nameCell.textField.text!, password: passwordCell.textField.text!, mailAddress: mailCell.textField.text!, userImage: userImageCell.userImageView.image!)
-                User.signUpRails(user, callback: {
+                let params: [String:AnyObject] = [
+                    "name": nameCell.textField.text!,
+                    "password": passwordCell.textField.text!,
+                    "mail": mailCell.textField.text!,
+                    "avatar": userImageCell.userImageView.image!
+                ]
+                User.signUpRails(params, callback: {
                   self.performSegueWithIdentifier("login", sender: nil)
                 })
             }

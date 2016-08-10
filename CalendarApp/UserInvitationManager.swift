@@ -16,12 +16,14 @@ class UserInvitationManager: NSObject {
     static let sharedInstance = UserInvitationManager()
     
     let users = Observable<[User]>([])
+    var calendars = Observable<[Calendar]>([])
+
     
     func fetchUsers(completion completion: () -> Void) {
         Alamofire.request(
             .GET,
             "\(Settings.ApiRootPath)/api/users/",
-            headers: ["access_token": CurrentUser.sharedInstance.authentication_token!]
+            headers: ["access_token": CurrentUser.sharedInstance.authentication_token.value]
             ).responseJSON { response in
                 guard response.result.error == nil else {
                     // Add error handling in the future
@@ -30,9 +32,50 @@ class UserInvitationManager: NSObject {
                 }
                 
                 let json = JSON(response.result.value!)
-                self.updateUsersFromJson(json["users"])
+                self.updateUsersFromJson(json)
                 completion()
         }
+    }
+    
+    func fetchInvitationCalendars(completion completion: () -> Void) {
+        Alamofire.request(
+            .GET,
+            "\(Settings.ApiRootPath)/api/users/\(CurrentUser.sharedInstance.user.value!.id)/invitation_users",
+//            parameters: params,
+            headers: nil
+            ).responseJSON { response in
+                guard response.result.error == nil else {
+                    // Add error handling in the future
+                    print("Can't connect to the server: \(response.result.error!)")
+                    return
+                }
+                
+                let json = JSON(response.result.value!)
+                self.updateCalendarsFromJson(json["calendars"])
+                completion()
+
+        }
+    }
+    
+    private func createCalendarsFromJson(json: JSON) -> [Calendar] {
+        var calendars = [Calendar]()
+        
+        for (_, calendarJson) in json {
+            let calendar = Calendar(json: calendarJson)
+            let user = User(jsonWithUser: calendarJson["user"])
+            calendar.orner = user
+            for (_, userJson) in calendarJson["users"]  {
+                let user = User(jsonWithUser: userJson)
+                calendar.joinedUsers.append(user)
+            }
+            calendars.append(calendar)
+        }
+        
+        return calendars
+    }
+    
+    private func updateCalendarsFromJson(calendarsJson: JSON) {
+        self.calendars.value = createCalendarsFromJson(calendarsJson)
     }
     
 

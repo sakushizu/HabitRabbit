@@ -26,7 +26,7 @@ class StampedDateManager: NSObject {
             .GET,
             "\(Settings.ApiRootPath)/api/stamped_dates/",
             parameters: params,
-            headers: ["access_token": CurrentUser.sharedInstance.authentication_token!]
+            headers: ["access_token": CurrentUser.sharedInstance.authentication_token.value]
             ).responseJSON { response in
                 guard response.result.error == nil else {
                     // Add error handling in the future
@@ -60,7 +60,7 @@ class StampedDateManager: NSObject {
     
     func saveStampedDate(params: [String: AnyObject], completion: () -> Void) {
         
-        let token = CurrentUser.sharedInstance.authentication_token
+        let token = CurrentUser.sharedInstance.authentication_token.value
         // HTTP通信
         Alamofire.request(
             .POST,
@@ -88,7 +88,7 @@ class StampedDateManager: NSObject {
     }
     
     func deleteStampedDate(params: [String: AnyObject], callback: () -> Void) {
-        let token = CurrentUser.sharedInstance.authentication_token
+        let token = CurrentUser.sharedInstance.authentication_token.value
         
         // HTTP通信
         Alamofire.request(
