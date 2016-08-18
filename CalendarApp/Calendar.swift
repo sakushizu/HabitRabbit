@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class Calendar: NSObject {
+class Calendar: NSObject, NSCopying {
     
     
     //カレンダーの情報をもつ辞書型
@@ -43,6 +43,23 @@ class Calendar: NSObject {
         self.color_b = json["color_B"].int!
         self.stampImageURL = json["stamp_image"].string!
         self.orner = User(jsonWithUser: json["user"])
+    }
+    
+    init(id: Int, title: String, color_r: Int, color_g: Int, color_b: Int, stampImageURL: String, orner: User, joinedUsers: [User], invitingUsers: [User]) {
+        self.id = id
+        self.title = title
+        self.color_r = color_r
+        self.color_g = color_g
+        self.color_b = color_b
+        self.stampImageURL = stampImageURL
+        self.orner = orner
+        self.joinedUsers = joinedUsers
+        self.invitingUsers = invitingUsers
+    }
+    
+    func copyWithZone(zone: NSZone) -> AnyObject {
+        let copy = Calendar(id: id, title: title, color_r: color_r, color_g: color_g, color_b: color_b, stampImageURL: stampImageURL, orner: orner, joinedUsers: joinedUsers, invitingUsers: invitingUsers)
+        return copy
     }
 
     
