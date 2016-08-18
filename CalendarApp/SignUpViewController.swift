@@ -112,14 +112,18 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     "mail": mailCell.textField.text!,
                     "avatar": userImageCell.userImageView.image!
                 ]
-                User.signUpRails(params, callback: {
+                User.signUpRails(params, completion: {
+                    UserInvitationManager.sharedInstance.fetchInvitationCalendars(completion: {
+                    })
+                    CalenderManager.sharedInstance.fetchCalendars(completion: {
+                    })
                     let controller = UIStoryboard.viewControllerWith("Calendar", identifier: "CalendarViewController")
                     let navigationController = UINavigationController(rootViewController: controller)
                     self.presentViewController(navigationController, animated: true, completion: nil)
                 })
             }
         } else if indexPath.section == 2 {
-            loginButtonClicked()
+            FaceBookLoginButtonClicked()
         } else if indexPath.section == 0 {
             userImageCell.selected = true
         }
@@ -162,14 +166,14 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func makeFBRoginBtn() -> UIButton {
         customButton = UIButton(type: .System)
         customButton.setTitle("Sign Up With Facebook", forState: .Normal)
-        customButton.addTarget(self, action: #selector(self.loginButtonClicked), forControlEvents: .TouchUpInside)
+        customButton.addTarget(self, action: #selector(self.FaceBookLoginButtonClicked), forControlEvents: .TouchUpInside)
         customButton.frame = CGRectMake(0,0,self.view.frame.width,80)
         return customButton
         
     }
     
     //////ログインボタン
-    func loginButtonClicked(){
+    func FaceBookLoginButtonClicked(){
         
         let loginManager = FBSDKLoginManager()
         if(!isLogin){
@@ -180,7 +184,12 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 if result.isCancelled {
                 } else {
                     User.getUserData({
-                        self.performSegueWithIdentifier("FBLogin", sender: nil)
+                        let controller = UIStoryboard.viewControllerWith("Calendar", identifier: "CalendarViewController")
+                        let navigationController = UINavigationController(rootViewController: controller)
+                        self.presentViewController(navigationController, animated: true, completion: nil)
+                        CalenderManager.sharedInstance.fetchCalendars(completion: {
+                            
+                        })
                     })
 //                    self.customButton.setTitle("Logout", forState: .Normal)
                 }
