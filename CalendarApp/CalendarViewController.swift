@@ -104,6 +104,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
                 self.setNavigationBar()
             }
         }
+        setNotification()
     }
     
     override func didReceiveMemoryWarning() {
@@ -169,7 +170,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             // UIImageViewをViewに追加する.
             if self.selectedCalender != nil {
                 if jadgeIfCellTapped(indexPath) {
-                    cell.imageView.sd_setImageWithURL(NSURL(string: selectedCalender.stampImageURL))
+                    cell.imageView.sd_setImageWithURL(NSURL(string: selectedCalender.stampImageURL), placeholderImage: nil, options: .RefreshCached)
                     cell.imageView.hidden = false
                     cell.circleView.hidden = true
                 } else {
@@ -307,6 +308,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         selectedCalender = CalenderManager.sharedInstance.calendarCollection.value[indexPath.row]
         stampedManager.fetchStampedDates(selectedCalender.id) { 
             self.setSelectedCalendarView()
+            self.toggleMenu()
             self.recordTableView.reloadData()
         }
     }
@@ -320,8 +322,9 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     
     // MARK: - ビューの装飾
-    func setSelectedCalendarView() {
-        
+    
+    private func setSelectedCalendarView() {
+        selectedCalender.stampImageURL  =  "\(selectedCalender.stampImageURL)?\(String.random())"
         let color = UIColor(
             red:  (CGFloat(selectedCalender.color_r))/255,
             green: (CGFloat(selectedCalender.color_g))/255,
@@ -447,6 +450,21 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         self.navigationController?.pushViewController(createCalenderVC, animated: true)
     }
     
+    @IBAction func tappedEditCalendarButton(sender: UIButton) {
+        let controller = UIStoryboard.viewControllerWith("EditCalendar", identifier: "EditCalendarViewController") as! EditCalendarViewController
+        let navigationController = UINavigationController(rootViewController: controller)
+        controller.mModel.selectedCalendar.value = self.selectedCalender.copy() as? Calendar
+        self.presentViewController(navigationController, animated: true, completion: nil)
+    }
+    
+    func setUpdateCalendar(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            selectedCalender = userInfo["calendar"] as? Calendar
+            self.setSelectedCalendarView()
+            self.recordTableView.reloadData()
+        }
+    }
+    
     private func setNavigationBar() {
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
@@ -474,6 +492,13 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         return alertBarButton
     }
     
-
+    private func setNotification() {
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(self.setUpdateCalendar(_:)),
+            name: "updateCalendarNotification",
+            object: nil
+        )
+    }
 
 }
