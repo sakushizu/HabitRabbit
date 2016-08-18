@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Edit Calendar View Controller-->
+        <scene sceneID="hqu-MJ-NJE">
+            <objects>
+                <viewController storyboardIdentifier="EditCalendarViewController" automaticallyAdjustsScrollViewInsets="NO" id="5GG-Wi-2Rt" customClass="EditCalendarViewController" customModule="CalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SXD-6M-Qt6"/>
+                        <viewControllerLayoutGuide type="bottom" id="SyA-Cz-UUd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fwN-ER-sIO" customClass="EditCalendarView" customModule="CalendarApp" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWE-rq-tzI">
+                                <rect key="frame" x="17" y="432" width="341" height="50"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.59215686270000001" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fuq-B3-11u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Update"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D5C-Mm-H2C">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="349"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="349" id="UbX-Mj-WY1"/>
+                                    <constraint firstAttribute="width" constant="375" id="hIQ-OQ-dIP"/>
+                                </constraints>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="FWE-rq-tzI" firstAttribute="top" secondItem="D5C-Mm-H2C" secondAttribute="bottom" constant="77" id="3aP-FQ-I9e"/>
+                            <constraint firstAttribute="trailing" secondItem="FWE-rq-tzI" secondAttribute="trailing" constant="17" id="6p2-Qp-QTJ"/>
+                            <constraint firstItem="SyA-Cz-UUd" firstAttribute="top" secondItem="D5C-Mm-H2C" secondAttribute="bottom" constant="312" id="DIJ-VZ-jj4"/>
+                            <constraint firstItem="D5C-Mm-H2C" firstAttribute="top" secondItem="fwN-ER-sIO" secondAttribute="top" id="HHK-3a-ghA"/>
+                            <constraint firstItem="FWE-rq-tzI" firstAttribute="leading" secondItem="fwN-ER-sIO" secondAttribute="leading" constant="17" id="Jrq-Dw-KmO"/>
+                            <constraint firstAttribute="trailing" secondItem="D5C-Mm-H2C" secondAttribute="trailing" id="LU0-ch-GQW"/>
+                            <constraint firstItem="SyA-Cz-UUd" firstAttribute="top" secondItem="FWE-rq-tzI" secondAttribute="bottom" constant="185" id="lg3-WG-rQN"/>
+                            <constraint firstItem="D5C-Mm-H2C" firstAttribute="leading" secondItem="fwN-ER-sIO" secondAttribute="leading" id="rLM-Rj-MOk"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3aP-FQ-I9e"/>
+                                <exclude reference="DIJ-VZ-jj4"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outlet property="UpdateButton" destination="FWE-rq-tzI" id="sX9-5V-nme"/>
+                            <outlet property="tableView" destination="D5C-Mm-H2C" id="D72-hy-qTd"/>
+                            <outlet property="updateButton" destination="FWE-rq-tzI" id="c7t-l3-yxV"/>
+                        </connections>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="32G-EE-sOi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="556.5" y="301.5"/>
+        </scene>
+    </scenes>
+</document>
