@@ -19,7 +19,7 @@ class UserInvitationManager: NSObject {
     var calendars = Observable<[Calendar]>([])
 
     
-    func fetchUsers(completion completion: () -> Void) {
+    func fetchUsers(completion completion: () -> Void, fail: (() -> Void)?) {
         Alamofire.request(
             .GET,
             "\(Settings.ApiRootPath)/api/users/",
@@ -31,6 +31,41 @@ class UserInvitationManager: NSObject {
                     return
                 }
                 
+                let statusCode = response.response?.statusCode
+
+                guard statusCode != 401 else {
+                    fail!()
+                    return
+                }
+                
+                
+                let json = JSON(response.result.value!)
+                self.updateUsersFromJson(json)
+                completion()
+        }
+    }
+    
+    func notJoinAndInvatedUsers(params: [String:Int], completion: () -> Void, fail: (() -> Void)?) {
+        Alamofire.request(
+            .GET,
+            "\(Settings.ApiRootPath)/api/users/not_joined_users",
+            parameters: params,
+            headers: ["access_token": CurrentUser.sharedInstance.authentication_token.value]
+            ).responseJSON { response in
+                guard response.result.error == nil else {
+                    // Add error handling in the future
+                    print("Can't connect to the server: \(response.result.error!)")
+                    return
+                }
+                
+                let statusCode = response.response?.statusCode
+                
+                guard statusCode != 401 else {
+                    fail!()
+                    return
+                }
+                
+                
                 let json = JSON(response.result.value!)
                 self.updateUsersFromJson(json)
                 completion()
@@ -41,7 +76,7 @@ class UserInvitationManager: NSObject {
         Alamofire.request(
             .GET,
             "\(Settings.ApiRootPath)/api/users/\(CurrentUser.sharedInstance.user.value!.id)/invitation_users",
-//            parameters: params,
+            parameters: nil,
             headers: nil
             ).responseJSON { response in
                 guard response.result.error == nil else {
