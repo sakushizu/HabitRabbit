@@ -21,7 +21,9 @@ class Calendar: NSObject {
     var color_b: Int
     var stampImageURL: String
     var orner: User
+//    var joinedUsersWithOwner = [User]()
     var joinedUsers = [User]()
+    var invitingUsers = [User]()
     
     var memo = ""
     

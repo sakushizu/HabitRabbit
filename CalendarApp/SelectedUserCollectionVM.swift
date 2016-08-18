@@ -10,7 +10,8 @@ import UIKit
 
 class SelectedUserCollectionVM: NSObject, UICollectionViewDataSource {
     
-    var invitationUsers = [User]()
+    var users = [User]()
+    var joinedUsers = [User]()
     
     override init() {
         super.init()
@@ -29,12 +30,12 @@ class SelectedUserCollectionVM: NSObject, UICollectionViewDataSource {
     
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return invitationUsers.count
+        return users.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! SelectedUserCollectionViewCell
-        let user = invitationUsers[indexPath.row]
+        let user = users[indexPath.row]
         cell.fillWith(user)
         return cell
     }
@@ -42,7 +43,8 @@ class SelectedUserCollectionVM: NSObject, UICollectionViewDataSource {
 
     func selectUserNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
-            self.invitationUsers = (userInfo["users"] as? [User])!
+            users = userInfo["users"] as! [User]
+//            joinedUsers = userInfo["joinedUsers"] as! [User]
         }
         let notification = NSNotification(name: "reloadDataNotification", object: nil)
         NSNotificationCenter.defaultCenter().postNotification(notification)

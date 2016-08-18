@@ -13,12 +13,16 @@ class SelectUserTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var usesIconImageView: UIImageView!
     
-    private let selectUesrCollectionView = SelectedUserCollectionView()
-    private let mModel = SelectedUserCollectionVM()
-    
-    required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
+    let selectUesrCollectionView = SelectedUserCollectionView()
+    let mModel = SelectedUserCollectionVM()
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
+        selectUesrCollectionView.dataSource = mModel
+        self.addSubview(selectUesrCollectionView)
+        selectUesrCollectionView.hidden = true
+
         NSNotificationCenter.defaultCenter().addObserver(
             self,
             selector: #selector(SelectUserTableViewCell.setCollectionView),
@@ -26,23 +30,9 @@ class SelectUserTableViewCell: UITableViewCell {
             object: nil
         )
     }
-
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        selectUesrCollectionView.dataSource = mModel
-        
-    }
-    
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
     
     func setCollectionView() {
-        self.addSubview(selectUesrCollectionView)
+        selectUesrCollectionView.hidden = false
     }
     
 }

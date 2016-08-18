@@ -23,9 +23,6 @@ class CreateCalendarView: UIView {
         
         layoutTableView()
         layoutCreateButton()
-        
-        
-
     }
     
     private func layoutTableView() {

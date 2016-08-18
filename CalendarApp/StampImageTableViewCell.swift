@@ -21,18 +21,12 @@ class StampImageTableViewCell: UITableViewCell {
 
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     func tappedStampImage() {
         let notification = NSNotificationCenter.defaultCenter()
         notification.postNotificationName("tappedStampImageNotification", object: nil)
     }
     
-    func fillWith(selectStampImage: UIImage) {
+    func fillWith(selectStampImage: UIImage?) {
         self.stampImageView.image = selectStampImage
     }
     

@@ -32,7 +32,7 @@ class User: NSObject {
     }
     
     // RailsSignUp
-    class func signUpRails(params: [String:AnyObject], callback: () -> Void) {
+    class func signUpRails(params: [String:AnyObject], completion: () -> Void) {
         
         let name = (params["name"] as! String).dataUsingEncoding(NSUTF8StringEncoding)!
         let email = (params["mail"] as! String).dataUsingEncoding(NSUTF8StringEncoding)!
@@ -66,7 +66,7 @@ class User: NSObject {
                     // Add error handling in the future
                     print(encodingError)
                     }
-                    callback()
+                    completion()
             }
         )
     }
@@ -74,7 +74,7 @@ class User: NSObject {
 
     
     //RailsLogin(outh取得済み)
-    class func loginRails(token: String, callback: () -> Void) {
+    class func loginRails(token: String, completion: () -> Void) {
         
         // HTTP通信
         Alamofire.request(
@@ -98,14 +98,11 @@ class User: NSObject {
                 let user = User(jsonWithUser: json)
                 CurrentUser.sharedInstance.user.value = user
                 CurrentUser.sharedInstance.authentication_token.value = token
-                callback()
+                completion()
         }
     }
     
-    class func firstLoginRails(params: [String:AnyObject], callback: () -> Void) {
-        
-
-        
+    class func firstLoginRails(params: [String:AnyObject], completion: () -> Void) {
         // HTTP通信
         
         Alamofire.request(
@@ -128,7 +125,7 @@ class User: NSObject {
                 CurrentUser.sharedInstance.user.value = user
                 CurrentUser.sharedInstance.authentication_token.value = json["access_token"].stringValue
                 self.saveAuthenticationToken()
-                callback()
+                completion()
         }
     }
     
@@ -161,8 +158,6 @@ class User: NSObject {
                 print("Error: \(error)")
                 return
             }
-            
-            print("User: \(result)")
             userInfo = result as! NSDictionary
             
             FBLogin(userInfo, callback: {

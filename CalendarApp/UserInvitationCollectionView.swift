@@ -31,11 +31,7 @@ class UserInvitationCollectionView: UICollectionView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func tappedCollectionViewCell() {
-        
-    }
-    
+
     private func setUpLayout() {
         self.backgroundColor = UIColor.whiteColor()
     }

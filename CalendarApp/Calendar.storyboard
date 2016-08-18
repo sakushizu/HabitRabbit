@@ -187,6 +187,13 @@
                                     <action selector="segmentedControllerValueChanged:" destination="oWd-8A-ZKh" eventType="valueChanged" id="NPs-c5-N1C"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8u-MH-xwC">
+                                <rect key="frame" x="12" y="568" width="32" height="32"/>
+                                <state key="normal" image="Settings-32.png"/>
+                                <connections>
+                                    <action selector="tappedEditCalendarButton:" destination="oWd-8A-ZKh" eventType="touchUpInside" id="5O1-aU-cjV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -211,10 +218,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="RtS-NV-zE7"/>
-                                <exclude reference="Jgt-Fs-2Hj"/>
                                 <exclude reference="9ae-Df-U0b"/>
                                 <exclude reference="IK0-bv-MJ1"/>
+                                <exclude reference="Jgt-Fs-2Hj"/>
+                                <exclude reference="RtS-NV-zE7"/>
                                 <exclude reference="eqL-gd-0wq"/>
                             </mask>
                         </variation>

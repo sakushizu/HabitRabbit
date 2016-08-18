@@ -36,7 +36,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         mView = view as! CreateCalendarView
         mView.tableView.dataSource = mModel
         mView.tableView.delegate = self
-        mView.createButton.addTarget(self, action: #selector(CreateCalendarViewController.clickCreateButton(_:)), forControlEvents: .TouchUpInside)
+        mView.createButton.addTarget(self, action: #selector(CreateCalendarViewController.clickCreateButton), forControlEvents: .TouchUpInside)
         
         setImagePicker()
         setStampNotification()
@@ -88,7 +88,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         imagePickerVC.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func clickCreateButton(sender: UIButton) {
+    func clickCreateButton() {
         
         if mModel.titleText.value! == "" {
             let alert = UIAlertController.alertWith(message: "Title is empty!")
@@ -247,7 +247,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             "user_ids": setUserIdArray()
         ]
         
-        StockCalendars.saveCalendarRails(params, completion: {
+        CalenderManager.sharedInstance.saveCalendarRails(params, completion: {
             calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
         })
         
@@ -255,7 +255,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
     
     private func setUserIdArray() -> String {
         var userIdArray = [String]()
-        for user in selectedUserCollectionVM.invitationUsers {
+        for user in selectedUserCollectionVM.users {
             userIdArray.append(user.id.description)
         }
         let userIds = userIdArray.joinWithSeparator(",")

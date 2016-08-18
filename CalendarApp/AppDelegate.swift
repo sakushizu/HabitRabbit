@@ -29,20 +29,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        
-        CalenderManager.sharedInstance.resetDefaults() //NSUserDefault初期化
+//       CalenderManager.sharedInstance.resetDefaults() //NSUserDefault初期化
 
         let calendarManager = CalenderManager.sharedInstance
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let defaults = NSUserDefaults.standardUserDefaults()
         if let tokenDic = defaults.objectForKey("tokenDic") as? [String:String] where tokenDic["auth"] != "" {
             let token = tokenDic["auth"]
-            User.loginRails(token! , callback: {
-                UserInvitationManager.sharedInstance.fetchInvitationCalendars(completion: { 
-                    
+            User.loginRails(token! , completion: {
+                UserInvitationManager.sharedInstance.fetchInvitationCalendars(completion: {
                 })
                 calendarManager.fetchCalendars(completion: {
-                    
                 })
             })
             let controller = UIStoryboard.viewControllerWith("Calendar", identifier: "CalendarViewController")

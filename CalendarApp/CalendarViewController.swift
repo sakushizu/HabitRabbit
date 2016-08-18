@@ -127,6 +127,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     
+    // MARK - CollectionViewDataSource
+    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 2
     }
@@ -186,6 +188,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         return cell
     }
     
+    // MARK - CollectionView FlowLayout
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         switch(indexPath.section) {
         case 0:
@@ -203,7 +207,9 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
-    //セルがタップされた時に呼ばれるメソッド
+    // MARK - CollectionView Delegate
+
+    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         let params = createCalendarParams(indexPath)
@@ -324,7 +330,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         )
 
         calendarTitle.text = selectedCalender.title
-
+        
         calenderHeaderView.backgroundColor = color
         segmentContol.hidden = false
         segmentContol.tintColor = color
@@ -334,7 +340,11 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         segmentRightLineView.backgroundColor = color
         self.setRecordView()
         self.calenderCollectionView.reloadData()
+    }
+    
+    private func toggleMenu() {
         sideMenu?.toggleMenu()
+
     }
 
     

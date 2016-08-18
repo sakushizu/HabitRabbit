@@ -38,9 +38,8 @@ class UserInvitationTableViewCell: UITableViewCell {
         nameLabel.text = user.name
     }
     
-    func changeCircleImageView(isChecked: Bool) -> UIImageView {
+    func changeCircleImageView(isChecked: Bool) {
         checked.value = isChecked
-        return circleImageView
     }
     
     private func setUpCircleImageView() {
@@ -52,7 +51,4 @@ class UserInvitationTableViewCell: UITableViewCell {
         avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
         avatarImageView.layer.masksToBounds = true
     }
-    
-
-    
 }

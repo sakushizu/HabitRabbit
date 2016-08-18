@@ -11,10 +11,11 @@ import Bond
 
 class UserInvitationViewController: UIViewController, UITableViewDelegate, UICollectionViewDelegate {
     
-    private let mModel = UserInvitaionVM()
+    let mModel = UserInvitaionVM()
     private var mView: UserInvitationView!
     private let userInvitationManager = UserInvitationManager.sharedInstance
-
+    
+    let editUserssVM = EditUsersVM()
 
 
     // MARK - View LifeCycle
@@ -94,12 +95,14 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
     
     func onClickOkButton() {
         
-        
         let setCollctionViewNotification = NSNotification(name: "setCollectionViewNotification", object: nil)
         NSNotificationCenter.defaultCenter().postNotification(setCollctionViewNotification)
         
         let selectUserNotification = NSNotification(name: "selectUserNotification", object: self, userInfo: ["users": mModel.selectedUsers.value])
         NSNotificationCenter.defaultCenter().postNotification(selectUserNotification)
+        
+        let setUsersForUserEditVMNotification = NSNotification(name: "setUsersForUserEditVMNotification", object: self, userInfo: ["users": mModel.selectedUsers.value])
+        NSNotificationCenter.defaultCenter().postNotification(setUsersForUserEditVMNotification)
         
         self.dismissViewControllerAnimated(true, completion: nil)
         

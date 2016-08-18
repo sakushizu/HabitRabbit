@@ -46,16 +46,11 @@ class SelectedUserCollectionView: UICollectionView, UICollectionViewDelegate {
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
-    
-    
-    func reloadDada() {
-        self.reloadDada()
-    }
-    
+   
     private func setNotification() {
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: #selector(SelectedUserCollectionView.reloadData),
+            selector: #selector(self.reloadData),
             name: "reloadDataNotification",
             object: nil
         )

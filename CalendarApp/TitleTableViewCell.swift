@@ -19,11 +19,6 @@ class TitleTableViewCell: UITableViewCell {
         
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-    
     func fillWith(row: Int, titleText: String){
         self.titleTextField.text = titleText
     }
