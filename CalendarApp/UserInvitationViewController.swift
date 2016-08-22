@@ -30,7 +30,7 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
         mView.collectionView.delegate = self
         setBinding()
         
-        setUpNabigationController()
+        setUpNavigationController()
     }
 
     // MARK - Initialize
@@ -111,7 +111,7 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
     
     // MARK - NavigationController
     
-    private func setUpNabigationController() {
+    private func setUpNavigationController() {
         let leftBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: #selector(UserInvitationViewController.onClickCancelButton))
         self.navigationItem.setLeftBarButtonItem(leftBarButton, animated: true)
         self.setRightBarButton()

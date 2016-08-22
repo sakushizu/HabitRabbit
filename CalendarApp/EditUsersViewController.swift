@@ -24,7 +24,7 @@ class EditUsersViewController: UIViewController, UITableViewDelegate {
         mView.tableView.dataSource = mModel
         mView.tableView.delegate = self
         
-        setUpNabigationController()
+        setUpNavigationController()
         
         mView.userInvitationButton.addTarget(self, action: #selector(self.tappedUserInvitationButton), forControlEvents: .TouchUpInside)
         
@@ -142,7 +142,7 @@ class EditUsersViewController: UIViewController, UITableViewDelegate {
     
     // MARK - NavigationController
     
-    private func setUpNabigationController() {
+    private func setUpNavigationController() {
         self.navigationItem.leftBarButtonItem = editButtonItem()
         setRightBarButton()
     }
@@ -159,9 +159,4 @@ class EditUsersViewController: UIViewController, UITableViewDelegate {
         button.titleLabel?.font = UIFont(name:"HelveticaNeue-Regular",size: 14)
         button.titleEdgeInsets = UIEdgeInsetsMake(0, 7, 0, 0)
     }
-    
-    
-    
-
-    
 }

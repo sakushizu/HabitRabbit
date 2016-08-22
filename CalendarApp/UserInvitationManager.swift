@@ -65,7 +65,6 @@ class UserInvitationManager: NSObject {
                     return
                 }
                 
-                
                 let json = JSON(response.result.value!)
                 self.updateUsersFromJson(json)
                 completion()
