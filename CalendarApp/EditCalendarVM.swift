@@ -18,10 +18,6 @@ class EditCalendarVM: NSObject, UITableViewDataSource, UITextFieldDelegate {
     
     var selectedCalendar = Observable<Calendar?>(nil)
     
-    override init() {
-        super.init()
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 4

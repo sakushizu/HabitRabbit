@@ -11,7 +11,7 @@ import Foundation
 import Bond
 import BBBadgeBarButtonItem
 
-class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, SideMenuDelegate, UIBarPositioningDelegate, UINavigationBarDelegate, UITextViewDelegate, MenuTableViewControllerToCalendarControllerDelegate {
+class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, UIBarPositioningDelegate, UINavigationBarDelegate, UITextViewDelegate {
     
     let dateManager = DateManager()
     let daysPerWeek: Int = 7
@@ -22,7 +22,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     var today = NSDate()
     let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     let monthArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    var sideMenu: SideMenu?
     
     @IBOutlet weak var baseView: UIView!
     var recordTableView: RecordTableView!
@@ -61,21 +60,12 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       let menuTableViewController =  MenuTableViewController()
-        menuTableViewController.customeDelegate = self
-        
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CalendarViewController.saveCaendarMemo), name: UIApplicationWillTerminateNotification, object: nil)
         
         segmentContol.hidden = true
         segmentRightLineView.hidden = true
         segmentLeftLineView.hidden = true
-        
-        //tableViewに表示している名前の配列
-        sideMenu = SideMenu(sourceView: self.view)
-        sideMenu!.delegate = self
-        sideMenu?.sideMenuTableViewController.customeDelegate = self
-        
         
         calenderHeaderView.layer.cornerRadius = 2
         calenderHeaderView.clipsToBounds = true
@@ -96,35 +86,17 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         recordTableView.hidden = true
         settingView.hidden = true
         
-        // MARK - ここから編集
-        setNavigationBar()
         
-        UserInvitationManager.sharedInstance.calendars.observe { calendars in
-            if calendars.count >= 0 {
-                self.setNavigationBar()
-            }
-        }
+        // MARK - ここから編集
+
         setNotification()
+        setSelectedCalendarView()
+        setBackBarButtonItem()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK - Container
-    
-    func displayContentController(content: UIViewController){
-        addChildViewController(content)
-        content.view.frame = content.view.bounds
-        self.view.addSubview(content.view)
-        content.didMoveToParentViewController(self)
-    }
-    
-    func hideContentController(content:UIViewController){
-        content.willMoveToParentViewController(self)
-        content.view.removeFromSuperview()
-        content.removeFromParentViewController()
     }
     
     
@@ -178,10 +150,10 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
                     cell.circleView.hidden = true
                 }
             } else {
-                if cell.textLabel.text ==  dateManager.conversionDateFormatFromNSDate(today) {
-                    cell.imageView.hidden = true
-                    cell.circleView.backgroundColor = UIColor(red: 255.0 / 255, green: 163.0 / 255, blue: 164.0 / 255, alpha: 0.5)
-                }
+//                if cell.textLabel.text ==  dateManager.conversionDateFormatFromNSDate(today) {
+//                    cell.imageView.hidden = true
+//                    cell.circleView.backgroundColor = UIColor(red: 255.0 / 255, green: 163.0 / 255, blue: 164.0 / 255, alpha: 0.5)
+//                }
             }
         default:
             cell.imageView.hidden = true
@@ -303,24 +275,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         calendarMonthLabel.text = monthArray[Int(changeHeaderMonth(selectedDate))! - 1]
     }
     
-    ////サイドバーのセルがタップされた時の処理
-    func sideMenuDidSelectItemAtIndex(indexPath: NSIndexPath) {
-        selectedCalender = CalenderManager.sharedInstance.calendarCollection.value[indexPath.row]
-        stampedManager.fetchStampedDates(selectedCalender.id) { 
-            self.setSelectedCalendarView()
-            self.toggleMenu()
-            self.recordTableView.reloadData()
-        }
-    }
-    
-    //サイドバーの表示
-    func toggleSideMenu(sender: AnyObject) {
-        sideMenu?.toggleMenu()
-    }
-    
-
-    
-    
     // MARK: - ビューの装飾
     
     private func setSelectedCalendarView() {
@@ -345,13 +299,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         self.calenderCollectionView.reloadData()
     }
     
-    private func toggleMenu() {
-        sideMenu?.toggleMenu()
-
-    }
-
-    
-    @IBAction func segmentedControllerValueChanged(sender: UISegmentedControl) {
+        @IBAction func segmentedControllerValueChanged(sender: UISegmentedControl) {
         
         for subView in baseView.subviews {
             subView.hidden = true
@@ -430,25 +378,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         self.presentViewController(nextVC, animated: true, completion: nil)
 
     }
-    
-    func tappedAlertButton() {
-        //container
-        
-        if showing {
-            self.hideContentController(self.alertViewController)
-            showing = false
-        } else {
-            self.displayContentController(self.alertViewController)
-            showing = true
-            
-        }
 
-    }
-    
-    func tappedPlusButton() {
-        let createCalenderVC = UIStoryboard.viewControllerWith("CreateCalendar", identifier: "createCalendarView") as! CreateCalendarViewController
-        self.navigationController?.pushViewController(createCalenderVC, animated: true)
-    }
     
     @IBAction func tappedEditCalendarButton(sender: UIButton) {
         let controller = UIStoryboard.viewControllerWith("EditCalendar", identifier: "EditCalendarViewController") as! EditCalendarViewController
@@ -465,33 +395,11 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
-    private func setNavigationBar() {
-        
+    private func setBackBarButtonItem() {
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        let plusBarButton = UIBarButtonItem(image: UIImage(named: "plus"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.tappedPlusButton))
-        let alertBarButton = createAlertBarButton()
-        let rightItems = [plusBarButton, alertBarButton]
-        self.navigationItem.setRightBarButtonItems(rightItems, animated: true)
-        self.alertViewController.AlertIconCentorX = alertBarButton.valueForKey("view")?.center.x
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.toggleSideMenu(_:)))
-        
     }
     
-    private func createAlertBarButton() -> UIBarButtonItem {
-        let alertButton = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-        alertButton.setImage(UIImage(named: "alert"), forState: .Normal)
-        alertButton.addTarget(self, action: #selector(CalendarViewController.tappedAlertButton), forControlEvents: .TouchUpInside)
-        alertButton.adjustsImageWhenHighlighted = false
-        let alertBarButton = BBBadgeBarButtonItem(customUIButton: alertButton)
-        alertBarButton.badgeValue = String(UserInvitationManager.sharedInstance.calendars.value.count)
-        alertBarButton.badgeBGColor = UIColor.mainColor()
-        alertBarButton.badgeTextColor = UIColor.whiteColor()
-        alertBarButton.badgeOriginX = 12
-        alertBarButton.badgePadding = 4
-        alertBarButton.shouldAnimateBadge = true
-        return alertBarButton
-    }
-    
+ 
     private func setNotification() {
         NSNotificationCenter.defaultCenter().addObserver(
             self,

@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calendarManager.fetchCalendars(completion: {
                 })
             })
-            let controller = UIStoryboard.viewControllerWith("Calendar", identifier: "CalendarViewController")
+            let controller = CalendarTopViewController()
             let navigationController = UINavigationController(rootViewController: controller)
             self.window?.rootViewController = navigationController
 
