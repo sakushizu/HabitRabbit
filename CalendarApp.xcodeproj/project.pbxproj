@@ -59,6 +59,7 @@
 		0B27EEAF1D52157600F0F67C /* UserInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27EEA71D52157600F0F67C /* UserInvitationViewController.swift */; };
 		0B27EEB11D5216CF00F0F67C /* cancel_pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B27EEB01D5216CF00F0F67C /* cancel_pink.png */; };
 		0B27EEBA1D5225C400F0F67C /* UINavigationItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27EEB91D5225C400F0F67C /* UINavigationItem+Extension.swift */; };
+		0B2AD9331D6AE5060052AE4D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2AD9321D6AE5060052AE4D /* API.swift */; };
 		0B2B412D1C4A7C2C0031F9C2 /* ちっちさんImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2B412C1C4A7C2C0031F9C2 /* ちっちさんImage.png */; };
 		0B3616641D599CC7006EEA19 /* triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B3616631D599CC7006EEA19 /* triangle.png */; };
 		0B37F81A1C2D156E00D6AE82 /* UserEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F8191C2D156E00D6AE82 /* UserEdit.storyboard */; };
@@ -241,6 +242,7 @@
 		0B27EEA71D52157600F0F67C /* UserInvitationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInvitationViewController.swift; sourceTree = "<group>"; };
 		0B27EEB01D5216CF00F0F67C /* cancel_pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel_pink.png; sourceTree = "<group>"; };
 		0B27EEB91D5225C400F0F67C /* UINavigationItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Extension.swift"; sourceTree = "<group>"; };
+		0B2AD9321D6AE5060052AE4D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		0B2B412C1C4A7C2C0031F9C2 /* ちっちさんImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ちっちさんImage.png"; sourceTree = "<group>"; };
 		0B3616631D599CC7006EEA19 /* triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle.png; sourceTree = "<group>"; };
 		0B37F8191C2D156E00D6AE82 /* UserEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserEdit.storyboard; sourceTree = "<group>"; };
@@ -660,6 +662,7 @@
 				0B0057301D221AB3000A8472 /* Settings.swift */,
 				0B0057341D24E4E1000A8472 /* StampedDateManager.swift */,
 				0B0057371D256390000A8472 /* StampedDate.swift */,
+				0B2AD9321D6AE5060052AE4D /* API.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1120,6 +1123,7 @@
 				0BE80B411C01CB5400655517 /* UIColor+Extension.swift in Sources */,
 				0B0DD70E1C05805800BF9E7F /* Calendar.swift in Sources */,
 				0B23C06B1D63648C005C4391 /* SweetAlert.swift in Sources */,
+				0B2AD9331D6AE5060052AE4D /* API.swift in Sources */,
 				0B23F04E1D2FE81000BAA63E /* CreateCalendarVM.swift in Sources */,
 				0B27EEAF1D52157600F0F67C /* UserInvitationViewController.swift in Sources */,
 				0B23C06D1D65A404005C4391 /* NSString+Extension.swift in Sources */,

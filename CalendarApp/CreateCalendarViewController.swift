@@ -71,20 +71,15 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             
         } else if rowType == .UserCell {
     
-            userInvitationManager.fetchUsers(completion: {
+            userInvitationManager.fetchUsers(
+                completion: {
                 let controller = UIStoryboard.viewControllerWith("CreateCalendar", identifier: "UserInvitationViewController") as! UserInvitationViewController
                 let navigationController = UINavigationController(rootViewController: controller)
                 self.presentViewController(navigationController, animated: true, completion: nil)
-            },
-            fail: {
-                let loginViewController = LoginViewController()
-                let alert = UIAlertController(title: "loginし直してください", message: "OK/Cancel?", preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
-                    self.presentViewController(loginViewController, animated: true, completion: nil)
-                }))
-                self.presentViewController(alert, animated: true, completion: nil)
-            })
-            
+                }, fail: {
+                    API.fail(self)
+                }
+            )
         }
     }
     

@@ -91,15 +91,8 @@ class EditUsersViewController: UIViewController, UITableViewDelegate {
                 let navigationController = UINavigationController(rootViewController: controller)
                 controller.mModel.selectedUsers.value = self.mModel.selectedCalendar.value!.invitingUsers
                 self.presentViewController(navigationController, animated: true, completion: nil)
-            },
-            fail: {
-                let loginViewController = UIStoryboard.viewControllerWith("UserSession", identifier: "LoginViewController") as! LoginViewController
-                let alert = UIAlertController(title: "loginし直してください", message: "OK", preferredStyle: .Alert)
-                let navigationContoeroller = UINavigationController(rootViewController: loginViewController)
-                alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
-                    self.presentViewController(navigationContoeroller, animated: true, completion: nil)
-                }))
-                self.presentViewController(alert, animated: true, completion: nil)
+            }, fail: {
+                API.fail(self)
             }
         )
     }
