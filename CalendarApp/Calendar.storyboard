@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -60,7 +62,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fY6-9h-IPu">
-                                <rect key="frame" x="0.0" y="617" width="1" height="50"/>
+                                <rect key="frame" x="0.0" y="573" width="1" height="50"/>
                                 <color key="backgroundColor" red="0.90980392160000001" green="0.5568627451" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="bH8-80-5hM"/>
@@ -68,7 +70,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NRV-hc-h8w">
-                                <rect key="frame" x="374" y="617" width="1" height="50"/>
+                                <rect key="frame" x="374" y="573" width="1" height="50"/>
                                 <color key="backgroundColor" red="0.90980392160000001" green="0.5568627451" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="BB5-UA-tad"/>
@@ -126,12 +128,6 @@
                                             <action selector="tappedheaderLeftBtn:" destination="oWd-8A-ZKh" eventType="touchUpInside" id="Knq-XH-XBQ"/>
                                         </connections>
                                     </button>
-                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjY-Rj-Y8O">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="HC7-M7-xeE"/>
-                                        </constraints>
-                                    </navigationBar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEl-a8-DQh">
                                         <rect key="frame" x="41" y="120" width="293" height="38"/>
                                         <constraints>
@@ -146,18 +142,15 @@
                                 <color key="backgroundColor" red="1" green="0.64106440539999998" blue="0.64397006499999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="X3M-Ur-bWJ" firstAttribute="centerX" secondItem="eYq-Ho-OVM" secondAttribute="centerX" id="2vV-3p-brH"/>
+                                    <constraint firstItem="vZt-88-vg1" firstAttribute="baseline" secondItem="X3M-Ur-bWJ" secondAttribute="firstBaseline" id="4Sx-h0-VvL"/>
                                     <constraint firstItem="Tox-Dd-6Wj" firstAttribute="leading" secondItem="eYq-Ho-OVM" secondAttribute="leading" constant="5" id="6lO-dM-922"/>
-                                    <constraint firstItem="vZt-88-vg1" firstAttribute="top" secondItem="tjY-Rj-Y8O" secondAttribute="bottom" constant="25" id="8ii-wB-D4L"/>
-                                    <constraint firstItem="X3M-Ur-bWJ" firstAttribute="top" secondItem="tjY-Rj-Y8O" secondAttribute="bottom" constant="15" id="BED-qd-thb"/>
-                                    <constraint firstItem="Tox-Dd-6Wj" firstAttribute="top" secondItem="tjY-Rj-Y8O" secondAttribute="bottom" constant="25" id="CAb-fQ-i7q"/>
-                                    <constraint firstItem="tjY-Rj-Y8O" firstAttribute="top" secondItem="eYq-Ho-OVM" secondAttribute="top" constant="20" id="He3-aZ-xOU"/>
+                                    <constraint firstItem="zAi-dk-VaK" firstAttribute="top" secondItem="eYq-Ho-OVM" secondAttribute="top" constant="74" id="GbK-LX-4Ly"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="HmL-3V-Sr6"/>
-                                    <constraint firstAttribute="trailing" secondItem="tjY-Rj-Y8O" secondAttribute="trailing" id="UgW-rX-Nk3"/>
+                                    <constraint firstItem="vZt-88-vg1" firstAttribute="top" secondItem="eYq-Ho-OVM" secondAttribute="top" constant="89" id="Jhi-O9-hyT"/>
                                     <constraint firstItem="XEl-a8-DQh" firstAttribute="centerX" secondItem="eYq-Ho-OVM" secondAttribute="centerX" id="aBn-od-35X"/>
                                     <constraint firstAttribute="height" constant="190" id="l0D-IA-sGg"/>
                                     <constraint firstAttribute="height" constant="150" id="lw6-OB-e0c"/>
-                                    <constraint firstItem="tjY-Rj-Y8O" firstAttribute="leading" secondItem="eYq-Ho-OVM" secondAttribute="leading" id="pkY-iz-ZMU"/>
-                                    <constraint firstItem="zAi-dk-VaK" firstAttribute="top" secondItem="tjY-Rj-Y8O" secondAttribute="bottom" constant="10" id="tLf-dA-ByF"/>
+                                    <constraint firstItem="vZt-88-vg1" firstAttribute="baseline" secondItem="Tox-Dd-6Wj" secondAttribute="baseline" id="uSt-Fh-ZIb"/>
                                     <constraint firstItem="XEl-a8-DQh" firstAttribute="top" secondItem="zAi-dk-VaK" secondAttribute="bottom" constant="26" id="yOc-8p-Q4k"/>
                                     <constraint firstAttribute="trailing" secondItem="vZt-88-vg1" secondAttribute="trailing" constant="5" id="zKn-8F-fcE"/>
                                     <constraint firstItem="zAi-dk-VaK" firstAttribute="centerX" secondItem="eYq-Ho-OVM" secondAttribute="centerX" id="zW7-gg-Nku"/>
@@ -170,7 +163,7 @@
                                 </variation>
                             </view>
                             <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kCh-ly-A9S">
-                                <rect key="frame" x="-4" y="616" width="383" height="51"/>
+                                <rect key="frame" x="-4" y="572" width="383" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="nHh-SX-PU1"/>
                                 </constraints>
@@ -187,9 +180,13 @@
                                     <action selector="segmentedControllerValueChanged:" destination="oWd-8A-ZKh" eventType="valueChanged" id="NPs-c5-N1C"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8u-MH-xwC">
-                                <rect key="frame" x="12" y="568" width="32" height="32"/>
-                                <state key="normal" image="Settings-32.png"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8u-MH-xwC">
+                                <rect key="frame" x="12" y="568" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="CaQ-tR-Aq9"/>
+                                    <constraint firstAttribute="width" constant="25" id="noC-ZN-c1W"/>
+                                </constraints>
+                                <state key="normal" image="settings.png"/>
                                 <connections>
                                     <action selector="tappedEditCalendarButton:" destination="oWd-8A-ZKh" eventType="touchUpInside" id="5O1-aU-cjV"/>
                                 </connections>
@@ -198,6 +195,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kCh-ly-A9S" firstAttribute="leading" secondItem="q4K-Jt-HV7" secondAttribute="leading" constant="-4" id="1WR-HB-t2d"/>
+                            <constraint firstItem="k8u-MH-xwC" firstAttribute="leading" secondItem="fY6-9h-IPu" secondAttribute="trailing" constant="11" id="2FG-Is-7UC"/>
                             <constraint firstItem="eYq-Ho-OVM" firstAttribute="leading" secondItem="q4K-Jt-HV7" secondAttribute="leading" id="2fi-gk-E89"/>
                             <constraint firstAttribute="trailing" secondItem="eYq-Ho-OVM" secondAttribute="trailing" id="9ae-Df-U0b"/>
                             <constraint firstAttribute="trailing" secondItem="NRV-hc-h8w" secondAttribute="trailing" id="AgQ-gm-2RQ"/>
@@ -212,6 +210,7 @@
                             <constraint firstItem="Yxd-4c-Kax" firstAttribute="top" secondItem="fY6-9h-IPu" secondAttribute="bottom" id="ZY0-ab-DaD"/>
                             <constraint firstItem="FAe-EA-gSC" firstAttribute="leading" secondItem="q4K-Jt-HV7" secondAttribute="leading" id="c8t-1t-P8N"/>
                             <constraint firstItem="eYq-Ho-OVM" firstAttribute="leading" secondItem="q4K-Jt-HV7" secondAttribute="leading" id="eqL-gd-0wq"/>
+                            <constraint firstItem="Yxd-4c-Kax" firstAttribute="top" secondItem="k8u-MH-xwC" secondAttribute="bottom" constant="30" id="mmX-C5-kZO"/>
                             <constraint firstItem="fY6-9h-IPu" firstAttribute="leading" secondItem="q4K-Jt-HV7" secondAttribute="leading" id="mrY-EB-UFy"/>
                             <constraint firstItem="eYq-Ho-OVM" firstAttribute="top" secondItem="q4K-Jt-HV7" secondAttribute="top" id="qCV-SW-zKs"/>
                             <constraint firstAttribute="trailing" secondItem="eYq-Ho-OVM" secondAttribute="trailing" id="sND-lY-ADM"/>
@@ -226,19 +225,12 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="tbL-Ay-1Z0">
-                        <barButtonItem key="leftBarButtonItem" image="Menu Filled-25.png" id="fxE-fb-RHE">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="toggleSideMenu:" destination="oWd-8A-ZKh" id="sGQ-dT-Xfm"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="baseView" destination="FAe-EA-gSC" id="Y9V-ch-kme"/>
                         <outlet property="calendarMonthLabel" destination="X3M-Ur-bWJ" id="OlI-BE-N1S"/>
-                        <outlet property="calendarNavBar" destination="tjY-Rj-Y8O" id="4qf-H8-CpA"/>
                         <outlet property="calendarTitle" destination="XEl-a8-DQh" id="xLx-G7-wFo"/>
                         <outlet property="calendarYearLabel" destination="zAi-dk-VaK" id="pSj-E5-lch"/>
                         <outlet property="calenderCollectionView" destination="Nph-df-kxF" id="Iq2-FC-9xQ"/>
@@ -259,7 +251,7 @@
         <image name="Audio Wave 2-32.png" width="32" height="32"/>
         <image name="Calendar-32.png" width="32" height="32"/>
         <image name="Document-32.png" width="32" height="32"/>
-        <image name="Menu Filled-25.png" width="32" height="32"/>
         <image name="Settings-32.png" width="32" height="32"/>
+        <image name="settings.png" width="32" height="32"/>
     </resources>
 </document>

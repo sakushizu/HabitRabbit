@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarTableViewCell" id="KGk-i7-Jjw" customClass="CalendarTableViewCell" customModule="CalendarApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pT-DA-UUT">
+                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Panda Filled-32.png" translatesAutoresizingMaskIntoConstraints="NO" id="kxb-l9-Fs5">
+                                <rect key="frame" x="18" y="18" width="34" height="34"/>
+                                <color key="tintColor" red="1" green="0.080825293620000002" blue="0.38561765939999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="34" id="pqS-bh-gqm"/>
+                                    <constraint firstAttribute="height" constant="34" id="wO7-CH-jL9"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20846189396994427" green="0.22334528750633123" blue="0.24240358549898999" alpha="0.20375844594594594" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="827-gR-dUj"/>
+                            <constraint firstAttribute="width" constant="70" id="HON-XB-b5j"/>
+                            <constraint firstItem="kxb-l9-Fs5" firstAttribute="top" secondItem="4pT-DA-UUT" secondAttribute="top" constant="18" id="UYg-qc-8EP"/>
+                            <constraint firstItem="kxb-l9-Fs5" firstAttribute="leading" secondItem="4pT-DA-UUT" secondAttribute="leading" constant="18" id="ddd-bS-cN5"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkO-fT-LP5">
+                        <rect key="frame" x="90" y="24" width="210" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.10196078431372549" green="0.73725490196078436" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="gkO-fT-LP5" firstAttribute="leading" secondItem="4pT-DA-UUT" secondAttribute="trailing" constant="20" id="DA1-r4-T9Q"/>
+                    <constraint firstItem="4pT-DA-UUT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Fe6-Mi-pLl"/>
+                    <constraint firstItem="4pT-DA-UUT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="cmS-S3-fjm"/>
+                    <constraint firstItem="gkO-fT-LP5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="dSk-Ng-b7F"/>
+                    <constraint firstAttribute="bottom" secondItem="gkO-fT-LP5" secondAttribute="bottom" constant="24" id="nmu-Me-B8Q"/>
+                    <constraint firstAttribute="trailing" secondItem="gkO-fT-LP5" secondAttribute="trailing" constant="20" id="pDS-45-id4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="calendarTitleLabel" destination="gkO-fT-LP5" id="lDa-uA-wA9"/>
+                <outlet property="stampImageView" destination="kxb-l9-Fs5" id="cbF-NW-O5J"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Panda Filled-32.png" width="32" height="32"/>
+    </resources>
+</document>

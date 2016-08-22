@@ -102,7 +102,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             navigationVC.popViewControllerAnimated(false)
             let calendarVC = navigationVC.viewControllers.last as! CalendarViewController
             self.save(calendarVC)
-            calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+//            calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
         }
     }
 
@@ -252,7 +252,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         ]
         
         CalenderManager.sharedInstance.saveCalendarRails(params, completion: {
-            calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+//            calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
         })
         
     }

@@ -119,6 +119,17 @@ extension UIColor {
             return nil
         }
     }
+    
+    //RGBからUIColorの生成
+    class func setUIColor(red: Int, green: Int, blue: Int) -> UIColor {
+        let color = UIColor(
+            red:  (CGFloat(red)) / 255,
+            green: (CGFloat(green)) / 255,
+            blue: (CGFloat(blue)) / 255,
+            alpha: 1
+        )
+        return color
+    }
 
     
 }
