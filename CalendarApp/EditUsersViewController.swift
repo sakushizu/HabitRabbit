@@ -85,7 +85,7 @@ class EditUsersViewController: UIViewController, UITableViewDelegate {
     
     func tappedUserInvitationButton() {
         let params = ["calendar_id": mModel.selectedCalendar.value!.id]
-        UserInvitationManager.sharedInstance.notJoinAndInvatedUsers(params,
+        UserInvitationManager.sharedInstance.notJoinUsers(params,
             completion: {
                 let controller = UIStoryboard.viewControllerWith("CreateCalendar", identifier: "UserInvitationViewController") as! UserInvitationViewController
                 let navigationController = UINavigationController(rootViewController: controller)

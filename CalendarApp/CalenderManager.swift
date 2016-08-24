@@ -141,7 +141,7 @@ class CalenderManager: NSObject {
         // HTTP通信
         Alamofire.request(
             .POST,
-            "\(Settings.ApiRootPath)/api/calendar_users",
+            "\(Settings.ApiRootPath)/api/users/\(CurrentUser.sharedInstance.user.value!.id)/calendar_users",
             parameters: params,
             headers: nil,
             encoding: .URL
@@ -166,8 +166,8 @@ class CalenderManager: NSObject {
     
     func rejectInvitation(params: [String: Int], completion: () -> Void) {
         Alamofire.request(
-            .POST,
-            "\(Settings.ApiRootPath)/api/users/\(params["user_id"]!)/invitation_users/reject",
+            .PATCH,
+            "\(Settings.ApiRootPath)/api/users/\(CurrentUser.sharedInstance.user.value!.id)/calendar_users/reject",
             parameters: params,
             headers: nil,
             encoding: .URL

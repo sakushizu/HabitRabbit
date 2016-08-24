@@ -45,7 +45,7 @@ class UserInvitationManager: NSObject {
         }
     }
     
-    func notJoinAndInvatedUsers(params: [String:Int], completion: () -> Void, fail: (() -> Void)?) {
+    func notJoinUsers(params: [String:Int], completion: () -> Void, fail: (() -> Void)?) {
         Alamofire.request(
             .GET,
             "\(Settings.ApiRootPath)/api/users/not_joined_users",
@@ -74,7 +74,7 @@ class UserInvitationManager: NSObject {
     func fetchInvitationCalendars(completion completion: () -> Void) {
         Alamofire.request(
             .GET,
-            "\(Settings.ApiRootPath)/api/users/\(CurrentUser.sharedInstance.user.value!.id)/invitation_users",
+            "\(Settings.ApiRootPath)/api/users/\(CurrentUser.sharedInstance.user.value!.id)/calendar_users/inviting_calendar",
             parameters: nil,
             headers: nil
             ).responseJSON { response in
