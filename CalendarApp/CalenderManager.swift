@@ -35,11 +35,113 @@ class CalenderManager: NSObject {
         }
     }
     
+    //新規カレンダー保存
+    func saveCalendarRails(params: [String:AnyObject], completion: () -> Void) {
+        
+        let title = (params["title"]! as! String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let color_r = (String(params["color_r"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
+        let color_g = (String(params["color_g"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
+        let color_b = (String(params["color_b"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
+        let user_ids = (params["user_ids"] as! String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let stampImage = UIImagePNGRepresentation(params["stamp"] as! UIImage)
+        // HTTP通信
+        Alamofire.upload(
+            .POST,
+            "\(Settings.ApiRootPath)/api/calendars.json?",
+            headers: ["access_token": CurrentUser.sharedInstance.authentication_token.value],
+            multipartFormData: { multipartFormData in
+                multipartFormData.appendBodyPart(data: title, name: "title")
+                multipartFormData.appendBodyPart(data: color_r, name: "color_R")
+                multipartFormData.appendBodyPart(data: color_g, name: "color_G")
+                multipartFormData.appendBodyPart(data: color_b, name: "color_B")
+                multipartFormData.appendBodyPart(data: user_ids, name: "user_ids")
+                
+                if let unwrappedStampImage = stampImage {
+                    multipartFormData.appendBodyPart(data: unwrappedStampImage, name: "stamp_image", fileName: "image.png", mimeType: "image/png")
+                }
+            }, encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON { response in
+                        guard response.result.error == nil else {
+                            print(response.result.error)
+                            return
+                        }
+                        let json = JSON(response.result.value!)
+                        let calendar = Calendar(json: json["calendar"])
+                        let calendarManager = CalenderManager.sharedInstance
+                        calendarManager.calendarCollection.value.append(calendar)
+                        
+                    }
+                case .Failure(let encodingError):
+                    // Add error handling in the future
+                    print(encodingError)
+                }
+                completion()
+            }
+        )
+    }
+    
+    func upDateCalendar(params: [String:AnyObject], completion: () -> Void) {
+        
+        let title = (params["title"]! as! String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let color_r = (String(params["color_r"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
+        let color_g = (String(params["color_g"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
+        let color_b = (String(params["color_b"]!)).dataUsingEncoding(NSUTF8StringEncoding)!
+        let invitationUser_ids = (params["invitationUser_ids"] as! String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let joined_ids = (params["joined_ids"] as! String).dataUsingEncoding(NSUTF8StringEncoding)!
+        let stampImage = UIImagePNGRepresentation(params["stamp"] as! UIImage)
+        let calendar_id = params["calendar_id"] as! Int
+        // HTTP通信
+        Alamofire.upload(
+            .PATCH,
+            "\(Settings.ApiRootPath)/api/calendars/\(calendar_id)",
+            headers: ["access_token": CurrentUser.sharedInstance.authentication_token.value],
+            multipartFormData: { multipartFormData in
+                multipartFormData.appendBodyPart(data: title, name: "title")
+                multipartFormData.appendBodyPart(data: color_r, name: "color_R")
+                multipartFormData.appendBodyPart(data: color_g, name: "color_G")
+                multipartFormData.appendBodyPart(data: color_b, name: "color_B")
+                multipartFormData.appendBodyPart(data: invitationUser_ids, name: "invitationUser_ids")
+                multipartFormData.appendBodyPart(data: joined_ids, name: "joined_ids")
+
+                if let unwrappedStampImage = stampImage {
+                    multipartFormData.appendBodyPart(data: unwrappedStampImage, name: "stamp_image", fileName: "image.png", mimeType: "image/png")
+                }
+            }, encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON { response in
+                        guard response.result.error == nil else {
+                            print(response.result.error)
+                            return
+                        }
+                        let json = JSON(response.result.value!)
+                        let calendar = Calendar(json: json["calendar"])
+                        let calendarManager = CalenderManager.sharedInstance
+                        let index = calendarManager.calendarCollection.value.map({ $0.id }).indexOf(calendar.id)
+                        calendarManager.calendarCollection.value[index!] = calendar
+                        
+                        let notification = NSNotification(name: "updateCalendarNotification", object: self, userInfo: ["calendar": calendar])
+                        NSNotificationCenter.defaultCenter().postNotification(notification)
+                        completion()
+                }
+                case .Failure(let encodingError):
+                    // Add error handling in the future
+                    print(encodingError)
+                }
+    
+            }
+            
+        )
+
+    }
+    
     func joinCalendar(params: [String: Int], completion: () -> Void) {
         // HTTP通信
         Alamofire.request(
             .POST,
-            "\(Settings.ApiRootPath)/api/calendar_users",
+            "\(Settings.ApiRootPath)/api/users/\(CurrentUser.sharedInstance.user.value!.id)/calendar_users",
             parameters: params,
             headers: nil,
             encoding: .URL
@@ -64,8 +166,8 @@ class CalenderManager: NSObject {
     
     func rejectInvitation(params: [String: Int], completion: () -> Void) {
         Alamofire.request(
-            .POST,
-            "\(Settings.ApiRootPath)/api/users/\(params["user_id"]!)/invitation_users/reject",
+            .PATCH,
+            "\(Settings.ApiRootPath)/api/users/\(CurrentUser.sharedInstance.user.value!.id)/calendar_users/reject",
             parameters: params,
             headers: nil,
             encoding: .URL
@@ -91,10 +193,16 @@ class CalenderManager: NSObject {
             let calendar = Calendar(json: calendarJson)
             let user = User(jsonWithUser: calendarJson["user"])
             calendar.orner = user
-            for (_, userJson) in calendarJson["users"]  {
+            
+            for (_, userJson) in calendarJson["joined_users"]  {
                 let user = User(jsonWithUser: userJson)
                 calendar.joinedUsers.append(user)
             }
+            for (_, userJson) in calendarJson["inviting_users"]  {
+                let user = User(jsonWithUser: userJson)
+                calendar.invitingUsers.append(user)
+            }
+            
             calendars.append(calendar)
         }
         

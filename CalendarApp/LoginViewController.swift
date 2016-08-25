@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+import FBSDKCoreKit
+import FBSDKLoginKit
+import FBSDKShareKit
 
 class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -18,6 +20,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let placeholderTexts = ["Email", "Password"]
     
     var overMinPasswordTextCount = false
+    private var isLogin = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,12 +104,19 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         "password": passwordCell.textField.text!
                     ]
                 ]
-                User.firstLoginRails(params){ () -> Void in
-                    self.performSegueWithIdentifier("calendar", sender: nil)
-                }
+                User.firstLoginRails(params, completion: {
+                    UserInvitationManager.sharedInstance.fetchInvitationCalendars(completion: {
+                    })
+                    CalenderManager.sharedInstance.fetchCalendars(completion: {
+                    })
+                    let controller = UIStoryboard.viewControllerWith("Calendar", identifier: "CalendarViewController")
+                    let navigationController = UINavigationController(rootViewController: controller)
+                    self.presentViewController(navigationController, animated: true, completion: nil)
+                })
             }
-        } else if indexPath.section == 3 {
+        } else if indexPath.section == 1 {
             //facebookログイン
+            tappedLoginButton()
         }
     }
     
@@ -132,5 +142,33 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         textField.resignFirstResponder()
         return true
     }
+    
+    private func tappedLoginButton() {
+        let loginManager = FBSDKLoginManager()
+        if !isLogin {
+            loginManager.logInWithReadPermissions(["public_profile", "email"], fromViewController: self) { (result, error) in
+                guard error == nil else {
+                    return
+                }
+                if result.isCancelled {
+                } else {
+                    User.getUserData({
+                        let controller = UIStoryboard.viewControllerWith("Calendar", identifier: "CalendarViewController")
+                        let navigationController = UINavigationController(rootViewController: controller)
+                        self.presentViewController(navigationController, animated: true, completion: nil)
+                        CalenderManager.sharedInstance.fetchCalendars(completion: {
+                            
+                        })
+                    })
+                }
+            }
+        } else {
+//            loginManager.logOut()
+//            customButton.setTitle("My Login Button", forState: .Normal)
+        }
+        self.isLogin = !self.isLogin
+    }
+    
+    
 
 }

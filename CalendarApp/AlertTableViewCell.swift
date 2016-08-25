@@ -14,9 +14,7 @@ class AlertTableViewCell: UITableViewCell {
     @IBOutlet weak var alertTextLabel: UILabel!
 
     override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
+        super.awakeFromNib()        
         setUpAvatarImageView()
     }
     

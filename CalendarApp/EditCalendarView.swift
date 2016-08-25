@@ -1,28 +1,26 @@
 //
-//  CreateCalendarView.swift
+//  EditCalendarView.swift
 //  CalendarApp
 //
-//  Created by 櫻本静香 on 2016/07/08.
+//  Created by 櫻本静香 on 2016/08/10.
 //  Copyright © 2016年 Sakuramoto Shizuka. All rights reserved.
 //
 
 import UIKit
 
-class CreateCalendarView: UIView {
+class EditCalendarView: UIView {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var createButton: UIButton!
-    
+    @IBOutlet weak var updateButton: UIButton!
     
     override func awakeFromNib() {
         tableView.registerNib(UINib(nibName: "TitleTableViewCell", bundle: nil), forCellReuseIdentifier: "TitleTableViewCell")
         tableView.registerNib(UINib(nibName: "ColorTableViewCell", bundle: nil), forCellReuseIdentifier: "ColorTableViewCell")
         tableView.registerNib(UINib(nibName: "StampImageTableViewCell", bundle: nil), forCellReuseIdentifier: "StampImageTableViewCell")
         tableView.registerNib(UINib(nibName: "SelectUserTableViewCell", bundle: nil), forCellReuseIdentifier: "SelectUserTableViewCell")
-
         
         layoutTableView()
-        layoutCreateButton()
+        layoutUpdateButton()
     }
     
     private func layoutTableView() {
@@ -31,8 +29,8 @@ class CreateCalendarView: UIView {
         tableView.scrollEnabled = false
     }
     
-    private func layoutCreateButton() {
-        createButton.layer.cornerRadius = 5
+    private func layoutUpdateButton() {
+        updateButton.layer.cornerRadius = 5
     }
 
 }

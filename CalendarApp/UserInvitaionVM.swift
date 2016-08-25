@@ -25,8 +25,13 @@ class UserInvitaionVM: NSObject, UITableViewDataSource, UICollectionViewDataSour
         let cell = tableView.dequeueReusableCellWithIdentifier("UserInvitationTableViewCell", forIndexPath: indexPath) as! UserInvitationTableViewCell
         cell.fillWith(user)
         
-        let isChecked = selectedUsers.value.contains(user)
-        cell.changeCircleImageView(isChecked)
+        if selectedUsers.value.map({ $0.id }).contains(user.id) {
+            let isChecked = true
+            cell.changeCircleImageView(isChecked)
+        } else {
+            let isChecked = false
+            cell.changeCircleImageView(isChecked)
+        }
         
         return cell
     }
@@ -50,7 +55,7 @@ class UserInvitaionVM: NSObject, UITableViewDataSource, UICollectionViewDataSour
     }
     
     func conformUser(user: User) {
-        if let index = self.selectedUsers.value.indexOf(user) {
+        if let index = self.selectedUsers.value.map({ $0.id }).indexOf(user.id) {
             self.selectedUsers.value.removeAtIndex(index)
         } else {
             self.selectedUsers.value.append(user)

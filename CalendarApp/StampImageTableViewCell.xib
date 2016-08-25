@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="height" constant="50" id="d2f-nw-YaS"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DFA4A5AA-4B45-43A0-9E05-C1162963AE89" translatesAutoresizingMaskIntoConstraints="NO" id="bmK-0Z-BI5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2BA28585-3E4D-46B6-8B9B-3E12ACDE025B" translatesAutoresizingMaskIntoConstraints="NO" id="bmK-0Z-BI5">
                                 <rect key="frame" x="48" y="52" width="20" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="utT-cq-sog"/>
@@ -66,8 +66,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Approval.png" width="48" height="48"/>
-        <image name="DFA4A5AA-4B45-43A0-9E05-C1162963AE89" width="18" height="15">
+        <image name="2BA28585-3E4D-46B6-8B9B-3E12ACDE025B" width="18" height="15">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -94,7 +93,7 @@ RkZSZXByZXNlbnRhdGlvboAGgAdPERFGTU0AKgAABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAMAAAAEAAAE7gEDAAMAAAABAAEAAAEGAAMAAAABAAIAAAERAAQAAAABAAAACAESAAMAAAABAAEAAAEV
 AAMAAAABAAQAAAEWAAMAAAABAA8AAAEXAAQAAAABAAAEOAEcAAMAAAABAAEAAAFSAAMAAAABAAIAAAFT
 AAMAAAAEAAAE9odzAAcAAAxIAAAE/gAAAAAACAAIAAgACAABAAEAAQABAAAMSExpbm8CEAAAbW50clJH
-QiBYWVogB84AAgAJAAYAMQAAYWNzcE1TRlQAAAAASUVDIHNSR0IAAAAAAAAAAAAAAAEAAPbWAAEAAAAA
+QiBYWVogB84AAgAJAAYAMQAAYWNzcE1TRlQAAAAASUVDIHNSR0IAAAAAAAAAAAAAAAAAAPbWAAEAAAAA
 0y1IUCAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARY3BydAAA
 AVAAAAAzZGVzYwAAAYQAAABsd3RwdAAAAfAAAAAUYmtwdAAAAgQAAAAUclhZWgAAAhgAAAAUZ1hZWgAA
 AiwAAAAUYlhZWgAAAkAAAAAUZG1uZAAAAlQAAABwZG1kZAAAAsQAAACIdnVlZAAAA0wAAACGdmlldwAA
@@ -155,5 +154,6 @@ axJ6En4ShRKNEpoSnxKhEqMSqBKwErMSuBLAEsMS1RLYEt0AAAAAAAACAQAAAAAAAAA+AAAAAAAAAAAA
 AAAAAAAS3w
 </mutableData>
         </image>
+        <image name="Approval.png" width="48" height="48"/>
     </resources>
 </document>

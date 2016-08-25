@@ -1,54 +1,53 @@
 //
-//  CreateCalendarViewController.swift
+//  EditCalendarViewController.swift
 //  CalendarApp
 //
-//  Created by 櫻本静香 on 2016/07/08.
+//  Created by 櫻本静香 on 2016/08/10.
 //  Copyright © 2016年 Sakuramoto Shizuka. All rights reserved.
 //
 
 import UIKit
 
-enum RowType: Int {
-    case TitleCell = 0
-    case StampCell = 1
-    case ColorCell = 2
-    case UserCell = 3
-}
 
-enum StampViewType: Int {
-    case Down = 0
-    case Up = 1
-}
+class EditCalendarViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
-    private let mModel = CreateCalendarVM()
-    private var mView: CreateCalendarView!
+    var mModel = EditCalendarVM()
+    private var mView: EditCalendarView!
     private var imagePickerVC: UIImagePickerController!
     private var stampCollectionView = StampCollectionView()
     private var selectedUserCollectionVM = SelectedUserCollectionVM()
     private var stampViewCount = StampViewType.Down
     private let userInvitationManager = UserInvitationManager.sharedInstance
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        mView = view as! CreateCalendarView
+        
+        mView = view as! EditCalendarView
         mView.tableView.dataSource = mModel
+
         mView.tableView.delegate = self
-        mView.createButton.addTarget(self, action: #selector(CreateCalendarViewController.clickCreateButton), forControlEvents: .TouchUpInside)
+        mView.updateButton.addTarget(self, action: #selector(EditCalendarViewController.clickUpdateButton(_:)), forControlEvents: .TouchUpInside)
         
         setImagePicker()
-        setStampNotification()
+        setNotification()
         mView.addSubview(stampCollectionView)
+
+        setNabiBarItem()
+        
+        mModel.selectStampImage.observe { image in
+            self.mView.tableView.reloadData()
+        }
+        
+        mModel.selectedCalendar.observe { calendar in
+            self.mView.tableView.reloadData()
+        }
+        
+        mModel.setUpCalendar()
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-    }
     
+        
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let rowType = RowType(rawValue: indexPath.row)!
         
@@ -70,42 +69,37 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             self.navigationController?.pushViewController(colorTableVC, animated: true)
             
         } else if rowType == .UserCell {
-    
-            userInvitationManager.fetchUsers(
-                completion: {
-                let controller = UIStoryboard.viewControllerWith("CreateCalendar", identifier: "UserInvitationViewController") as! UserInvitationViewController
-                let navigationController = UINavigationController(rootViewController: controller)
-                self.presentViewController(navigationController, animated: true, completion: nil)
-                }, fail: {
-                    API.fail(self)
-                }
-            )
+            
+            let controller = EditUsersViewController()
+            controller.mModel.selectedCalendar = self.mModel.selectedCalendar
+            let navigationController = UINavigationController(rootViewController: controller)
+            self.presentViewController(navigationController, animated: true, completion: nil)
+            
         }
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerEditedImage] as! UIImage? {
-            mModel.selectStampImage = pickedImage
+            mModel.selectStampImage.value = pickedImage
             mView.tableView.reloadData()
         }
         
         imagePickerVC.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func clickCreateButton() {
+    func clickUpdateButton(sender: UIButton) {
+        
+        //カレンダー更新
         
         if mModel.titleText.value! == "" {
             let alert = UIAlertController.alertWith(message: "Title is empty!")
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
-            let navigationVC = self.navigationController!
-            navigationVC.popViewControllerAnimated(false)
-            let calendarVC = navigationVC.viewControllers.last as! CalendarViewController
-            self.save(calendarVC)
-            calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+            let controller = UIStoryboard.viewControllerWith("Calendar", identifier: "CalendarViewController") as! CalendarViewController
+            self.save(controller)
         }
     }
-
+    
     //MARK: -> notification
     
     func stampImageNotification(notification: NSNotification) {
@@ -118,7 +112,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
     func selectStampNotification(notification: NSNotification) {
         let indexPath = NSIndexPath(forRow: RowType.StampCell.rawValue, inSection: 0)
         if let userInfo = notification.userInfo {
-            mModel.selectStampImage = userInfo["stampImage"] as? UIImage
+            mModel.selectStampImage.value = userInfo["stampImage"] as? UIImage
             mView.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
         }
     }
@@ -130,10 +124,16 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             mView.tableView.reloadData()
         }
     }
+    func setInvitedUsers(notification: NSNotification) {
+        if let userInfo = notification.userInfo!["invitedUsers"] as? [User]! {
+            self.mModel.selectedCalendar.value?.invitingUsers = userInfo
+            mView.tableView.reloadData()
+        }
+    }
     
     
     
-    private func setStampNotification() {
+    private func setNotification() {
         NSNotificationCenter.defaultCenter().addObserver(
             self,
             selector: #selector(CreateCalendarViewController.stampImageNotification(_:)),
@@ -156,6 +156,12 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             self,
             selector: #selector(CreateCalendarViewController.selectColorNotification(_:)),
             name: "selectColorNotification",
+            object: nil
+        )
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(self.setInvitedUsers(_:)),
+            name: "setInvitedUsersNotification",
             object: nil
         )
     }
@@ -212,7 +218,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         presentViewController(actionSheet, animated: true, completion: nil)
     }
     
-
+    
     private func setImagePicker() {
         imagePickerVC = UIImagePickerController()
         imagePickerVC.delegate = self
@@ -222,7 +228,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         stampBtn()
     }
     
-
+    
     
     //MARK: -> StampCollectionView表示切り替え
     private func stampBtn() {
@@ -240,30 +246,39 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
     }
     
     private func save(calendarVC: CalendarViewController) {
-        
-        
+
         let params: [String: AnyObject] = [
             "title": mModel.titleText.value!,
-            "stamp": mModel.selectStampImage!,
+            "stamp": mModel.selectStampImage.value!,
             "color_r": mModel.selectColor.r,
             "color_g": mModel.selectColor.g,
             "color_b": mModel.selectColor.b,
-            "user_ids": setUserIdArray()
+            "invitationUser_ids": setUserIdArray(mModel.selectedCalendar.value!.invitingUsers),
+            "joined_ids": setUserIdArray(mModel.selectedCalendar.value!.joinedUsers),
+            "calendar_id": mModel.selectedCalendar.value!.id
         ]
         
-        CalenderManager.sharedInstance.saveCalendarRails(params, completion: {
-            calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
+        CalenderManager.sharedInstance.upDateCalendar(params, completion: {
+            self.dismissViewControllerAnimated(true, completion: nil)
         })
         
     }
     
-    private func setUserIdArray() -> String {
+    private func setUserIdArray(users: [User]) -> String {
         var userIdArray = [String]()
-        for user in selectedUserCollectionVM.users {
+        for user in users {
             userIdArray.append(user.id.description)
         }
         let userIds = userIdArray.joinWithSeparator(",")
         return userIds
+    }
+    
+    func tappedCancelButton() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    private func setNabiBarItem() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.tappedCancelButton))
     }
     
 }

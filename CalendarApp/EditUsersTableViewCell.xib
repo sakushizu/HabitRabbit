@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditUsersTableViewCell" id="KGk-i7-Jjw" customClass="EditUsersTableViewCell" customModule="CalendarApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultUser.png" translatesAutoresizingMaskIntoConstraints="NO" id="J49-sg-viN">
+                        <rect key="frame" x="15" y="7" width="45" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="GEZ-aw-OYN"/>
+                            <constraint firstAttribute="width" constant="45" id="pao-bv-mNd"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tanaka taro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQG-J6-T6Z">
+                        <rect key="frame" x="75" y="19" width="203" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="J49-sg-viN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="5sk-1C-TZb"/>
+                    <constraint firstItem="J49-sg-viN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="61T-jv-tPa"/>
+                    <constraint firstItem="AQG-J6-T6Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="F68-kF-lFe"/>
+                    <constraint firstItem="AQG-J6-T6Z" firstAttribute="leading" secondItem="J49-sg-viN" secondAttribute="trailing" constant="15" id="L9h-L2-I55"/>
+                    <constraint firstAttribute="trailing" secondItem="AQG-J6-T6Z" secondAttribute="trailing" constant="42" id="VaA-Tm-Zf6"/>
+                    <constraint firstAttribute="bottom" secondItem="AQG-J6-T6Z" secondAttribute="bottom" constant="19" id="Yxm-wy-0HX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="userImageView" destination="J49-sg-viN" id="5K7-rU-btI"/>
+                <outlet property="userNameLabel" destination="AQG-J6-T6Z" id="ccT-2r-uvp"/>
+            </connections>
+            <point key="canvasLocation" x="201" y="205"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="defaultUser.png" width="100" height="100"/>
+    </resources>
+</document>
