@@ -25,7 +25,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.20846189396994427" green="0.22334528750633123" blue="0.24240358549898999" alpha="0.20375844594594594" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.20784313725490194" green="0.22352941176470587" blue="0.24313725490196078" alpha="0.20375844594594594" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="827-gR-dUj"/>
                             <constraint firstAttribute="width" constant="70" id="HON-XB-b5j"/>
