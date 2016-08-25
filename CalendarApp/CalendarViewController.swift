@@ -1,495 +1,133 @@
 //
-//  ViewController.swift
+//  CalendarViewController.swift
 //  CalendarApp
 //
-//  Created by 櫻本静香 on 2015/11/08.
-//  Copyright © 2015年 Sakuramoto Shizuka. All rights reserved.
+//  Created by 櫻本静香 on 2016/08/24.
+//  Copyright © 2016年 Sakuramoto Shizuka. All rights reserved.
 //
 
 import UIKit
-import Foundation
-import Bond
-import BBBadgeBarButtonItem
 
-class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, SideMenuDelegate, UIBarPositioningDelegate, UINavigationBarDelegate, UITextViewDelegate, MenuTableViewControllerToCalendarControllerDelegate {
+class CalendarViewController: UIViewController, UICollectionViewDelegate {
     
-    let dateManager = DateManager()
-    let daysPerWeek: Int = 7
-    let cellMargin: CGFloat = 2.0
-    var selectedDate = NSDate()
-    var selectedCalender: Calendar!
-    let stampedManager = StampedDateManager.sharedInstance
-    var today = NSDate()
-    let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    let monthArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    var sideMenu: SideMenu?
+    let mModel = CalendarVM()
+    private var mView: CalendarView!
     
-    @IBOutlet weak var baseView: UIView!
-    var recordTableView: RecordTableView!
-    var memoView: UIView!
-    var memoTextView: UITextView!
-    var settingView: UIView!
+    private var selectedDate = NSDate()
 
-    @IBOutlet weak var headerRightBtn: UIButton!
-    @IBOutlet weak var headerLeftBtn: UIButton!
-    @IBOutlet weak var calenderHeaderView: UIView!
-    @IBOutlet weak var calenderCollectionView: UICollectionView!
-    
-    @IBOutlet weak var calendarNavBar: UINavigationBar!
-    
-    @IBOutlet weak var calendarTitle: UILabel!
-    @IBOutlet weak var calendarMonthLabel: UILabel!
-    @IBOutlet weak var calendarYearLabel: UILabel!
-
-    @IBOutlet weak var segmentContol: UISegmentedControl!
-    @IBOutlet weak var segmentLeftLineView: UIView!
-    @IBOutlet weak var segmentRightLineView: UIView!
-    
-    let alertViewController = AlertViewController()
-    private var showing: Bool = false
-
-    private let calendarManager = CalenderManager.sharedInstance
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        if CurrentUser.sharedInstance.user.value != nil {
-            UserInvitationManager.sharedInstance.fetchInvitationCalendars(completion: { 
-                
-            })
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        mView = view as! CalendarView
+        mView.collectionView.delegate = self
+        mView.collectionView.dataSource = mModel
         
-       let menuTableViewController =  MenuTableViewController()
-        menuTableViewController.customeDelegate = self
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CalendarViewController.saveCaendarMemo), name: UIApplicationWillTerminateNotification, object: nil)
-        
-        segmentContol.hidden = true
-        segmentRightLineView.hidden = true
-        segmentLeftLineView.hidden = true
-        
-        //tableViewに表示している名前の配列
-        sideMenu = SideMenu(sourceView: self.view)
-        sideMenu!.delegate = self
-        sideMenu?.sideMenuTableViewController.customeDelegate = self
-        
-        
-        calenderHeaderView.layer.cornerRadius = 2
-        calenderHeaderView.clipsToBounds = true
-        
-        calendarYearLabel.text = changeHeaderTitle(selectedDate)
-        calendarMonthLabel.text = monthArray[Int(changeHeaderMonth(selectedDate))! - 1]
-        calenderCollectionView.delegate = self
-        calenderCollectionView.dataSource = self
-        calenderCollectionView.backgroundColor = UIColor.whiteColor()
-        calenderCollectionView.layer.cornerRadius = 2
-        calenderCollectionView.clipsToBounds = true
-        
-        makeRecordView()
-        makeMamoView()
-        makeSettingView()
-        
-        memoView.hidden = true
-        recordTableView.hidden = true
-        settingView.hidden = true
-        
-        // MARK - ここから編集
-        setNavigationBar()
-        
-        UserInvitationManager.sharedInstance.calendars.observe { calendars in
-            if calendars.count >= 0 {
-                self.setNavigationBar()
-            }
-        }
+        mView.setCalendar(selectedDate)
+        setButtonTarget()
+        mView.setSelectedCalendarView(mModel.selectedCalender)
         setNotification()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK - Container
-    
-    func displayContentController(content: UIViewController){
-        addChildViewController(content)
-        content.view.frame = content.view.bounds
-        self.view.addSubview(content.view)
-        content.didMoveToParentViewController(self)
-    }
-    
-    func hideContentController(content:UIViewController){
-        content.willMoveToParentViewController(self)
-        content.view.removeFromSuperview()
-        content.removeFromParentViewController()
-    }
-    
-    
-    // MARK - CollectionViewDataSource
-    
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 2
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // Section毎にCellの総数を変える.
-        switch(section){
-        case 0:
-            return 7
-        case 1:
-            return dateManager.daysAcquisition()
-        default:
-            return 0
-        }
-    }
-    
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CalendarCell
-        //テキストカラー
-        if (indexPath.row % 7 == 0) {
-            cell.textLabel.textColor = UIColor.lightRed()
-        } else if (indexPath.row % 7 == 6) {
-            cell.textLabel.textColor = UIColor.lightBlue()
-        } else {
-            cell.textLabel.textColor = UIColor.lightGrayColor()
-        }
-        //テキスト配置
-        switch(indexPath.section){
-        case 0:
-            cell.textLabel.text = weekArray[indexPath.row]
-            cell.userInteractionEnabled = false
-            cell.imageView.hidden = true
-            cell.circleView.hidden = true
-        case 1:
-            cell.textLabel.text = dateManager.conversionDateFormat(indexPath)
-            cell.userInteractionEnabled = true
-            // UIImageViewをViewに追加する.
-            if self.selectedCalender != nil {
-                if jadgeIfCellTapped(indexPath) {
-                    cell.imageView.sd_setImageWithURL(NSURL(string: selectedCalender.stampImageURL), placeholderImage: nil, options: .RefreshCached)
-                    cell.imageView.hidden = false
-                    cell.circleView.hidden = true
-                } else {
-                    cell.imageView.hidden = true
-                    cell.circleView.hidden = true
-                }
-            } else {
-                if cell.textLabel.text ==  dateManager.conversionDateFormatFromNSDate(today) {
-                    cell.imageView.hidden = true
-                    cell.circleView.backgroundColor = UIColor(red: 255.0 / 255, green: 163.0 / 255, blue: 164.0 / 255, alpha: 0.5)
-                }
-            }
-        default:
-            cell.imageView.hidden = true
-        }
-        return cell
-    }
-    
-    // MARK - CollectionView FlowLayout
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        switch(indexPath.section) {
-        case 0:
-            let numberOfMargin: CGFloat = 8.0
-            let width: CGFloat = (collectionView.frame.size.width - cellMargin * numberOfMargin) / CGFloat(daysPerWeek)
-            let height: CGFloat = 50
-            return CGSizeMake(width, height)
-        case 1:
-            let numberOfMargin: CGFloat = 8.0
-            let width: CGFloat = (collectionView.frame.size.width - cellMargin * numberOfMargin) / CGFloat(daysPerWeek)
-            let height: CGFloat = width * 1.0
-            return CGSizeMake(width, height)
-        default:
-            return CGSize(width: 0, height: 0)
-        }
+
     }
     
     // MARK - CollectionView Delegate
-
+    
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         let params = createCalendarParams(indexPath)
+        
+        if mModel.isTapped(indexPath.row) {
 
-        if jadgeIfCellTapped(indexPath) {
-            //削除
-            stampedManager.deleteStampedDate(params, callback: {
-                self.stampedManager.dateCollection.removeAtIndex(params["index"] as! Int)
-                self.calenderCollectionView.reloadItemsAtIndexPaths([indexPath])
-                self.recordTableView.reloadData()
+            self.mModel.stampedManager.deleteStampedDate(params, callback: {
+                self.mModel.stampedManager.dateCollection.removeAtIndex(params["index"] as! Int)
+                self.mView.collectionView.reloadItemsAtIndexPaths([indexPath])
+//                self.recordTableView.reloadData()
             })
         } else {
-            //追加
-            stampedManager.saveStampedDate(params, completion: {
-                self.calenderCollectionView.reloadItemsAtIndexPaths([indexPath])
-                self.recordTableView.reloadData()
-            })
-        }
-    }
-    
-    private func createCalendarParams(indexPath: NSIndexPath) -> [String: AnyObject] {
-        var index: Int
-        let tappedDate = dateManager.currentMonthOfDates[indexPath.row]
-        var params: [String: AnyObject] = [
-            "date": tappedDate,
-            "calendar_id": selectedCalender.id
-        ]
-        for tmpDate in stampedManager.dateCollection {
-            if tmpDate.date == tappedDate {
-                index = stampedManager.dateCollection.indexOf({$0 === tmpDate})!
-                params["id"] = tmpDate.id
-                params["index"] = index
-            }
-        }
-        return params
-    }
-    
-    //タップ済みかの判定
-    private func jadgeIfCellTapped(indexPath: NSIndexPath) -> Bool {
-        let dates = stampedManager.dateCollection
-        for date in dates {
-            if date.date == dateManager.currentMonthOfDates[indexPath.row] {
-                return true
-            }
-        }
-        return false
-    }
-
-    //セルのマージン
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return cellMargin
-    }
-    
-    //セルのマージン
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return cellMargin
-    }
-    
-    //yearを変更
-    func changeHeaderTitle(date: NSDate) -> String {
-        let yearFormatter: NSDateFormatter = NSDateFormatter()
-        yearFormatter.locale = NSLocale(localeIdentifier: "en_US")
-        yearFormatter.dateFormat = "yyyy"
-        let selectYear = yearFormatter.stringFromDate(date)
-        return selectYear
-    }
-    
-    //monthを変更
-    func changeHeaderMonth(date: NSDate) -> String {
-        let monthFormatter: NSDateFormatter = NSDateFormatter()
-        monthFormatter.locale = NSLocale(localeIdentifier: "en_US")
-        monthFormatter.dateFormat = "M"
-        let selectMonth = monthFormatter.stringFromDate(date)
-        return selectMonth
-    }
-    
-    //次月の表示ボタン
-    @IBAction func tappedHeaderRightBtn(sender: UIButton) {
-        selectedDate = dateManager.nextMonth(selectedDate)
-        calenderCollectionView.reloadData()
-        calendarYearLabel.text = changeHeaderTitle(selectedDate)
-        calendarMonthLabel.text = monthArray[Int(changeHeaderMonth(selectedDate))! - 1]
-    }
-    
-    //前月の表示ボタン
-    @IBAction func tappedheaderLeftBtn(sender: UIButton) {
-        selectedDate = dateManager.prevMonth(selectedDate)
-        calenderCollectionView.reloadData()
-        calendarYearLabel.text = changeHeaderTitle(selectedDate)
-        calendarMonthLabel.text = monthArray[Int(changeHeaderMonth(selectedDate))! - 1]
-    }
-    
-    ////サイドバーのセルがタップされた時の処理
-    func sideMenuDidSelectItemAtIndex(indexPath: NSIndexPath) {
-        selectedCalender = CalenderManager.sharedInstance.calendarCollection.value[indexPath.row]
-        stampedManager.fetchStampedDates(selectedCalender.id) { 
-            self.setSelectedCalendarView()
-            self.toggleMenu()
-            self.recordTableView.reloadData()
-        }
-    }
-    
-    //サイドバーの表示
-    func toggleSideMenu(sender: AnyObject) {
-        sideMenu?.toggleMenu()
-    }
-    
-
-    
-    
-    // MARK: - ビューの装飾
-    
-    private func setSelectedCalendarView() {
-        selectedCalender.stampImageURL  =  "\(selectedCalender.stampImageURL)?\(String.random())"
-        let color = UIColor(
-            red:  (CGFloat(selectedCalender.color_r))/255,
-            green: (CGFloat(selectedCalender.color_g))/255,
-            blue: (CGFloat(selectedCalender.color_b))/255,
-            alpha: 1
-        )
-
-        calendarTitle.text = selectedCalender.title
-        
-        calenderHeaderView.backgroundColor = color
-        segmentContol.hidden = false
-        segmentContol.tintColor = color
-        segmentLeftLineView.hidden = false
-        segmentLeftLineView.backgroundColor = color
-        segmentRightLineView.hidden = false
-        segmentRightLineView.backgroundColor = color
-        self.setRecordView()
-        self.calenderCollectionView.reloadData()
-    }
-    
-    private func toggleMenu() {
-        sideMenu?.toggleMenu()
-
-    }
-
-    
-    @IBAction func segmentedControllerValueChanged(sender: UISegmentedControl) {
-        
-        for subView in baseView.subviews {
-            subView.hidden = true
-        }
-        baseView.subviews[sender.selectedSegmentIndex].hidden = false
-        
-        if segmentContol.selectedSegmentIndex == 1 {
-            self.recordTableView.reloadData()
-            self.setRecordView()
-        }
-    }
-    
-    //MERK: -カレンダーに参加しているUserの取得
-    private func setRecordView() {
-        
-    }
-    
-    func makeRecordView() {
-        let frame = CGRectMake(0, calenderCollectionView.frame.origin.y + 44, self.calenderCollectionView.frame.width,calenderCollectionView.frame.height )
-        self.recordTableView = RecordTableView(frame: frame, style: UITableViewStyle.Plain)
-        baseView.addSubview(recordTableView)
-    }
-    
-    func makeMamoView() {
-        let memoViewFrame = CGRectMake(0, calenderCollectionView.frame.origin.y + 44, self.calenderCollectionView.frame.width, self.calenderCollectionView.frame.height)
-        memoView = UIView(frame: memoViewFrame)
-        memoView.backgroundColor = UIColor.whiteColor()
-        memoView.layer.borderColor = UIColor.lightlightGray().CGColor
-        memoView.layer.borderWidth = 1
-        memoView.layer.cornerRadius = 3
-        memoView.layer.masksToBounds = true
-        let screenSize = UIScreen.mainScreen().bounds
-        let textFieldFrame = CGRectMake(0, 0, screenSize.width, screenSize.height )
-        memoTextView = UITextView(frame: textFieldFrame)
-        memoTextView.textColor = UIColor.darkGrayColor()
-        memoTextView.font = UIFont.mainFontJa(14)
-        memoTextView.layer.borderWidth = 0.5
-        memoTextView.layer.cornerRadius = 4
-        memoTextView.clipsToBounds = true
-        memoTextView.delegate = self
-        memoView.addSubview(memoTextView)
-        baseView.addSubview(memoView)
-    }
-    
-    // MARK: - 後で行う「メモの処理」
-//    func setMemoViewLayer() {
-//        if selectedCalender?.color != nil {
-//            memoTextView.text = selectedCalender.memo
-//            memoTextView.tintColor = selectedCalender.color
-//            memoTextView.layer.borderColor = selectedCalender.color.CGColor
-//        }
-//    }
-    
-    func makeSettingView() {
-        let frame = CGRectMake(0, calenderCollectionView.frame.origin.y + 44, self.calenderCollectionView.frame.width,calenderCollectionView.frame.height )
-        self.settingView = UIView(frame: frame)
-        baseView.addSubview(settingView)
-    }
-
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if (text == "\n") {
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-    }
-    
-    
-    func saveCaendarMemo() {
-
-    }
-    
-    func moveUserEditViewController() {
-        let storyboard = UIStoryboard(name: "UserEdit", bundle: nil)
-        let nextVC = storyboard.instantiateInitialViewController()!
-        self.presentViewController(nextVC, animated: true, completion: nil)
-
-    }
-    
-    func tappedAlertButton() {
-        //container
-        
-        if showing {
-            self.hideContentController(self.alertViewController)
-            showing = false
-        } else {
-            self.displayContentController(self.alertViewController)
-            showing = true
             
+            self.mModel.stampedManager.saveStampedDate(params, completion: {
+                self.mView.collectionView.reloadItemsAtIndexPaths([indexPath])
+//                self.recordTableView.reloadData()
+            })
         }
+    }
+    
+    
+    // MARK -> CollectionViewLayout header size
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionReusableView, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let sectionType = CalendarCollectionCellType(rawValue: section)!
+        switch sectionType {
+        case .Day:
+            return CGSize(width: mView.collectionView.frame.width, height: 15)
+        default:
+            return CGSizeZero
+        }
+    }
 
+    func tappedCalendarBackButton() {
+        selectedDate = mModel.dateManager.prevMonth(selectedDate)
+        mView.setTappedCalendar(selectedDate)
+        
     }
     
-    func tappedPlusButton() {
-        let createCalenderVC = UIStoryboard.viewControllerWith("CreateCalendar", identifier: "createCalendarView") as! CreateCalendarViewController
-        self.navigationController?.pushViewController(createCalenderVC, animated: true)
+    func tappedCalendarNextButton() {
+        selectedDate = mModel.dateManager.nextMonth(selectedDate)
+        mView.setTappedCalendar(selectedDate)
     }
     
-    @IBAction func tappedEditCalendarButton(sender: UIButton) {
+    func tappedEditCalendarButton() {
         let controller = UIStoryboard.viewControllerWith("EditCalendar", identifier: "EditCalendarViewController") as! EditCalendarViewController
         let navigationController = UINavigationController(rootViewController: controller)
-        controller.mModel.selectedCalendar.value = self.selectedCalender.copy() as? Calendar
+        controller.mModel.selectedCalendar.value = self.mModel.selectedCalender.copy() as? Calendar
         self.presentViewController(navigationController, animated: true, completion: nil)
     }
     
     func setUpdateCalendar(notification: NSNotification) {
         if let userInfo = notification.userInfo {
-            selectedCalender = userInfo["calendar"] as? Calendar
-            self.setSelectedCalendarView()
-            self.recordTableView.reloadData()
+            mModel.selectedCalender = userInfo["calendar"] as? Calendar
+            self.mView.setSelectedCalendarView(mModel.selectedCalender)
+//            self.recordTableView.reloadData()
         }
     }
     
-    private func setNavigationBar() {
-        
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        let plusBarButton = UIBarButtonItem(image: UIImage(named: "plus"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.tappedPlusButton))
-        let alertBarButton = createAlertBarButton()
-        let rightItems = [plusBarButton, alertBarButton]
-        self.navigationItem.setRightBarButtonItems(rightItems, animated: true)
-        self.alertViewController.AlertIconCentorX = alertBarButton.valueForKey("view")?.center.x
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CalendarViewController.toggleSideMenu(_:)))
-        
+    func tappedCalendarButton(button: UIButton) {
+        button.selected = true
     }
     
-    private func createAlertBarButton() -> UIBarButtonItem {
-        let alertButton = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-        alertButton.setImage(UIImage(named: "alert"), forState: .Normal)
-        alertButton.addTarget(self, action: #selector(CalendarViewController.tappedAlertButton), forControlEvents: .TouchUpInside)
-        alertButton.adjustsImageWhenHighlighted = false
-        let alertBarButton = BBBadgeBarButtonItem(customUIButton: alertButton)
-        alertBarButton.badgeValue = String(UserInvitationManager.sharedInstance.calendars.value.count)
-        alertBarButton.badgeBGColor = UIColor.mainColor()
-        alertBarButton.badgeTextColor = UIColor.whiteColor()
-        alertBarButton.badgeOriginX = 12
-        alertBarButton.badgePadding = 4
-        alertBarButton.shouldAnimateBadge = true
-        return alertBarButton
+    func tappedRankingButton(button: UIButton) {
+        button.selected = true
+    }
+    
+    func tappedMemoButton(button: UIButton) {
+        button.selected = true
+    }
+    
+    private func setButtonTarget() {
+        mView.backMonthButton.addTarget(self, action: #selector(self.tappedCalendarBackButton), forControlEvents: .TouchUpInside)
+        mView.nextMonthButton.addTarget(self, action: #selector(self.tappedCalendarNextButton), forControlEvents: .TouchUpInside)
+        mView.editCalendarButton.addTarget(self, action: #selector(self.tappedEditCalendarButton), forControlEvents: .TouchUpInside)
+        
+        mView.calendarButton.addTarget(self, action: #selector(self.tappedCalendarButton(_:)), forControlEvents: .TouchUpInside)
+        mView.rankingButton.addTarget(self, action: #selector(self.tappedRankingButton(_:)), forControlEvents: .TouchUpInside)
+        mView.memoButton.addTarget(self, action: #selector(self.tappedMemoButton(_:)), forControlEvents: .TouchUpInside)
+    }
+    
+    private func createCalendarParams(indexPath: NSIndexPath) -> [String: AnyObject] {
+        var index: Int
+        let tappedDate = self.mModel.dateManager.currentMonthOfDates[indexPath.row]
+        var params: [String: AnyObject] = [
+            "date": tappedDate,
+            "calendar_id": self.mModel.selectedCalender.id
+        ]
+        for tmpDate in self.mModel.stampedManager.dateCollection {
+            if tmpDate.date == tappedDate {
+                index = self.mModel.stampedManager.dateCollection.indexOf({$0 === tmpDate})!
+                params["id"] = tmpDate.id
+                params["index"] = index
+            }
+        }
+        return params
     }
     
     private func setNotification() {
@@ -500,5 +138,15 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             object: nil
         )
     }
+    
+    private func setSelectedButton(button: UIButton, isSelected: Bool) {
+//        if isSelected {
+//            button.selected = true
+//            button.tintColor = sele
+//        } else {
+//            
+//        }
+    }
+
 
 }

@@ -17,7 +17,7 @@ class ColorTableViewController: UITableViewController {
     
     weak var customDelegate: ColorTableViewControllerDelegate?
     
-    var color = UIColor.appPinkColor()
+    var color = UIColor.mainColor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class ColorTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let coverView = UIView()
-        coverView.backgroundColor = UIColor.lightlightGray()
+        coverView.backgroundColor = UIColor.baseGrayColor()
         let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width, height: 40))
         label.font = UIFont.mainFontJa(15)
         label.textColor = UIColor.darkGrayColor()
