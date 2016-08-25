@@ -100,7 +100,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         } else {
             let navigationVC = self.navigationController!
             navigationVC.popViewControllerAnimated(false)
-            let calendarVC = navigationVC.viewControllers.last as! CalendarViewController
+            let calendarVC = navigationVC.viewControllers.last as! CalendarTopViewController
             self.save(calendarVC)
 //            calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
         }
@@ -239,7 +239,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         }
     }
     
-    private func save(calendarVC: CalendarViewController) {
+    private func save(calendarVC: CalendarTopViewController) {
         
         
         let params: [String: AnyObject] = [
