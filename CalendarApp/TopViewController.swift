@@ -20,7 +20,7 @@ class TopViewController: UIViewController {
         signUpBtn.layer.cornerRadius = 2
         signUpBtn.clipsToBounds = true
         
-        self.navigationController?.navigationBar.tintColor = UIColor.appPinkColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.mainColor()
         
     }
 

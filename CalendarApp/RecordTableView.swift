@@ -30,7 +30,7 @@ class RecordTableView: UITableView, UITableViewDataSource, UITableViewDelegate  
 
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let coverView = UIView()
-        coverView.backgroundColor = UIColor.lightlightGray()
+        coverView.backgroundColor = UIColor.baseGrayColor()
         let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width, height: 40))
         label.font = UIFont.mainFontJa(15)
         label.textColor = UIColor.darkGrayColor()

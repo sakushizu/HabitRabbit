@@ -44,7 +44,6 @@ class SelectedUserCollectionVM: NSObject, UICollectionViewDataSource {
     func selectUserNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             users = userInfo["users"] as! [User]
-//            joinedUsers = userInfo["joinedUsers"] as! [User]
         }
         let notification = NSNotification(name: "reloadDataNotification", object: nil)
         NSNotificationCenter.defaultCenter().postNotification(notification)

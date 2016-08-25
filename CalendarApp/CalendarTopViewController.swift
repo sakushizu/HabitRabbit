@@ -71,7 +71,7 @@ class CalendarTopViewController: UIViewController, UITableViewDelegate {
             let calendar = CalenderManager.sharedInstance.calendarCollection.value[indexPath.row]
             StampedDateManager.sharedInstance.fetchStampedDates(calendar.id, completion: {
                 let controller = UIStoryboard.viewControllerWith("Calendar", identifier: "CalendarViewController") as! CalendarViewController
-                controller.selectedCalender = calendar
+                controller.mModel.selectedCalender = calendar
                 self.navigationController?.pushViewController(controller, animated: true)
             })
         default:

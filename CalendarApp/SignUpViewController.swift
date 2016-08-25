@@ -32,7 +32,7 @@ class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.tintColor = UIColor.appPinkColor()
+        navigationController?.navigationBar.tintColor = UIColor.mainColor()
         
         tableView.delegate = self
         tableView.dataSource = self

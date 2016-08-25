@@ -17,7 +17,10 @@ extension UIColor {
     
     class func subColor() -> UIColor {
         return UIColor(red: 255.0 / 255, green: 240.0 / 255, blue: 245.0 / 255, alpha: 0.9)
-
+    }
+    
+    class func baseGrayColor() -> UIColor {
+        return UIColor(red: 242.0 / 255, green: 242.0 / 255, blue: 242.0 / 255, alpha: 1)
     }
     
     class func textColor() -> UIColor {
@@ -29,13 +32,14 @@ extension UIColor {
         return UIColor(red: 92.0 / 255, green: 192.0 / 255, blue: 210.0 / 255, alpha: 0.8)
     }
     
+    class func lightRed() -> UIColor {
+        return UIColor(red: 192.0 / 255, green: 57.0 / 255, blue: 43 / 255, alpha: 0.5)
+    }
+    
     class func salmonPink() -> UIColor {
         return UIColor(red: 232.0 / 255, green: 142.0 / 255, blue: 146.0 / 255, alpha: 1)
     }
     
-    class func lightRed() -> UIColor {
-        return UIColor(red: 192.0 / 255, green: 57.0 / 255, blue: 43 / 255, alpha: 0.5)
-    }
     
     class func verylightRed() -> UIColor {
         return UIColor(red: 255.0 / 255, green: 240.0 / 255, blue: 245.0 / 255, alpha: 1)
@@ -69,19 +73,7 @@ extension UIColor {
     class func lightLightOrenge() -> UIColor {
         return UIColor(red: 243 / 255, green: 156.0 / 255, blue: 242.0 / 255, alpha: 1)
     }
-    
-    //tableViewの線
-    class func lightlightGray() -> UIColor {
-        return UIColor(red: 242.0 / 255, green: 242.0 / 255, blue: 242.0 / 255, alpha: 1)
-    }
-    //appのcolor
-    class func appPinkColor() -> UIColor {
-        return UIColor(red: 255.0 / 255, green: 163.0 / 255, blue: 164.0 / 255, alpha: 1)
-    }
-    
-    class func appGrayColor() -> UIColor {
-        return UIColor(red: 189.0 / 255, green: 195.0 / 255, blue: 199.0 / 255, alpha: 1)
-    }
+
     
     class func hexStr (hexStr : NSString, let alpha : CGFloat) -> UIColor {
         let hexColor = hexStr.stringByReplacingOccurrencesOfString("#", withString: "")
@@ -94,7 +86,6 @@ extension UIColor {
             let b = CGFloat(color & 0x0000FF) / 255.0
             return UIColor(red:r,green:g,blue:b,alpha:alpha)
         } else {
-//            print("invalid hex string")
             return UIColor.whiteColor()
         }
     }
