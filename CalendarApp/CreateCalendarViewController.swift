@@ -20,7 +20,7 @@ enum StampViewType: Int {
     case Up = 1
 }
 
-class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
     private let mModel = CreateCalendarVM()
     private var mView: CreateCalendarView!
@@ -41,12 +41,10 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         setImagePicker()
         setStampNotification()
         mView.addSubview(stampCollectionView)
-        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
+    override func viewWillAppear(animated: Bool) {
+        setNavigationBar()
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -102,7 +100,6 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             navigationVC.popViewControllerAnimated(false)
             let calendarVC = navigationVC.viewControllers.last as! CalendarTopViewController
             self.save(calendarVC)
-//            calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
         }
     }
 
@@ -129,6 +126,10 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             mView.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
             mView.tableView.reloadData()
         }
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     
@@ -176,7 +177,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             handler: nil
         )
         
-        let choosePhotoAction:UIAlertAction = UIAlertAction(
+        let choosePhotoAction = UIAlertAction(
             title: "Choose from library",
             style: UIAlertActionStyle.Default,
             handler: { action in
@@ -186,7 +187,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             }
         )
         
-        let takePhotoAction:UIAlertAction = UIAlertAction(
+        let takePhotoAction = UIAlertAction(
             title: "Take photo",
             style: UIAlertActionStyle.Default,
             handler: { action in
@@ -196,7 +197,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             }
         )
         
-        let chooseStampAction:UIAlertAction = UIAlertAction(
+        let chooseStampAction = UIAlertAction(
             title: "Choose from Stamps",
             style: UIAlertActionStyle.Default,
             handler: { action in
@@ -251,9 +252,7 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
             "user_ids": setUserIdArray()
         ]
         
-        CalenderManager.sharedInstance.saveCalendarRails(params, completion: {
-//            calendarVC.sideMenu?.sideMenuTableViewController.tableView.reloadData()
-        })
+        CalenderManager.sharedInstance.saveCalendarRails(params, completion: { })
         
     }
     

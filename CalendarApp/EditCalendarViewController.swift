@@ -9,7 +9,7 @@
 import UIKit
 
 
-class EditCalendarViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class EditCalendarViewController: UIViewController, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     var mModel = EditCalendarVM()
     private var mView: EditCalendarView!
@@ -70,6 +70,7 @@ class EditCalendarViewController: UIViewController, UITableViewDelegate, UINavig
         if rowType == .ColorCell {
             
             let colorTableVC = UIStoryboard.viewControllerWith("CreateCalendar", identifier: "colorTableViewController") as! ColorTableViewController
+            colorTableVC.color = mModel.selectColor.color
             self.navigationController?.pushViewController(colorTableVC, animated: true)
             
         } else if rowType == .UserCell {
@@ -92,8 +93,6 @@ class EditCalendarViewController: UIViewController, UITableViewDelegate, UINavig
     }
     
     func clickUpdateButton(sender: UIButton) {
-        
-        //カレンダー更新
         
         if mModel.titleText.value! == "" {
             let alert = UIAlertController.alertWith(message: "Title is empty!")
@@ -134,8 +133,10 @@ class EditCalendarViewController: UIViewController, UITableViewDelegate, UINavig
             mView.tableView.reloadData()
         }
     }
-    
-    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     private func setNotification() {
         NSNotificationCenter.defaultCenter().addObserver(
@@ -231,9 +232,6 @@ class EditCalendarViewController: UIViewController, UITableViewDelegate, UINavig
     private func setStampController() {
         stampBtn()
     }
-    
-    
-    
     //MARK: -> StampCollectionView表示切り替え
     private func stampBtn() {
         if stampViewCount == .Down {

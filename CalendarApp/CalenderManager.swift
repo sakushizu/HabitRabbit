@@ -17,6 +17,8 @@ class CalenderManager: NSObject {
     
     var calendarCollection = Observable<[Calendar]>([])
     
+    var usersStampedRanking = [User]()
+    
     func fetchCalendars(completion completion: () -> Void) {
         Alamofire.request(
             .GET,
@@ -72,12 +74,13 @@ class CalenderManager: NSObject {
                         let calendarManager = CalenderManager.sharedInstance
                         calendarManager.calendarCollection.value.append(calendar)
                         
+                        completion()
+                        
                     }
                 case .Failure(let encodingError):
                     // Add error handling in the future
                     print(encodingError)
                 }
-                completion()
             }
         )
     }
@@ -184,6 +187,8 @@ class CalenderManager: NSObject {
                 completion()
         }
     }
+    
+
     
     
     private func createCalendarsFromJson(json: JSON) -> [Calendar] {

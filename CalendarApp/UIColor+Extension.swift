@@ -27,6 +27,10 @@ extension UIColor {
         return UIColor(red: 85.0 / 255, green: 85.0 / 255, blue: 85.0 / 255, alpha: 1)
     }
     
+    class func cellLineColor() -> UIColor {
+        return UIColor(red: 200.0 / 255, green: 199.0 / 255, blue: 204.0 / 255, alpha: 1)
+    }
+    
     // MARK - background color
     class func lightBlue() -> UIColor {
         return UIColor(red: 92.0 / 255, green: 192.0 / 255, blue: 210.0 / 255, alpha: 0.8)

@@ -23,12 +23,22 @@ class User: NSObject {
     var mailAddress: String!
     var avatarUrl :String!
     
+    var stampedCount: Int!
+    
 
     init(jsonWithUser json: JSON) {
         self.id = json["id"].int
         self.name = json["name"].string
         self.mailAddress = json["email"].string
         self.avatarUrl = json["avatar"].string
+    }
+    
+    init(jsonWithRankingUser json: JSON) {
+        self.id = json["id"].int
+        self.name = json["name"].string
+        self.mailAddress = json["email"].string
+        self.avatarUrl = json["avatar"].string
+        self.stampedCount = json["stamped_count"].int
     }
     
     // RailsSignUp
@@ -54,19 +64,27 @@ class User: NSObject {
                 }
             }, encodingCompletion: { encodingResult in
                 switch encodingResult {
-            case .Success(let upload, _, _):
-                    upload.responseJSON { response in
-                        guard response.result.error == nil else {
-                            print(response.result.error)
-                            return
-                        }
+                    
+                    case .Success(let upload, _, _):
+                        upload.responseJSON { response in
+                            guard response.result.error == nil else {
+                                print(response.result.error)
+                                return
+                            }
+                            
+                            let json = JSON(response.result.value!)
+                            let user = User(jsonWithUser: json)
+                            CurrentUser.sharedInstance.user.value = user
+                            CurrentUser.sharedInstance.authentication_token.value = json["access_token"].stringValue
+                            self.saveAuthenticationToken()
+                            
+                            completion()
 
-                    }
-            case .Failure(let encodingError):
-                    // Add error handling in the future
-                    print(encodingError)
-                    }
-                    completion()
+                        }
+                    case .Failure(let encodingError):
+                        // Add error handling in the future
+                        print(encodingError)
+                }
             }
         )
     }
@@ -103,7 +121,6 @@ class User: NSObject {
     }
     
     class func firstLoginRails(params: [String:AnyObject], completion: () -> Void) {
-        // HTTP通信
         
         Alamofire.request(
             .POST,
@@ -148,7 +165,7 @@ class User: NSObject {
     }
     
     
-    class func getUserData(callback: () -> Void){
+    class func getUserData(completion: () -> Void){
         let graphRequest = FBSDKGraphRequest(graphPath: "me",
                                              parameters: ["fields": "name, email, picture.type(large)"])
         var userInfo: NSDictionary!
@@ -160,14 +177,14 @@ class User: NSObject {
             }
             userInfo = result as! NSDictionary
             
-            FBLogin(userInfo, callback: {
-                callback()//TopViewに画面遷移
+            FBLogin(userInfo, completion: {
+                completion()//TopViewに画面遷移
             })
         })
     }
     
     
-    class func FBLogin(userInfo: NSDictionary, callback: () -> Void) {
+    class func FBLogin(userInfo: NSDictionary, completion: () -> Void) {
         let name = userInfo.objectForKey("name") as! String
         let email = userInfo.objectForKey("email") as! String
         let avatar = userInfo.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as! String
@@ -202,7 +219,7 @@ class User: NSObject {
                 CurrentUser.sharedInstance.user.value = user
                 CurrentUser.sharedInstance.authentication_token.value = json["access_token"].stringValue
                 self.saveAuthenticationToken()
-                callback()
+                completion()
         }
     }
     
