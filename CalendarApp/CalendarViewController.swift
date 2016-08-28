@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController, UICollectionViewDelegate {
+class CalendarViewController: UIViewController, UICollectionViewDelegate, UITextViewDelegate {
     
     let mModel = CalendarVM()
     private var mView: CalendarView!
@@ -26,7 +26,31 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate {
         setButtonTarget()
         mView.setSelectedCalendarView(mModel.selectedCalender)
         setNotification()
+        
+        mView.setSelectedButton(mView.calendarButton)
+        
+        mView.textView.delegate = self
+        
 
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        setNavigationBar()
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+
+        
+        let params = [
+            "user_id": CurrentUser.sharedInstance.user.value!.id,
+            "calendar_id": mModel.selectedCalender.id,
+            ]
+        Memo.sharedInstance.fetchMemo(params) {
+            self.mView.memoText.value! = Memo.sharedInstance.memo
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        saveCalendarMemo()
     }
     
     // MARK - CollectionView Delegate
@@ -41,13 +65,11 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate {
             self.mModel.stampedManager.deleteStampedDate(params, callback: {
                 self.mModel.stampedManager.dateCollection.removeAtIndex(params["index"] as! Int)
                 self.mView.collectionView.reloadItemsAtIndexPaths([indexPath])
-//                self.recordTableView.reloadData()
             })
         } else {
             
             self.mModel.stampedManager.saveStampedDate(params, completion: {
                 self.mView.collectionView.reloadItemsAtIndexPaths([indexPath])
-//                self.recordTableView.reloadData()
             })
         }
     }
@@ -87,20 +109,36 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate {
         if let userInfo = notification.userInfo {
             mModel.selectedCalender = userInfo["calendar"] as? Calendar
             self.mView.setSelectedCalendarView(mModel.selectedCalender)
-//            self.recordTableView.reloadData()
         }
     }
     
     func tappedCalendarButton(button: UIButton) {
-        button.selected = true
+
+        mView.setSelectedButton(button)
+        mView.setCalendar(selectedDate)
     }
     
     func tappedRankingButton(button: UIButton) {
-        button.selected = true
+        self.mView.setSelectedButton(button)
+        StampedDateManager.sharedInstance.fetchMembersStampedDatesRanking(mModel.selectedCalender.id) {
+            self.mView.rankingView.reloadData()
+        }
     }
     
     func tappedMemoButton(button: UIButton) {
-        button.selected = true
+        mView.setSelectedButton(button)
+    }
+    
+    func saveCalendarMemo() {
+        let params = [
+            "user_id": CurrentUser.sharedInstance.user.value!.id,
+            "calendar_id": mModel.selectedCalender.id,
+            "memo": mView.memoText.value!
+        ]
+        Memo.sharedInstance.saveMemo(params as! [String : AnyObject]) { }
+    }
+    func tappedCloseButton() {
+        mView.textView.resignFirstResponder()
     }
     
     private func setButtonTarget() {
@@ -111,6 +149,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate {
         mView.calendarButton.addTarget(self, action: #selector(self.tappedCalendarButton(_:)), forControlEvents: .TouchUpInside)
         mView.rankingButton.addTarget(self, action: #selector(self.tappedRankingButton(_:)), forControlEvents: .TouchUpInside)
         mView.memoButton.addTarget(self, action: #selector(self.tappedMemoButton(_:)), forControlEvents: .TouchUpInside)
+        mView.closeButton.addTarget(self, action: #selector(self.tappedCloseButton), forControlEvents: .TouchUpInside)
     }
     
     private func createCalendarParams(indexPath: NSIndexPath) -> [String: AnyObject] {
@@ -137,16 +176,15 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate {
             name: "updateCalendarNotification",
             object: nil
         )
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(self.saveCalendarMemo),
+            name:UIApplicationDidEnterBackgroundNotification,
+            object: nil)
     }
     
-    private func setSelectedButton(button: UIButton, isSelected: Bool) {
-//        if isSelected {
-//            button.selected = true
-//            button.tintColor = sele
-//        } else {
-//            
-//        }
-    }
     private func setNavigationBar() {
         self.navigationController?.hidesNavigationBarHairline = true
         self.navigationController?.navigationBar.barStyle = .Black
@@ -154,5 +192,6 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate {
         self.navigationController?.navigationBar.barTintColor = mView.calendarColor
 
     }
+    
 
 }
