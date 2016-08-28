@@ -32,9 +32,12 @@ class RankingTableViewCell: UITableViewCell {
     func fillWith(user: User) {
         self.userNameLabel.text = user.name
         self.userImageView.sd_setImageWithURL(NSURL(string: user.avatarUrl))
-        //MARK Userが達成した日数
-        self.recordLabel.text = "3complation"
-        
+        self.recordLabel.text = "\(user.stampedCount)complation"
+    }
+    
+    func setRankingLabel(bool: Bool, num: Int) {
+        rankingNumLabel.hidden = bool
+        rankingNumLabel.text = "\(num)"
     }
     
 }
