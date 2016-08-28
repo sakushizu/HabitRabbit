@@ -22,7 +22,7 @@
 		0B1370191D6805A700AF1103 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1370171D6805A700AF1103 /* UserTableViewCell.xib */; };
 		0B13701B1D6805BC00AF1103 /* CalendarTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B13701A1D6805BC00AF1103 /* CalendarTopView.swift */; };
 		0B13701D1D680C0A00AF1103 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B13701C1D680C0A00AF1103 /* settings.png */; };
-		0B141D6C1C290DBB0029E6EA /* RecordTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B141D6B1C290DBB0029E6EA /* RecordTableView.swift */; };
+		0B141D6C1C290DBB0029E6EA /* RankingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B141D6B1C290DBB0029E6EA /* RankingTableView.swift */; };
 		0B141D6F1C2911360029E6EA /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B141D6D1C2911360029E6EA /* RankingTableViewCell.swift */; };
 		0B141D701C2911360029E6EA /* RankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D6E1C2911360029E6EA /* RankingTableViewCell.xib */; };
 		0B141D7E1C2A63760029E6EA /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B141D7B1C2A63760029E6EA /* menu.png */; };
@@ -65,7 +65,6 @@
 		0B27EEA81D52157600F0F67C /* UserInvitationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27EEA01D52157600F0F67C /* UserInvitationCollectionView.swift */; };
 		0B27EEA91D52157600F0F67C /* UserInvitationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27EEA11D52157600F0F67C /* UserInvitationCollectionViewCell.swift */; };
 		0B27EEAA1D52157600F0F67C /* UserInvitationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B27EEA21D52157600F0F67C /* UserInvitationCollectionViewCell.xib */; };
-		0B2AD9331D6AE5060052AE4D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2AD9321D6AE5060052AE4D /* API.swift */; };
 		0B27EEAB1D52157600F0F67C /* UserInvitationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27EEA31D52157600F0F67C /* UserInvitationManager.swift */; };
 		0B27EEAC1D52157600F0F67C /* UserInvitationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27EEA41D52157600F0F67C /* UserInvitationTableViewCell.swift */; };
 		0B27EEAD1D52157600F0F67C /* UserInvitationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B27EEA51D52157600F0F67C /* UserInvitationTableViewCell.xib */; };
@@ -73,44 +72,51 @@
 		0B27EEAF1D52157600F0F67C /* UserInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27EEA71D52157600F0F67C /* UserInvitationViewController.swift */; };
 		0B27EEB11D5216CF00F0F67C /* cancel_pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B27EEB01D5216CF00F0F67C /* cancel_pink.png */; };
 		0B27EEBA1D5225C400F0F67C /* UINavigationItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27EEB91D5225C400F0F67C /* UINavigationItem+Extension.swift */; };
+		0B2AD9331D6AE5060052AE4D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2AD9321D6AE5060052AE4D /* API.swift */; };
 		0B2AD9361D6D5F730052AE4D /* CalendarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2AD9351D6D5F730052AE4D /* CalendarVM.swift */; };
 		0B2AD9381D6D5F8B0052AE4D /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2AD9371D6D5F8B0052AE4D /* CalendarView.swift */; };
 		0B2AD93A1D6D601C0052AE4D /* CalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2AD9391D6D601C0052AE4D /* CalendarCollectionView.swift */; };
 		0B2AD93C1D6D64090052AE4D /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2AD93B1D6D64090052AE4D /* CalendarViewController.swift */; };
-		0B2B412D1C4A7C2C0031F9C2 /* ちっちさんImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2B412C1C4A7C2C0031F9C2 /* ちっちさんImage.png */; };
 		0B3616641D599CC7006EEA19 /* triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B3616631D599CC7006EEA19 /* triangle.png */; };
 		0B37F81A1C2D156E00D6AE82 /* UserEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F8191C2D156E00D6AE82 /* UserEdit.storyboard */; };
-		0B37F8201C2DF6D400D6AE82 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F81F1C2DF6D400D6AE82 /* Launch Screen.storyboard */; };
 		0B37F8221C2DFA5700D6AE82 /* Icon-83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37F8211C2DFA5700D6AE82 /* Icon-83.5@2x.png */; };
 		0B656A261C219E210024D6F3 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A251C219E210024D6F3 /* TopViewController.swift */; };
 		0B656A281C219E330024D6F3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A271C219E330024D6F3 /* SignUpViewController.swift */; };
 		0B656A2A1C219E400024D6F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A291C219E400024D6F3 /* LoginViewController.swift */; };
-		0B656A2D1C21A96A0024D6F3 /* CreateUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A2B1C21A96A0024D6F3 /* CreateUserTableViewCell.swift */; };
-		0B656A2E1C21A96A0024D6F3 /* CreateUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B656A2C1C21A96A0024D6F3 /* CreateUserTableViewCell.xib */; };
-		0B656A391C21B3E20024D6F3 /* NextBtnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A371C21B3E20024D6F3 /* NextBtnTableViewCell.swift */; };
-		0B656A3A1C21B3E20024D6F3 /* NextBtnTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B656A381C21B3E20024D6F3 /* NextBtnTableViewCell.xib */; };
-		0B656A3F1C21B6410024D6F3 /* OrViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B656A3D1C21B6410024D6F3 /* OrViewTableViewCell.swift */; };
-		0B656A401C21B6410024D6F3 /* OrViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B656A3E1C21B6410024D6F3 /* OrViewTableViewCell.xib */; };
 		0B6A927E1BEF3BF2009A7B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A927D1BEF3BF2009A7B2E /* AppDelegate.swift */; };
-		0B6A92801BEF3BF2009A7B2E /* OldCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A927F1BEF3BF2009A7B2E /* OldCalendarViewController.swift */; };
 		0B6A92831BEF3BF2009A7B2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6A92811BEF3BF2009A7B2E /* Main.storyboard */; };
 		0B6A92851BEF3BF2009A7B2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B6A92841BEF3BF2009A7B2E /* Assets.xcassets */; };
 		0B6A92881BEF3BF2009A7B2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6A92861BEF3BF2009A7B2E /* LaunchScreen.storyboard */; };
 		0B6A92931BEF3BF3009A7B2E /* CalendarAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A92921BEF3BF3009A7B2E /* CalendarAppTests.swift */; };
 		0B6A929E1BEF3BF3009A7B2E /* CalendarAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A929D1BEF3BF3009A7B2E /* CalendarAppUITests.swift */; };
-		0B7586991C21EC6100816379 /* FaceBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7586971C21EC6100816379 /* FaceBookTableViewCell.swift */; };
-		0B75869A1C21EC6100816379 /* FaceBookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7586981C21EC6100816379 /* FaceBookTableViewCell.xib */; };
 		0B7586A51C224E8A00816379 /* UserImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7586A31C224E8A00816379 /* UserImageTableViewCell.swift */; };
 		0B7586A61C224E8A00816379 /* UserImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7586A41C224E8A00816379 /* UserImageTableViewCell.xib */; };
 		0B7586AF1C22A92F00816379 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7586AE1C22A92F00816379 /* User.swift */; };
 		0B7586B11C22AFF500816379 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7586B01C22AFF500816379 /* UIImage+Extension.swift */; };
 		0B7586B31C22DFF200816379 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7586B21C22DFF200816379 /* CurrentUser.swift */; };
+		0B853B2D1D7011E1007AFC84 /* topImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B853B2C1D7011E1007AFC84 /* topImage.png */; };
+		0B853B301D70134D007AFC84 /* facebook-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B853B2E1D70134D007AFC84 /* facebook-white.png */; };
+		0B853B311D70134D007AFC84 /* mail-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B853B2F1D70134D007AFC84 /* mail-white.png */; };
+		0B853B351D701A0E007AFC84 /* mail-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B853B321D701A0E007AFC84 /* mail-black.png */; };
+		0B853B361D701A0E007AFC84 /* user-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B853B331D701A0E007AFC84 /* user-black.png */; };
+		0B853B371D701A0E007AFC84 /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B853B341D701A0E007AFC84 /* key.png */; };
+		0B853B3A1D701D35007AFC84 /* MailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B853B381D701D35007AFC84 /* MailTableViewCell.swift */; };
+		0B853B3B1D701D35007AFC84 /* MailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B853B391D701D35007AFC84 /* MailTableViewCell.xib */; };
+		0B853B3E1D701E44007AFC84 /* PasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B853B3C1D701E44007AFC84 /* PasswordTableViewCell.swift */; };
+		0B853B3F1D701E44007AFC84 /* PasswordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B853B3D1D701E44007AFC84 /* PasswordTableViewCell.xib */; };
+		0B853B411D701F44007AFC84 /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B853B401D701F44007AFC84 /* SignUpVM.swift */; };
+		0B853B431D701F59007AFC84 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B853B421D701F59007AFC84 /* SignUpView.swift */; };
+		0B853B451D705E52007AFC84 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B853B441D705E52007AFC84 /* LoginVM.swift */; };
+		0B853B471D705E6E007AFC84 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B853B461D705E6E007AFC84 /* LoginView.swift */; };
+		0B853B491D708F9A007AFC84 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B853B481D708F9A007AFC84 /* Memo.swift */; };
 		0B87419C1D4B6C9000DB76F0 /* approval.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B87419B1D4B6C9000DB76F0 /* approval.png */; };
 		0B89B2E11D52FBDB00864961 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89B2E01D52FBDB00864961 /* AlertViewController.swift */; };
 		0B89B2E31D52FBF900864961 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89B2E21D52FBF900864961 /* AlertView.swift */; };
 		0B89B2ED1D53097C00864961 /* AlertVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89B2EC1D53097C00864961 /* AlertVM.swift */; };
 		0B89B2F01D5309DB00864961 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89B2EE1D5309DB00864961 /* AlertTableViewCell.swift */; };
 		0B89B2F11D5309DB00864961 /* AlertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B89B2EF1D5309DB00864961 /* AlertTableViewCell.xib */; };
+		0B8B01AE1D712C4F0036012F /* multiply.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B8B01AD1D712C4F0036012F /* multiply.png */; };
+		0B8B01B21D7130590036012F /* plus-filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B8B01B11D7130590036012F /* plus-filled.png */; };
 		0BA523851C1F187C00133342 /* Gift-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA523771C1F187C00133342 /* Gift-32.png */; };
 		0BA523861C1F187C00133342 /* Pushups-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA523781C1F187C00133342 /* Pushups-32.png */; };
 		0BA523871C1F187C00133342 /* Wakeup Hill on Stairs Filled-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA523791C1F187C00133342 /* Wakeup Hill on Stairs Filled-32.png */; };
@@ -137,8 +143,6 @@
 		0BC16F701CAA5060005A25F4 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC16F6F1CAA5060005A25F4 /* user.png */; };
 		0BC16F721CAA51B7005A25F4 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC16F711CAA51B7005A25F4 /* plus.png */; };
 		0BC16F761CAA53B9005A25F4 /* Photos.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC16F741CAA53B9005A25F4 /* Photos.png */; };
-		0BC16F781CAA5416005A25F4 /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC16F771CAA5416005A25F4 /* mail.png */; };
-		0BC16F7A1CAA5424005A25F4 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC16F791CAA5424005A25F4 /* lock.png */; };
 		0BC4071A1D56C4A0009DD113 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC407191D56C4A0009DD113 /* JoinViewController.swift */; };
 		0BC4071C1D56C6D8009DD113 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4071B1D56C6D8009DD113 /* JoinView.swift */; };
 		0BC407221D56D199009DD113 /* JoinedUserCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC407211D56D199009DD113 /* JoinedUserCollectionView.swift */; };
@@ -209,7 +213,7 @@
 		0B1370171D6805A700AF1103 /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		0B13701A1D6805BC00AF1103 /* CalendarTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTopView.swift; sourceTree = "<group>"; };
 		0B13701C1D680C0A00AF1103 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
-		0B141D6B1C290DBB0029E6EA /* RecordTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableView.swift; sourceTree = "<group>"; };
+		0B141D6B1C290DBB0029E6EA /* RankingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableView.swift; sourceTree = "<group>"; };
 		0B141D6D1C2911360029E6EA /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		0B141D6E1C2911360029E6EA /* RankingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingTableViewCell.xib; sourceTree = "<group>"; };
 		0B141D7B1C2A63760029E6EA /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = ../../../Downloads/menu.png; sourceTree = "<group>"; };
@@ -241,7 +245,6 @@
 		0B27EE8A1D5214F700F0F67C /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		0B27EE8B1D5214F700F0F67C /* ColorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorTableViewCell.xib; sourceTree = "<group>"; };
 		0B27EE8E1D52150C00F0F67C /* defaultUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultUser.png; sourceTree = "<group>"; };
-		0B2AD9321D6AE5060052AE4D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		0B27EE8F1D52150C00F0F67C /* selectCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectCircle.png; sourceTree = "<group>"; };
 		0B27EE921D52151F00F0F67C /* SelectedUserCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedUserCollectionView.swift; sourceTree = "<group>"; };
 		0B27EE931D52151F00F0F67C /* SelectedUserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedUserCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -260,27 +263,19 @@
 		0B27EEA71D52157600F0F67C /* UserInvitationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInvitationViewController.swift; sourceTree = "<group>"; };
 		0B27EEB01D5216CF00F0F67C /* cancel_pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel_pink.png; sourceTree = "<group>"; };
 		0B27EEB91D5225C400F0F67C /* UINavigationItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Extension.swift"; sourceTree = "<group>"; };
+		0B2AD9321D6AE5060052AE4D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		0B2AD9351D6D5F730052AE4D /* CalendarVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVM.swift; sourceTree = "<group>"; };
 		0B2AD9371D6D5F8B0052AE4D /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		0B2AD9391D6D601C0052AE4D /* CalendarCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionView.swift; sourceTree = "<group>"; };
 		0B2AD93B1D6D64090052AE4D /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		0B2B412C1C4A7C2C0031F9C2 /* ちっちさんImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ちっちさんImage.png"; sourceTree = "<group>"; };
 		0B3616631D599CC7006EEA19 /* triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle.png; sourceTree = "<group>"; };
 		0B37F8191C2D156E00D6AE82 /* UserEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserEdit.storyboard; sourceTree = "<group>"; };
-		0B37F81F1C2DF6D400D6AE82 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0B37F8211C2DFA5700D6AE82 /* Icon-83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-83.5@2x.png"; path = "../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/535A33B0-4612-4B90-B463-519EA9A77103/????????? 2015-1 2-26 7.17.02/ios/AppIcon.appiconset/Icon-83.5@2x.png"; sourceTree = "<group>"; };
 		0B656A251C219E210024D6F3 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		0B656A271C219E330024D6F3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0B656A291C219E400024D6F3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		0B656A2B1C21A96A0024D6F3 /* CreateUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserTableViewCell.swift; sourceTree = "<group>"; };
-		0B656A2C1C21A96A0024D6F3 /* CreateUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateUserTableViewCell.xib; sourceTree = "<group>"; };
-		0B656A371C21B3E20024D6F3 /* NextBtnTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextBtnTableViewCell.swift; sourceTree = "<group>"; };
-		0B656A381C21B3E20024D6F3 /* NextBtnTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NextBtnTableViewCell.xib; sourceTree = "<group>"; };
-		0B656A3D1C21B6410024D6F3 /* OrViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrViewTableViewCell.swift; sourceTree = "<group>"; };
-		0B656A3E1C21B6410024D6F3 /* OrViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrViewTableViewCell.xib; sourceTree = "<group>"; };
 		0B6A927A1BEF3BF2009A7B2E /* CalendarApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B6A927D1BEF3BF2009A7B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0B6A927F1BEF3BF2009A7B2E /* OldCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldCalendarViewController.swift; sourceTree = "<group>"; };
 		0B6A92821BEF3BF2009A7B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0B6A92841BEF3BF2009A7B2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B6A92871BEF3BF2009A7B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -291,19 +286,34 @@
 		0B6A92991BEF3BF3009A7B2E /* CalendarAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B6A929D1BEF3BF3009A7B2E /* CalendarAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAppUITests.swift; sourceTree = "<group>"; };
 		0B6A929F1BEF3BF3009A7B2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0B7586971C21EC6100816379 /* FaceBookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceBookTableViewCell.swift; sourceTree = "<group>"; };
-		0B7586981C21EC6100816379 /* FaceBookTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaceBookTableViewCell.xib; sourceTree = "<group>"; };
 		0B7586A31C224E8A00816379 /* UserImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserImageTableViewCell.swift; sourceTree = "<group>"; };
 		0B7586A41C224E8A00816379 /* UserImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserImageTableViewCell.xib; sourceTree = "<group>"; };
 		0B7586AE1C22A92F00816379 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0B7586B01C22AFF500816379 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		0B7586B21C22DFF200816379 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		0B853B2C1D7011E1007AFC84 /* topImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topImage.png; sourceTree = "<group>"; };
+		0B853B2E1D70134D007AFC84 /* facebook-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-white.png"; sourceTree = "<group>"; };
+		0B853B2F1D70134D007AFC84 /* mail-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mail-white.png"; sourceTree = "<group>"; };
+		0B853B321D701A0E007AFC84 /* mail-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mail-black.png"; sourceTree = "<group>"; };
+		0B853B331D701A0E007AFC84 /* user-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-black.png"; sourceTree = "<group>"; };
+		0B853B341D701A0E007AFC84 /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
+		0B853B381D701D35007AFC84 /* MailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailTableViewCell.swift; sourceTree = "<group>"; };
+		0B853B391D701D35007AFC84 /* MailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MailTableViewCell.xib; sourceTree = "<group>"; };
+		0B853B3C1D701E44007AFC84 /* PasswordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordTableViewCell.swift; sourceTree = "<group>"; };
+		0B853B3D1D701E44007AFC84 /* PasswordTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PasswordTableViewCell.xib; sourceTree = "<group>"; };
+		0B853B401D701F44007AFC84 /* SignUpVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
+		0B853B421D701F59007AFC84 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		0B853B441D705E52007AFC84 /* LoginVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
+		0B853B461D705E6E007AFC84 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		0B853B481D708F9A007AFC84 /* Memo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		0B87419B1D4B6C9000DB76F0 /* approval.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = approval.png; sourceTree = "<group>"; };
 		0B89B2E01D52FBDB00864961 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		0B89B2E21D52FBF900864961 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		0B89B2EC1D53097C00864961 /* AlertVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertVM.swift; sourceTree = "<group>"; };
 		0B89B2EE1D5309DB00864961 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		0B89B2EF1D5309DB00864961 /* AlertTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertTableViewCell.xib; sourceTree = "<group>"; };
+		0B8B01AD1D712C4F0036012F /* multiply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiply.png; sourceTree = "<group>"; };
+		0B8B01B11D7130590036012F /* plus-filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-filled.png"; sourceTree = "<group>"; };
 		0BA523771C1F187C00133342 /* Gift-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gift-32.png"; sourceTree = "<group>"; };
 		0BA523781C1F187C00133342 /* Pushups-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pushups-32.png"; sourceTree = "<group>"; };
 		0BA523791C1F187C00133342 /* Wakeup Hill on Stairs Filled-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wakeup Hill on Stairs Filled-32.png"; sourceTree = "<group>"; };
@@ -330,8 +340,6 @@
 		0BC16F6F1CAA5060005A25F4 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		0BC16F711CAA51B7005A25F4 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		0BC16F741CAA53B9005A25F4 /* Photos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Photos.png; sourceTree = "<group>"; };
-		0BC16F771CAA5416005A25F4 /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
-		0BC16F791CAA5424005A25F4 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		0BC407191D56C4A0009DD113 /* JoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		0BC4071B1D56C6D8009DD113 /* JoinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		0BC407211D56D199009DD113 /* JoinedUserCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinedUserCollectionView.swift; sourceTree = "<group>"; };
@@ -498,6 +506,7 @@
 		0B25838D1D6D6851006559E2 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				0B8B01AD1D712C4F0036012F /* multiply.png */,
 				0B2583971D6DEAD2006559E2 /* audioWave.png */,
 				0B2583981D6DEAD2006559E2 /* audioWaveFilled.png */,
 				0B2583991D6DEAD2006559E2 /* calendar.png */,
@@ -531,9 +540,10 @@
 		0B25838F1D6D68CE006559E2 /* LoginSignUp */ = {
 			isa = PBXGroup;
 			children = (
+				0B853B321D701A0E007AFC84 /* mail-black.png */,
+				0B853B331D701A0E007AFC84 /* user-black.png */,
+				0B853B341D701A0E007AFC84 /* key.png */,
 				0BC16F6F1CAA5060005A25F4 /* user.png */,
-				0BC16F791CAA5424005A25F4 /* lock.png */,
-				0BC16F771CAA5416005A25F4 /* mail.png */,
 				0BC16F741CAA53B9005A25F4 /* Photos.png */,
 			);
 			name = LoginSignUp;
@@ -542,10 +552,34 @@
 		0B2583901D6D6944006559E2 /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				0B2B412C1C4A7C2C0031F9C2 /* ちっちさんImage.png */,
+				0B853B2E1D70134D007AFC84 /* facebook-white.png */,
+				0B853B2F1D70134D007AFC84 /* mail-white.png */,
+				0B853B2C1D7011E1007AFC84 /* topImage.png */,
 				0B37F8211C2DFA5700D6AE82 /* Icon-83.5@2x.png */,
 			);
 			name = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		0B2583A31D6EC032006559E2 /* RankingView */ = {
+			isa = PBXGroup;
+			children = (
+				0B141D6B1C290DBB0029E6EA /* RankingTableView.swift */,
+				0B141D6D1C2911360029E6EA /* RankingTableViewCell.swift */,
+				0B141D6E1C2911360029E6EA /* RankingTableViewCell.xib */,
+			);
+			name = RankingView;
+			sourceTree = "<group>";
+		};
+		0B2583A61D6EC0F8006559E2 /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				0B2AD9351D6D5F730052AE4D /* CalendarVM.swift */,
+				0B2AD9371D6D5F8B0052AE4D /* CalendarView.swift */,
+				0B2AD9391D6D601C0052AE4D /* CalendarCollectionView.swift */,
+				0BE80B041C00381400655517 /* CalendarCollectionViewCell.swift */,
+				0B2583951D6DCBF1006559E2 /* CalendarCollectionReusableView.swift */,
+			);
+			name = CalendarView;
 			sourceTree = "<group>";
 		};
 		0B27EE861D52146F00F0F67C /* Create Calendar */ = {
@@ -589,6 +623,7 @@
 			children = (
 				0BA75E271D5619470073F1AB /* alert.png */,
 				0BC16F711CAA51B7005A25F4 /* plus.png */,
+				0B8B01B11D7130590036012F /* plus-filled.png */,
 				0B141D7B1C2A63760029E6EA /* menu.png */,
 			);
 			name = NaviBar;
@@ -597,13 +632,9 @@
 		0B2AD9341D6D5F460052AE4D /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				0B2AD9351D6D5F730052AE4D /* CalendarVM.swift */,
-				0B2AD9371D6D5F8B0052AE4D /* CalendarView.swift */,
-				0B2AD9391D6D601C0052AE4D /* CalendarCollectionView.swift */,
-				0BE80B041C00381400655517 /* CalendarCollectionViewCell.swift */,
-				0B2583951D6DCBF1006559E2 /* CalendarCollectionReusableView.swift */,
+				0BBD075C1D5B61C400EE4645 /* Calendar.storyboard */,
 				0B2AD93B1D6D64090052AE4D /* CalendarViewController.swift */,
-				0B6A927F1BEF3BF2009A7B2E /* OldCalendarViewController.swift */,
+				0B2583A61D6EC0F8006559E2 /* CalendarView */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -611,12 +642,14 @@
 		0B656A411C21C98C0024D6F3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0B6A92811BEF3BF2009A7B2E /* Main.storyboard */,
 				0B656A251C219E210024D6F3 /* TopViewController.swift */,
 				0BBD075A1D5B5D7400EE4645 /* UserSession.storyboard */,
 				0B75869D1C22477000816379 /* Login */,
 				0B656A421C21C9940024D6F3 /* SignUp */,
+				0B13700D1D68051A00AF1103 /* CalendarTop */,
 				0B75869E1C22478600816379 /* Calendar */,
-				0BBD07621D5B65F700EE4645 /* Edit */,
+				0BBD07621D5B65F700EE4645 /* CalendarEdit */,
 				0B89B2DE1D52FBA200864961 /* Alert */,
 				0B23F0481D2FB47B00BAA63E /* Create Calendar */,
 			);
@@ -626,6 +659,7 @@
 		0B656A421C21C9940024D6F3 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				0B853B401D701F44007AFC84 /* SignUpVM.swift */,
 				0B656A271C219E330024D6F3 /* SignUpViewController.swift */,
 				0B656A431C21C99B0024D6F3 /* Views */,
 			);
@@ -635,16 +669,13 @@
 		0B656A431C21C99B0024D6F3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0B656A2B1C21A96A0024D6F3 /* CreateUserTableViewCell.swift */,
-				0B656A2C1C21A96A0024D6F3 /* CreateUserTableViewCell.xib */,
-				0B656A371C21B3E20024D6F3 /* NextBtnTableViewCell.swift */,
-				0B656A381C21B3E20024D6F3 /* NextBtnTableViewCell.xib */,
-				0B656A3D1C21B6410024D6F3 /* OrViewTableViewCell.swift */,
-				0B656A3E1C21B6410024D6F3 /* OrViewTableViewCell.xib */,
-				0B7586971C21EC6100816379 /* FaceBookTableViewCell.swift */,
-				0B7586981C21EC6100816379 /* FaceBookTableViewCell.xib */,
+				0B853B421D701F59007AFC84 /* SignUpView.swift */,
 				0B7586A31C224E8A00816379 /* UserImageTableViewCell.swift */,
 				0B7586A41C224E8A00816379 /* UserImageTableViewCell.xib */,
+				0B853B381D701D35007AFC84 /* MailTableViewCell.swift */,
+				0B853B391D701D35007AFC84 /* MailTableViewCell.xib */,
+				0B853B3C1D701E44007AFC84 /* PasswordTableViewCell.swift */,
+				0B853B3D1D701E44007AFC84 /* PasswordTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -707,6 +738,8 @@
 		0B75869D1C22477000816379 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				0B853B441D705E52007AFC84 /* LoginVM.swift */,
+				0B853B461D705E6E007AFC84 /* LoginView.swift */,
 				0B656A291C219E400024D6F3 /* LoginViewController.swift */,
 			);
 			name = Login;
@@ -715,12 +748,8 @@
 		0B75869E1C22478600816379 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				0BBD075C1D5B61C400EE4645 /* Calendar.storyboard */,
-				0B13700D1D68051A00AF1103 /* CalendarTop */,
 				0B2AD9341D6D5F460052AE4D /* Calendar */,
-				0B141D6B1C290DBB0029E6EA /* RecordTableView.swift */,
-				0B141D6D1C2911360029E6EA /* RankingTableViewCell.swift */,
-				0B141D6E1C2911360029E6EA /* RankingTableViewCell.xib */,
+				0B2583A31D6EC032006559E2 /* RankingView */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -741,6 +770,7 @@
 				0B0057341D24E4E1000A8472 /* StampedDateManager.swift */,
 				0B0057371D256390000A8472 /* StampedDate.swift */,
 				0B2AD9321D6AE5060052AE4D /* API.swift */,
+				0B853B481D708F9A007AFC84 /* Memo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -754,7 +784,7 @@
 			name = Alert;
 			sourceTree = "<group>";
 		};
-		0BBD07621D5B65F700EE4645 /* Edit */ = {
+		0BBD07621D5B65F700EE4645 /* CalendarEdit */ = {
 			isa = PBXGroup;
 			children = (
 				0BBD07631D5B661E00EE4645 /* EditCalendarVM.swift */,
@@ -763,7 +793,7 @@
 				0BBD07671D5B671100EE4645 /* EditCalendar.storyboard */,
 				0BBD076B1D5C666F00EE4645 /* EditUsers */,
 			);
-			name = Edit;
+			name = CalendarEdit;
 			sourceTree = "<group>";
 		};
 		0BBD076B1D5C666F00EE4645 /* EditUsers */ = {
@@ -824,9 +854,7 @@
 			isa = PBXGroup;
 			children = (
 				0B6A927D1BEF3BF2009A7B2E /* AppDelegate.swift */,
-				0B6A92811BEF3BF2009A7B2E /* Main.storyboard */,
 				0B6A92861BEF3BF2009A7B2E /* LaunchScreen.storyboard */,
-				0B37F81F1C2DF6D400D6AE82 /* Launch Screen.storyboard */,
 				0B6A92891BEF3BF2009A7B2E /* Info.plist */,
 				0B6A92841BEF3BF2009A7B2E /* Assets.xcassets */,
 				0B37F8191C2D156E00D6AE82 /* UserEdit.storyboard */,
@@ -971,23 +999,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B8B01AE1D712C4F0036012F /* multiply.png in Resources */,
 				0BCFBF2A1D4CDAAE0041FB4A /* TitleTableViewCell.xib in Resources */,
-				0B656A2E1C21A96A0024D6F3 /* CreateUserTableViewCell.xib in Resources */,
 				0BA523901C1F187C00133342 /* Edit Filled-32.png in Resources */,
 				0B141D7E1C2A63760029E6EA /* menu.png in Resources */,
 				0BA5238B1C1F187C00133342 /* Panda Filled-32.png in Resources */,
 				0B0E59BA1C15569500522111 /* ハート.jpg in Resources */,
+				0B853B361D701A0E007AFC84 /* user-black.png in Resources */,
+				0B853B311D70134D007AFC84 /* mail-white.png in Resources */,
 				0B27EE9B1D52151F00F0F67C /* SelectUserTableViewCell.xib in Resources */,
 				0BCD96CB1C1E8C0D007E9B92 /* StampCollectionViewCell.xib in Resources */,
 				0B6A92881BEF3BF2009A7B2E /* LaunchScreen.storyboard in Resources */,
 				0B2583A01D6DEAD2006559E2 /* calendarFilled.png in Resources */,
 				0BDA58981D392C2400D1A81A /* CancelButtonHeaderView.xib in Resources */,
+				0B853B3F1D701E44007AFC84 /* PasswordTableViewCell.xib in Resources */,
 				0BA75E281D5619470073F1AB /* alert.png in Resources */,
 				0BA5238A1C1F187C00133342 /* Hair Dryer-32.png in Resources */,
 				0B87419C1D4B6C9000DB76F0 /* approval.png in Resources */,
 				0BC4072B1D5872A1009DD113 /* HeaderCollectionReusableView.xib in Resources */,
 				0B27EEB11D5216CF00F0F67C /* cancel_pink.png in Resources */,
-				0BC16F7A1CAA5424005A25F4 /* lock.png in Resources */,
 				0B23F06B1D324FD300BAA63E /* Disclosure Indicator.png in Resources */,
 				0B7586A61C224E8A00816379 /* UserImageTableViewCell.xib in Resources */,
 				0BA523881C1F187C00133342 /* Yoga Filled-32.png in Resources */,
@@ -995,6 +1025,8 @@
 				0B23F0691D31F59A00BAA63E /* camera.png in Resources */,
 				0B2583A11D6DEAD2006559E2 /* memo.png in Resources */,
 				0B13701D1D680C0A00AF1103 /* settings.png in Resources */,
+				0B853B3B1D701D35007AFC84 /* MailTableViewCell.xib in Resources */,
+				0B853B371D701A0E007AFC84 /* key.png in Resources */,
 				0B23F05B1D31F1BD00BAA63E /* StampImageTableViewCell.xib in Resources */,
 				0B141D701C2911360029E6EA /* RankingTableViewCell.xib in Resources */,
 				0BED60251C1AA02100022AA5 /* checked.png in Resources */,
@@ -1003,20 +1035,20 @@
 				0B23F04A1D2FBC5400BAA63E /* CreateCalendar.storyboard in Resources */,
 				0BC16F761CAA53B9005A25F4 /* Photos.png in Resources */,
 				0BBD075B1D5B5D7400EE4645 /* UserSession.storyboard in Resources */,
-				0B656A3A1C21B3E20024D6F3 /* NextBtnTableViewCell.xib in Resources */,
 				0BA523891C1F187C00133342 /* Santas Hat Filled-32.png in Resources */,
-				0B75869A1C21EC6100816379 /* FaceBookTableViewCell.xib in Resources */,
 				0B2583A21D6DEAD2006559E2 /* memoFilled.png in Resources */,
 				0B89B2F11D5309DB00864961 /* AlertTableViewCell.xib in Resources */,
 				0BBD07681D5B671100EE4645 /* EditCalendar.storyboard in Resources */,
 				0BBD075D1D5B61C500EE4645 /* Calendar.storyboard in Resources */,
 				0B6A92851BEF3BF2009A7B2E /* Assets.xcassets in Resources */,
+				0B853B301D70134D007AFC84 /* facebook-white.png in Resources */,
 				0BA523911C1F187C00133342 /* Sports Mode-32.png in Resources */,
 				0BA523861C1F187C00133342 /* Pushups-32.png in Resources */,
+				0B8B01B21D7130590036012F /* plus-filled.png in Resources */,
 				0BBD07711D5C670E00EE4645 /* EditUsersTableViewCell.xib in Resources */,
 				0B27EE8D1D5214F700F0F67C /* ColorTableViewCell.xib in Resources */,
-				0B2B412D1C4A7C2C0031F9C2 /* ちっちさんImage.png in Resources */,
 				0B23F0651D31F4A800BAA63E /* color.png in Resources */,
+				0B853B351D701A0E007AFC84 /* mail-black.png in Resources */,
 				0B37F8221C2DFA5700D6AE82 /* Icon-83.5@2x.png in Resources */,
 				0B23F06F1D361ADE00BAA63E /* Cancel.png in Resources */,
 				0B27EE911D52150C00F0F67C /* selectCircle.png in Resources */,
@@ -1030,14 +1062,12 @@
 				0B25839D1D6DEAD2006559E2 /* audioWave.png in Resources */,
 				0B23F0661D31F4A800BAA63E /* pen.png in Resources */,
 				0B27EE9D1D52153A00F0F67C /* unSelctCircle.png in Resources */,
-				0BC16F781CAA5416005A25F4 /* mail.png in Resources */,
 				0B25839F1D6DEAD2006559E2 /* calendar.png in Resources */,
-				0B656A401C21B6410024D6F3 /* OrViewTableViewCell.xib in Resources */,
-				0B37F8201C2DF6D400D6AE82 /* Launch Screen.storyboard in Resources */,
 				0B25839E1D6DEAD2006559E2 /* audioWaveFilled.png in Resources */,
 				0B6A92831BEF3BF2009A7B2E /* Main.storyboard in Resources */,
 				0BA523851C1F187C00133342 /* Gift-32.png in Resources */,
 				0B1370151D68059B00AF1103 /* CalendarTableViewCell.xib in Resources */,
+				0B853B2D1D7011E1007AFC84 /* topImage.png in Resources */,
 				0B27EEAA1D52157600F0F67C /* UserInvitationCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1121,49 +1151,49 @@
 				0B27EE8C1D5214F700F0F67C /* ColorTableViewCell.swift in Sources */,
 				0B0057381D256390000A8472 /* StampedDate.swift in Sources */,
 				0B13700F1D68054D00AF1103 /* CalendarTopVM.swift in Sources */,
+				0B853B411D701F44007AFC84 /* SignUpVM.swift in Sources */,
 				0B7586B11C22AFF500816379 /* UIImage+Extension.swift in Sources */,
 				0B89B2E31D52FBF900864961 /* AlertView.swift in Sources */,
 				0BBD07661D5B664A00EE4645 /* EditCalendarView.swift in Sources */,
 				0B27EEA91D52157600F0F67C /* UserInvitationCollectionViewCell.swift in Sources */,
-				0B656A3F1C21B6410024D6F3 /* OrViewTableViewCell.swift in Sources */,
 				0B2AD9361D6D5F730052AE4D /* CalendarVM.swift in Sources */,
 				0BBD07611D5B65F100EE4645 /* EditCalendarViewController.swift in Sources */,
 				0B1370111D68056000AF1103 /* CalendarTopViewController.swift in Sources */,
+				0B853B431D701F59007AFC84 /* SignUpView.swift in Sources */,
 				0BCD96CA1C1E8C0D007E9B92 /* StampCollectionViewCell.swift in Sources */,
 				0BC4071A1D56C4A0009DD113 /* JoinViewController.swift in Sources */,
+				0B853B3A1D701D35007AFC84 /* MailTableViewCell.swift in Sources */,
 				0B27EE9A1D52151F00F0F67C /* SelectUserTableViewCell.swift in Sources */,
 				0B27EE971D52151F00F0F67C /* SelectedUserCollectionView.swift in Sources */,
 				0BBD07641D5B661E00EE4645 /* EditCalendarVM.swift in Sources */,
-				0B7586991C21EC6100816379 /* FaceBookTableViewCell.swift in Sources */,
 				0B656A281C219E330024D6F3 /* SignUpViewController.swift in Sources */,
 				0BBD076D1D5C668D00EE4645 /* EditUsersVM.swift in Sources */,
 				0B7586AF1C22A92F00816379 /* User.swift in Sources */,
 				0BC4071C1D56C6D8009DD113 /* JoinView.swift in Sources */,
 				0BBD07701D5C670E00EE4645 /* EditUsersTableViewCell.swift in Sources */,
-				0B141D6C1C290DBB0029E6EA /* RecordTableView.swift in Sources */,
+				0B141D6C1C290DBB0029E6EA /* RankingTableView.swift in Sources */,
 				0B27EE991D52151F00F0F67C /* SelectedUserCollectionVM.swift in Sources */,
 				0B2338431D41DCA00021A184 /* UIStroryBoard+Extension.swift in Sources */,
 				0B27EEAE1D52157600F0F67C /* UserInvitationView.swift in Sources */,
 				0B2AD9381D6D5F8B0052AE4D /* CalendarView.swift in Sources */,
 				0BA75E261D56153C0073F1AB /* UITextView+Extenson.swift in Sources */,
 				0BC407241D56E4BD009DD113 /* JoinVM.swift in Sources */,
+				0B853B491D708F9A007AFC84 /* Memo.swift in Sources */,
+				0B853B471D705E6E007AFC84 /* LoginView.swift in Sources */,
 				0BBD076A1D5C615000EE4645 /* EditUsersViewController.swift in Sources */,
 				0B27EE9F1D52154400F0F67C /* UserInvitaionVM.swift in Sources */,
-				0B6A92801BEF3BF2009A7B2E /* OldCalendarViewController.swift in Sources */,
 				0BD3453F1C2651C70056C44A /* UIButton+Extension.swift in Sources */,
 				0B0057311D221AB3000A8472 /* Settings.swift in Sources */,
 				0B7586B31C22DFF200816379 /* CurrentUser.swift in Sources */,
 				0B13701B1D6805BC00AF1103 /* CalendarTopView.swift in Sources */,
 				0B89B2F01D5309DB00864961 /* AlertTableViewCell.swift in Sources */,
 				0BE80B051C00381400655517 /* CalendarCollectionViewCell.swift in Sources */,
-				0B656A2D1C21A96A0024D6F3 /* CreateUserTableViewCell.swift in Sources */,
 				0B23F0501D2FED8000BAA63E /* CreateCalendarView.swift in Sources */,
 				0BCFBF261D4C997E0041FB4A /* UIAlertController+Extension.swift in Sources */,
 				0B6A927E1BEF3BF2009A7B2E /* AppDelegate.swift in Sources */,
 				0B656A261C219E210024D6F3 /* TopViewController.swift in Sources */,
 				0B27EEAC1D52157600F0F67C /* UserInvitationTableViewCell.swift in Sources */,
 				0B2199061D099ACF008FD0D4 /* CalendarThemeColor.swift in Sources */,
-				0B656A391C21B3E20024D6F3 /* NextBtnTableViewCell.swift in Sources */,
 				0BC4072A1D5872A1009DD113 /* HeaderCollectionReusableView.swift in Sources */,
 				0BBD07731D5D86B400EE4645 /* EditUserView.swift in Sources */,
 				0B27EE981D52151F00F0F67C /* SelectedUserCollectionViewCell.swift in Sources */,
@@ -1174,6 +1204,7 @@
 				0B23F04E1D2FE81000BAA63E /* CreateCalendarVM.swift in Sources */,
 				0B27EEAF1D52157600F0F67C /* UserInvitationViewController.swift in Sources */,
 				0B23C06D1D65A404005C4391 /* NSString+Extension.swift in Sources */,
+				0B853B3E1D701E44007AFC84 /* PasswordTableViewCell.swift in Sources */,
 				0BE7F6351C1FF4B500DD76B5 /* ColorTableViewController.swift in Sources */,
 				0B27EEA81D52157600F0F67C /* UserInvitationCollectionView.swift in Sources */,
 				0B2199081D099B1F008FD0D4 /* CalendarThemeColors.swift in Sources */,
@@ -1188,6 +1219,7 @@
 				0BCFBF291D4CDAAE0041FB4A /* TitleTableViewCell.swift in Sources */,
 				0BC407221D56D199009DD113 /* JoinedUserCollectionView.swift in Sources */,
 				0BD173751C09CEEB006873CD /* DateManager.swift in Sources */,
+				0B853B451D705E52007AFC84 /* LoginVM.swift in Sources */,
 				0B0DD7121C05823900BF9E7F /* NSDate+Extension.swift in Sources */,
 				0BDA58971D392C2300D1A81A /* CancelButtonHeaderView.swift in Sources */,
 				0B656A2A1C219E400024D6F3 /* LoginViewController.swift in Sources */,

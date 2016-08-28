@@ -11,19 +11,31 @@ import UIKit
 class UserImageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var libraryBtn: UIButton!
-    @IBOutlet weak var takePhotoBtn: UIButton!
+    @IBOutlet weak var userNameTextField: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        setUserImageView()
+    }
+    
+    func fillWith(selectedImage: UIImage, name: String) {
+        userImageView.image = selectedImage
+        userNameTextField.text = name
+    }
+    
+    func tappedUserImage() {
+        let notification = NSNotificationCenter.defaultCenter()
+        notification.postNotificationName("tappedUserImageNotification", object: nil)
+    }
+    
+    private func setUserImageView() {
+        userImageView.layer.cornerRadius = userImageView.frame.width / 2
+        userImageView.layer.masksToBounds = true
+        userImageView.userInteractionEnabled = true
+        let tappedUserImageGesture = UITapGestureRecognizer(target: self, action: #selector(self.tappedUserImage))
+        userImageView.addGestureRecognizer(tappedUserImageGesture)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        
-
-        // Configure the view for the selected state
-    }
     
 }
