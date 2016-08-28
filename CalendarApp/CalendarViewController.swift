@@ -147,6 +147,12 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate {
 //            
 //        }
     }
+    private func setNavigationBar() {
+        self.navigationController?.hidesNavigationBarHairline = true
+        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barTintColor = mView.calendarColor
 
+    }
 
 }

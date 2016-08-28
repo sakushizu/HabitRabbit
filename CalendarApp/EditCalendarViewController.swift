@@ -47,6 +47,10 @@ class EditCalendarViewController: UIViewController, UITableViewDelegate, UINavig
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        setNavigationBar()
+    }
+    
         
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let rowType = RowType(rawValue: indexPath.row)!
@@ -279,6 +283,16 @@ class EditCalendarViewController: UIViewController, UITableViewDelegate, UINavig
     
     private func setNabiBarItem() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.tappedCancelButton))
+    }
+    
+    private func setNavigationBar() {
+        self.navigationController?.hidesNavigationBarHairline = true
+        self.navigationController?.navigationBar.tintColor = UIColor.mainColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.mainColor()]
+        navigationItem.title = "Edit Calendar"
+        let backButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backButtonItem
     }
     
 }

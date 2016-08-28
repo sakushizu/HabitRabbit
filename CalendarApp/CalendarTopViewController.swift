@@ -9,6 +9,8 @@
 import UIKit
 import Bond
 import BBBadgeBarButtonItem
+import ChameleonFramework
+
 
 enum CalendarTopCellType: Int {
     case User = 0
@@ -33,8 +35,6 @@ class CalendarTopViewController: UIViewController, UITableViewDelegate {
         mView.tableView.dataSource = mModel
         mView.tableView.delegate = self
         
-        setNavigationBar()
-        
         CurrentUser.sharedInstance.user.observe { user in
             self.mView.tableView.reloadData()
         }
@@ -49,6 +49,10 @@ class CalendarTopViewController: UIViewController, UITableViewDelegate {
             }
         }
 
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        setNavigationBar()
     }
     
     // MARK - TableViewDelegate
@@ -115,15 +119,20 @@ class CalendarTopViewController: UIViewController, UITableViewDelegate {
     
     private func setNavigationBar() {
         
+        self.navigationController?.hidesNavigationBarHairline = true
         self.navigationController?.navigationBar.tintColor = UIColor.mainColor()
-        let plusBarButton = UIBarButtonItem(image: UIImage(named: "plus"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.tappedPlusButton))
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        
+        let plusBarButton = UIBarButtonItem(image: UIImage(named: "plus-filled")!.imageWithRenderingMode(.AlwaysTemplate), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.tappedPlusButton))
         let alertBarButton = createAlertBarButton()
         let rightItems = [plusBarButton, alertBarButton]
         self.navigationItem.setRightBarButtonItems(rightItems, animated: true)
         self.navigationItem.title = "Home"
-        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.mainColor()]//色変わらない
-        self.navigationController!.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.mainFontJa(17)]
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.mainColor()]
         self.alertViewController.alertIconCentorX = alertBarButton.valueForKey("view")?.center.x
+        
+        let backButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backButtonItem
     }
     
     private func createAlertBarButton() -> UIBarButtonItem {

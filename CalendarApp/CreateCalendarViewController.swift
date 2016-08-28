@@ -266,4 +266,15 @@ class CreateCalendarViewController: UIViewController, UITableViewDelegate, UINav
         return userIds
     }
     
+    private func setNavigationBar() {
+        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.hidesNavigationBarHairline = true
+        self.navigationController?.navigationBar.tintColor = UIColor.mainColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        navigationItem.title = "Create Calendar"
+        let backButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backButtonItem
+    }
+    
+    
 }

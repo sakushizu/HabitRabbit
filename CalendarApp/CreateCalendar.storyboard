@@ -7,7 +7,7 @@
         <!--Create Calendar View Controller-->
         <scene sceneID="ten-hM-aPt">
             <objects>
-                <viewController storyboardIdentifier="createCalendarView" automaticallyAdjustsScrollViewInsets="NO" id="jRu-8r-fru" customClass="CreateCalendarViewController" customModule="CalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="createCalendarView" id="jRu-8r-fru" customClass="CreateCalendarViewController" customModule="CalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zQM-5t-soB"/>
                         <viewControllerLayoutGuide type="bottom" id="hAw-K1-2wh"/>
@@ -26,19 +26,23 @@
                                 <state key="normal" title="Create"/>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8gp-sz-JeD">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="349"/>
+                                <rect key="frame" x="0.0" y="9" width="375" height="415"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="375" id="Heb-Ah-qNq"/>
-                                    <constraint firstAttribute="height" constant="349" id="Je7-vj-vjA"/>
+                                    <constraint firstAttribute="height" constant="415" id="Je7-vj-vjA"/>
                                 </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="4x1-RQ-cpK" secondAttribute="trailing" constant="17" id="2xH-LN-J5s"/>
+                            <constraint firstItem="8gp-sz-JeD" firstAttribute="top" secondItem="zQM-5t-soB" secondAttribute="bottom" constant="-64" id="31e-co-qd8"/>
                             <constraint firstItem="hAw-K1-2wh" firstAttribute="top" secondItem="4x1-RQ-cpK" secondAttribute="bottom" constant="185" id="6zj-EX-kvy"/>
+                            <constraint firstItem="8gp-sz-JeD" firstAttribute="top" secondItem="zQM-5t-soB" secondAttribute="bottom" constant="8" symbolic="YES" id="F0q-3k-r2W"/>
+                            <constraint firstItem="8gp-sz-JeD" firstAttribute="top" secondItem="zfQ-cy-H3k" secondAttribute="top" id="F75-Ck-BbV"/>
                             <constraint firstItem="4x1-RQ-cpK" firstAttribute="top" secondItem="8gp-sz-JeD" secondAttribute="bottom" constant="77" id="Hew-N3-vGH"/>
+                            <constraint firstItem="8gp-sz-JeD" firstAttribute="top" secondItem="zQM-5t-soB" secondAttribute="bottom" constant="-55" id="M9c-7o-T1t"/>
                             <constraint firstItem="hAw-K1-2wh" firstAttribute="top" secondItem="8gp-sz-JeD" secondAttribute="bottom" constant="312" id="MkG-N6-ZJA"/>
                             <constraint firstItem="4x1-RQ-cpK" firstAttribute="leading" secondItem="zfQ-cy-H3k" secondAttribute="leading" constant="17" id="ana-MV-VBB"/>
                             <constraint firstAttribute="trailing" secondItem="8gp-sz-JeD" secondAttribute="trailing" id="flC-5h-ujZ"/>
@@ -47,6 +51,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="31e-co-qd8"/>
+                                <exclude reference="F0q-3k-r2W"/>
+                                <exclude reference="F75-Ck-BbV"/>
+                                <exclude reference="oUS-fl-uZa"/>
                                 <exclude reference="Hew-N3-vGH"/>
                                 <exclude reference="MkG-N6-ZJA"/>
                             </mask>
@@ -56,6 +64,7 @@
                             <outlet property="tableView" destination="8gp-sz-JeD" id="rTF-IL-Dvn"/>
                         </connections>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4o7-Qg-w3t" userLabel="First Responder" sceneMemberID="firstResponder"/>

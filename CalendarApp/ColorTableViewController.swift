@@ -46,6 +46,10 @@ class ColorTableViewController: UITableViewController {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        setNavigationBar()
+    }
+    
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
@@ -81,6 +85,15 @@ class ColorTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
+    }
+    
+    private func setNavigationBar() {
+        self.navigationController?.hidesNavigationBarHairline = true
+        self.navigationController?.navigationBar.tintColor = UIColor.mainColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.mainColor()]
+        navigationItem.title = "Select Color"
+        
     }
 
 }

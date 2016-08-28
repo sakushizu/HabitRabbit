@@ -35,6 +35,10 @@ class EditUsersViewController: UIViewController, UITableViewDelegate {
 
     }
     
+    override func viewWillAppear(animated: Bool) {
+        setNavigationBar()
+    }
+    
     // MARK - TableViewDelegate
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -124,14 +128,14 @@ class EditUsersViewController: UIViewController, UITableViewDelegate {
     
     private func createHeaderView() -> UIView {
         let header = UIView()
-        header.backgroundColor = UIColor.subColor()
+        header.backgroundColor = UIColor.baseGrayColor()
         return header
     }
     
     private func createHeaderLabel(titleText: String) -> UILabel {
         let label = UILabel()
         label.text = titleText
-        label.font = UIFont(name: "HelveticaNeue-Light", size: 14)
+        label.font = UIFont.mainFontJa(14)
         label.sizeToFit()
         label.center.y = 20
         label.frame.origin.x = 20
@@ -156,7 +160,16 @@ class EditUsersViewController: UIViewController, UITableViewDelegate {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         button.setTitle("OK", forState: UIControlState.Normal)
         button.setTitleColor(UIColor.mainColor(), forState: .Normal)
-        button.titleLabel?.font = UIFont(name:"HelveticaNeue-Regular",size: 14)
+        button.titleLabel?.font = UIFont.mainFontJaRegular(16)
         button.titleEdgeInsets = UIEdgeInsetsMake(0, 7, 0, 0)
+    }
+    
+    private func setNavigationBar() {
+        self.navigationController?.hidesNavigationBarHairline = true
+        self.navigationController?.navigationBar.tintColor = UIColor.mainColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.mainColor()]
+        self.navigationItem.title = "Edit Members"
+
     }
 }

@@ -8,6 +8,7 @@
 import FBSDKCoreKit
 import FBSDKLoginKit
 import FBSDKShareKit
+import ChameleonFramework
 import UIKit
 
 @UIApplicationMain
@@ -19,13 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // [Optional] Power your app with Local Datastore. For more info, go to
         // https://parse.com/docs/ios/guide#local-datastore
-//        
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarPosition: .TopAttached, barMetrics: .Default)
-        UINavigationBar.appearance().shadowImage = UIImage()
         
-        UINavigationBar.appearance().tintColor = UIColor.mainColor()
-        UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.mainColor()]
+        UIApplication.sharedApplication().statusBarStyle = .Default
+        UINavigationBar.appearance().translucent = false
+
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
