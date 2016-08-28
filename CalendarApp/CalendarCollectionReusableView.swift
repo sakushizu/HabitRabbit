@@ -30,7 +30,7 @@ class CalendarCollectionReusableView: UICollectionReusableView {
     
     private func layoutLineView() {
         lineView.frame = CGRect(x: 10, y: 0, width: self.frame.width - 20, height: 0.5)
-        lineView.backgroundColor = UIColor.lightGrayColor()
+        lineView.backgroundColor = UIColor.cellLineColor()
     }
         
 }

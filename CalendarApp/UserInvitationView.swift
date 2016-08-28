@@ -43,7 +43,7 @@ class UserInvitationView: UIView {
     }
     
     private func layoutTableView() {
-        tableView.backgroundColor = UIColor.hexStr("F6F6F6", alpha: 1)
+        tableView.backgroundColor = UIColor.baseGrayColor()
     }
 
 

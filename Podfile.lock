@@ -8,6 +8,9 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.7.0)
   - Bond (4.3.1)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
   - FBSDKCoreKit (4.11.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.11.0):
@@ -26,6 +29,7 @@ DEPENDENCIES:
   - Alamofire
   - BBBadgeBarButtonItem
   - Bond
+  - ChameleonFramework/Swift
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -50,6 +54,7 @@ SPEC CHECKSUMS:
   BBBadgeBarButtonItem: c2fbca0bff18e21b70defc9438a8a5048008e7ca
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   Bond: 55903fc67f09e8e49791a657163cabba1d6fb29d
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
   FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
   FBSDKShareKit: 2d1746144cfc8a9dbbd24997c34ee0471be51b6a

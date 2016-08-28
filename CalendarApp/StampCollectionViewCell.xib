@@ -12,7 +12,7 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ギャル.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="EC2-pw-7F1">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gift-32.png" translatesAutoresizingMaskIntoConstraints="NO" id="EC2-pw-7F1">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                     </imageView>
                 </subviews>
@@ -30,6 +30,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ギャル.jpg" width="480" height="768"/>
+        <image name="Gift-32.png" width="32" height="32"/>
     </resources>
 </document>

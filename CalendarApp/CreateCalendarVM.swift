@@ -16,7 +16,6 @@ class CreateCalendarVM: NSObject, UITableViewDataSource, UITextFieldDelegate {
     var titleText = Observable<String?>("")
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return 4
     }
     

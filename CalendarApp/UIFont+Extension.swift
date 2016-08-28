@@ -9,7 +9,12 @@
 import UIKit
 
 extension UIFont {
+    
     class func mainFontJa(size: CGFloat) -> UIFont {
         return UIFont(name: "HelveticaNeue-Light", size: size)!
+    }
+    
+    class func mainFontJaRegular(size: CGFloat) -> UIFont {
+        return UIFont(name: "HelveticaNeue", size: size)!
     }
 }

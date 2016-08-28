@@ -32,7 +32,7 @@ class EditUsersVM: NSObject, UITableViewDataSource {
             return 1
             
         case .Members:
-            return (selectedCalendar.value!.joinedUsers.count)
+            return selectedCalendar.value!.joinedUsers.count
             
         case .InvitationUsers:
             return selectedCalendar.value!.invitingUsers.count
@@ -102,12 +102,11 @@ class EditUsersVM: NSObject, UITableViewDataSource {
     func alertBeforeDeleteUser(completion: () -> Void) {
         let sweetAlert = SweetAlert()
         sweetAlert.showAlert("Are you sure?", subTitle: "", style: AlertStyle.Warning, buttonTitle:"cancel", buttonColor:UIColor.redColor() , otherButtonTitle:  "　　ok　　", otherButtonColor:UIColor.redColor()) { (isOtherButton) -> Void in
-            if isOtherButton == true {
-                
-            }
-            else {
+
+            guard isOtherButton else {
                 completion()
                 SweetAlert().showAlert("success!", subTitle: "", style: AlertStyle.Success)
+                return
             }
         }
     }

@@ -28,9 +28,16 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
         mView.collectionView.dataSource = mModel
         mView.tableView.delegate = self
         mView.collectionView.delegate = self
-        setBinding()
         
         setUpNavigationController()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        setBinding()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        setNavigationBar()
     }
 
     // MARK - Initialize
@@ -137,13 +144,13 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
         
         button.setTitleColor(UIColor.mainColor(), forState: .Normal)
         button.setTitleColor(.grayColor(), forState: .Disabled)
-        button.titleLabel?.font = UIFont(name:"HelveticaNeue-Regular",size: 14)
+        button.titleLabel?.font = UIFont.mainFontJaRegular(16)
         button.titleEdgeInsets = UIEdgeInsetsMake(0, 7, 0, 0)
     }
     
     private func createHeaderView() -> UIView {
         let header = UIView()
-        header.backgroundColor = UIColor.hexStr("F7F7F7", alpha: 1)
+        header.backgroundColor = UIColor.baseGrayColor()
         return header
 
     }
@@ -151,14 +158,20 @@ class UserInvitationViewController: UIViewController, UITableViewDelegate, UICol
     private func createHeaderLabel() -> UILabel {
         let label = UILabel()
         label.text = "User"
-        label.font = UIFont(name: "HelveticaNeue-Light", size: 16)
+        label.font = UIFont.mainFontJa(14)
         label.sizeToFit()
         label.center.y = 20
         label.frame.origin.x = 20
-        label.textColor = UIColor.hexStr("4A4A4A", alpha: 1)
+        label.textColor = UIColor.textColor()
         return label
     }
 
+    private func setNavigationBar() {
+        self.navigationController?.hidesNavigationBarHairline = true
+        self.navigationController?.navigationBar.tintColor = UIColor.mainColor()
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.mainColor()]
+        navigationItem.title = "Select User"
+    }
 
 
 }

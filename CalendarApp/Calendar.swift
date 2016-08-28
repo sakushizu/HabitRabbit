@@ -11,30 +11,17 @@ import SwiftyJSON
 
 class Calendar: NSObject, NSCopying {
     
-    
-    //カレンダーの情報をもつ辞書型
-    var selectedDates: Dictionary<NSDate, String> = [:]
     var id: Int
     var title: String
     var color_r: Int
     var color_g: Int
     var color_b: Int
     var stampImageURL: String
-    var orner: User
-//    var joinedUsersWithOwner = [User]()
+    var orner: User!
+
     var joinedUsers = [User]()
     var invitingUsers = [User]()
-    
-    var memo = ""
-    
-    var object_id: String = ""
-    var password: String = ""
-    
-    var type: String = ""
-    
-    var defaultsCalendarTitle = ""
-    
-    
+
     init(json: JSON) {
         self.id = json["id"].int!
         self.title = json["title"].string!

@@ -15,6 +15,7 @@ target 'CalendarApp' do
     pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
     pod 'Bond'
     pod 'BBBadgeBarButtonItem'
+    pod 'ChameleonFramework/Swift'
 end
 
 target 'CalendarAppTests' do

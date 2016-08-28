@@ -7,168 +7,78 @@
 //
 
 import UIKit
-import FBSDKCoreKit
-import FBSDKLoginKit
-import FBSDKShareKit
 
-class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-    
 
-    @IBOutlet weak var tableView: UITableView!
+class LoginViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate {
+
+    let mModel = LoginVM()
+    var mView: LoginView!
+    private var imagePickerVC: UIImagePickerController!
     
-    let images = ["User", "Lock"]
-    let placeholderTexts = ["Email", "Password"]
-    
-    var overMinPasswordTextCount = false
-    private var isLogin = false
+    override func loadView() {
+        self.view = LoginView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        mView = view as! LoginView
+        mView.tableView.delegate = self
+        mView.tableView.dataSource = mModel
         
-        tableView.registerNib(UINib(nibName: "CreateUserTableViewCell", bundle: nil), forCellReuseIdentifier: "createUserCell")
-        tableView.registerNib(UINib(nibName: "OrViewTableViewCell", bundle: nil), forCellReuseIdentifier: "orCell")
-        tableView.registerNib(UINib(nibName: "NextBtnTableViewCell", bundle: nil), forCellReuseIdentifier: "nextCell")
-        tableView.registerNib(UINib(nibName: "FaceBookTableViewCell", bundle: nil), forCellReuseIdentifier: "faceBookCell")
+        setSignUpButtonTarget()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if (section == 0) || (section == 1) {
-            return 50
-        } else if section == 2 {
-            let boundSize: CGSize = UIScreen.mainScreen().bounds.size
-            let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
-            let navigationBarHeight = navigationController!.navigationBar.frame.height
-            let cellsHeight: CGFloat = 65 * 4
-            return boundSize.height - (statusBarHeight + navigationBarHeight + cellsHeight + 100)
-        } else {
-            return 0
-        }
+        return 40
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 2
-        } else {
-            return 1
-        }
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("createUserCell", forIndexPath: indexPath) as! CreateUserTableViewCell
-            cell.icon.image = UIImage(named: images[indexPath.row])
-            cell.textField.placeholder = placeholderTexts[indexPath.row]
-            cell.textField.delegate = self
-            if indexPath.row == 1 {
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UITextInputDelegate.textDidChange(_:)), name: UITextFieldTextDidChangeNotification, object: cell.textField)
-            }
-            return cell
-        } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("faceBookCell", forIndexPath: indexPath) as! FaceBookTableViewCell
-            cell.faceBookLabel.text = "Log In With Facebook"
-            return cell
-        } else {
-            let nextCell = tableView.dequeueReusableCellWithIdentifier("nextCell", forIndexPath: indexPath) as! NextBtnTableViewCell
-            nextCell.nextLabel.text = "Done"
-            nextCell.accessoryView?.hidden = true
-            return nextCell
-        }
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 2 {
-            let emailCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! CreateUserTableViewCell
-            let passwordCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! CreateUserTableViewCell
-            if emailCell.textField.text!.isEmpty || passwordCell.textField.text!.isEmpty {
-                showAlert("email or password is empty")
-            } else if overMinPasswordTextCount == false {
-                showAlert("password is min 6 count")
-            } else {
-                let params: [String: AnyObject] = [
-                    "user": [
-                        "email": emailCell.textField.text!,
-                        "password": passwordCell.textField.text!
-                    ]
-                ]
-                User.firstLoginRails(params, completion: {
-                    UserInvitationManager.sharedInstance.fetchInvitationCalendars(completion: {
-                    })
-                    CalenderManager.sharedInstance.fetchCalendars(completion: {
-                    })
-                    let controller = UIStoryboard.viewControllerWith("Calendar", identifier: "CalendarViewController")
-                    let navigationController = UINavigationController(rootViewController: controller)
-                    self.presentViewController(navigationController, animated: true, completion: nil)
-                })
-            }
-        } else if indexPath.section == 1 {
-            //facebookログイン
-            tappedLoginButton()
-        }
+        return 2
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-            return 65
+            return 60
     }
     
-    //アラート表示のメソッド
-    func showAlert(message: String?) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
-        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertController.addAction(action)
-        presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    func textDidChange(notification: NSNotification) {
-        if notification.object?.text.characters.count > 6 {
-            overMinPasswordTextCount = true
+    func tappedSignUpButton() {
+        if mModel.mailText.value!.isEmpty || mModel.passwordText.value!.isEmpty {
+            let alert = UIAlertController.alertWith(message: "Exsist Empty TextField")
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
         }
+        login()
+    }
+    
+    private func setSignUpButtonTarget() {
+        mView.loginButton.addTarget(self, action: #selector(self.tappedSignUpButton), forControlEvents: .TouchUpInside)
+    }
+    
+    private func login() {
+        
+        let params: [String:AnyObject] = [
+            "user":[
+                "password": mModel.passwordText.value!,
+                "email": mModel.mailText.value!
+            ]
+        ]
+        User.firstLoginRails(params, completion: {
+            UserInvitationManager.sharedInstance.fetchInvitationCalendars(completion: { })
+            CalenderManager.sharedInstance.fetchCalendars(completion: { })
+            let controller = CalendarTopViewController()
+            let navigationController = UINavigationController(rootViewController: controller)
+            self.presentViewController(navigationController, animated: true, completion: nil)
+        })
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    
-    private func tappedLoginButton() {
-        let loginManager = FBSDKLoginManager()
-        if !isLogin {
-            loginManager.logInWithReadPermissions(["public_profile", "email"], fromViewController: self) { (result, error) in
-                guard error == nil else {
-                    return
-                }
-                if result.isCancelled {
-                } else {
-                    User.getUserData({
-                        let controller = UIStoryboard.viewControllerWith("Calendar", identifier: "CalendarViewController")
-                        let navigationController = UINavigationController(rootViewController: controller)
-                        self.presentViewController(navigationController, animated: true, completion: nil)
-                        CalenderManager.sharedInstance.fetchCalendars(completion: {
-                            
-                        })
-                    })
-                }
-            }
-        } else {
-//            loginManager.logOut()
-//            customButton.setTitle("My Login Button", forState: .Normal)
-        }
-        self.isLogin = !self.isLogin
-    }
-    
-    
 
 }

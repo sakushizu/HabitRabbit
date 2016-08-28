@@ -9,24 +9,13 @@
 
 import UIKit
 
-@objc protocol ColorTableViewControllerDelegate {
-    func setSelectedColor(selectedColor: CalendarThemeColor)
-}
-
 class ColorTableViewController: UITableViewController {
-    
-    weak var customDelegate: ColorTableViewControllerDelegate?
-    
+
     var color = UIColor.mainColor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -35,15 +24,20 @@ class ColorTableViewController: UITableViewController {
         let coverView = UIView()
         coverView.backgroundColor = UIColor.baseGrayColor()
         let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width, height: 40))
-        label.font = UIFont.mainFontJa(15)
-        label.textColor = UIColor.darkGrayColor()
+        label.font = UIFont.mainFontJa(14)
+        label.textColor = UIColor.textColor()
         coverView.addSubview(label)
         if section == 0 {
             label.text = "Selected Color"
             return coverView
         } else {
+            label.text = "Color"
             return coverView
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        setNavigationBar()
     }
     
 
@@ -76,11 +70,21 @@ class ColorTableViewController: UITableViewController {
         let selectedColor = CalendarThemeColors.list[indexPath.row]
         let notification = NSNotification(name: "selectColorNotification", object: self, userInfo: ["color": selectedColor])
         NSNotificationCenter.defaultCenter().postNotification(notification)
+        color = selectedColor.color
         tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
+    }
+    
+    private func setNavigationBar() {
+        self.navigationController?.hidesNavigationBarHairline = true
+        self.navigationController?.navigationBar.tintColor = UIColor.mainColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.mainColor()]
+        navigationItem.title = "Select Color"
+        
     }
 
 }

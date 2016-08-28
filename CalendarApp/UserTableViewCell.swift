@@ -18,11 +18,12 @@ class UserTableViewCell: UITableViewCell {
         super.awakeFromNib()
         setUserImageView()
         self.selectionStyle = .None
-        
+        settingButton.hidden = true //とりあえず
     }
     
     func fillWith(user: User) {
         userNameLabel.text = user.name
+        userNameLabel.textColor = UIColor.textColor()
         userImageView.sd_setImageWithURL(NSURL(string: user.avatarUrl))
     }
     
